@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:54100/MenuService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:54100/MenuService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:54100/MenuService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Commonlayer" />
+      <xsd:import schemaLocation="http://localhost:54100/MenuService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Commonlayer.Views" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IMenuService_GetMainMenus1_InputMessage">
@@ -13,11 +14,11 @@
   <wsdl:message name="IMenuService_GetMainMenus1_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMainMenus1Response" />
   </wsdl:message>
-  <wsdl:message name="IMenuService_GetMainMenus2_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetMainMenus2" />
+  <wsdl:message name="IMenuService_GetMainMenu_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMainMenu" />
   </wsdl:message>
-  <wsdl:message name="IMenuService_GetMainMenus2_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetMainMenus2Response" />
+  <wsdl:message name="IMenuService_GetMainMenu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMainMenuResponse" />
   </wsdl:message>
   <wsdl:message name="IMenuService_GetSubMenus1_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSubMenus1" />
@@ -31,14 +32,20 @@
   <wsdl:message name="IMenuService_GetSubMenus2_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSubMenus2Response" />
   </wsdl:message>
+  <wsdl:message name="IMenuService_GetMainMenuV_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMainMenuV" />
+  </wsdl:message>
+  <wsdl:message name="IMenuService_GetMainMenuV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMainMenuVResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMenuService">
     <wsdl:operation name="GetMainMenus1">
       <wsdl:input wsaw:Action="http://tempuri.org/IMenuService/GetMainMenus1" message="tns:IMenuService_GetMainMenus1_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMenuService/GetMainMenus1Response" message="tns:IMenuService_GetMainMenus1_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetMainMenus2">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMenuService/GetMainMenus2" message="tns:IMenuService_GetMainMenus2_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMenuService/GetMainMenus2Response" message="tns:IMenuService_GetMainMenus2_OutputMessage" />
+    <wsdl:operation name="GetMainMenu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuService/GetMainMenu" message="tns:IMenuService_GetMainMenu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuService/GetMainMenuResponse" message="tns:IMenuService_GetMainMenu_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetSubMenus1">
       <wsdl:input wsaw:Action="http://tempuri.org/IMenuService/GetSubMenus1" message="tns:IMenuService_GetSubMenus1_InputMessage" />
@@ -47,6 +54,10 @@
     <wsdl:operation name="GetSubMenus2">
       <wsdl:input wsaw:Action="http://tempuri.org/IMenuService/GetSubMenus2" message="tns:IMenuService_GetSubMenus2_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMenuService/GetSubMenus2Response" message="tns:IMenuService_GetSubMenus2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMainMenuV">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMenuService/GetMainMenuV" message="tns:IMenuService_GetMainMenuV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMenuService/GetMainMenuVResponse" message="tns:IMenuService_GetMainMenuV_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMenuService" type="tns:IMenuService">
@@ -60,8 +71,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetMainMenus2">
-      <soap:operation soapAction="http://tempuri.org/IMenuService/GetMainMenus2" style="document" />
+    <wsdl:operation name="GetMainMenu">
+      <soap:operation soapAction="http://tempuri.org/IMenuService/GetMainMenu" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -80,6 +91,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetSubMenus2">
       <soap:operation soapAction="http://tempuri.org/IMenuService/GetSubMenus2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainMenuV">
+      <soap:operation soapAction="http://tempuri.org/IMenuService/GetMainMenuV" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -23,7 +23,7 @@
             <div id="top"></div>
             <div class="menudiv">
                 <ul id="menu">
-                    @foreach (Commonlayer.Menu m in ViewBag.Menus)
+                    @foreach (var m in ViewBag.Menus)
                     {
                         <li><a href="/@m.URL">@m.Title</a></li>
                     }

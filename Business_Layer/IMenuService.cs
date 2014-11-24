@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Commonlayer;
+using Commonlayer.Views;
 
 namespace Business_Layer
 {
@@ -15,10 +16,12 @@ namespace Business_Layer
         [OperationContract]
         IQueryable<Menu> GetMainMenus1(string username);
         [OperationContract]
-        IQueryable<Menu> GetMainMenus2(int roleID);
+        IQueryable<Menu> GetMainMenu(int roleID);
         [OperationContract]
         IQueryable<Menu> GetSubMenus1(string username, int parentID);
         [OperationContract]
         IQueryable<Menu> GetSubMenus2(int roleID, int parentID);
+        [OperationContract]
+        IQueryable<MenusView> GetMainMenuV(int roleID);
     }
 }

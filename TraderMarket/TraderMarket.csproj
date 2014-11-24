@@ -234,28 +234,41 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Properties\DataSources\Commonlayer.Menu.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.Role.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.User.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.Views.MenusView.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\date-functions.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.datetimepicker.css" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sorttable.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Service References\MenuService\MenuService.disco" />
-    <None Include="Service References\MenuService\configuration91.svcinfo" />
-    <None Include="Service References\MenuService\configuration.svcinfo" />
-    <None Include="Service References\MenuService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Service References\UserService\TraderMarket.UserService.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\MenuService\MenuService.wsdl" />
     <None Include="Service References\MenuService\MenuService.xsd">
       <SubType>Designer</SubType>
@@ -266,13 +279,20 @@
     <None Include="Service References\MenuService\MenuService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\UserService\TraderMarket.UserService.Role.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
+    <None Include="Service References\MenuService\MenuService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\UserService\UserService.disco" />
     <None Include="Service References\UserService\configuration91.svcinfo" />
     <None Include="Service References\UserService\configuration.svcinfo" />
     <None Include="Service References\UserService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MenuService\MenuService.disco" />
+    <None Include="Service References\MenuService\configuration91.svcinfo" />
+    <None Include="Service References\MenuService\configuration.svcinfo" />
+    <None Include="Service References\MenuService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -291,16 +311,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
     <None Include="Service References\UserService\UserService.wsdl" />
     <None Include="Service References\UserService\UserService.xsd">
       <SubType>Designer</SubType>
@@ -311,15 +324,10 @@
     <None Include="Service References\UserService\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\LoginModel\" />
-    <Folder Include="Views\ProductsModel\" />
-    <Folder Include="Views\RegisterModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -16,15 +16,18 @@ namespace Commonlayer
     {
         public Menu()
         {
+            this.Menu1 = new HashSet<Menu>();
             this.Roles = new HashSet<Role>();
         }
     
         public int MenuID { get; set; }
         public string Title { get; set; }
         public string URL { get; set; }
-        public int ParentID { get; set; }
+        public Nullable<int> ParentID { get; set; }
         public Nullable<int> Position { get; set; }
     
+        public virtual ICollection<Menu> Menu1 { get; set; }
+        public virtual Menu Menu2 { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
     }
 }

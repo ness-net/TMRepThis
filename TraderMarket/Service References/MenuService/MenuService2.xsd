@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:54100/MenuService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Commonlayer" />
+  <xs:import schemaLocation="http://localhost:54100/MenuService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Commonlayer.Views" />
   <xs:element name="GetMainMenus1">
     <xs:complexType>
       <xs:sequence>
@@ -15,17 +16,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMainMenus2">
+  <xs:element name="GetMainMenu">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="roleID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMainMenus2Response">
+  <xs:element name="GetMainMenuResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetMainMenus2Result" nillable="true" type="q2:ArrayOfMenu" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetMainMenuResult" nillable="true" type="q2:ArrayOfMenu" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -56,6 +57,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetSubMenus2Result" nillable="true" type="q4:ArrayOfMenu" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMainMenuV">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roleID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMainMenuVResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetMainMenuVResult" nillable="true" type="q5:ArrayOfMenusView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

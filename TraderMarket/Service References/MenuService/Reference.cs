@@ -21,11 +21,11 @@ namespace TraderMarket.MenuService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenus1", ReplyAction="http://tempuri.org/IMenuService/GetMainMenus1Response")]
         System.Threading.Tasks.Task<Commonlayer.Menu[]> GetMainMenus1Async(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenus2", ReplyAction="http://tempuri.org/IMenuService/GetMainMenus2Response")]
-        Commonlayer.Menu[] GetMainMenus2(int roleID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenu", ReplyAction="http://tempuri.org/IMenuService/GetMainMenuResponse")]
+        Commonlayer.Menu[] GetMainMenu(int roleID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenus2", ReplyAction="http://tempuri.org/IMenuService/GetMainMenus2Response")]
-        System.Threading.Tasks.Task<Commonlayer.Menu[]> GetMainMenus2Async(int roleID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenu", ReplyAction="http://tempuri.org/IMenuService/GetMainMenuResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Menu[]> GetMainMenuAsync(int roleID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetSubMenus1", ReplyAction="http://tempuri.org/IMenuService/GetSubMenus1Response")]
         Commonlayer.Menu[] GetSubMenus1(string username, int parentID);
@@ -38,6 +38,12 @@ namespace TraderMarket.MenuService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetSubMenus2", ReplyAction="http://tempuri.org/IMenuService/GetSubMenus2Response")]
         System.Threading.Tasks.Task<Commonlayer.Menu[]> GetSubMenus2Async(int roleID, int parentID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenuV", ReplyAction="http://tempuri.org/IMenuService/GetMainMenuVResponse")]
+        Commonlayer.Views.MenusView[] GetMainMenuV(int roleID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenuV", ReplyAction="http://tempuri.org/IMenuService/GetMainMenuVResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenuVAsync(int roleID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -75,12 +81,12 @@ namespace TraderMarket.MenuService {
             return base.Channel.GetMainMenus1Async(username);
         }
         
-        public Commonlayer.Menu[] GetMainMenus2(int roleID) {
-            return base.Channel.GetMainMenus2(roleID);
+        public Commonlayer.Menu[] GetMainMenu(int roleID) {
+            return base.Channel.GetMainMenu(roleID);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Menu[]> GetMainMenus2Async(int roleID) {
-            return base.Channel.GetMainMenus2Async(roleID);
+        public System.Threading.Tasks.Task<Commonlayer.Menu[]> GetMainMenuAsync(int roleID) {
+            return base.Channel.GetMainMenuAsync(roleID);
         }
         
         public Commonlayer.Menu[] GetSubMenus1(string username, int parentID) {
@@ -97,6 +103,14 @@ namespace TraderMarket.MenuService {
         
         public System.Threading.Tasks.Task<Commonlayer.Menu[]> GetSubMenus2Async(int roleID, int parentID) {
             return base.Channel.GetSubMenus2Async(roleID, parentID);
+        }
+        
+        public Commonlayer.Views.MenusView[] GetMainMenuV(int roleID) {
+            return base.Channel.GetMainMenuV(roleID);
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenuVAsync(int roleID) {
+            return base.Channel.GetMainMenuVAsync(roleID);
         }
     }
 }

@@ -4,19 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Commonlayer;
+using System.Data.Entity;
+using System.Data.Objects;
 
 namespace DataAccessLayer
 {
     public class UserRepository : ConnectionClass
     {
 
-        public UserRepository() : base() { }
+
+
+        public UserRepository() : base() {}
                 
 
         public void AddUser(User myNewUser)
         {
             Entity.Users.Add(myNewUser);
-            //Entity.Users.AddObject(myNewUser);
             Entity.SaveChanges();
         }
 

@@ -109,6 +109,7 @@
     <Compile Include="User.cs">
       <DependentUpon>DBEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\MenusView.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DBEntity.edmx">

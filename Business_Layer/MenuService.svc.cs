@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Commonlayer;
+using Commonlayer.Views;
 using DataAccessLayer;
 
 namespace Business_Layer
@@ -28,9 +29,14 @@ namespace Business_Layer
         /// </summary>
         /// <param name="roleID">Passes the roleID to return all the menuItems that the user can see</param>
         /// <returns>Returns MenuItems that a roleID can see.</returns>
-        public IQueryable<Menu> GetMainMenus2(int roleID)
+        public IQueryable<Menu> GetMainMenu(int roleID)
         {
             return new MenuRepository().GetMainMenu(roleID);
+        }
+
+        public IQueryable<MenusView> GetMainMenuV(int roleID)
+        {
+            return new MenuRepository().GetMainMenuV(roleID);
         }
 
         /// <summary>

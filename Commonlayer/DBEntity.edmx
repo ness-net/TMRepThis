@@ -42,10 +42,10 @@
           <Key>
             <PropertyRef Name="MenuID" />
           </Key>
-          <Property Name="MenuID" Type="int" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="50" />
-          <Property Name="URL" Type="varchar" MaxLength="50" />
-          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="URL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
           <Property Name="Position" Type="int" />
         </EntityType>
         <EntityType Name="MenuRole">
@@ -187,6 +187,18 @@
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Menu_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MenuRole_Menu">
           <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
           <End Role="MenuRole" Type="Self.MenuRole" Multiplicity="*" />
@@ -424,6 +436,10 @@
           <EntitySet Name="UserCard" EntityType="Self.UserCard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCommission" EntityType="Self.UserCommission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Menu_Menu" Association="Self.FK_Menu_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Menu1" EntitySet="Menu" />
+          </AssociationSet>
           <AssociationSet Name="FK_MenuRole_Menu" Association="Self.FK_MenuRole_Menu">
             <End Role="Menu" EntitySet="Menu" />
             <End Role="MenuRole" EntitySet="MenuRole" />
@@ -524,6 +540,10 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="SubCategory" EntitySet="SubCategories" />
           </AssociationSet>
+          <AssociationSet Name="FK_Menu_Menu" Association="TradersMarketplacedbModel.FK_Menu_Menu">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Menu1" EntitySet="Menus" />
+          </AssociationSet>
           <AssociationSet Name="FK_OrderDetails_Orders" Association="TradersMarketplacedbModel.FK_OrderDetails_Orders">
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
@@ -607,11 +627,13 @@
           <Key>
             <PropertyRef Name="MenuID" />
           </Key>
-          <Property Name="MenuID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="URL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ParentID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="Int32" />
           <Property Name="Position" Type="Int32" />
+          <NavigationProperty Name="Menu1" Relationship="TradersMarketplacedbModel.FK_Menu_Menu" FromRole="Menu" ToRole="Menu1" />
+          <NavigationProperty Name="Menu2" Relationship="TradersMarketplacedbModel.FK_Menu_Menu" FromRole="Menu1" ToRole="Menu" />
           <NavigationProperty Name="Roles" Relationship="TradersMarketplacedbModel.MenuRole" FromRole="Menu" ToRole="Role" />
         </EntityType>
         <EntityType Name="OrderDetail">
@@ -747,6 +769,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Menu_Menu">
+          <End Type="TradersMarketplacedbModel.Menu" Role="Menu" Multiplicity="0..1" />
+          <End Type="TradersMarketplacedbModel.Menu" Role="Menu1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OrderDetails_Orders">
           <End Type="TradersMarketplacedbModel.Order" Role="Order" Multiplicity="1" />
           <End Type="TradersMarketplacedbModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
@@ -819,7 +853,7 @@
           <End Type="TradersMarketplacedbModel.Role" Role="Role" Multiplicity="*" />
           <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="*" />
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

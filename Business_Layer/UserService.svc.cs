@@ -52,22 +52,23 @@ namespace Business_Layer
 
                         try
                         {
-                            //ur.Entity.Connection.Open();
-                            //rr.Transaction = ur.Transaction = ur.Entity.Connection.BeginTransaction();
+                            ur.Entity.Database.Connection.Open();
+                            //rr.Transaction = ur.Transaction = ur.Entity.Database.Connection.BeginTransaction();
                             ur.AddUser(u);
 
                             rr.AllocateRole(u, rr.GetDefaultRole());
-                            ur.Transaction.Commit();
+                            //ur.Transaction.Commit();
                         }
-                        catch
-                        {
-                            ur.Transaction.Rollback();
-                            rr.Transaction.Rollback();
-                            throw new Exception("Error Occurred, please try later");
+                        catch (Exception ex)
+                        {                  
+          
+                            //ur.Transaction.Rollback();
+                            //rr.Transaction.Rollback();
+                            throw new Exception("Error Occurred, please try later"+ex.Message);
                         }
                         finally
                         {
-                            //ur.Entity.Connection.Close();
+                            ur.Entity.Database.Connection.Close();
                         }
                 }
                 else throw new FaultException("Email already exists");

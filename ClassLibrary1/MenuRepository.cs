@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Commonlayer;
+using Commonlayer.Views;
 
 namespace DataAccessLayer
 {
@@ -23,6 +24,21 @@ namespace DataAccessLayer
                  where m.ParentID == null && r.RoleID == roleID
                  select m
                  ).Distinct();
+
+            return list.AsQueryable();
+        }
+
+        public IQueryable<MenusView> GetMainMenuV(int roleID)
+        {
+            var list =  (from r in Entity.Roles
+                     from m in r.Menus
+                    where m.ParentID == null && r.RoleID == roleID
+                    select new MenusView
+                    {
+                       Title = m.Title,
+                       URL = m.URL
+                    }
+                    ).Distinct();
 
             return list.AsQueryable();
         }
