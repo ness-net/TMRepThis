@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:54100/MenuService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Commonlayer" />
-  <xs:import schemaLocation="http://localhost:54100/MenuService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Commonlayer.Views" />
+  <xs:import schemaLocation="http://localhost:54100/MenuService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Commonlayer.Views" />
+  <xs:import schemaLocation="http://localhost:54100/MenuService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Commonlayer" />
   <xs:element name="GetMainMenus1">
     <xs:complexType>
       <xs:sequence>
@@ -12,7 +12,7 @@
   <xs:element name="GetMainMenus1Response">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetMainMenus1Result" nillable="true" type="q1:ArrayOfMenu" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetMainMenus1Result" nillable="true" type="q1:ArrayOfMenusView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

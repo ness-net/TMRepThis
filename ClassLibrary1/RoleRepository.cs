@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Commonlayer;
+using Commonlayer.Views;
 
 namespace DataAccessLayer
 {
@@ -27,6 +28,21 @@ namespace DataAccessLayer
             UserRepository ur = new UserRepository();
             User u = ur.GetUser(username);
             return u.Roles.AsQueryable();
+        }
+
+        public IQueryable<RolesView> GetUserRolesV(string username)
+        {
+            UserRepository ur = new UserRepository();
+            User u = ur.GetUser(username);
+            List<RolesView> list = new List<RolesView>();
+
+            foreach (Role r in u.Roles)
+            {
+               RolesView rv = new RolesView();
+               rv.ID = r.RoleID;
+               rv.Name = r.Role1;
+            }
+            return list.AsQueryable();
         }
 
     }

@@ -204,6 +204,8 @@
   <xs:element name="ArrayOfMenu" nillable="true" type="tns:ArrayOfMenu" />
   <xs:complexType name="Menu">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Menu1" nillable="true" type="tns:ArrayOfMenu" />
+      <xs:element minOccurs="0" name="Menu2" nillable="true" type="tns:Menu" />
       <xs:element minOccurs="0" name="MenuID" type="xs:int" />
       <xs:element minOccurs="0" name="ParentID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Position" nillable="true" type="xs:int" />

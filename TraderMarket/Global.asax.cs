@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Business_Layer;
 using Commonlayer;
+using Commonlayer.Views;
 using System.Security.Principal;
 
 namespace TraderMarket
@@ -61,13 +62,14 @@ namespace TraderMarket
         {
             if (Context.User != null)
             {
-               Role[] usersRole = new UserService.UserServiceClient().GetUserRoles(Context.User.Identity.Name);
+                RolesView[] usersrole = new UserService.UserServiceClient().GetUserRolesV(Context.User.Identity.Name);
+              // Role[] usersRole = new UserService.UserServiceClient().GetUserRoles(Context.User.Identity.Name);
 
-                string[] roles = new string[usersRole.Count()];
+                string[] roles = new string[usersrole.Count()];
 
                 for (int i = 0; i < roles.Length; i++)
                 {
-                    roles[i] = usersRole.ElementAt(i).Role1;
+                    roles[i] = usersrole.ElementAt(i).Name;
                 }
 
                 GenericPrincipal gp = new GenericPrincipal(Context.User.Identity, roles);

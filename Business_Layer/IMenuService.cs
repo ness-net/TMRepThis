@@ -14,7 +14,7 @@ namespace Business_Layer
     public interface IMenuService
     {
         [OperationContract]
-        IQueryable<Menu> GetMainMenus1(string username);
+        IQueryable<MenusView> GetMainMenus1(string username);
         [OperationContract]
         IQueryable<Menu> GetMainMenu(int roleID);
         [OperationContract]

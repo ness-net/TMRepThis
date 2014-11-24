@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:54100/UserService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:54100/UserService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:54100/UserService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Commonlayer" />
+      <xsd:import schemaLocation="http://localhost:54100/UserService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Commonlayer.Views" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserService_isAuthenticationValid_InputMessage">
@@ -43,6 +44,12 @@
   <wsdl:message name="IUserService_GetUserRoles_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserRolesResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_GetUserRolesV_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRolesV" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUserRolesV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRolesVResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="isAuthenticationValid">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/isAuthenticationValid" message="tns:IUserService_isAuthenticationValid_InputMessage" />
@@ -67,6 +74,10 @@
     <wsdl:operation name="GetUserRoles">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserRoles" message="tns:IUserService_GetUserRoles_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserRolesResponse" message="tns:IUserService_GetUserRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRolesV">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserRolesV" message="tns:IUserService_GetUserRolesV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserRolesVResponse" message="tns:IUserService_GetUserRolesV_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -118,6 +129,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserRoles">
       <soap:operation soapAction="http://tempuri.org/IUserService/GetUserRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRolesV">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetUserRolesV" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

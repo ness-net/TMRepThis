@@ -59,17 +59,34 @@ namespace DataAccessLayer
 
         }
 
-        public IQueryable<Menu> GetMainMenus(string username)
-        {
-            return (
-                from u in Entity.Users
-                from r in u.Roles
-                from m in r.Menus
-                where u.Username == username && m.ParentID == null
-                orderby m.Position
-                select m
-            ).Distinct();
+        //public IQueryable<Menu> GetMainMenus(string username)
+        //{
+        //    return (
+        //        from u in Entity.Users
+        //        from r in u.Roles
+        //        from m in r.Menus
+        //        where u.Username == username && m.ParentID == null
+        //        orderby m.Position
+        //        select m
+        //    ).Distinct();
 
+        //}
+
+        public IQueryable<MenusView> GetMainMenus(string username)
+        {
+            var list = (from u in Entity.Users
+                        from r in u.Roles
+                        from m in r.Menus
+                        where u.Username == username && m.ParentID == null
+                        orderby m.Position
+                        select new MenusView
+                        {
+                            Title = m.Title,
+                            URL = m.URL
+                        }
+                    ).Distinct();
+
+            return list.AsQueryable();
         }
 
         public IQueryable<Menu> GetSubMenus(string username, int parentID)

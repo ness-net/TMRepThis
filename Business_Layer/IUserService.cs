@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Commonlayer;
+using Commonlayer.Views;
 
 namespace Business_Layer
 {
@@ -27,5 +28,7 @@ namespace Business_Layer
 
         [OperationContract]
         IQueryable<Role> GetUserRoles(string username);
+        [OperationContract]
+        IQueryable<RolesView> GetUserRolesV(string username);
     }
 }

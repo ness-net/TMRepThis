@@ -16,10 +16,10 @@ namespace TraderMarket.MenuService {
     public interface IMenuService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenus1", ReplyAction="http://tempuri.org/IMenuService/GetMainMenus1Response")]
-        Commonlayer.Menu[] GetMainMenus1(string username);
+        Commonlayer.Views.MenusView[] GetMainMenus1(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenus1", ReplyAction="http://tempuri.org/IMenuService/GetMainMenus1Response")]
-        System.Threading.Tasks.Task<Commonlayer.Menu[]> GetMainMenus1Async(string username);
+        System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenus1Async(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenu", ReplyAction="http://tempuri.org/IMenuService/GetMainMenuResponse")]
         Commonlayer.Menu[] GetMainMenu(int roleID);
@@ -73,11 +73,11 @@ namespace TraderMarket.MenuService {
                 base(binding, remoteAddress) {
         }
         
-        public Commonlayer.Menu[] GetMainMenus1(string username) {
+        public Commonlayer.Views.MenusView[] GetMainMenus1(string username) {
             return base.Channel.GetMainMenus1(username);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Menu[]> GetMainMenus1Async(string username) {
+        public System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenus1Async(string username) {
             return base.Channel.GetMainMenus1Async(username);
         }
         

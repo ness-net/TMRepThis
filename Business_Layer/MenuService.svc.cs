@@ -19,7 +19,7 @@ namespace Business_Layer
         /// </summary>
         /// <param name="username">Passes the username as to check the role and what a user can see in the menu</param>
         /// <returns>Returns MenuItems that a user can see, depending on his role</returns>        
-        public IQueryable<Menu> GetMainMenus1(string username)
+        public IQueryable<MenusView> GetMainMenus1(string username)
         {
             return new MenuRepository().GetMainMenus(username);
         }

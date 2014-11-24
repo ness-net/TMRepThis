@@ -50,6 +50,12 @@ namespace TraderMarket.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRoles", ReplyAction="http://tempuri.org/IUserService/GetUserRolesResponse")]
         System.Threading.Tasks.Task<Commonlayer.Role[]> GetUserRolesAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRolesV", ReplyAction="http://tempuri.org/IUserService/GetUserRolesVResponse")]
+        Commonlayer.Views.RolesView[] GetUserRolesV(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRolesV", ReplyAction="http://tempuri.org/IUserService/GetUserRolesVResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -125,6 +131,14 @@ namespace TraderMarket.UserService {
         
         public System.Threading.Tasks.Task<Commonlayer.Role[]> GetUserRolesAsync(string username) {
             return base.Channel.GetUserRolesAsync(username);
+        }
+        
+        public Commonlayer.Views.RolesView[] GetUserRolesV(string username) {
+            return base.Channel.GetUserRolesV(username);
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string username) {
+            return base.Channel.GetUserRolesVAsync(username);
         }
     }
 }

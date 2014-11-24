@@ -7,6 +7,7 @@ using System.Text;
 using Commonlayer;
 using DataAccessLayer;
 using System.Data.Entity;
+using Commonlayer.Views;
 
 namespace Business_Layer
 {
@@ -121,6 +122,13 @@ namespace Business_Layer
         public IQueryable<Role> GetUserRoles(string username)
         {
             return new RoleRepository().GetUserRoles(username);
+        }
+
+
+
+        public IQueryable<RolesView> GetUserRolesV(string username)
+        {
+            return new RoleRepository().GetUserRolesV(username);
         }
     }
 }

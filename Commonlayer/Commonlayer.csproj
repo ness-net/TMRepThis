@@ -110,6 +110,7 @@
       <DependentUpon>DBEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\MenusView.cs" />
+    <Compile Include="Views\RolesView.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DBEntity.edmx">

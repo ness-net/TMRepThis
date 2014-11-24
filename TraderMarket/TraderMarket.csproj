@@ -237,6 +237,7 @@
     <Content Include="Properties\DataSources\Commonlayer.Role.datasource" />
     <Content Include="Properties\DataSources\Commonlayer.User.datasource" />
     <Content Include="Properties\DataSources\Commonlayer.Views.MenusView.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.Views.RolesView.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\date-functions.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -322,6 +323,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserService\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserService\UserService3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
