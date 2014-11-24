@@ -7,7 +7,7 @@ using Commonlayer;
 using System.Data.Entity;
 using System.Data.Common;
 
-namespace ClassLibrary1
+namespace DataAccessLayer
 {
     public class ConnectionClass
     {

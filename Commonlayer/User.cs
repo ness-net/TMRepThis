@@ -32,11 +32,10 @@ namespace Commonlayer
         public string Street { get; set; }
         public string Town { get; set; }
         public string PostCode { get; set; }
-        public int CountryID { get; set; }
+        public string Country { get; set; }
         public Nullable<bool> HandlesDeliveres { get; set; }
         public Nullable<decimal> AccountNumber { get; set; }
     
-        public virtual Country Country { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<CreditCard> CreditCards { get; set; }
         public virtual ICollection<Commission> Commissions { get; set; }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Commonlayer
+namespace BusinessLayer
 {
     using System;
     using System.Collections.Generic;

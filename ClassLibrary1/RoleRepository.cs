@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Commonlayer;
 
-namespace ClassLibrary1
+namespace DataAccessLayer
 {
     public class RoleRepository: ConnectionClass
     {
@@ -22,12 +22,12 @@ namespace ClassLibrary1
             return Entity.Roles.SingleOrDefault(r => r.RoleID == 1);
         }
 
-        //public IQueryable<Role> GetUserRoles(string username)
-        //{
-        //    //UserRepository ur = new UserRepository();
-        //    //User u = ur.GetUser(username);
-        //    //return u.Roles.AsQueryable();
-        //}
+        public IQueryable<Role> GetUserRoles(string username)
+        {
+            UserRepository ur = new UserRepository();
+            User u = ur.GetUser(username);
+            return u.Roles.AsQueryable();
+        }
 
     }
 }

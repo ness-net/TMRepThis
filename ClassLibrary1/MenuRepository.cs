@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Commonlayer;
 
-namespace ClassLibrary1
+namespace DataAccessLayer
 {
     public class MenuRepository : ConnectionClass
     {

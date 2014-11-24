@@ -32,10 +32,7 @@ namespace TraderMarket.UserService {
         private decimal ContactNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TraderMarket.UserService.Country CountryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountryIDField;
+        private string CountryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private TraderMarket.UserService.CreditCard[] CreditCardsField;
@@ -126,7 +123,7 @@ namespace TraderMarket.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TraderMarket.UserService.Country Country {
+        public string Country {
             get {
                 return this.CountryField;
             }
@@ -134,19 +131,6 @@ namespace TraderMarket.UserService {
                 if ((object.ReferenceEquals(this.CountryField, value) != true)) {
                     this.CountryField = value;
                     this.RaisePropertyChanged("Country");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CountryID {
-            get {
-                return this.CountryIDField;
-            }
-            set {
-                if ((this.CountryIDField.Equals(value) != true)) {
-                    this.CountryIDField = value;
-                    this.RaisePropertyChanged("CountryID");
                 }
             }
         }
@@ -316,83 +300,6 @@ namespace TraderMarket.UserService {
                 if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
                     this.UsernameField = value;
                     this.RaisePropertyChanged("Username");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Country", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
-    [System.SerializableAttribute()]
-    public partial class Country : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountryIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TraderMarket.UserService.User[] UsersField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CountryID {
-            get {
-                return this.CountryIDField;
-            }
-            set {
-                if ((this.CountryIDField.Equals(value) != true)) {
-                    this.CountryIDField = value;
-                    this.RaisePropertyChanged("CountryID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TraderMarket.UserService.User[] Users {
-            get {
-                return this.UsersField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsersField, value) != true)) {
-                    this.UsersField = value;
-                    this.RaisePropertyChanged("Users");
                 }
             }
         }
@@ -1806,10 +1713,10 @@ namespace TraderMarket.UserService {
         System.Threading.Tasks.Task<bool> isAuthenticationValidAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
-        void AddUser(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, int countrid, bool handlesdeliver, long accountnumber);
+        void AddUser(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
-        System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, int countrid, bool handlesdeliver, long accountnumber);
+        System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DoesUsernameExist", ReplyAction="http://tempuri.org/IUserService/DoesUsernameExistResponse")]
         bool DoesUsernameExist(string username);
@@ -1828,6 +1735,12 @@ namespace TraderMarket.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
         System.Threading.Tasks.Task<TraderMarket.UserService.User> GetUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRoles", ReplyAction="http://tempuri.org/IUserService/GetUserRolesResponse")]
+        Commonlayer.Role[] GetUserRoles(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRoles", ReplyAction="http://tempuri.org/IUserService/GetUserRolesResponse")]
+        System.Threading.Tasks.Task<TraderMarket.UserService.Role[]> GetUserRolesAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1865,11 +1778,11 @@ namespace TraderMarket.UserService {
             return base.Channel.isAuthenticationValidAsync(username, password);
         }
         
-        public void AddUser(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, int countrid, bool handlesdeliver, long accountnumber) {
+        public void AddUser(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber) {
             base.Channel.AddUser(username, password, email, name, surname, postcode, town, contactno, residence, street, countrid, handlesdeliver, accountnumber);
         }
         
-        public System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, int countrid, bool handlesdeliver, long accountnumber) {
+        public System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber) {
             return base.Channel.AddUserAsync(username, password, email, name, surname, postcode, town, contactno, residence, street, countrid, handlesdeliver, accountnumber);
         }
         
@@ -1895,6 +1808,14 @@ namespace TraderMarket.UserService {
         
         public System.Threading.Tasks.Task<TraderMarket.UserService.User> GetUserAsync(string username) {
             return base.Channel.GetUserAsync(username);
+        }
+        
+        public Commonlayer.Role[] GetUserRoles(string username) {
+            return base.Channel.GetUserRoles(username);
+        }
+        
+        public System.Threading.Tasks.Task<TraderMarket.UserService.Role[]> GetUserRolesAsync(string username) {
+            return base.Channel.GetUserRolesAsync(username);
         }
     }
 }

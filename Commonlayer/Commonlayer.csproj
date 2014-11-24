@@ -60,9 +60,6 @@
     <Compile Include="Commission.cs">
       <DependentUpon>DBEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Country.cs">
-      <DependentUpon>DBEntity.tt</DependentUpon>
-    </Compile>
     <Compile Include="CreditCard.cs">
       <DependentUpon>DBEntity.tt</DependentUpon>
     </Compile>

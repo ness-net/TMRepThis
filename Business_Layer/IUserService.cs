@@ -17,12 +17,15 @@ namespace Business_Layer
         [OperationContract]
         void AddUser(string username, string password, string email, string name,
                            string surname, string postcode, string town, long contactno, string residence, string street,
-                            int countrid, bool handlesdeliver, long accountnumber);
+                            string countrid, bool handlesdeliver, long accountnumber);
         [OperationContract]
         bool DoesUsernameExist(string username);
         [OperationContract]
         bool DoesEmailExist(string email);
         [OperationContract]
         User GetUser(string username);
+
+        [OperationContract]
+        IQueryable<Role> GetUserRoles(string username);
     }
 }

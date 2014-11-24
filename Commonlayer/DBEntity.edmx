@@ -28,13 +28,6 @@
           <Property Name="TypeOFCommission" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Amount" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
-        <EntityType Name="Countries">
-          <Key>
-            <PropertyRef Name="CountryID" />
-          </Key>
-          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="CreditCards">
           <Key>
             <PropertyRef Name="CardID" />
@@ -166,7 +159,7 @@
           <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Town" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PostCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="HandlesDeliveres" Type="bit" />
           <Property Name="AccountNumber" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
@@ -338,18 +331,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Country">
-          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Countries">
-              <PropertyRef Name="CountryID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="CountryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserCard_CreditCards">
           <End Role="CreditCards" Type="Self.CreditCards" Multiplicity="1" />
           <End Role="UserCard" Type="Self.UserCard" Multiplicity="*" />
@@ -426,7 +407,6 @@
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Colours" EntityType="Self.Colours" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Commission" EntityType="Self.Commission" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CreditCards" EntityType="Self.CreditCards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuRole" EntityType="Self.MenuRole" Schema="dbo" store:Type="Tables" />
@@ -492,10 +472,6 @@
             <End Role="Categories" EntitySet="Categories" />
             <End Role="SubCategories" EntitySet="SubCategories" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Country" Association="Self.FK_User_Country">
-            <End Role="Countries" EntitySet="Countries" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserCard_CreditCards" Association="Self.FK_UserCard_CreditCards">
             <End Role="CreditCards" EntitySet="CreditCards" />
             <End Role="UserCard" EntitySet="UserCard" />
@@ -529,7 +505,6 @@
           <EntitySet Name="Categories" EntityType="TradersMarketplacedbModel.Category" />
           <EntitySet Name="Colours" EntityType="TradersMarketplacedbModel.Colour" />
           <EntitySet Name="Commissions" EntityType="TradersMarketplacedbModel.Commission" />
-          <EntitySet Name="Countries" EntityType="TradersMarketplacedbModel.Country" />
           <EntitySet Name="CreditCards" EntityType="TradersMarketplacedbModel.CreditCard" />
           <EntitySet Name="Menus" EntityType="TradersMarketplacedbModel.Menu" />
           <EntitySet Name="OrderDetails" EntityType="TradersMarketplacedbModel.OrderDetail" />
@@ -548,10 +523,6 @@
           <AssociationSet Name="FK_SubCategories_Categories" Association="TradersMarketplacedbModel.FK_SubCategories_Categories">
             <End Role="Category" EntitySet="Categories" />
             <End Role="SubCategory" EntitySet="SubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Country" Association="TradersMarketplacedbModel.FK_User_Country">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetails_Orders" Association="TradersMarketplacedbModel.FK_OrderDetails_Orders">
             <End Role="Order" EntitySet="Orders" />
@@ -620,14 +591,6 @@
           <Property Name="TypeOFCommission" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <NavigationProperty Name="Users" Relationship="TradersMarketplacedbModel.UserCommission" FromRole="Commission" ToRole="User" />
-        </EntityType>
-        <EntityType Name="Country">
-          <Key>
-            <PropertyRef Name="CountryID" />
-          </Key>
-          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Users" Relationship="TradersMarketplacedbModel.FK_User_Country" FromRole="Country" ToRole="User" />
         </EntityType>
         <EntityType Name="CreditCard">
           <Key>
@@ -752,10 +715,9 @@
           <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Town" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PostCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="HandlesDeliveres" Type="Boolean" />
           <Property Name="AccountNumber" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Country" Relationship="TradersMarketplacedbModel.FK_User_Country" FromRole="User" ToRole="Country" />
           <NavigationProperty Name="Products" Relationship="TradersMarketplacedbModel.FK_Product_User" FromRole="User" ToRole="Product" />
           <NavigationProperty Name="CreditCards" Relationship="TradersMarketplacedbModel.UserCard" FromRole="User" ToRole="CreditCard" />
           <NavigationProperty Name="Commissions" Relationship="TradersMarketplacedbModel.UserCommission" FromRole="User" ToRole="Commission" />
@@ -782,18 +744,6 @@
             </Principal>
             <Dependent Role="SubCategory">
               <PropertyRef Name="ParentCategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Country">
-          <End Type="TradersMarketplacedbModel.Country" Role="Country" Multiplicity="1" />
-          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="CountryID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="CountryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -869,7 +819,7 @@
           <End Type="TradersMarketplacedbModel.Role" Role="Role" Multiplicity="*" />
           <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -898,14 +848,6 @@
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="TypeOFCommission" ColumnName="TypeOFCommission" />
                 <ScalarProperty Name="CommissionID" ColumnName="CommissionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="TradersMarketplacedbModel.Country">
-              <MappingFragment StoreEntitySet="Countries">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1016,7 +958,7 @@
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
                 <ScalarProperty Name="HandlesDeliveres" ColumnName="HandlesDeliveres" />
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="PostCode" ColumnName="PostCode" />
                 <ScalarProperty Name="Town" ColumnName="Town" />
                 <ScalarProperty Name="Street" ColumnName="Street" />

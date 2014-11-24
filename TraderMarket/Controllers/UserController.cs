@@ -93,7 +93,8 @@ namespace TraderMarket.Controllers
             }
             else
             {
-                new UserService.UserServiceClient().AddUser(data.username, data.password, data.email, data.name, data.surname, data.address, data.town, data.country, data.mobile, data.pin);
+                long test = 13233;
+                new UserService.UserServiceClient().AddUser(data.username, data.password, data.email, data.name, data.surname, data.postcode, data.town, Convert.ToInt32(data.contactno), data.residence, data.street, data.country, false, test);
                 ViewBag.Message = "";
                 //openForm();
                 return RedirectToAction("Login", "User");

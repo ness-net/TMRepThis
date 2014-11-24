@@ -28,7 +28,6 @@ namespace Commonlayer
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Colour> Colours { get; set; }
         public virtual DbSet<Commission> Commissions { get; set; }
-        public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<CreditCard> CreditCards { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }

@@ -1,0 +1,296 @@
+﻿body 
+{
+	background-image: url(background_5.jpg);
+	font-family: Century Gothic;
+	color: rgb(0, 0, 0);
+	background-color: rgb(225, 201, 201);
+	line-height: normal;
+	font-size: 12px;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	background-attachment: scroll;
+	padding: 0px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
+
+.thumbnailStyle
+{
+    width: 100px;
+    height: 100px;
+}
+
+#form1
+{
+	width: 1200px;
+}
+
+#container
+{	
+	
+	width: 900px;
+	top: 0px;
+    margin: 0 auto 0 auto;
+}
+
+#top
+{
+	background: transparent url(Banner.png) no-repeat 0 center;
+	padding-left: 10px;
+	height: 250px;
+	width: 900px;	
+}
+
+#loginDiv
+{
+	background-color:transparent;
+    float: right;
+    padding-right: 20px;
+    text-align: right;
+	height: 142px;
+	font-family:Century Gothic;
+	width:300px;
+}
+
+#main
+{		
+	background-color: White;
+	width: 900px;
+	height: auto;
+	display: table;
+  
+}
+
+
+.searchtextbox { 
+    background: #FFF url(http://www.cssportal.com/form-elements/images/search.png) no-repeat 4px 4px; 
+    border: 1px solid #999; 
+    outline:0; 
+    padding-left: 25px;
+    height:25px; 
+    width: 100px; 
+  } 
+
+#footer
+{		
+	background-color: Gray;
+	color: Black;
+	height: 17px;
+	display: table;
+	position:relative;
+    width: 900px;
+	top: 0px;
+    margin: 0 auto 0 auto;
+	left: 0px;
+	text-align: right;
+}
+
+.menudiv
+{
+    height: auto;
+    background-color: White;
+    text-align:center;
+    margin:0 auto;
+}
+
+
+#left
+{
+	background-color: White;
+	height: 100%;
+	display: table-cell;
+	
+}
+
+#Right
+{
+	background-color: White;
+	height: auto;
+	display: table-cell;
+}
+
+.buttonText {
+  font: 18px/1.5 Helvetica, Arial, sans-serif;
+  color: #fff;
+}
+ 
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.buttoncustom {
+  background: #d11717 url(../Images/random_grey_variations.png);
+  overflow: hidden;
+  height: 30px;
+  width: 80px;
+  
+
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
+-webkit-transition: All 0.8s ease;
+-moz-transition: All 0.8s ease;
+-o-transition: All 0.8s ease;
+-ms-transition: All 0.8s ease;
+
+}
+
+.buttoncustom:hover {
+  background-position: 0 150px;
+}
+
+.normalbutton
+{
+	background-color: Black;
+	border-bottom-style: outset;
+	border-left-style: outset;
+	border-right-style: outset;
+	border-top-style: outset;
+	font-family: Century Gothic;
+	color: White;	
+}
+
+.normalbutton:hover 
+{
+	background-color: Aqua;
+	color: Black;
+}
+
+.normalbuttonProd
+{
+	border-style: outset;
+	background-color: Black;
+	font-family: Century Gothic;
+	color: White;	
+	width: 232px;
+}
+
+.normalbuttonProd:hover 
+{
+	background-color: Aqua;
+	color: Black;
+}
+
+.my-menu{
+list-style-type: none;
+margin: 0;
+padding: 0;
+width: 180px; 
+-webkit-transition: All 0.5s ease;
+-moz-transition: All 0.5s ease;
+-o-transition: All 0.5s ease;
+-ms-transition: All 0.5s ease;
+
+}
+
+.my-menu li{
+border-bottom: 1px solid white; /* white border beneath each menu item */
+}
+
+.my-menu li a{
+background: #333 url(../Images/panelright.gif) no-repeat right top; /*color of menu by default*/
+font: bold 13px "Lucida Grande", "Trebuchet MS", Verdana;
+display: block;
+color: white;
+width: auto;
+padding: 5px 0; /* Vertical (top/bottom) padding for each menu link */
+text-indent: 8px;
+text-decoration: none;
+border-bottom: 1px solid black; /*bottom border of menu link. Should be equal or darker to link's bgcolor*/
+}
+
+.my-menu li a:hover{
+background-color: #94D1E6; /*color of menu onMouseover*/
+color: Black;
+border-bottom: 1px solid black; /*bottom border of menu link during hover. Should be equal or darker to link's hover's bgcolor*/
+}
+
+   .mGrid { background-color: #fff; margin: 5px 0 10px 0; border: solid 1px #525252; border-collapse:collapse; }
+    .mGrid td { padding: 2px; border: solid 1px #c1c1c1; color: #717171; }
+    .mGrid th { padding: 4px 2px; color: #fff; background: #424242 url(grd_head.png) repeat-x top; border-left: solid 1px #525252; font-size: 0.9em; }
+            .mGrid .alt { background: #fcfcfc url(grd_alt.png) repeat-x top; }
+            .mGrid .pgr {background: #424242 url(grd_pgr.png) repeat-x top; }
+    .mGrid .pgr table { margin: 5px 0; }
+    .mGrid .pgr td { border-width: 0; padding: 0 6px; border-left: solid 1px #666; font-weight: bold; color: #fff; line-height: 12px; }  
+    .mGrid .pgr a { color: #666; text-decoration: none; }
+    .mGrid .pgr a:hover { color: #000; text-decoration: none; }
+    
+   
+.itemStyle
+{
+    width: 150px;
+    height: 250px;
+    border: 1px double #94D1E6;
+    padding: 5px;
+    text-align: center;
+    margin-right: 3px;
+    margin-left: 5px;
+    float: left;
+}
+
+.itemStyleProd
+{
+    width: 160px;
+    height: 220px;
+    border: 1px double #94D1E6;
+    padding: 5px;
+    text-align: center;
+    margin-right: 3px;
+    margin-left: 5px;
+    float: left;
+    background-color: White;
+}
+
+
+.textboxStyle
+{
+    width: 100px;
+}
+
+.imageviewsdiv
+{
+    width: 800px;
+    background-color: White;
+}
+
+.itemStyleProdCat
+{
+    width: 200px;
+    height: 220px;
+    text-align: center;
+    float: left;
+    font-size:medium;
+    font-weight: bold;
+}
+
+.ShopCartDiv
+{
+	padding: 5px;
+    margin-right: 3px;
+    margin-left: 5px;
+    background: #ffffff url(../Images/BG.png) no-repeat center top;
+	height: 250px;
+}
+
+
+.ShopCartTable1
+{
+	width: 200px;
+	height: 230px;
+	overflow: hidden;
+	text-align: left;
+	vertical-align: top;
+	white-space: nowrap;
+	border: 1px;	
+}

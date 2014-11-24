@@ -38,21 +38,29 @@ namespace TraderMarket.Models
         public string surname { get; set; }
 
         [Required]
-        [Display(Name = "Address")]
-        public string address { get; set; }
+        [Display(Name = "Residence")]
+        public string residence { get; set; }
+
+        [Required]
+        [Display(Name = "Street")]
+        public string street { get; set; }
 
         [Required]
         [Display(Name = "Town")]
         public string town { get; set; }
-
+        
         [Required]
         [Display(Name = "Country")]
         public string country { get; set; }
 
         [Required]
+        [Display(Name = "PostCode")]
+        public string postcode { get; set; }
+
+        [Required]
         [RegularExpression(@"^\d{8,10}$", ErrorMessage = "Number is not in the correct format")]
         [Display(Name = "Contact Number")]
-        public string mobile { get; set; }
+        public string contactno { get; set; }
     
 	}
 }

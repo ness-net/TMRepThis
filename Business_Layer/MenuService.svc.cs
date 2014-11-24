@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Commonlayer;
-using ClassLibrary1;
+using DataAccessLayer;
 
 namespace Business_Layer
 {

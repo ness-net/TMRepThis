@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Commonlayer;
-using ClassLibrary1;
+using DataAccessLayer;
 using System.Data.Entity;
 
 namespace Business_Layer
@@ -23,7 +23,7 @@ namespace Business_Layer
 
         public void AddUser(string username, string password, string email, string name,
                            string surname, string postcode, string town, long contactno, string residence, string street,
-                            int countrid, bool handlesdeliver, long accountnumber)
+                            string countrid, bool handlesdeliver, long accountnumber)
         {
             UserRepository ur = new UserRepository();
             RoleRepository rr = new RoleRepository();
@@ -43,7 +43,7 @@ namespace Business_Layer
                         u.PostCode = postcode; 
                         u.Residence = residence;
                         u.Town=town;
-                        u.CountryID = countrid;
+                        u.Country = countrid;
                         u.Street = street; 
                         u.ContactNo = contactno; 
                         u.HandlesDeliveres = handlesdeliver; 
@@ -117,5 +117,9 @@ namespace Business_Layer
             return new UserRepository().GetUser(username);
         }
 
+        public IQueryable<Role> GetUserRoles(string username)
+        {
+            return new RoleRepository().GetUserRoles(username);
+        }
     }
 }
