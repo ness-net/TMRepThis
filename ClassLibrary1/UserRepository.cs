@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Commonlayer;
 using System.Data.Entity;
 using System.Data.Objects;
+using Commonlayer.Views;
 
 namespace DataAccessLayer
 {
@@ -26,6 +27,16 @@ namespace DataAccessLayer
         public User GetUser(string username)
         {
             return Entity.Users.SingleOrDefault(u => u.Username == username);
+        }
+
+        public void AllocateUser(User user, Commission comm)
+        {
+            
+           // comm.Users.
+            comm.Users.Add(user);
+            //user.Commissions.Add(comm);
+            Entity.SaveChanges();
+
         }
 
         public bool DoesUsernameExist(string username)
@@ -83,7 +94,23 @@ namespace DataAccessLayer
             {
                 return false;
             }
-        }      
+        }
+
+
+
+        public IQueryable<CommissionType> GetCommissions()
+        {
+            var list = (from c in Entity.Commissions
+                        orderby c.CommissionID
+                        select new CommissionType
+                        {
+                            Title = c.TypeOFCommission,
+                            fee = c.Amount
+                        }
+                    ).Distinct();
+
+            return list.AsQueryable();
+        }
 
 
 

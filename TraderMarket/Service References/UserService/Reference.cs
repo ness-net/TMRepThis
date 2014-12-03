@@ -22,10 +22,10 @@ namespace TraderMarket.UserService {
         System.Threading.Tasks.Task<bool> isAuthenticationValidAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
-        void AddUser(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber);
+        void AddUser(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber, string commission);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
-        System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber);
+        System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber, string commission);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DoesUsernameExist", ReplyAction="http://tempuri.org/IUserService/DoesUsernameExistResponse")]
         bool DoesUsernameExist(string username);
@@ -56,6 +56,12 @@ namespace TraderMarket.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRolesV", ReplyAction="http://tempuri.org/IUserService/GetUserRolesVResponse")]
         System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddCreditCard", ReplyAction="http://tempuri.org/IUserService/AddCreditCardResponse")]
+        void AddCreditCard(string username, string creditcardt, string cvv, string holder, decimal number);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddCreditCard", ReplyAction="http://tempuri.org/IUserService/AddCreditCardResponse")]
+        System.Threading.Tasks.Task AddCreditCardAsync(string username, string creditcardt, string cvv, string holder, decimal number);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -93,12 +99,12 @@ namespace TraderMarket.UserService {
             return base.Channel.isAuthenticationValidAsync(username, password);
         }
         
-        public void AddUser(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber) {
-            base.Channel.AddUser(username, password, email, name, surname, postcode, town, contactno, residence, street, countrid, handlesdeliver, accountnumber);
+        public void AddUser(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber, string commission) {
+            base.Channel.AddUser(username, password, email, name, surname, postcode, town, contactno, residence, street, countrid, handlesdeliver, accountnumber, commission);
         }
         
-        public System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber) {
-            return base.Channel.AddUserAsync(username, password, email, name, surname, postcode, town, contactno, residence, street, countrid, handlesdeliver, accountnumber);
+        public System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber, string commission) {
+            return base.Channel.AddUserAsync(username, password, email, name, surname, postcode, town, contactno, residence, street, countrid, handlesdeliver, accountnumber, commission);
         }
         
         public bool DoesUsernameExist(string username) {
@@ -139,6 +145,14 @@ namespace TraderMarket.UserService {
         
         public System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string username) {
             return base.Channel.GetUserRolesVAsync(username);
+        }
+        
+        public void AddCreditCard(string username, string creditcardt, string cvv, string holder, decimal number) {
+            base.Channel.AddCreditCard(username, creditcardt, cvv, holder, number);
+        }
+        
+        public System.Threading.Tasks.Task AddCreditCardAsync(string username, string creditcardt, string cvv, string holder, decimal number) {
+            return base.Channel.AddCreditCardAsync(username, creditcardt, cvv, holder, number);
         }
     }
 }

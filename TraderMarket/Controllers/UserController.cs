@@ -12,6 +12,12 @@ namespace TraderMarket.Controllers
 {
     public class UserController : BaseController
     {
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Displays the login view
         /// </summary>
@@ -81,6 +87,7 @@ namespace TraderMarket.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel data)
         {
+            if (ModelState.IsValid) { 
             if ((new UserService.UserServiceClient().DoesUsernameExist(data.username)) == true)
             {
                 ViewBag.Message = "Username already exists";
@@ -93,22 +100,56 @@ namespace TraderMarket.Controllers
             }
             else
             {
-                long test = 13233;
-                new UserService.UserServiceClient().AddUser(data.username, data.password, data.email, data.name, data.surname, data.postcode, data.town, Convert.ToInt32(data.contactno), data.residence, data.street, data.country, false, test);
-                ViewBag.Message = "";
-                //openForm();
-                return RedirectToAction("Login", "User");
+                if (data.iban != null)
+                {
+                    string comm;
+                    if ((data.commissionp == "Percentage") && (data.commissionff == null))
+                    {
+                        comm = "Percentage";
+                    }
+                    else if ((data.commissionp == null) && (data.commissionff == "FixedFee"))
+                    {
+                        comm = "FixedFee";
+                    }
+                    else
+                    {
+                       comm = "both";
+                    }
+                    
+                    if (data.handlesdel == "Yes")
+                    {
+                        new UserService.UserServiceClient().AddUser(data.username, data.password, data.email, data.name, data.surname, data.postcode, data.town, Convert.ToInt32(data.contactno), data.residence, data.street, data.country, true, Convert.ToInt64(data.iban),comm);
+                        ViewBag.Message = "";
+                        return RedirectToAction("Login", "User");
+                    }
+                    else
+                    {                       
+                        
+                            new UserService.UserServiceClient().AddUser(data.username, data.password, data.email, data.name, data.surname, data.postcode, data.town, Convert.ToInt32(data.contactno), data.residence, data.street, data.country, false, Convert.ToInt64(data.iban), comm);
+                            ViewBag.Message = "";
+                            return RedirectToAction("Login", "User");
+                    }
+                   
+                }
+                else
+                {
+                    new UserService.UserServiceClient().AddUser(data.username, data.password, data.email, data.name, data.surname, data.postcode, data.town, Convert.ToInt32(data.contactno), data.residence, data.street, data.country, false, 0, "no");
+                    new UserService.UserServiceClient().AddCreditCard(data.username, data.cardtype, data.cvv, data.cardowner, data.cardnumber);
+                    ViewBag.Message = "";
+                    return RedirectToAction("Login", "User");
+                    
+                }
             }
+            }
+            else
+            {
+                return View();
+            }   
+                
+            
         }
 
-        ///// <summary>
-        ///// Opens the form of the web application
-        ///// </summary>
-        //public void openForm()
-        //{
-        //    Form1 f1 = new Form1();
-        //    f1.ShowDialog();
-        //}
+        
 
 
 

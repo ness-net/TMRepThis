@@ -30,13 +30,13 @@
         </EntityType>
         <EntityType Name="CreditCards">
           <Key>
-            <PropertyRef Name="CardID" />
+            <PropertyRef Name="CardNumber" />
           </Key>
-          <Property Name="CardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CardType" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CardNumber" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="CardOwner" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CardExpiryDate" Type="datetime" Nullable="false" />
+          <Property Name="CVV" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -95,6 +95,7 @@
           <Property Name="ImageLink" Type="varchar" MaxLength="50" />
           <Property Name="Price" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stock" Type="int" />
         </EntityType>
         <EntityType Name="ProductColour">
           <Key>
@@ -163,14 +164,6 @@
           <Property Name="HandlesDeliveres" Type="bit" />
           <Property Name="AccountNumber" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="UserCard">
-          <Key>
-            <PropertyRef Name="Username" />
-            <PropertyRef Name="CardID" />
-          </Key>
-          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CardID" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="UserCommission">
           <Key>
             <PropertyRef Name="Username" />
@@ -187,6 +180,18 @@
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_CreditCards_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="CreditCards" Type="Self.CreditCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="CreditCards">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Menu_Menu">
           <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
           <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
@@ -343,30 +348,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserCard_CreditCards">
-          <End Role="CreditCards" Type="Self.CreditCards" Multiplicity="1" />
-          <End Role="UserCard" Type="Self.UserCard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CreditCards">
-              <PropertyRef Name="CardID" />
-            </Principal>
-            <Dependent Role="UserCard">
-              <PropertyRef Name="CardID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserCard_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserCard" Type="Self.UserCard" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Username" />
-            </Principal>
-            <Dependent Role="UserCard">
-              <PropertyRef Name="Username" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserCommission_Commission">
           <End Role="Commission" Type="Self.Commission" Multiplicity="1" />
           <End Role="UserCommission" Type="Self.UserCommission" Multiplicity="*" />
@@ -433,9 +414,12 @@
           <EntitySet Name="SubCategories" EntityType="Self.SubCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserCard" EntityType="Self.UserCard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCommission" EntityType="Self.UserCommission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CreditCards_User" Association="Self.FK_CreditCards_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="CreditCards" EntitySet="CreditCards" />
+          </AssociationSet>
           <AssociationSet Name="FK_Menu_Menu" Association="Self.FK_Menu_Menu">
             <End Role="Menu" EntitySet="Menu" />
             <End Role="Menu1" EntitySet="Menu" />
@@ -488,14 +472,6 @@
             <End Role="Categories" EntitySet="Categories" />
             <End Role="SubCategories" EntitySet="SubCategories" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserCard_CreditCards" Association="Self.FK_UserCard_CreditCards">
-            <End Role="CreditCards" EntitySet="CreditCards" />
-            <End Role="UserCard" EntitySet="UserCard" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserCard_User" Association="Self.FK_UserCard_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserCard" EntitySet="UserCard" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserCommission_Commission" Association="Self.FK_UserCommission_Commission">
             <End Role="Commission" EntitySet="Commission" />
             <End Role="UserCommission" EntitySet="UserCommission" />
@@ -540,6 +516,10 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="SubCategory" EntitySet="SubCategories" />
           </AssociationSet>
+          <AssociationSet Name="FK_CreditCards_User" Association="TradersMarketplacedbModel.FK_CreditCards_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CreditCard" EntitySet="CreditCards" />
+          </AssociationSet>
           <AssociationSet Name="FK_Menu_Menu" Association="TradersMarketplacedbModel.FK_Menu_Menu">
             <End Role="Menu" EntitySet="Menus" />
             <End Role="Menu1" EntitySet="Menus" />
@@ -571,10 +551,6 @@
           <AssociationSet Name="ProductSize" Association="TradersMarketplacedbModel.ProductSize">
             <End Role="Product" EntitySet="Products" />
             <End Role="Size" EntitySet="Sizes" />
-          </AssociationSet>
-          <AssociationSet Name="UserCard" Association="TradersMarketplacedbModel.UserCard">
-            <End Role="CreditCard" EntitySet="CreditCards" />
-            <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="UserCommission" Association="TradersMarketplacedbModel.UserCommission">
             <End Role="Commission" EntitySet="Commissions" />
@@ -614,14 +590,14 @@
         </EntityType>
         <EntityType Name="CreditCard">
           <Key>
-            <PropertyRef Name="CardID" />
+            <PropertyRef Name="CardNumber" />
           </Key>
-          <Property Name="CardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CardType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CardNumber" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="CardOwner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CardExpiryDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Users" Relationship="TradersMarketplacedbModel.UserCard" FromRole="CreditCard" ToRole="User" />
+          <Property Name="CVV" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="TradersMarketplacedbModel.FK_CreditCards_User" FromRole="CreditCard" ToRole="User" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -680,6 +656,7 @@
           <Property Name="ImageLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Stock" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="TradersMarketplacedbModel.FK_Product_Categories" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="OrderDetails" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Product" FromRole="Product" ToRole="OrderDetail" />
           <NavigationProperty Name="User" Relationship="TradersMarketplacedbModel.FK_Product_User" FromRole="Product" ToRole="User" />
@@ -740,8 +717,8 @@
           <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="HandlesDeliveres" Type="Boolean" />
           <Property Name="AccountNumber" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="CreditCards" Relationship="TradersMarketplacedbModel.FK_CreditCards_User" FromRole="User" ToRole="CreditCard" />
           <NavigationProperty Name="Products" Relationship="TradersMarketplacedbModel.FK_Product_User" FromRole="User" ToRole="Product" />
-          <NavigationProperty Name="CreditCards" Relationship="TradersMarketplacedbModel.UserCard" FromRole="User" ToRole="CreditCard" />
           <NavigationProperty Name="Commissions" Relationship="TradersMarketplacedbModel.UserCommission" FromRole="User" ToRole="Commission" />
           <NavigationProperty Name="Roles" Relationship="TradersMarketplacedbModel.UserRole" FromRole="User" ToRole="Role" />
         </EntityType>
@@ -766,6 +743,18 @@
             </Principal>
             <Dependent Role="SubCategory">
               <PropertyRef Name="ParentCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditCards_User">
+          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1" />
+          <End Type="TradersMarketplacedbModel.CreditCard" Role="CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="CreditCard">
+              <PropertyRef Name="Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -841,10 +830,6 @@
           <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="*" />
           <End Type="TradersMarketplacedbModel.Size" Role="Size" Multiplicity="*" />
         </Association>
-        <Association Name="UserCard">
-          <End Type="TradersMarketplacedbModel.CreditCard" Role="CreditCard" Multiplicity="*" />
-          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="*" />
-        </Association>
         <Association Name="UserCommission">
           <End Type="TradersMarketplacedbModel.Commission" Role="Commission" Multiplicity="*" />
           <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="*" />
@@ -853,7 +838,7 @@
           <End Type="TradersMarketplacedbModel.Role" Role="Role" Multiplicity="*" />
           <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -888,11 +873,11 @@
           <EntitySetMapping Name="CreditCards">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.CreditCard">
               <MappingFragment StoreEntitySet="CreditCards">
-                <ScalarProperty Name="CardExpiryDate" ColumnName="CardExpiryDate" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
                 <ScalarProperty Name="CardOwner" ColumnName="CardOwner" />
                 <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
                 <ScalarProperty Name="CardType" ColumnName="CardType" />
-                <ScalarProperty Name="CardID" ColumnName="CardID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -939,6 +924,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
@@ -1028,14 +1014,6 @@
             </EndProperty>
             <EndProperty Name="Product">
               <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="UserCard" TypeName="TradersMarketplacedbModel.UserCard" StoreEntitySet="UserCard">
-            <EndProperty Name="User">
-              <ScalarProperty Name="Username" ColumnName="Username" />
-            </EndProperty>
-            <EndProperty Name="CreditCard">
-              <ScalarProperty Name="CardID" ColumnName="CardID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="UserCommission" TypeName="TradersMarketplacedbModel.UserCommission" StoreEntitySet="UserCommission">

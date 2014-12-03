@@ -5,6 +5,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>@ViewBag.Message</h2>
+<script src="../../Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#BuyerReg").hide();       
+        $("#SellerReg").hide();
+
+    });
+
+    function Buyer() {        
+
+        $("#BuyerReg").show("slow");
+        $("#SellerReg").hide("slow")();
+    }
+
+    function Seller() {
+
+        $("#SellerReg").show("slow");
+        $("#BuyerReg").hide("slow")();
+    }
+
+
+    </script>
+
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
@@ -19,7 +44,7 @@
             @Html.EditorFor(model => model.username)
             @Html.ValidationMessageFor(model => model.username)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.password)
         </div>
@@ -27,7 +52,7 @@
             @Html.PasswordFor(model => model.password)
             @Html.ValidationMessageFor(model => model.password)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.email)
         </div>
@@ -35,7 +60,7 @@
             @Html.EditorFor(model => model.email)
             @Html.ValidationMessageFor(model => model.email)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.name)
         </div>
@@ -43,7 +68,7 @@
             @Html.EditorFor(model => model.name)
             @Html.ValidationMessageFor(model => model.name)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.surname)
         </div>
@@ -51,7 +76,7 @@
             @Html.EditorFor(model => model.surname)
             @Html.ValidationMessageFor(model => model.surname)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.residence)
         </div>
@@ -59,7 +84,7 @@
             @Html.EditorFor(model => model.residence)
             @Html.ValidationMessageFor(model => model.residence)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.street)
         </div>
@@ -67,7 +92,7 @@
             @Html.EditorFor(model => model.street)
             @Html.ValidationMessageFor(model => model.street)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.town)
         </div>
@@ -75,7 +100,7 @@
             @Html.EditorFor(model => model.town)
             @Html.ValidationMessageFor(model => model.town)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.country)
         </div>
@@ -318,7 +343,7 @@
             </select>
             @Html.ValidationMessageFor(model => model.country)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.postcode)
         </div>
@@ -326,7 +351,7 @@
             @Html.EditorFor(model => model.postcode)
             @Html.ValidationMessageFor(model => model.postcode)
         </div>
-
+        <br />
         <div class="editor-label">
             @Html.LabelFor(model => model.contactno)
         </div>
@@ -334,15 +359,99 @@
             @Html.EditorFor(model => model.contactno)
             @Html.ValidationMessageFor(model => model.contactno)
         </div>
-                
-
+        <br />
+        
         
 
-        <p>
-            <input type="submit" value="Create Account" />
-            
-        </p>
-    </fieldset>
+            <button type="button" class="normalbutton" onclick="Buyer()">Buyer</button><br /><div id="BuyerReg">
+                <br />
+
+                                                                                                 <div class="editor-label">
+                                                                                                     @Html.LabelFor(model => model.cardtype)
+                                                                                                 </div>
+                                                                                                 <div class="editor-field">
+                                                                                                     @Html.EditorFor(model => model.cardtype)
+                                                                                                     @Html.ValidationMessageFor(model => model.cardtype)
+                                                                                                 </div>
+                                                                                                 <br />
+                <br />
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.cardnumber)
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.cardnumber)
+                        @Html.ValidationMessageFor(model => model.cardnumber)
+                    </div>
+                </div>
+                <br />
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.cardowner)
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.cardowner)
+                        @Html.ValidationMessageFor(model => model.cardowner)
+                    </div>
+                </div>
+                <br />
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.cvv)
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.cvv)
+                        @Html.ValidationMessageFor(model => model.cvv)
+                    </div>
+                </div>
+            </div>
+            <br />
+            <button type="button" class="normalbutton" onclick="Seller()">Seller</button><br /><div id="SellerReg">
+    <br />
+
+    Commission
+    <div class="editor-label">
+        @Html.LabelFor(model => model.commissionp)
+        <br/>
+        <div class="editor-field">
+            <input name="commissionp" type="checkbox" value="Percentage" />
+        </div>
+    </div>
+                                                                                                   <div class="editor-label">
+                                                                                                       @Html.LabelFor(model => model.commissionff)
+                                                                                                       <br />
+                                                                                                       <div class="editor-field">
+                                                                                                           <input name="commissionff" type="checkbox" value="FixedFee" />
+                                                                                                       </div>
+                                                                                                   </div>
+
+                                                                                                   <span style="font-family:Arial;font-size:10px;font-style:normal;font-weight:normal;text-decoration:none;text-transform:none;color:FF0000;">*</span> If no check boxes are ticked, both methods of commission will be selected.
+
+<br />
+
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.iban)
+    <div class="editor-field">
+        @Html.EditorFor(model => model.iban)
+        @Html.ValidationMessageFor(model => model.iban)
+    </div>
+</div>
+<br />
+<div class="editor-label">
+    @Html.LabelFor(model => model.handlesdel)
+    <div class="editor-field">
+        <select name="HandlesDel">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+    </div>
+</div>
+
+
+</div>
+<br />
+
+<p>
+    <input type="submit" value="Create Account" />
+
+</p>
+</fieldset>
 }
 
 

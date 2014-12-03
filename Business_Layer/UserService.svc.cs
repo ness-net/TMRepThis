@@ -21,14 +21,50 @@ namespace Business_Layer
             return new UserRepository().IsAuthenticationValid(username, password);
         }
 
+        //public void AllocateComm(string username, string comm)
+        //{
+        //    CommissionRepository cr = new CommissionRepository();
+        //    UserRepository ur = new UserRepository();
+        //    User u = GetUser(username);
+        //    Commission c = new Commission();
+        //    if (comm == "FixedFee")
+        //    {
+        //        c = cr.GetComm(3);
+        //    }
+        //    if (comm == "Percentage")
+        //    {
+        //        c = cr.GetComm(2);
+        //    }
+
+        //    try
+        //    {
+        //       cr.Entity.Database.Connection.Open();
+        //       cr.AllocateCommission(u, c);
+                
+        //        //ur.Transaction.Commit();
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        //ur.Transaction.Rollback();
+        //        //rr.Transaction.Rollback();
+        //        throw new Exception("Error Occurred, please try later" + ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        cr.Entity.Database.Connection.Close();
+        //    }
+        //}
+
 
         public void AddUser(string username, string password, string email, string name,
                            string surname, string postcode, string town, long contactno, string residence, string street,
-                            string countrid, bool handlesdeliver, long accountnumber)
+                            string countrid, bool handlesdeliver, long accountnumber, string commission)
         {
             UserRepository ur = new UserRepository();
             RoleRepository rr = new RoleRepository();
-            ur.Entity = rr.Entity;
+            CommissionRepository cr = new CommissionRepository();
+            ur.Entity = rr.Entity = cr.Entity;
 
 
             if (ur.DoesUsernameExist(username) == false)
@@ -56,8 +92,22 @@ namespace Business_Layer
                             ur.Entity.Database.Connection.Open();
                             //rr.Transaction = ur.Transaction = ur.Entity.Database.Connection.BeginTransaction();
                             ur.AddUser(u);
-
                             rr.AllocateRole(u, rr.GetDefaultRole());
+
+                            if (commission == "Percentage")
+                            {
+                                cr.AllocateCommission(u, cr.GetComm(2));
+                            }
+                            else if (commission == "FixedFee")
+                            {
+                                cr.AllocateCommission(u, cr.GetComm(3));
+                            }
+                            else if (commission == "both")
+                            {
+                                cr.AllocateCommission(u, cr.GetComm(2));
+                                cr.AllocateCommission(u, cr.GetComm(3));
+                            }
+
                             //ur.Transaction.Commit();
                         }
                         catch (Exception ex)
@@ -119,6 +169,11 @@ namespace Business_Layer
             return new UserRepository().GetUser(username);
         }
 
+        public Commission GetComm(int commid)
+        {
+            return new CommissionRepository().GetComm(commid);
+        }
+
         public IQueryable<Role> GetUserRoles(string username)
         {
             return new RoleRepository().GetUserRoles(username);
@@ -129,6 +184,46 @@ namespace Business_Layer
         public IQueryable<RolesView> GetUserRolesV(string username)
         {
             return new RoleRepository().GetUserRolesV(username);
+        }
+
+        public IQueryable<CommissionType> GetCommissionTypes()
+        {
+            return new UserRepository().GetCommissions();
+        }
+
+        public void AddCreditCard(string username, string creditcardt, string cvv, string holder, decimal number)
+        {
+            CreditCardRepository cr = new CreditCardRepository();
+            CreditCard c = new CreditCard();
+            c.CVV = cvv;
+            c.CardNumber = number;
+            c.CardOwner = holder;
+            c.CardType = creditcardt;
+            c.Username = username;
+           // c.User
+
+
+
+                    try
+                    {
+                        cr.Entity.Database.Connection.Open();
+                        cr.AddCreditCard(c);     
+                        
+
+                        //ur.Transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+
+                        //ur.Transaction.Rollback();
+                        //rr.Transaction.Rollback();
+                        throw new Exception("Error Occurred, please try later" + ex.Message);
+                    }
+                    finally
+                    {
+                        cr.Entity.Database.Connection.Close();
+                    }
+               
         }
     }
 }

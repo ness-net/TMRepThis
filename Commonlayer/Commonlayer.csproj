@@ -109,7 +109,9 @@
     <Compile Include="User.cs">
       <DependentUpon>DBEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\CommissionType.cs" />
     <Compile Include="Views\MenusView.cs" />
+    <Compile Include="Views\ProductView.cs" />
     <Compile Include="Views\RolesView.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,17 +14,12 @@ namespace Commonlayer
     
     public partial class CreditCard
     {
-        public CreditCard()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
-        public int CardID { get; set; }
         public string CardType { get; set; }
         public decimal CardNumber { get; set; }
         public string CardOwner { get; set; }
-        public System.DateTime CardExpiryDate { get; set; }
+        public string CVV { get; set; }
+        public string Username { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
+        public virtual User User { get; set; }
     }
 }

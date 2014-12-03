@@ -33,6 +33,7 @@
         <xs:element minOccurs="0" name="countrid" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="handlesdeliver" type="xs:boolean" />
         <xs:element minOccurs="0" name="accountnumber" type="xs:long" />
+        <xs:element minOccurs="0" name="commission" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -109,6 +110,22 @@
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetUserRolesVResult" nillable="true" type="q3:ArrayOfRolesView" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCreditCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="creditcardt" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cvv" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="holder" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="number" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCreditCardResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

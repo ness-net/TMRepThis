@@ -60,7 +60,37 @@ namespace TraderMarket.Models
         [Required]
         [RegularExpression(@"^\d{8,10}$", ErrorMessage = "Number is not in the correct format")]
         [Display(Name = "Contact Number")]
-        public string contactno { get; set; }
+        public string contactno { get; set; }        
+
+        [Display(Name = "Card Type")]
+        public string cardtype { get; set; }
+        
+        [Display(Name = "Card Number")]
+        public decimal cardnumber { get; set; }
+
+        [Display(Name = "Card Owner Name")]
+        public string cardowner { get; set; }
+        
+        [Display(Name = "CVV")]
+        public string cvv { get; set; }
+
+        
+        [Display(Name = "Percentage")]
+        public string commissionp { get; set; }
+
+        
+        [Display(Name = "FixedFee")]
+        public string commissionff { get; set; }
+
+       
+        [Display(Name = "Handles Deliveries")]
+        public string handlesdel { get; set; }
+
+        
+        [MinLength(34, ErrorMessage = "Length should be 34 digits")]
+        [Display(Name = "IBAN Number")]
+        public string iban { get; set; }
+
     
 	}
 }

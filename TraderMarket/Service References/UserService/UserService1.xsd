@@ -51,12 +51,12 @@
   <xs:element name="ArrayOfCreditCard" nillable="true" type="tns:ArrayOfCreditCard" />
   <xs:complexType name="CreditCard">
     <xs:sequence>
-      <xs:element minOccurs="0" name="CardExpiryDate" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="CardID" type="xs:int" />
+      <xs:element minOccurs="0" name="CVV" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CardNumber" type="xs:decimal" />
       <xs:element minOccurs="0" name="CardOwner" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CardType" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfUser" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CreditCard" nillable="true" type="tns:CreditCard" />

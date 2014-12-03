@@ -16,8 +16,8 @@ namespace Commonlayer
     {
         public User()
         {
-            this.Products = new HashSet<Product>();
             this.CreditCards = new HashSet<CreditCard>();
+            this.Products = new HashSet<Product>();
             this.Commissions = new HashSet<Commission>();
             this.Roles = new HashSet<Role>();
         }
@@ -36,8 +36,8 @@ namespace Commonlayer
         public Nullable<bool> HandlesDeliveres { get; set; }
         public Nullable<decimal> AccountNumber { get; set; }
     
-        public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<CreditCard> CreditCards { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Commission> Commissions { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
     }

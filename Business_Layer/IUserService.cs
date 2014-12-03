@@ -18,7 +18,7 @@ namespace Business_Layer
         [OperationContract]
         void AddUser(string username, string password, string email, string name,
                            string surname, string postcode, string town, long contactno, string residence, string street,
-                            string countrid, bool handlesdeliver, long accountnumber);
+                            string countrid, bool handlesdeliver, long accountnumber, string commission);
         [OperationContract]
         bool DoesUsernameExist(string username);
         [OperationContract]
@@ -30,5 +30,8 @@ namespace Business_Layer
         IQueryable<Role> GetUserRoles(string username);
         [OperationContract]
         IQueryable<RolesView> GetUserRolesV(string username);
+        [OperationContract]
+        void AddCreditCard(string username, string creditcardt, string cvv, string holder, decimal number);
+        
     }
 }
