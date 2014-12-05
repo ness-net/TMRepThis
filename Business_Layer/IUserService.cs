@@ -25,6 +25,9 @@ namespace Business_Layer
         bool DoesEmailExist(string email);
         [OperationContract]
         User GetUser(string username);
+        [OperationContract]
+        IEnumerable<User> GetAllUsers();
+        
 
         [OperationContract]
         IQueryable<Role> GetUserRoles(string username);

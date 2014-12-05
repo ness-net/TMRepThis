@@ -51,7 +51,7 @@ namespace TraderMarket.Controllers
                     return View();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 ViewBag.LoginError = "Could not log in, please make sure that your login details are correct";
                 return View();
@@ -62,7 +62,6 @@ namespace TraderMarket.Controllers
         /// Method that runs when the user logs off
         /// </summary>
         /// <returns>ActionResult</returns>
-        [Authorize(Roles = "Administrator, Normal User")]
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();

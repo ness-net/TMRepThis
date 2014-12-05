@@ -17,8 +17,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -165,6 +165,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -174,6 +175,11 @@
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\MenuService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProdService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -238,6 +244,8 @@
     <Content Include="Properties\DataSources\Commonlayer.User.datasource" />
     <Content Include="Properties\DataSources\Commonlayer.Views.MenusView.datasource" />
     <Content Include="Properties\DataSources\Commonlayer.Views.RolesView.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.Product.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.Views.ProductView.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\date-functions.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -283,6 +291,19 @@
     <None Include="Service References\MenuService\MenuService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ProdService\ProdService.wsdl" />
+    <None Include="Service References\ProdService\ProdService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProdService\ProdService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProdService\ProdService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProdService\ProdService12.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\UserService\UserService.disco" />
     <None Include="Service References\UserService\configuration91.svcinfo" />
     <None Include="Service References\UserService\configuration.svcinfo" />
@@ -294,6 +315,13 @@
     <None Include="Service References\MenuService\configuration91.svcinfo" />
     <None Include="Service References\MenuService\configuration.svcinfo" />
     <None Include="Service References\MenuService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ProdService\ProdService.disco" />
+    <None Include="Service References\ProdService\configuration91.svcinfo" />
+    <None Include="Service References\ProdService\configuration.svcinfo" />
+    <None Include="Service References\ProdService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -328,6 +356,10 @@
     <None Include="Service References\UserService\UserService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Product\Index.cshtml">
+      <BrowseToURL>/Product/Index</BrowseToURL>
+    </Content>
+    <Content Include="Views\Product\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -359,6 +391,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MenuService\" />
+    <WCFMetadataStorage Include="Service References\ProdService\" />
     <WCFMetadataStorage Include="Service References\UserService\" />
   </ItemGroup>
   <PropertyGroup>

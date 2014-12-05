@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Commonlayer.Views.ProductView>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+@foreach (var item in Model)
+{
+    <div id="item" class="itemStyleProd">
+        <br />
+        test
+        <img src="@item.ImageLink)" width="100px" height="100px" alt="image" style="border:3px" />
+        <br />
+        @item.Name    <br />
+        Retail Price: @item.Price<br />
+        Seller: @item.Username <br />
+        @Html.ActionLink("Details", "Details", new { id = item.ProductID })
+
+
+        
+        
+
+    </div>
+
+    }

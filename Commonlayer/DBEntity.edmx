@@ -95,7 +95,7 @@
           <Property Name="ImageLink" Type="varchar" MaxLength="50" />
           <Property Name="Price" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Stock" Type="int" />
+          <Property Name="Stock" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductColour">
           <Key>
@@ -656,7 +656,7 @@
           <Property Name="ImageLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Stock" Type="Int32" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="TradersMarketplacedbModel.FK_Product_Categories" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="OrderDetails" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Product" FromRole="Product" ToRole="OrderDetail" />
           <NavigationProperty Name="User" Relationship="TradersMarketplacedbModel.FK_Product_User" FromRole="Product" ToRole="User" />

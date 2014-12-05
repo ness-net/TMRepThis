@@ -16,7 +16,13 @@ namespace DataAccessLayer
 
 
         public UserRepository() : base() {}
-                
+
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            return Entity.Users.AsEnumerable();
+        }
+
 
         public void AddUser(User myNewUser)
         {

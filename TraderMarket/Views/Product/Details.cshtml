@@ -1,0 +1,99 @@
+﻿@model Commonlayer.Views.ProductView
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function cart(id) {
+        //alert(id + " " + $('input:text[name=quantity]').val());
+        var param = {
+            userId: id,
+            quantity: $('input:text[name=quantity]').val()
+        };
+
+        $.ajax({
+            url: '@Url.Action("AddToCart")',
+            type: "POST",
+            datatype: "json",
+            data: param,
+            error: function (xmlHttpRequest, errorText, thrownError) {
+                alert("Please input only numbers in the quantity");
+            },
+            success: function (data) {
+                if (data != null) {
+                    alert("@Model.Name has been added to your cart!");
+                }
+            }
+        });
+    }
+    </script>
+    
+<h2>Details</h2>
+
+<fieldset>
+    <br /><br />
+
+    <table style="width:100%;">
+        <tr>
+            <td rowspan="7" class="style4">
+                <img src="@Html.DisplayFor(model => model.ImageLink)" width="244px" height="223px" alt="image" bordercolor="#94D1E6" borderstyle="Solid" />
+            </td>
+            <td>
+                <label id="txtname" runat="server">@Html.DisplayFor(model => model.Name)</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="style2">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp; -
+        <label id="txtlisted" runat="server">Seller : @Html.DisplayFor(model => model.Username)</label>
+    </td>
+</tr>
+<tr>
+    <td>
+    </td>
+</tr>
+<tr>
+    <td>
+        <label id="txtfeatures" runat="server">Features: @Html.DisplayFor(model => model.Description)</label>
+    </td>
+</tr>
+<tr>
+    <td>
+        Price: €<label id="txtPrice" runat="server">@Html.DisplayFor(model => model.Price)</label>
+        &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="style4"></td>
+        <td>
+            Quantity (@Html.DisplayFor(model => model.Stock)
+            available):<br />
+            <input type="text" name="quantity" />
+
+
+            <button type="button" class="normalbutton" onclick="cart(@Model.ProductID)">Add to Cart!</button>
+
+            <div id="divResults"></div>
+        </td>
+    </tr>
+
+
+</table>
+<br />
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+}

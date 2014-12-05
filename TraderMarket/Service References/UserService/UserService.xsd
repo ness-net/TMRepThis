@@ -84,6 +84,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetAllUsersResult" nillable="true" type="q2:ArrayOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetUserRoles">
     <xs:complexType>
       <xs:sequence>
@@ -94,7 +106,7 @@
   <xs:element name="GetUserRolesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetUserRolesResult" nillable="true" type="q2:ArrayOfRole" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetUserRolesResult" nillable="true" type="q3:ArrayOfRole" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -108,7 +120,7 @@
   <xs:element name="GetUserRolesVResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetUserRolesVResult" nillable="true" type="q3:ArrayOfRolesView" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetUserRolesVResult" nillable="true" type="q4:ArrayOfRolesView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

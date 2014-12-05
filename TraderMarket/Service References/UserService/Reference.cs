@@ -45,6 +45,12 @@ namespace TraderMarket.UserService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
         System.Threading.Tasks.Task<Commonlayer.User> GetUserAsync(string username);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllUsers", ReplyAction="http://tempuri.org/IUserService/GetAllUsersResponse")]
+        Commonlayer.User[] GetAllUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllUsers", ReplyAction="http://tempuri.org/IUserService/GetAllUsersResponse")]
+        System.Threading.Tasks.Task<Commonlayer.User[]> GetAllUsersAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRoles", ReplyAction="http://tempuri.org/IUserService/GetUserRolesResponse")]
         Commonlayer.Role[] GetUserRoles(string username);
         
@@ -129,6 +135,14 @@ namespace TraderMarket.UserService {
         
         public System.Threading.Tasks.Task<Commonlayer.User> GetUserAsync(string username) {
             return base.Channel.GetUserAsync(username);
+        }
+        
+        public Commonlayer.User[] GetAllUsers() {
+            return base.Channel.GetAllUsers();
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.User[]> GetAllUsersAsync() {
+            return base.Channel.GetAllUsersAsync();
         }
         
         public Commonlayer.Role[] GetUserRoles(string username) {

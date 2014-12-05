@@ -127,6 +127,10 @@ namespace Business_Layer
             else throw new FaultException("Username already exists");
         }
 
+        public IEnumerable<User> GetAllUsers()
+        {
+            return new UserRepository().GetAllUsers();
+        }
 
         /// <summary>
         /// Checks if the User with the username already exists

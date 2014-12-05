@@ -29,7 +29,7 @@ namespace Commonlayer
         public string ImageLink { get; set; }
         public decimal Price { get; set; }
         public string Username { get; set; }
-        public Nullable<int> Stock { get; set; }
+        public int Stock { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

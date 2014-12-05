@@ -70,14 +70,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MenuService.svc" />
+    <Content Include="ProdService.svc" />
     <Content Include="UserService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMenuService.cs" />
+    <Compile Include="IProdService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="MenuService.svc.cs">
       <DependentUpon>MenuService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ProdService.svc.cs">
+      <DependentUpon>ProdService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserService.svc.cs">
@@ -85,7 +90,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
