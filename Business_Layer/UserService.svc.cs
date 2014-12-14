@@ -183,6 +183,11 @@ namespace Business_Layer
             return new RoleRepository().GetUserRoles(username);
         }
 
+        public IQueryable<Commonlayer.Views.CreditCardView> GetCreditCards(string username)
+        {
+            return new UserRepository().GetCreditCards(username);
+        }
+
 
 
         public IQueryable<RolesView> GetUserRolesV(string username)

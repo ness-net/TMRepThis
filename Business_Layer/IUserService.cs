@@ -27,6 +27,9 @@ namespace Business_Layer
         User GetUser(string username);
         [OperationContract]
         IEnumerable<User> GetAllUsers();
+
+        [OperationContract]
+        IQueryable<CreditCardView> GetCreditCards(string username);
         
 
         [OperationContract]

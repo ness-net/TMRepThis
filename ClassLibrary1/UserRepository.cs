@@ -118,6 +118,23 @@ namespace DataAccessLayer
             return list.AsQueryable();
         }
 
+        public IQueryable<CreditCardView> GetCreditCards(string username)
+        {
+            var list = (from c in Entity.CreditCards
+                        where c.Username == username
+                        select new CreditCardView
+                        {
+                            CardOwner = c.CardOwner,
+                            CardT = c.CardType,
+                            CVV = c.CVV,
+                            Number = c.CardNumber,
+                            username = c.Username
+                        }
+                    ).Distinct();
+
+            return list.AsQueryable();
+        }
+
 
 
     }

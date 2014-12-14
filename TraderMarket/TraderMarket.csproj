@@ -164,17 +164,31 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CheckOutModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Products.cs" />
     <Compile Include="Models\ProductsModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\MenuService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OrderService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -192,11 +206,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\1 star.png" />
-    <Content Include="Content\1stars.png" />
-    <Content Include="Content\3stars.png" />
-    <Content Include="Content\4stars.png" />
-    <Content Include="Content\5stars.png" />
     <Content Include="Content\background_5.jpg" />
     <Content Include="Content\file_3_13_3.png" />
     <Content Include="Content\nbo-l53381.jpg" />
@@ -204,6 +213,7 @@
     <Content Include="Content\picture1.jpg" />
     <Content Include="Content\picture2.jpg" />
     <Content Include="Content\StyleSheet1.css" />
+    <Content Include="Content\Banner.jpg" />
     <Content Include="Content\themes\base\images\jquery-ui.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -246,6 +256,11 @@
     <Content Include="Properties\DataSources\Commonlayer.Views.RolesView.datasource" />
     <Content Include="Properties\DataSources\Commonlayer.Product.datasource" />
     <Content Include="Properties\DataSources\Commonlayer.Views.ProductView.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.Category.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.Views.CategoryView.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.Views.ShoppingCartView.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.Views.OrderView.datasource" />
+    <Content Include="Properties\DataSources\Commonlayer.Views.CreditCardView.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\date-functions.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -291,6 +306,16 @@
     <None Include="Service References\MenuService\MenuService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\OrderService\OrderService.wsdl" />
+    <None Include="Service References\OrderService\OrderService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderService\OrderService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderService\OrderService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProdService\ProdService.wsdl" />
     <None Include="Service References\ProdService\ProdService.xsd">
       <SubType>Designer</SubType>
@@ -322,6 +347,13 @@
     <None Include="Service References\ProdService\configuration91.svcinfo" />
     <None Include="Service References\ProdService\configuration.svcinfo" />
     <None Include="Service References\ProdService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\OrderService\OrderService.disco" />
+    <None Include="Service References\OrderService\configuration91.svcinfo" />
+    <None Include="Service References\OrderService\configuration.svcinfo" />
+    <None Include="Service References\OrderService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -360,6 +392,24 @@
       <BrowseToURL>/Product/Index</BrowseToURL>
     </Content>
     <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\CheckOut.cshtml" />
+    <Content Include="Views\Product\SellerIndex.cshtml" />
+    <Content Include="Views\Product\Modify.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -391,6 +441,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MenuService\" />
+    <WCFMetadataStorage Include="Service References\OrderService\" />
     <WCFMetadataStorage Include="Service References\ProdService\" />
     <WCFMetadataStorage Include="Service References\UserService\" />
   </ItemGroup>

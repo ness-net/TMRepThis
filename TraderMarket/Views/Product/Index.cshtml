@@ -6,24 +6,45 @@
 }
 
 <h2>Index</h2>
+<div style='width:100%;overflow:hidden;'>
+    <div id="right" style='float:right;width:79%'>
+        @foreach (var item in Model)
+        {
+            <div id="item" class="itemStyleProd">
+                <br />
+                test
+                <img src="@item.ImageLink)" width="100" height="100" alt="image" style="border:3px" />
+                <br />
+                @item.Name    <br />
+                Retail Price: @item.Price<br />
+                Seller: @item.Username <br />
+                @Html.ActionLink("Details", "Details", new { id = item.ProductID })
 
 
-@foreach (var item in Model)
-{
-    <div id="item" class="itemStyleProd">
-        <br />
-        test
-        <img src="@item.ImageLink)" width="100px" height="100px" alt="image" style="border:3px" />
-        <br />
-        @item.Name    <br />
-        Retail Price: @item.Price<br />
-        Seller: @item.Username <br />
-        @Html.ActionLink("Details", "Details", new { id = item.ProductID })
 
 
-        
-        
 
+            </div>
+
+        }
     </div>
 
-    }
+    <div id="left" style='width:20%;overflow:hidden;'>
+        <div id="menubody">
+            <ul id="menulist">
+                @foreach (Commonlayer.Views.CategoryView m in ViewBag.Categories)
+                {
+                    if (m.ParentID == null)
+                    {
+                        <li>@Html.ActionLink(m.Name, "Index", new { id = m.CategoryID })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("-- " + m.Name, "Index", new { id = m.CategoryID })</li>
+                    }
+                }
+
+            </ul>
+        </div>
+    </div>
+    </div>

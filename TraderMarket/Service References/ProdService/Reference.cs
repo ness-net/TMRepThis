@@ -21,12 +21,6 @@ namespace TraderMarket.ProdService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProducts", ReplyAction="http://tempuri.org/IProdService/GetProductsResponse")]
         System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProducts1", ReplyAction="http://tempuri.org/IProdService/GetProducts1Response")]
-        Commonlayer.Product[] GetProducts1();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProducts1", ReplyAction="http://tempuri.org/IProdService/GetProducts1Response")]
-        System.Threading.Tasks.Task<Commonlayer.Product[]> GetProducts1Async();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProduct", ReplyAction="http://tempuri.org/IProdService/GetProductResponse")]
         Commonlayer.Product GetProduct(int id);
         
@@ -39,11 +33,47 @@ namespace TraderMarket.ProdService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsAccordingToSubCategory", ReplyAction="http://tempuri.org/IProdService/GetProductsAccordingToSubCategoryResponse")]
         System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsAccordingToSubCategoryAsync(System.Nullable<int> CatID);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetCategories", ReplyAction="http://tempuri.org/IProdService/GetCategoriesResponse")]
+        Commonlayer.Views.CategoryView[] GetCategories();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetCategories", ReplyAction="http://tempuri.org/IProdService/GetCategoriesResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Views.CategoryView[]> GetCategoriesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/ControlStock", ReplyAction="http://tempuri.org/IProdService/ControlStockResponse")]
         void ControlStock(int productid, int stock);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/ControlStock", ReplyAction="http://tempuri.org/IProdService/ControlStockResponse")]
         System.Threading.Tasks.Task ControlStockAsync(int productid, int stock);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProducttoCart", ReplyAction="http://tempuri.org/IProdService/AddProducttoCartResponse")]
+        void AddProducttoCart(string username, int productId, int qty);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProducttoCart", ReplyAction="http://tempuri.org/IProdService/AddProducttoCartResponse")]
+        System.Threading.Tasks.Task AddProducttoCartAsync(string username, int productId, int qty);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsinShoppingCart", ReplyAction="http://tempuri.org/IProdService/GetProductsinShoppingCartResponse")]
+        Commonlayer.Views.ShoppingCartView[] GetProductsinShoppingCart(string Username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsinShoppingCart", ReplyAction="http://tempuri.org/IProdService/GetProductsinShoppingCartResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Views.ShoppingCartView[]> GetProductsinShoppingCartAsync(string Username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/UpdateCart", ReplyAction="http://tempuri.org/IProdService/UpdateCartResponse")]
+        void UpdateCart(string username, int productId, int newQty);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/UpdateCart", ReplyAction="http://tempuri.org/IProdService/UpdateCartResponse")]
+        System.Threading.Tasks.Task UpdateCartAsync(string username, int productId, int newQty);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DecrementCart", ReplyAction="http://tempuri.org/IProdService/DecrementCartResponse")]
+        void DecrementCart(string username, int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DecrementCart", ReplyAction="http://tempuri.org/IProdService/DecrementCartResponse")]
+        System.Threading.Tasks.Task DecrementCartAsync(string username, int productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DeleteShoppingCartEntry", ReplyAction="http://tempuri.org/IProdService/DeleteShoppingCartEntryResponse")]
+        void DeleteShoppingCartEntry(string username, int productid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DeleteShoppingCartEntry", ReplyAction="http://tempuri.org/IProdService/DeleteShoppingCartEntryResponse")]
+        System.Threading.Tasks.Task DeleteShoppingCartEntryAsync(string username, int productid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductV", ReplyAction="http://tempuri.org/IProdService/GetProductVResponse")]
         Commonlayer.Views.ProductView GetProductV(int id);
@@ -74,6 +104,54 @@ namespace TraderMarket.ProdService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsList", ReplyAction="http://tempuri.org/IProdService/GetProductsListResponse")]
         System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProduct", ReplyAction="http://tempuri.org/IProdService/AddProductResponse")]
+        void AddProduct(string name, string desc, int catid, int subid, string imageLink, decimal price, int stock);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProduct", ReplyAction="http://tempuri.org/IProdService/AddProductResponse")]
+        System.Threading.Tasks.Task AddProductAsync(string name, string desc, int catid, int subid, string imageLink, decimal price, int stock);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DeleteProduct", ReplyAction="http://tempuri.org/IProdService/DeleteProductResponse")]
+        void DeleteProduct(int productID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DeleteProduct", ReplyAction="http://tempuri.org/IProdService/DeleteProductResponse")]
+        System.Threading.Tasks.Task DeleteProductAsync(int productID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/UpdateProduct", ReplyAction="http://tempuri.org/IProdService/UpdateProductResponse")]
+        void UpdateProduct(int prodid, string name, string desc, int catid, int subid, string imageLink, decimal price, int stock);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/UpdateProduct", ReplyAction="http://tempuri.org/IProdService/UpdateProductResponse")]
+        System.Threading.Tasks.Task UpdateProductAsync(int prodid, string name, string desc, int catid, int subid, string imageLink, decimal price, int stock);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsAccordingToSeller", ReplyAction="http://tempuri.org/IProdService/GetProductsAccordingToSellerResponse")]
+        Commonlayer.Views.ProductView[] GetProductsAccordingToSeller(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsAccordingToSeller", ReplyAction="http://tempuri.org/IProdService/GetProductsAccordingToSellerResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsAccordingToSellerAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/MarkActive", ReplyAction="http://tempuri.org/IProdService/MarkActiveResponse")]
+        void MarkActive(int productid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/MarkActive", ReplyAction="http://tempuri.org/IProdService/MarkActiveResponse")]
+        System.Threading.Tasks.Task MarkActiveAsync(int productid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/getSubCategories", ReplyAction="http://tempuri.org/IProdService/getSubCategoriesResponse")]
+        Commonlayer.Views.CategoryView[] getSubCategories();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/getSubCategories", ReplyAction="http://tempuri.org/IProdService/getSubCategoriesResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Views.CategoryView[]> getSubCategoriesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/getMainCategories", ReplyAction="http://tempuri.org/IProdService/getMainCategoriesResponse")]
+        Commonlayer.Views.CategoryView[] getMainCategories();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/getMainCategories", ReplyAction="http://tempuri.org/IProdService/getMainCategoriesResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Views.CategoryView[]> getMainCategoriesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/getSubCategoryofProduct", ReplyAction="http://tempuri.org/IProdService/getSubCategoryofProductResponse")]
+        string getSubCategoryofProduct(int ProductID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/getSubCategoryofProduct", ReplyAction="http://tempuri.org/IProdService/getSubCategoryofProductResponse")]
+        System.Threading.Tasks.Task<string> getSubCategoryofProductAsync(int ProductID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,14 +189,6 @@ namespace TraderMarket.ProdService {
             return base.Channel.GetProductsAsync();
         }
         
-        public Commonlayer.Product[] GetProducts1() {
-            return base.Channel.GetProducts1();
-        }
-        
-        public System.Threading.Tasks.Task<Commonlayer.Product[]> GetProducts1Async() {
-            return base.Channel.GetProducts1Async();
-        }
-        
         public Commonlayer.Product GetProduct(int id) {
             return base.Channel.GetProduct(id);
         }
@@ -135,12 +205,60 @@ namespace TraderMarket.ProdService {
             return base.Channel.GetProductsAccordingToSubCategoryAsync(CatID);
         }
         
+        public Commonlayer.Views.CategoryView[] GetCategories() {
+            return base.Channel.GetCategories();
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.Views.CategoryView[]> GetCategoriesAsync() {
+            return base.Channel.GetCategoriesAsync();
+        }
+        
         public void ControlStock(int productid, int stock) {
             base.Channel.ControlStock(productid, stock);
         }
         
         public System.Threading.Tasks.Task ControlStockAsync(int productid, int stock) {
             return base.Channel.ControlStockAsync(productid, stock);
+        }
+        
+        public void AddProducttoCart(string username, int productId, int qty) {
+            base.Channel.AddProducttoCart(username, productId, qty);
+        }
+        
+        public System.Threading.Tasks.Task AddProducttoCartAsync(string username, int productId, int qty) {
+            return base.Channel.AddProducttoCartAsync(username, productId, qty);
+        }
+        
+        public Commonlayer.Views.ShoppingCartView[] GetProductsinShoppingCart(string Username) {
+            return base.Channel.GetProductsinShoppingCart(Username);
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.Views.ShoppingCartView[]> GetProductsinShoppingCartAsync(string Username) {
+            return base.Channel.GetProductsinShoppingCartAsync(Username);
+        }
+        
+        public void UpdateCart(string username, int productId, int newQty) {
+            base.Channel.UpdateCart(username, productId, newQty);
+        }
+        
+        public System.Threading.Tasks.Task UpdateCartAsync(string username, int productId, int newQty) {
+            return base.Channel.UpdateCartAsync(username, productId, newQty);
+        }
+        
+        public void DecrementCart(string username, int productId) {
+            base.Channel.DecrementCart(username, productId);
+        }
+        
+        public System.Threading.Tasks.Task DecrementCartAsync(string username, int productId) {
+            return base.Channel.DecrementCartAsync(username, productId);
+        }
+        
+        public void DeleteShoppingCartEntry(string username, int productid) {
+            base.Channel.DeleteShoppingCartEntry(username, productid);
+        }
+        
+        public System.Threading.Tasks.Task DeleteShoppingCartEntryAsync(string username, int productid) {
+            return base.Channel.DeleteShoppingCartEntryAsync(username, productid);
         }
         
         public Commonlayer.Views.ProductView GetProductV(int id) {
@@ -181,6 +299,70 @@ namespace TraderMarket.ProdService {
         
         public System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsListAsync() {
             return base.Channel.GetProductsListAsync();
+        }
+        
+        public void AddProduct(string name, string desc, int catid, int subid, string imageLink, decimal price, int stock) {
+            base.Channel.AddProduct(name, desc, catid, subid, imageLink, price, stock);
+        }
+        
+        public System.Threading.Tasks.Task AddProductAsync(string name, string desc, int catid, int subid, string imageLink, decimal price, int stock) {
+            return base.Channel.AddProductAsync(name, desc, catid, subid, imageLink, price, stock);
+        }
+        
+        public void DeleteProduct(int productID) {
+            base.Channel.DeleteProduct(productID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteProductAsync(int productID) {
+            return base.Channel.DeleteProductAsync(productID);
+        }
+        
+        public void UpdateProduct(int prodid, string name, string desc, int catid, int subid, string imageLink, decimal price, int stock) {
+            base.Channel.UpdateProduct(prodid, name, desc, catid, subid, imageLink, price, stock);
+        }
+        
+        public System.Threading.Tasks.Task UpdateProductAsync(int prodid, string name, string desc, int catid, int subid, string imageLink, decimal price, int stock) {
+            return base.Channel.UpdateProductAsync(prodid, name, desc, catid, subid, imageLink, price, stock);
+        }
+        
+        public Commonlayer.Views.ProductView[] GetProductsAccordingToSeller(string username) {
+            return base.Channel.GetProductsAccordingToSeller(username);
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsAccordingToSellerAsync(string username) {
+            return base.Channel.GetProductsAccordingToSellerAsync(username);
+        }
+        
+        public void MarkActive(int productid) {
+            base.Channel.MarkActive(productid);
+        }
+        
+        public System.Threading.Tasks.Task MarkActiveAsync(int productid) {
+            return base.Channel.MarkActiveAsync(productid);
+        }
+        
+        public Commonlayer.Views.CategoryView[] getSubCategories() {
+            return base.Channel.getSubCategories();
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.Views.CategoryView[]> getSubCategoriesAsync() {
+            return base.Channel.getSubCategoriesAsync();
+        }
+        
+        public Commonlayer.Views.CategoryView[] getMainCategories() {
+            return base.Channel.getMainCategories();
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.Views.CategoryView[]> getMainCategoriesAsync() {
+            return base.Channel.getMainCategoriesAsync();
+        }
+        
+        public string getSubCategoryofProduct(int ProductID) {
+            return base.Channel.getSubCategoryofProduct(ProductID);
+        }
+        
+        public System.Threading.Tasks.Task<string> getSubCategoryofProductAsync(int ProductID) {
+            return base.Channel.getSubCategoryofProductAsync(ProductID);
         }
     }
 }

@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TradersMarketplacedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -12,13 +21,7 @@
           <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="ImageLink" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Colours">
-          <Key>
-            <PropertyRef Name="ColourID" />
-          </Key>
-          <Property Name="ColourID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Colour" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
         </EntityType>
         <EntityType Name="Commission">
           <Key>
@@ -64,17 +67,16 @@
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="SizeID" Type="int" Nullable="false" />
-          <Property Name="ColourID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="Date" Type="datetime" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
           <Property Name="Username" Type="varchar" MaxLength="50" />
           <Property Name="OrderStatusID" Type="int" />
+          <Property Name="CardUsed" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -91,27 +93,11 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
-          <Property Name="SubCategoryID" Type="int" />
           <Property Name="ImageLink" Type="varchar" MaxLength="50" />
           <Property Name="Price" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Stock" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ProductColour">
-          <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="ColourID" />
-          </Key>
-          <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="ColourID" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ProductSize">
-          <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="SizeID" />
-          </Key>
-          <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="SizeID" Type="int" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -119,13 +105,6 @@
           </Key>
           <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Sizes">
-          <Key>
-            <PropertyRef Name="SizeID" />
-          </Key>
-          <Property Name="SizeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Sizes" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="SubCategories">
           <Key>
@@ -180,6 +159,42 @@
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Cart_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Categories1" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Categories1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CreditCards_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="CreditCards" Type="Self.CreditCards" Multiplicity="*" />
@@ -252,6 +267,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Orders_CreditCards">
+          <End Role="CreditCards" Type="Self.CreditCards" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditCards">
+              <PropertyRef Name="CardNumber" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CardUsed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Orders_OrderStatus">
           <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -285,54 +312,6 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="Username" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductColour_Colours">
-          <End Role="Colours" Type="Self.Colours" Multiplicity="1" />
-          <End Role="ProductColour" Type="Self.ProductColour" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Colours">
-              <PropertyRef Name="ColourID" />
-            </Principal>
-            <Dependent Role="ProductColour">
-              <PropertyRef Name="ColourID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductColour_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductColour" Type="Self.ProductColour" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="ProductColour">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductSize_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductSize" Type="Self.ProductSize" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="ProductSize">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductSize_Sizes">
-          <End Role="Sizes" Type="Self.Sizes" Multiplicity="1" />
-          <End Role="ProductSize" Type="Self.ProductSize" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sizes">
-              <PropertyRef Name="SizeID" />
-            </Principal>
-            <Dependent Role="ProductSize">
-              <PropertyRef Name="SizeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -397,8 +376,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TradersMarketplacedbModelStoreContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Colours" EntityType="Self.Colours" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Commission" EntityType="Self.Commission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CreditCards" EntityType="Self.CreditCards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
@@ -407,15 +386,24 @@
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductColour" EntityType="Self.ProductColour" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductSize" EntityType="Self.ProductSize" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sizes" EntityType="Self.Sizes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubCategories" EntityType="Self.SubCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCommission" EntityType="Self.UserCommission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cart_Product" Association="Self.FK_Cart_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_User" Association="Self.FK_Cart_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Categories" Association="Self.FK_Categories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories1" EntitySet="Categories" />
+          </AssociationSet>
           <AssociationSet Name="FK_CreditCards_User" Association="Self.FK_CreditCards_User">
             <End Role="User" EntitySet="User" />
             <End Role="CreditCards" EntitySet="CreditCards" />
@@ -440,6 +428,10 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_Orders_CreditCards" Association="Self.FK_Orders_CreditCards">
+            <End Role="CreditCards" EntitySet="CreditCards" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
           <AssociationSet Name="FK_Orders_OrderStatus" Association="Self.FK_Orders_OrderStatus">
             <End Role="OrderStatus" EntitySet="OrderStatus" />
             <End Role="Orders" EntitySet="Orders" />
@@ -451,22 +443,6 @@
           <AssociationSet Name="FK_Product_User" Association="Self.FK_Product_User">
             <End Role="User" EntitySet="User" />
             <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductColour_Colours" Association="Self.FK_ProductColour_Colours">
-            <End Role="Colours" EntitySet="Colours" />
-            <End Role="ProductColour" EntitySet="ProductColour" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductColour_Product" Association="Self.FK_ProductColour_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductColour" EntitySet="ProductColour" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductSize_Product" Association="Self.FK_ProductSize_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductSize" EntitySet="ProductSize" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductSize_Sizes" Association="Self.FK_ProductSize_Sizes">
-            <End Role="Sizes" EntitySet="Sizes" />
-            <End Role="ProductSize" EntitySet="ProductSize" />
           </AssociationSet>
           <AssociationSet Name="FK_SubCategories_Categories" Association="Self.FK_SubCategories_Categories">
             <End Role="Categories" EntitySet="Categories" />
@@ -494,8 +470,8 @@
     <edmx:ConceptualModels>
       <Schema Namespace="TradersMarketplacedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TradersMarketplacedbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carts" EntityType="TradersMarketplacedbModel.Cart" />
           <EntitySet Name="Categories" EntityType="TradersMarketplacedbModel.Category" />
-          <EntitySet Name="Colours" EntityType="TradersMarketplacedbModel.Colour" />
           <EntitySet Name="Commissions" EntityType="TradersMarketplacedbModel.Commission" />
           <EntitySet Name="CreditCards" EntityType="TradersMarketplacedbModel.CreditCard" />
           <EntitySet Name="Menus" EntityType="TradersMarketplacedbModel.Menu" />
@@ -504,10 +480,21 @@
           <EntitySet Name="OrderStatus" EntityType="TradersMarketplacedbModel.OrderStatu" />
           <EntitySet Name="Products" EntityType="TradersMarketplacedbModel.Product" />
           <EntitySet Name="Roles" EntityType="TradersMarketplacedbModel.Role" />
-          <EntitySet Name="Sizes" EntityType="TradersMarketplacedbModel.Size" />
           <EntitySet Name="SubCategories" EntityType="TradersMarketplacedbModel.SubCategory" />
           <EntitySet Name="sysdiagrams" EntityType="TradersMarketplacedbModel.sysdiagram" />
           <EntitySet Name="Users" EntityType="TradersMarketplacedbModel.User" />
+          <AssociationSet Name="FK_Cart_Product" Association="TradersMarketplacedbModel.FK_Cart_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_User" Association="TradersMarketplacedbModel.FK_Cart_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Categories" Association="TradersMarketplacedbModel.FK_Categories_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Category1" EntitySet="Categories" />
+          </AssociationSet>
           <AssociationSet Name="FK_Product_Categories" Association="TradersMarketplacedbModel.FK_Product_Categories">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
@@ -519,6 +506,10 @@
           <AssociationSet Name="FK_CreditCards_User" Association="TradersMarketplacedbModel.FK_CreditCards_User">
             <End Role="User" EntitySet="Users" />
             <End Role="CreditCard" EntitySet="CreditCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_CreditCards" Association="TradersMarketplacedbModel.FK_Orders_CreditCards">
+            <End Role="CreditCard" EntitySet="CreditCards" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Menu_Menu" Association="TradersMarketplacedbModel.FK_Menu_Menu">
             <End Role="Menu" EntitySet="Menus" />
@@ -544,14 +535,6 @@
             <End Role="Menu" EntitySet="Menus" />
             <End Role="Role" EntitySet="Roles" />
           </AssociationSet>
-          <AssociationSet Name="ProductColour" Association="TradersMarketplacedbModel.ProductColour">
-            <End Role="Colour" EntitySet="Colours" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="ProductSize" Association="TradersMarketplacedbModel.ProductSize">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Size" EntitySet="Sizes" />
-          </AssociationSet>
           <AssociationSet Name="UserCommission" Association="TradersMarketplacedbModel.UserCommission">
             <End Role="Commission" EntitySet="Commissions" />
             <End Role="User" EntitySet="Users" />
@@ -561,6 +544,17 @@
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="TradersMarketplacedbModel.FK_Cart_Product" FromRole="Cart" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="TradersMarketplacedbModel.FK_Cart_User" FromRole="Cart" ToRole="User" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -568,16 +562,11 @@
           <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ImageLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="Int32" />
+          <NavigationProperty Name="Categories1" Relationship="TradersMarketplacedbModel.FK_Categories_Categories" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="Category1" Relationship="TradersMarketplacedbModel.FK_Categories_Categories" FromRole="Category1" ToRole="Category" />
           <NavigationProperty Name="Products" Relationship="TradersMarketplacedbModel.FK_Product_Categories" FromRole="Category" ToRole="Product" />
           <NavigationProperty Name="SubCategories" Relationship="TradersMarketplacedbModel.FK_SubCategories_Categories" FromRole="Category" ToRole="SubCategory" />
-        </EntityType>
-        <EntityType Name="Colour">
-          <Key>
-            <PropertyRef Name="ColourID" />
-          </Key>
-          <Property Name="ColourID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Colour1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Products" Relationship="TradersMarketplacedbModel.ProductColour" FromRole="Colour" ToRole="Product" />
         </EntityType>
         <EntityType Name="Commission">
           <Key>
@@ -598,6 +587,7 @@
           <Property Name="CVV" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="TradersMarketplacedbModel.FK_CreditCards_User" FromRole="CreditCard" ToRole="User" />
+          <NavigationProperty Name="Orders" Relationship="TradersMarketplacedbModel.FK_Orders_CreditCards" FromRole="CreditCard" ToRole="Order" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -620,8 +610,6 @@
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="SizeID" Type="Int32" Nullable="false" />
-          <Property Name="ColourID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Orders" FromRole="OrderDetail" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Product" FromRole="OrderDetail" ToRole="Product" />
         </EntityType>
@@ -630,9 +618,11 @@
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OrderStatusID" Type="Int32" />
+          <Property Name="CardUsed" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="CreditCard" Relationship="TradersMarketplacedbModel.FK_Orders_CreditCards" FromRole="Order" ToRole="CreditCard" />
           <NavigationProperty Name="OrderDetails" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Orders" FromRole="Order" ToRole="OrderDetail" />
           <NavigationProperty Name="OrderStatu" Relationship="TradersMarketplacedbModel.FK_Orders_OrderStatus" FromRole="Order" ToRole="OrderStatu" />
         </EntityType>
@@ -652,16 +642,15 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <Property Name="SubCategoryID" Type="Int32" />
           <Property Name="ImageLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Carts" Relationship="TradersMarketplacedbModel.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="Category" Relationship="TradersMarketplacedbModel.FK_Product_Categories" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="OrderDetails" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Product" FromRole="Product" ToRole="OrderDetail" />
           <NavigationProperty Name="User" Relationship="TradersMarketplacedbModel.FK_Product_User" FromRole="Product" ToRole="User" />
-          <NavigationProperty Name="Colours" Relationship="TradersMarketplacedbModel.ProductColour" FromRole="Product" ToRole="Colour" />
-          <NavigationProperty Name="Sizes" Relationship="TradersMarketplacedbModel.ProductSize" FromRole="Product" ToRole="Size" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -671,14 +660,6 @@
           <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Menus" Relationship="TradersMarketplacedbModel.MenuRole" FromRole="Role" ToRole="Menu" />
           <NavigationProperty Name="Users" Relationship="TradersMarketplacedbModel.UserRole" FromRole="Role" ToRole="User" />
-        </EntityType>
-        <EntityType Name="Size">
-          <Key>
-            <PropertyRef Name="SizeID" />
-          </Key>
-          <Property Name="SizeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Sizes" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Products" Relationship="TradersMarketplacedbModel.ProductSize" FromRole="Size" ToRole="Product" />
         </EntityType>
         <EntityType Name="SubCategory">
           <Key>
@@ -717,11 +698,48 @@
           <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="HandlesDeliveres" Type="Boolean" />
           <Property Name="AccountNumber" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Carts" Relationship="TradersMarketplacedbModel.FK_Cart_User" FromRole="User" ToRole="Cart" />
           <NavigationProperty Name="CreditCards" Relationship="TradersMarketplacedbModel.FK_CreditCards_User" FromRole="User" ToRole="CreditCard" />
           <NavigationProperty Name="Products" Relationship="TradersMarketplacedbModel.FK_Product_User" FromRole="User" ToRole="Product" />
           <NavigationProperty Name="Commissions" Relationship="TradersMarketplacedbModel.UserCommission" FromRole="User" ToRole="Commission" />
           <NavigationProperty Name="Roles" Relationship="TradersMarketplacedbModel.UserRole" FromRole="User" ToRole="Role" />
         </EntityType>
+        <Association Name="FK_Cart_Product">
+          <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="TradersMarketplacedbModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_User">
+          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1" />
+          <End Type="TradersMarketplacedbModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Categories">
+          <End Type="TradersMarketplacedbModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="TradersMarketplacedbModel.Category" Role="Category1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Product_Categories">
           <End Type="TradersMarketplacedbModel.Category" Role="Category" Multiplicity="1" />
           <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="*" />
@@ -755,6 +773,18 @@
             </Principal>
             <Dependent Role="CreditCard">
               <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_CreditCards">
+          <End Type="TradersMarketplacedbModel.CreditCard" Role="CreditCard" Multiplicity="0..1" />
+          <End Type="TradersMarketplacedbModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditCard">
+              <PropertyRef Name="CardNumber" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CardUsed" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -822,14 +852,6 @@
           <End Type="TradersMarketplacedbModel.Menu" Role="Menu" Multiplicity="*" />
           <End Type="TradersMarketplacedbModel.Role" Role="Role" Multiplicity="*" />
         </Association>
-        <Association Name="ProductColour">
-          <End Type="TradersMarketplacedbModel.Colour" Role="Colour" Multiplicity="*" />
-          <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="*" />
-        </Association>
-        <Association Name="ProductSize">
-          <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="*" />
-          <End Type="TradersMarketplacedbModel.Size" Role="Size" Multiplicity="*" />
-        </Association>
         <Association Name="UserCommission">
           <End Type="TradersMarketplacedbModel.Commission" Role="Commission" Multiplicity="*" />
           <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="*" />
@@ -844,20 +866,22 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TradersMarketplacedbModelStoreContainer" CdmEntityContainer="TradersMarketplacedbEntities">
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="TradersMarketplacedbModel.Category">
-              <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="TradersMarketplacedbModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Colours">
-            <EntityTypeMapping TypeName="TradersMarketplacedbModel.Colour">
-              <MappingFragment StoreEntitySet="Colours">
-                <ScalarProperty Name="Colour1" ColumnName="Colour" />
-                <ScalarProperty Name="ColourID" ColumnName="ColourID" />
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="TradersMarketplacedbModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -895,8 +919,6 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetails">
-                <ScalarProperty Name="ColourID" ColumnName="ColourID" />
-                <ScalarProperty Name="SizeID" ColumnName="SizeID" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -906,6 +928,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="CardUsed" ColumnName="CardUsed" />
                 <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -924,11 +947,11 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="Stock" ColumnName="Stock" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
-                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -941,14 +964,6 @@
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="Role1" ColumnName="Role" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sizes">
-            <EntityTypeMapping TypeName="TradersMarketplacedbModel.Size">
-              <MappingFragment StoreEntitySet="Sizes">
-                <ScalarProperty Name="Sizes" ColumnName="Sizes" />
-                <ScalarProperty Name="SizeID" ColumnName="SizeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -998,22 +1013,6 @@
             </EndProperty>
             <EndProperty Name="Menu">
               <ScalarProperty Name="MenuID" ColumnName="MenuID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="ProductColour" TypeName="TradersMarketplacedbModel.ProductColour" StoreEntitySet="ProductColour">
-            <EndProperty Name="Product">
-              <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-            </EndProperty>
-            <EndProperty Name="Colour">
-              <ScalarProperty Name="ColourID" ColumnName="ColourID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="ProductSize" TypeName="TradersMarketplacedbModel.ProductSize" StoreEntitySet="ProductSize">
-            <EndProperty Name="Size">
-              <ScalarProperty Name="SizeID" ColumnName="SizeID" />
-            </EndProperty>
-            <EndProperty Name="Product">
-              <ScalarProperty Name="ProductID" ColumnName="ProductID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="UserCommission" TypeName="TradersMarketplacedbModel.UserCommission" StoreEntitySet="UserCommission">

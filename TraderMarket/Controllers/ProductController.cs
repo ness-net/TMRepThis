@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Commonlayer.Views;
+using TraderMarket.Models;
 
 namespace TraderMarket.Controllers
 {
@@ -11,18 +12,23 @@ namespace TraderMarket.Controllers
     {
         //
         // GET: /Product/
-        public ActionResult Index()
+        public ActionResult Index(System.Nullable<int> id)
         {
-            try
+          
+                
+                ViewBag.Categories = new ProdService.ProdServiceClient().GetCategories();
+           
+
+            if (id == null)
             {
-                //ViewBag.prod = new ProdService.ProdServiceClient().GetProducts1();
                 List<ProductView> list = new ProdService.ProdServiceClient().GetProducts().ToList();
+
                 return View("Index", list);
             }
-            catch (Exception ex)
+            else
             {
-                ViewBag.Message = ex.Message + " " + ex.InnerException;
-                return View();
+                List<ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSubCategory(id).ToList();
+                return View(list);
             }
             
         }
@@ -40,6 +46,70 @@ namespace TraderMarket.Controllers
             //}
                        
             return View("Details", e);
+        }
+
+        [HttpPost]
+        public ActionResult AddToCart(int userid, string quantity)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                try
+                {
+                    new ProdService.ProdServiceClient().AddProducttoCart(User.Identity.Name.ToString(), userid, Convert.ToInt16(quantity));
+                    return RedirectToAction("Index", "Home");
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message("Could not add to Cart ");
+                    return RedirectToAction("Index", "Home");
+                }
+
+            }
+            else
+            {
+                ViewBag.Message("Not logged in");
+                return RedirectToAction("Index", "Home");
+
+
+            }
+        }
+
+
+        public ActionResult SellerIndex()
+        {
+                List<ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSeller(User.Identity.Name).ToList();
+                return View("SellerIndex", list);
+        }
+
+        public ActionResult Modify(int id)
+        {
+            ProductView e = new ProdService.ProdServiceClient().GetProductV(id);
+            ViewBag.Product = e;
+            ViewBag.SubC = new ProdService.ProdServiceClient().getSubCategories();
+            ViewBag.SubCString = new ProdService.ProdServiceClient().getSubCategoryofProduct(e.ProductID);
+            var model = new ProductsModel
+            {
+                name = e.Name,
+                description = e.Description,
+                ImageLink = e.ImageLink,
+                price = e.Price,
+                stock = e.Stock
+            };
+            return View("Modify", model);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            new ProdService.ProdServiceClient().DeleteProduct(id);
+            List<ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSeller(User.Identity.Name).ToList();
+            return View("SellerIndex", list);
+        }
+
+        public ActionResult Activate(int id)
+        {
+            new ProdService.ProdServiceClient().MarkActive(id);
+            List<ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSeller(User.Identity.Name).ToList();
+            return View("SellerIndex", list);
         }
 	}
 }

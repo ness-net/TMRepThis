@@ -25,8 +25,8 @@ namespace Commonlayer
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Colour> Colours { get; set; }
         public virtual DbSet<Commission> Commissions { get; set; }
         public virtual DbSet<CreditCard> CreditCards { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
@@ -35,7 +35,6 @@ namespace Commonlayer
         public virtual DbSet<OrderStatu> OrderStatus { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<SubCategory> SubCategories { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }

@@ -1,0 +1,38 @@
+﻿@model TraderMarket.Models.CheckOutModel
+
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CheckOut</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Choose a Credit Card</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Card)
+        </div>
+        <div class="editor-field">
+            <select name="Card">
+                @foreach (var item in ViewBag.Cards)
+                {
+                     <option>@item.Number @item.CardT</option>
+
+                }               
+
+            </select>
+            @Html.ValidationMessageFor(model => model.Card)
+        </div>
+
+        <p>
+            <input type="submit" value="Purchase" />
+        </p>
+
+
+        <h6>@ViewBag.LoginError</h6>
+    </fieldset>
+}
+

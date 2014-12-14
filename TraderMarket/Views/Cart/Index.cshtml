@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Commonlayer.Views.ShoppingCartView>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal totalprice = 0;
+    ViewBag.TotalPrice = 0;
+}
+
+<h2>Your Cart</h2>
+<script type="text/javascript">
+    function removecart(id) {
+        //alert(id);
+        var param = { productID: id };
+
+        $.ajax({
+            url: '@Url.Action("DeleteCartEntry")',
+            type: "POST",
+            datatype: "json",
+            data: param,
+            error: function (xmlHttpRequest, errorText, thrownError) {
+                alert(xmlHttpRequest + "|" + errorText + "|" + thrownError);
+            },
+            success: function (data) {
+                var result = $('<div />').append(data).find('#divResults').html();
+                $('#divResults').html(result);
+            }
+        });
+    }
+
+    function decrementfromcart(id) {
+        var param = { productID: id };
+
+        $.ajax({
+            url: '@Url.Action("Decrement")',
+            type: "POST",
+            datatype: "json",
+            data: param,
+            error: function (xmlHttpRequest, errorText, thrownError) {
+                alert(xmlHttpRequest + "|" + errorText + "|" + thrownError);
+            },
+            success: function (data) {
+                var result = $('<div />').append(data).find('#divResults').html();
+                $('#divResults').html(result);
+            }
+        });
+    }
+</script>
+
+<p>
+</p>
+<div id="divResults">
+    <table style="width:100%">
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.ImageLink)" width="100px" height="100px" alt="image" style="border:3px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <button type="button" onclick="removecart(@item.ProductID)">Delete</button>
+                    <br /> <br />
+                    <button type="button" onclick="decrementfromcart(@item.ProductID)">Decrement Product Quantity</button>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    @foreach (var item in Model)
+    {
+        totalprice += (Convert.ToDecimal(item.Price) * Convert.ToDecimal(item.Quantity));
+    }
+
+    @{
+        ViewBag.TotalPrice = totalprice;
+    }
+    <div style="float:right">
+        Total Price is: € @ViewBag.TotalPrice
+
+        @if ((ViewBag.TotalPrice) > 0)
+        {
+            @Html.ActionLink("Proceed to Check Out", "CheckOut")
+        }
+    </div>
+</div>

@@ -51,10 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs">
+    <Compile Include="Cart.cs">
       <DependentUpon>DBEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Colour.cs">
+    <Compile Include="Category.cs">
       <DependentUpon>DBEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Commission.cs">
@@ -97,9 +97,6 @@
     <Compile Include="Role.cs">
       <DependentUpon>DBEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Size.cs">
-      <DependentUpon>DBEntity.tt</DependentUpon>
-    </Compile>
     <Compile Include="SubCategory.cs">
       <DependentUpon>DBEntity.tt</DependentUpon>
     </Compile>
@@ -109,10 +106,15 @@
     <Compile Include="User.cs">
       <DependentUpon>DBEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\CategoryView.cs" />
+    <Compile Include="Views\CreditCardView.cs" />
+    <Compile Include="Views\OrderDetailView.cs" />
     <Compile Include="Views\CommissionType.cs" />
     <Compile Include="Views\MenusView.cs" />
+    <Compile Include="Views\OrderView.cs" />
     <Compile Include="Views\ProductView.cs" />
     <Compile Include="Views\RolesView.cs" />
+    <Compile Include="Views\ShoppingCartView.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DBEntity.edmx">

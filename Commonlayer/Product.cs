@@ -16,25 +16,23 @@ namespace Commonlayer
     {
         public Product()
         {
+            this.Carts = new HashSet<Cart>();
             this.OrderDetails = new HashSet<OrderDetail>();
-            this.Colours = new HashSet<Colour>();
-            this.Sizes = new HashSet<Size>();
         }
     
         public int ProductID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int CategoryID { get; set; }
-        public Nullable<int> SubCategoryID { get; set; }
         public string ImageLink { get; set; }
         public decimal Price { get; set; }
         public string Username { get; set; }
         public int Stock { get; set; }
+        public bool isActive { get; set; }
     
+        public virtual ICollection<Cart> Carts { get; set; }
         public virtual Category Category { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual User User { get; set; }
-        public virtual ICollection<Colour> Colours { get; set; }
-        public virtual ICollection<Size> Sizes { get; set; }
     }
 }

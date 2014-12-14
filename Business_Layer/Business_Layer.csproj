@@ -70,16 +70,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MenuService.svc" />
+    <Content Include="OrderService.svc" />
     <Content Include="ProdService.svc" />
     <Content Include="UserService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMenuService.cs" />
+    <Compile Include="IOrderService.cs" />
     <Compile Include="IProdService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="MenuService.svc.cs">
       <DependentUpon>MenuService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="OrderService.svc.cs">
+      <DependentUpon>OrderService.svc</DependentUpon>
     </Compile>
     <Compile Include="ProdService.svc.cs">
       <DependentUpon>ProdService.svc</DependentUpon>

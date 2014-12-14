@@ -16,8 +16,8 @@ namespace Business_Layer
     {
         [OperationContract]
         IQueryable<ProductView> GetProducts();
-        [OperationContract]
-        IEnumerable<Product> GetProducts1();
+
+
 
         [OperationContract]
         Product GetProduct(int id);
@@ -27,7 +27,26 @@ namespace Business_Layer
         IQueryable<ProductView> GetProductsAccordingToSubCategory(System.Nullable<int> CatID);
 
         [OperationContract]
+        IQueryable<CategoryView> GetCategories();
+        
+
+        [OperationContract]
         void ControlStock(int productid, int stock);
+
+        [OperationContract]
+        void AddProducttoCart(string username, int productId, int qty);
+
+        [OperationContract]
+        IQueryable<ShoppingCartView> GetProductsinShoppingCart(string Username);
+
+        [OperationContract]
+        void UpdateCart(string username, int productId, int newQty);
+
+        [OperationContract]
+        void DecrementCart(string username, int productId);
+
+        [OperationContract]
+        void DeleteShoppingCartEntry(string username, int productid);
 
         [OperationContract]
         ProductView GetProductV(int id);
@@ -44,5 +63,30 @@ namespace Business_Layer
 
         [OperationContract]
         IEnumerable<ProductView> GetProductsList();
+
+        [OperationContract]
+        void AddProduct(string name, string desc, int catid, string imageLink, decimal price, int stock);
+        
+        [OperationContract]
+        void DeleteProduct(int productID);
+        
+        [OperationContract]
+        void UpdateProduct(int prodid, string name, string desc, int catid, string imageLink, decimal price, int stock);
+        
+        [OperationContract]
+        IQueryable<ProductView> GetProductsAccordingToSeller(string username);
+
+        [OperationContract]
+        void MarkActive(int productid);
+
+        [OperationContract]
+        IQueryable<CategoryView> getSubCategories();
+
+        [OperationContract]
+        IQueryable<CategoryView> getMainCategories();
+
+        [OperationContract]
+        String getSubCategoryofProduct(int ProductID);
+        
     }
 }

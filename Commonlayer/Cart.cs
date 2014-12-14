@@ -12,16 +12,13 @@ namespace Commonlayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Colour
+    public partial class Cart
     {
-        public Colour()
-        {
-            this.Products = new HashSet<Product>();
-        }
+        public string Username { get; set; }
+        public int ProductID { get; set; }
+        public int Quantity { get; set; }
     
-        public int ColourID { get; set; }
-        public string Colour1 { get; set; }
-    
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual User User { get; set; }
     }
 }

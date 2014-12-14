@@ -16,6 +16,7 @@ namespace Commonlayer
     {
         public Category()
         {
+            this.Categories1 = new HashSet<Category>();
             this.Products = new HashSet<Product>();
             this.SubCategories = new HashSet<SubCategory>();
         }
@@ -23,7 +24,10 @@ namespace Commonlayer
         public int CategoryID { get; set; }
         public string Name { get; set; }
         public string ImageLink { get; set; }
+        public Nullable<int> ParentID { get; set; }
     
+        public virtual ICollection<Category> Categories1 { get; set; }
+        public virtual Category Category1 { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<SubCategory> SubCategories { get; set; }
     }

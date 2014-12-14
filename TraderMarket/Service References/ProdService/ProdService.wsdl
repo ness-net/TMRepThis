@@ -14,12 +14,6 @@
   <wsdl:message name="IProdService_GetProducts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsResponse" />
   </wsdl:message>
-  <wsdl:message name="IProdService_GetProducts1_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetProducts1" />
-  </wsdl:message>
-  <wsdl:message name="IProdService_GetProducts1_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetProducts1Response" />
-  </wsdl:message>
   <wsdl:message name="IProdService_GetProduct_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProduct" />
   </wsdl:message>
@@ -32,11 +26,47 @@
   <wsdl:message name="IProdService_GetProductsAccordingToSubCategory_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsAccordingToSubCategoryResponse" />
   </wsdl:message>
+  <wsdl:message name="IProdService_GetCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategories" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_GetCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
+  </wsdl:message>
   <wsdl:message name="IProdService_ControlStock_InputMessage">
     <wsdl:part name="parameters" element="tns:ControlStock" />
   </wsdl:message>
   <wsdl:message name="IProdService_ControlStock_OutputMessage">
     <wsdl:part name="parameters" element="tns:ControlStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_AddProducttoCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProducttoCart" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_AddProducttoCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProducttoCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_GetProductsinShoppingCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsinShoppingCart" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_GetProductsinShoppingCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsinShoppingCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_UpdateCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCart" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_UpdateCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_DecrementCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:DecrementCart" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_DecrementCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DecrementCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_DeleteShoppingCartEntry_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteShoppingCartEntry" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_DeleteShoppingCartEntry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteShoppingCartEntryResponse" />
   </wsdl:message>
   <wsdl:message name="IProdService_GetProductV_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProductV" />
@@ -68,14 +98,58 @@
   <wsdl:message name="IProdService_GetProductsList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsListResponse" />
   </wsdl:message>
+  <wsdl:message name="IProdService_AddProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_AddProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_DeleteProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_DeleteProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_UpdateProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_UpdateProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_GetProductsAccordingToSeller_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsAccordingToSeller" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_GetProductsAccordingToSeller_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsAccordingToSellerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_MarkActive_InputMessage">
+    <wsdl:part name="parameters" element="tns:MarkActive" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_MarkActive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MarkActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_getSubCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSubCategories" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_getSubCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSubCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_getMainCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMainCategories" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_getMainCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMainCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_getSubCategoryofProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSubCategoryofProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_getSubCategoryofProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSubCategoryofProductResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProdService">
     <wsdl:operation name="GetProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProducts" message="tns:IProdService_GetProducts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetProductsResponse" message="tns:IProdService_GetProducts_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetProducts1">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProducts1" message="tns:IProdService_GetProducts1_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetProducts1Response" message="tns:IProdService_GetProducts1_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetProduct">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProduct" message="tns:IProdService_GetProduct_InputMessage" />
@@ -85,9 +159,33 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProductsAccordingToSubCategory" message="tns:IProdService_GetProductsAccordingToSubCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetProductsAccordingToSubCategoryResponse" message="tns:IProdService_GetProductsAccordingToSubCategory_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetCategories" message="tns:IProdService_GetCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetCategoriesResponse" message="tns:IProdService_GetCategories_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ControlStock">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/ControlStock" message="tns:IProdService_ControlStock_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProdService/ControlStockResponse" message="tns:IProdService_ControlStock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProducttoCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/AddProducttoCart" message="tns:IProdService_AddProducttoCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/AddProducttoCartResponse" message="tns:IProdService_AddProducttoCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsinShoppingCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProductsinShoppingCart" message="tns:IProdService_GetProductsinShoppingCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetProductsinShoppingCartResponse" message="tns:IProdService_GetProductsinShoppingCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/UpdateCart" message="tns:IProdService_UpdateCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/UpdateCartResponse" message="tns:IProdService_UpdateCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DecrementCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/DecrementCart" message="tns:IProdService_DecrementCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/DecrementCartResponse" message="tns:IProdService_DecrementCart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShoppingCartEntry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/DeleteShoppingCartEntry" message="tns:IProdService_DeleteShoppingCartEntry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/DeleteShoppingCartEntryResponse" message="tns:IProdService_DeleteShoppingCartEntry_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetProductV">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProductV" message="tns:IProdService_GetProductV_InputMessage" />
@@ -109,20 +207,43 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProductsList" message="tns:IProdService_GetProductsList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetProductsListResponse" message="tns:IProdService_GetProductsList_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/AddProduct" message="tns:IProdService_AddProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/AddProductResponse" message="tns:IProdService_AddProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/DeleteProduct" message="tns:IProdService_DeleteProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/DeleteProductResponse" message="tns:IProdService_DeleteProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/UpdateProduct" message="tns:IProdService_UpdateProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/UpdateProductResponse" message="tns:IProdService_UpdateProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsAccordingToSeller">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProductsAccordingToSeller" message="tns:IProdService_GetProductsAccordingToSeller_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetProductsAccordingToSellerResponse" message="tns:IProdService_GetProductsAccordingToSeller_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkActive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/MarkActive" message="tns:IProdService_MarkActive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/MarkActiveResponse" message="tns:IProdService_MarkActive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSubCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/getSubCategories" message="tns:IProdService_getSubCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/getSubCategoriesResponse" message="tns:IProdService_getSubCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMainCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/getMainCategories" message="tns:IProdService_getMainCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/getMainCategoriesResponse" message="tns:IProdService_getMainCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSubCategoryofProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/getSubCategoryofProduct" message="tns:IProdService_getSubCategoryofProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/getSubCategoryofProductResponse" message="tns:IProdService_getSubCategoryofProduct_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProdService" type="tns:IProdService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetProducts">
       <soap:operation soapAction="http://tempuri.org/IProdService/GetProducts" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetProducts1">
-      <soap:operation soapAction="http://tempuri.org/IProdService/GetProducts1" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -148,8 +269,62 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <soap:operation soapAction="http://tempuri.org/IProdService/GetCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ControlStock">
       <soap:operation soapAction="http://tempuri.org/IProdService/ControlStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProducttoCart">
+      <soap:operation soapAction="http://tempuri.org/IProdService/AddProducttoCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsinShoppingCart">
+      <soap:operation soapAction="http://tempuri.org/IProdService/GetProductsinShoppingCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCart">
+      <soap:operation soapAction="http://tempuri.org/IProdService/UpdateCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecrementCart">
+      <soap:operation soapAction="http://tempuri.org/IProdService/DecrementCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShoppingCartEntry">
+      <soap:operation soapAction="http://tempuri.org/IProdService/DeleteShoppingCartEntry" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -195,6 +370,78 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductsList">
       <soap:operation soapAction="http://tempuri.org/IProdService/GetProductsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProduct">
+      <soap:operation soapAction="http://tempuri.org/IProdService/AddProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProduct">
+      <soap:operation soapAction="http://tempuri.org/IProdService/DeleteProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProduct">
+      <soap:operation soapAction="http://tempuri.org/IProdService/UpdateProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsAccordingToSeller">
+      <soap:operation soapAction="http://tempuri.org/IProdService/GetProductsAccordingToSeller" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkActive">
+      <soap:operation soapAction="http://tempuri.org/IProdService/MarkActive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSubCategories">
+      <soap:operation soapAction="http://tempuri.org/IProdService/getSubCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMainCategories">
+      <soap:operation soapAction="http://tempuri.org/IProdService/getMainCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSubCategoryofProduct">
+      <soap:operation soapAction="http://tempuri.org/IProdService/getSubCategoryofProduct" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

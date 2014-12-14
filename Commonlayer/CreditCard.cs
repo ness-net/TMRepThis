@@ -14,6 +14,11 @@ namespace Commonlayer
     
     public partial class CreditCard
     {
+        public CreditCard()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public string CardType { get; set; }
         public decimal CardNumber { get; set; }
         public string CardOwner { get; set; }
@@ -21,5 +26,6 @@ namespace Commonlayer
         public string Username { get; set; }
     
         public virtual User User { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
