@@ -92,7 +92,13 @@ namespace Business_Layer
                             ur.Entity.Database.Connection.Open();
                             //rr.Transaction = ur.Transaction = ur.Entity.Database.Connection.BeginTransaction();
                             ur.AddUser(u);
-                            rr.AllocateRole(u, rr.GetDefaultRole());
+                            if (u.AccountNumber == 0)
+                            {
+                                rr.AllocateRole(u, rr.GetRole(4));
+                            }
+                            else {
+                                rr.AllocateRole(u, rr.GetRole(3));
+                                }
 
                             if (commission == "Percentage")
                             {

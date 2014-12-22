@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script type="text/javascript">
+<script type="text/javascript" >
     function cart(id) {
         //alert(id + " " + $('input:text[name=quantity]').val());
         var param = {
@@ -19,11 +19,18 @@
             datatype: "json",
             data: param,
             error: function (xmlHttpRequest, errorText, thrownError) {
-                alert("Please input only numbers in the quantity");
+                    alert("Please input only numbers in the quantity");
             },
             success: function (data) {
                 if (data != null) {
-                    alert("@Model.Name has been added to your cart!");
+                    @*var messages = '@ViewBag.Message'
+                    alert(messages.toString());*@
+                    //if (messages == "Log") {
+                    //    alert("Please log in first");
+                    //}
+                    //else {
+                        alert("@Model.Name has been added to your cart!");
+                    //}
                 }
             }
         });
@@ -88,7 +95,6 @@
 
 </table>
 <br />
-
 </fieldset>
 @using (Html.BeginForm())
 {

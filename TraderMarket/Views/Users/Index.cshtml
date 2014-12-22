@@ -5,12 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <h2>Users</h2>
 
-<table class="table">
+
+<table class="table" >
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.Username)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -34,16 +36,10 @@
             @Html.DisplayNameFor(model => model.Town)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PostCode)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Country)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HandlesDeliveres)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccountNumber)
+            Buyer Or Seller
         </th>
         <th></th>
     </tr>
@@ -51,7 +47,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Password)
+            @Html.DisplayFor(modelItem => item.Username)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -75,16 +71,17 @@
             @Html.DisplayFor(modelItem => item.Town)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PostCode)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Country)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HandlesDeliveres)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AccountNumber)
+            @if ((item.AccountNumber) == 0)
+            {
+               <text>Buyer</text>            
+            }
+            else
+            {
+                 <text>Seller</text>      
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Username }) |

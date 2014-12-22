@@ -87,8 +87,23 @@ namespace TraderMarket.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            
+            try
+            {
+                IQueryable<CreditCard> cr = db.CreditCards.Where(u => u.Username == id);
+                foreach (CreditCard c in cr)
+                {
+                    db.CreditCards.Remove(c);
+                    db.SaveChanges();
+                }
+            }
+            catch { }
+            try
+            {
+                
+            }
+            catch { }
             User user = db.Users.Find(id);
+            
             db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");

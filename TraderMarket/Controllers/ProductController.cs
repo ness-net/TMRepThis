@@ -56,18 +56,19 @@ namespace TraderMarket.Controllers
                 try
                 {
                     new ProdService.ProdServiceClient().AddProducttoCart(User.Identity.Name.ToString(), userid, Convert.ToInt16(quantity));
+                    ViewBag.Message = ("Success");
                     return RedirectToAction("Index", "Home");
                 }
                 catch (Exception ex)
                 {
-                    ViewBag.Message("Could not add to Cart ");
+                    ViewBag.Message= ("Could not add to Cart ");
                     return RedirectToAction("Index", "Home");
                 }
 
             }
             else
             {
-                ViewBag.Message("Not logged in");
+                ViewBag.Message = ("Log");
                 return RedirectToAction("Index", "Home");
 
 

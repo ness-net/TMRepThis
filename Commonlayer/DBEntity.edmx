@@ -67,6 +67,7 @@
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="OrderStatusID" Type="int" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -75,7 +76,6 @@
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="Date" Type="varchar" MaxLength="50" />
           <Property Name="Username" Type="varchar" MaxLength="50" />
-          <Property Name="OrderStatusID" Type="int" />
           <Property Name="CardUsed" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="OrderStatus">
@@ -172,7 +172,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cart_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -196,7 +198,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CreditCards_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="CreditCards" Type="Self.CreditCards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -255,6 +259,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OrderDetails_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OrderDetails_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
@@ -279,18 +295,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Orders_OrderStatus">
-          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OrderStatus">
-              <PropertyRef Name="OrderStatusID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="OrderStatusID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Product_Categories">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -304,7 +308,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -340,7 +346,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserCommission_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="UserCommission" Type="Self.UserCommission" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -364,7 +372,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserRole_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -424,16 +434,16 @@
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_OrderStatus" Association="Self.FK_OrderDetails_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_OrderDetails_Product" Association="Self.FK_OrderDetails_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_CreditCards" Association="Self.FK_Orders_CreditCards">
             <End Role="CreditCards" EntitySet="CreditCards" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orders_OrderStatus" Association="Self.FK_Orders_OrderStatus">
-            <End Role="OrderStatus" EntitySet="OrderStatus" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Categories" Association="Self.FK_Product_Categories">
@@ -519,13 +529,13 @@
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_OrderStatus" Association="TradersMarketplacedbModel.FK_OrderDetails_OrderStatus">
+            <End Role="OrderStatu" EntitySet="OrderStatus" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_OrderDetails_Product" Association="TradersMarketplacedbModel.FK_OrderDetails_Product">
             <End Role="Product" EntitySet="Products" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orders_OrderStatus" Association="TradersMarketplacedbModel.FK_Orders_OrderStatus">
-            <End Role="OrderStatu" EntitySet="OrderStatus" />
-            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_User" Association="TradersMarketplacedbModel.FK_Product_User">
             <End Role="User" EntitySet="Users" />
@@ -610,7 +620,9 @@
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="OrderStatusID" Type="Int32" />
           <NavigationProperty Name="Order" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Orders" FromRole="OrderDetail" ToRole="Order" />
+          <NavigationProperty Name="OrderStatu" Relationship="TradersMarketplacedbModel.FK_OrderDetails_OrderStatus" FromRole="OrderDetail" ToRole="OrderStatu" />
           <NavigationProperty Name="Product" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Product" FromRole="OrderDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="Order">
@@ -620,11 +632,9 @@
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderStatusID" Type="Int32" />
           <Property Name="CardUsed" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="CreditCard" Relationship="TradersMarketplacedbModel.FK_Orders_CreditCards" FromRole="Order" ToRole="CreditCard" />
           <NavigationProperty Name="OrderDetails" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Orders" FromRole="Order" ToRole="OrderDetail" />
-          <NavigationProperty Name="OrderStatu" Relationship="TradersMarketplacedbModel.FK_Orders_OrderStatus" FromRole="Order" ToRole="OrderStatu" />
         </EntityType>
         <EntityType Name="OrderStatu">
           <Key>
@@ -632,7 +642,7 @@
           </Key>
           <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Orders" Relationship="TradersMarketplacedbModel.FK_Orders_OrderStatus" FromRole="OrderStatu" ToRole="Order" />
+          <NavigationProperty Name="OrderDetails" Relationship="TradersMarketplacedbModel.FK_OrderDetails_OrderStatus" FromRole="OrderStatu" ToRole="OrderDetail" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -717,7 +727,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cart_User">
-          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1" />
+          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="TradersMarketplacedbModel.Cart" Role="Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -765,7 +777,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CreditCards_User">
-          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1" />
+          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="TradersMarketplacedbModel.CreditCard" Role="CreditCard" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -812,6 +826,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OrderDetails_OrderStatus">
+          <End Type="TradersMarketplacedbModel.OrderStatu" Role="OrderStatu" Multiplicity="0..1" />
+          <End Type="TradersMarketplacedbModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatu">
+              <PropertyRef Name="OrderStatusID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OrderDetails_Product">
           <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="1" />
           <End Type="TradersMarketplacedbModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
@@ -824,20 +850,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Orders_OrderStatus">
-          <End Type="TradersMarketplacedbModel.OrderStatu" Role="OrderStatu" Multiplicity="0..1" />
-          <End Type="TradersMarketplacedbModel.Order" Role="Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OrderStatu">
-              <PropertyRef Name="OrderStatusID" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="OrderStatusID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Product_User">
-          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1" />
+          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -919,6 +935,7 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -929,7 +946,6 @@
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Order">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="CardUsed" ColumnName="CardUsed" />
-                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />

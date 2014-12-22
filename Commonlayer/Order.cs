@@ -22,11 +22,9 @@ namespace Commonlayer
         public int OrderID { get; set; }
         public string Date { get; set; }
         public string Username { get; set; }
-        public Nullable<int> OrderStatusID { get; set; }
         public Nullable<decimal> CardUsed { get; set; }
     
         public virtual CreditCard CreditCard { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual OrderStatu OrderStatu { get; set; }
     }
 }

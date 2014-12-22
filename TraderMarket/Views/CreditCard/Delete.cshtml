@@ -1,51 +1,51 @@
-﻿@model Commonlayer.User
+﻿@model Commonlayer.CreditCard
 
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this user?</h3>
+<h3>Are you sure you want to delete this?</h3>
 <div>
-
+    <h4>CreditCard</h4>
     <hr />
     <dl class="dl-horizontal">
-        <br />
         <dt>
-           <b> @Html.DisplayNameFor(model => model.Username)</b>
+            @Html.DisplayNameFor(model => model.CardType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Username)
+            @Html.DisplayFor(model => model.CardType)
         </dd>
-        <br />
+
         <dt>
-            <b> @Html.DisplayNameFor(model => model.Name)</b>
+            @Html.DisplayNameFor(model => model.CardOwner)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.CardOwner)
         </dd>
-        <br />
+
         <dt>
-            <b>@Html.DisplayNameFor(model => model.Surname)</b>
+            @Html.DisplayNameFor(model => model.CVV)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Surname)
+            @Html.DisplayFor(model => model.CVV)
         </dd>
-        <br />
+
         <dt>
-           <b> @Html.DisplayNameFor(model => model.Email)</b>
+            @Html.DisplayNameFor(model => model.CardNumber)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.CardNumber)
         </dd>
 
     </dl>
-    <br />
+
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 

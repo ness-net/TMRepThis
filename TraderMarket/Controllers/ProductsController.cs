@@ -88,6 +88,7 @@ namespace TraderMarket.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="ProductID,Name,Description,CategoryID,ImageLink,Price,Username,Stock,isActive")] Product product)
         {
+            product.Username = User.Identity.Name;
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;
@@ -100,30 +101,23 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /Products/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            new ProdService.ProdServiceClient().DeleteProduct(id);
             Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
-        // POST: /Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //// POST: /Products/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Product product = db.Products.Find(id);
+        //    db.Products.Remove(product);
+        //    db.SaveChanges();
+            
+        //}
 
         protected override void Dispose(bool disposing)
         {

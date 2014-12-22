@@ -106,10 +106,10 @@ namespace TraderMarket.ProdService {
         System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProduct", ReplyAction="http://tempuri.org/IProdService/AddProductResponse")]
-        void AddProduct(string name, string desc, int catid, int subid, string imageLink, decimal price, int stock);
+        void AddProduct(string name, string desc, int catid, string imageLink, decimal price, int stock);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProduct", ReplyAction="http://tempuri.org/IProdService/AddProductResponse")]
-        System.Threading.Tasks.Task AddProductAsync(string name, string desc, int catid, int subid, string imageLink, decimal price, int stock);
+        System.Threading.Tasks.Task AddProductAsync(string name, string desc, int catid, string imageLink, decimal price, int stock);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DeleteProduct", ReplyAction="http://tempuri.org/IProdService/DeleteProductResponse")]
         void DeleteProduct(int productID);
@@ -118,10 +118,10 @@ namespace TraderMarket.ProdService {
         System.Threading.Tasks.Task DeleteProductAsync(int productID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/UpdateProduct", ReplyAction="http://tempuri.org/IProdService/UpdateProductResponse")]
-        void UpdateProduct(int prodid, string name, string desc, int catid, int subid, string imageLink, decimal price, int stock);
+        void UpdateProduct(int prodid, string name, string desc, int catid, string imageLink, decimal price, int stock);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/UpdateProduct", ReplyAction="http://tempuri.org/IProdService/UpdateProductResponse")]
-        System.Threading.Tasks.Task UpdateProductAsync(int prodid, string name, string desc, int catid, int subid, string imageLink, decimal price, int stock);
+        System.Threading.Tasks.Task UpdateProductAsync(int prodid, string name, string desc, int catid, string imageLink, decimal price, int stock);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsAccordingToSeller", ReplyAction="http://tempuri.org/IProdService/GetProductsAccordingToSellerResponse")]
         Commonlayer.Views.ProductView[] GetProductsAccordingToSeller(string username);
@@ -301,12 +301,12 @@ namespace TraderMarket.ProdService {
             return base.Channel.GetProductsListAsync();
         }
         
-        public void AddProduct(string name, string desc, int catid, int subid, string imageLink, decimal price, int stock) {
-            base.Channel.AddProduct(name, desc, catid, subid, imageLink, price, stock);
+        public void AddProduct(string name, string desc, int catid, string imageLink, decimal price, int stock) {
+            base.Channel.AddProduct(name, desc, catid, imageLink, price, stock);
         }
         
-        public System.Threading.Tasks.Task AddProductAsync(string name, string desc, int catid, int subid, string imageLink, decimal price, int stock) {
-            return base.Channel.AddProductAsync(name, desc, catid, subid, imageLink, price, stock);
+        public System.Threading.Tasks.Task AddProductAsync(string name, string desc, int catid, string imageLink, decimal price, int stock) {
+            return base.Channel.AddProductAsync(name, desc, catid, imageLink, price, stock);
         }
         
         public void DeleteProduct(int productID) {
@@ -317,12 +317,12 @@ namespace TraderMarket.ProdService {
             return base.Channel.DeleteProductAsync(productID);
         }
         
-        public void UpdateProduct(int prodid, string name, string desc, int catid, int subid, string imageLink, decimal price, int stock) {
-            base.Channel.UpdateProduct(prodid, name, desc, catid, subid, imageLink, price, stock);
+        public void UpdateProduct(int prodid, string name, string desc, int catid, string imageLink, decimal price, int stock) {
+            base.Channel.UpdateProduct(prodid, name, desc, catid, imageLink, price, stock);
         }
         
-        public System.Threading.Tasks.Task UpdateProductAsync(int prodid, string name, string desc, int catid, int subid, string imageLink, decimal price, int stock) {
-            return base.Channel.UpdateProductAsync(prodid, name, desc, catid, subid, imageLink, price, stock);
+        public System.Threading.Tasks.Task UpdateProductAsync(int prodid, string name, string desc, int catid, string imageLink, decimal price, int stock) {
+            return base.Channel.UpdateProductAsync(prodid, name, desc, catid, imageLink, price, stock);
         }
         
         public Commonlayer.Views.ProductView[] GetProductsAccordingToSeller(string username) {

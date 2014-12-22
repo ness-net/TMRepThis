@@ -16,12 +16,12 @@ namespace Commonlayer
     {
         public OrderStatu()
         {
-            this.Orders = new HashSet<Order>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
     
         public int OrderStatusID { get; set; }
         public string Status { get; set; }
     
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

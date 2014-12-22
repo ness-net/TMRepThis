@@ -1,4 +1,4 @@
-﻿@model Commonlayer.Role
+﻿@model Commonlayer.OrderDetail
 
 @{
     ViewBag.Title = "Edit";
@@ -12,18 +12,22 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Role</h4>
+        <h4>@Html.DisplayFor(model => model.Product.Name)</h4>
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.RoleID)
-        <br />
-        <div class="form-group">            
+        @Html.HiddenFor(model => model.OrderID)
+
+        @Html.HiddenFor(model => model.ProductID)
+        @Html.HiddenFor(model => model.Quantity)
+        <br/>
+        <div class="form-group">
+          <b> Order Status</b>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Role1)
-                @Html.ValidationMessageFor(model => model.Role1)
+                @Html.DropDownList("OrderStatusID", String.Empty)
+                @Html.ValidationMessageFor(model => model.OrderStatusID)
             </div>
         </div>
-        <br />
+        <br/>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

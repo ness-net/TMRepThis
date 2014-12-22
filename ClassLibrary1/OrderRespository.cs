@@ -36,8 +36,7 @@ namespace DataAccessLayer
                         {
                             OrderID = o.OrderID,
                             Date = o.Date,
-                            Username = o.Username,
-                            OrderStatus = o.OrderStatusID
+                            Username = o.Username
                         }).First();
 
         }
@@ -50,8 +49,7 @@ namespace DataAccessLayer
                     {
                         OrderID = o.OrderID,
                         Date = o.Date,
-                        Username = o.Username,
-                        OrderStatus = o.OrderStatusID
+                        Username = o.Username
                     }).First();
         }
 

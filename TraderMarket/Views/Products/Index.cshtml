@@ -62,7 +62,14 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
+            @if(item.isActive == true)
+            { 
+            @Html.ActionLink("Mark Inactive", "Delete", new { id=item.ProductID })
+            }
+            else
+            {
+                @Html.ActionLink("Mark Active", "Delete", new { id=item.ProductID })
+            }
         </td>
     </tr>
 }

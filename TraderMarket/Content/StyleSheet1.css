@@ -42,6 +42,12 @@ table.sortable thead {
     margin: 0 auto 0 auto;
 }
 
+#UsersList {
+    
+    height:900px;
+    width:700px;
+}
+
 #top
 {
 	background: transparent url(Banner.png) no-repeat 0 center;

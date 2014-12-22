@@ -82,9 +82,10 @@ namespace DataAccessLayer
                         select new MenusView
                         {
                             Title = m.Title,
-                            URL = m.URL
+                            URL = m.URL,
+                            Position = m.Position
                         }
-                    ).Distinct();
+                    ).Distinct().OrderBy(u => u.Position);
 
             return list.AsQueryable();
         }

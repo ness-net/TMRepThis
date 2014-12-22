@@ -12,100 +12,109 @@
 	<hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Password)
+            <b>@Html.DisplayNameFor(model => model.Username)</b>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Password)
+            @Html.DisplayFor(model => model.Username)
         </dd>
-
+        <br/>
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            <b>@Html.DisplayNameFor(model => model.Name)</b>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.Surname)
+            <b> @Html.DisplayNameFor(model => model.Surname)</b>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Surname)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.ContactNo)
+            <b> @Html.DisplayNameFor(model => model.ContactNo)</b>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ContactNo)
+            @Model.ContactNo
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            <b> @Html.DisplayNameFor(model => model.Email)</b>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.Residence)
+            <b>  @Html.DisplayNameFor(model => model.Residence)</b>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Residence)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.Street)
+            <b>  @Html.DisplayNameFor(model => model.Street)</b>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Street)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.Town)
+            <b> @Html.DisplayNameFor(model => model.Town)</b>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Town)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.PostCode)
+            <b>  @Html.DisplayNameFor(model => model.PostCode)</b>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.PostCode)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.Country)
+            <b> @Html.DisplayNameFor(model => model.Country)</b>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Country)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.HandlesDeliveres)
+            <b>  @Html.DisplayNameFor(model => model.HandlesDeliveres)</b>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.HandlesDeliveres)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.AccountNumber)
+            <b> User Type </b>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AccountNumber)
-        </dd>
+            @if (Model.AccountNumber == 0)
+            {
+                <text>Buyer</text>
+            }
+            else
+            {
+                <text>Seller</text><br/><br/>
+                <b>  @Html.DisplayNameFor(model => model.AccountNumber)</b><br/>
+                 @Model.AccountNumber
+            }
+        </dd><br />
 
     </dl>
 </div>

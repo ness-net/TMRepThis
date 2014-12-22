@@ -18,10 +18,12 @@ namespace DataAccessLayer
 
         }
 
-        public Role GetDefaultRole()
+        public Role GetRole(int role)
         {
-            return Entity.Roles.SingleOrDefault(r => r.RoleID == 1);
+            return Entity.Roles.SingleOrDefault(r => r.RoleID == role);
         }
+
+        
 
         public IQueryable<Role> GetUserRoles(string username)
         {

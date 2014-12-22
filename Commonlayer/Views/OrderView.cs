@@ -12,5 +12,6 @@ namespace Commonlayer.Views
         public string Date { get; set; }
         public string Username { get; set; }
         public System.Nullable<int> OrderStatus { get; set; }
+        public string UsernameSeller { get; set; }
     }
 }

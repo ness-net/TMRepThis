@@ -289,7 +289,13 @@ namespace DataAccessLayer
         {
             Product thisp = GetProduct(productid);
             Product updatedp = thisp;
+            if (thisp.isActive == false)
+            {
+                updatedp.isActive = true;
+            }
+            else { 
             updatedp.isActive = false;
+            }
             Entity.Entry(thisp).CurrentValues.SetValues(thisp);
             //Entity.Products.Attach(thisp);
             //((IObjectContextAdapter)Entity).ObjectContext.ApplyCurrentValues("Products", thisp);

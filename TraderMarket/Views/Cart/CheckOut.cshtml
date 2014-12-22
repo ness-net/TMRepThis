@@ -26,6 +26,7 @@
             </select>
             @Html.ValidationMessageFor(model => model.Card)
         </div>
+        @Html.ActionLink("Add Credit Card", "Create", "CreditCard")
 
         <p>
             <input type="submit" value="Purchase" />

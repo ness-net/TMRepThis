@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Commonlayer.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatu.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatu.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { orderid = item.OrderID, prodid = item.ProductID }) |
+            @Html.ActionLink("Details", "Details", new { orderid = item.OrderID, prodid = item.ProductID }) 
+        </td>
+    </tr>
+}
+
+</table>
