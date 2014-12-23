@@ -15,6 +15,7 @@ namespace TraderMarket.Controllers
         private TradersMarketplacedbEntities db = new TradersMarketplacedbEntities();
 
         // GET: /Products/
+        [Authorize(Roles = "Seller")]
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.Category).Include(p => p.User).Where(u => u.Username == User.Identity.Name);
