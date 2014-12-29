@@ -15,6 +15,7 @@ namespace TraderMarket.Controllers
         private TradersMarketplacedbEntities db = new TradersMarketplacedbEntities();
 
         // GET: /CreditCard/
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Index()
         {
             var creditcards = db.CreditCards.Include(c => c.User).Where(u => u.Username == User.Identity.Name);
@@ -22,6 +23,7 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /CreditCard/Details/5
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Details(decimal id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /CreditCard/Create
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Create()
         {
             ViewBag.Username = new SelectList(db.Users, "Username", "Password");
@@ -63,6 +66,7 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /CreditCard/Edit/5
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Edit(decimal id)
         {
             if (id == null)
@@ -96,6 +100,7 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /CreditCard/Delete/5
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Delete(decimal id)
         {
             if (id == null)

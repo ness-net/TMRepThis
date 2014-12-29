@@ -27,7 +27,7 @@ namespace Commonlayer
         public string Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public decimal ContactNo { get; set; }
+        public string ContactNo { get; set; }
         public string Email { get; set; }
         public string Residence { get; set; }
         public string Street { get; set; }

@@ -13,6 +13,7 @@ namespace TraderMarket.Controllers
     {
         //
         // GET: /Cart/
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Index()
         {
             var cart = new ProdService.ProdServiceClient().GetProductsinShoppingCart(User.Identity.Name.ToString());
@@ -51,6 +52,7 @@ namespace TraderMarket.Controllers
             }
         }
 
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult CheckOut()
         {
             ViewBag.Message = "Check Out";

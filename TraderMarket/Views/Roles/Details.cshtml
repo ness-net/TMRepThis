@@ -1,4 +1,4 @@
-﻿@model Commonlayer.Role
+﻿@model Commonlayer.Views.RolesView
 
 @{
     ViewBag.Title = "Details";
@@ -16,12 +16,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Role1)
+            @Html.DisplayFor(model => model.Name)
         </dd>
         </br>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RoleID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TradersMarketplacedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TradersMarketplacedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="Username" />
@@ -93,7 +93,7 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
-          <Property Name="ImageLink" Type="varchar" MaxLength="50" />
+          <Property Name="ImageLink" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Price" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Stock" Type="int" Nullable="false" />
@@ -133,7 +133,7 @@
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ContactNo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Residence" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
@@ -475,95 +475,21 @@
             <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TradersMarketplacedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="TradersMarketplacedbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Carts" EntityType="TradersMarketplacedbModel.Cart" />
-          <EntitySet Name="Categories" EntityType="TradersMarketplacedbModel.Category" />
-          <EntitySet Name="Commissions" EntityType="TradersMarketplacedbModel.Commission" />
-          <EntitySet Name="CreditCards" EntityType="TradersMarketplacedbModel.CreditCard" />
-          <EntitySet Name="Menus" EntityType="TradersMarketplacedbModel.Menu" />
-          <EntitySet Name="OrderDetails" EntityType="TradersMarketplacedbModel.OrderDetail" />
-          <EntitySet Name="Orders" EntityType="TradersMarketplacedbModel.Order" />
-          <EntitySet Name="OrderStatus" EntityType="TradersMarketplacedbModel.OrderStatu" />
-          <EntitySet Name="Products" EntityType="TradersMarketplacedbModel.Product" />
-          <EntitySet Name="Roles" EntityType="TradersMarketplacedbModel.Role" />
-          <EntitySet Name="SubCategories" EntityType="TradersMarketplacedbModel.SubCategory" />
-          <EntitySet Name="sysdiagrams" EntityType="TradersMarketplacedbModel.sysdiagram" />
-          <EntitySet Name="Users" EntityType="TradersMarketplacedbModel.User" />
-          <AssociationSet Name="FK_Cart_Product" Association="TradersMarketplacedbModel.FK_Cart_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Cart" EntitySet="Carts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cart_User" Association="TradersMarketplacedbModel.FK_Cart_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Cart" EntitySet="Carts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Categories_Categories" Association="TradersMarketplacedbModel.FK_Categories_Categories">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Category1" EntitySet="Categories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Categories" Association="TradersMarketplacedbModel.FK_Product_Categories">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubCategories_Categories" Association="TradersMarketplacedbModel.FK_SubCategories_Categories">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="SubCategory" EntitySet="SubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CreditCards_User" Association="TradersMarketplacedbModel.FK_CreditCards_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="CreditCard" EntitySet="CreditCards" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orders_CreditCards" Association="TradersMarketplacedbModel.FK_Orders_CreditCards">
-            <End Role="CreditCard" EntitySet="CreditCards" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Menu_Menu" Association="TradersMarketplacedbModel.FK_Menu_Menu">
-            <End Role="Menu" EntitySet="Menus" />
-            <End Role="Menu1" EntitySet="Menus" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderDetails_Orders" Association="TradersMarketplacedbModel.FK_OrderDetails_Orders">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="OrderDetail" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderDetails_OrderStatus" Association="TradersMarketplacedbModel.FK_OrderDetails_OrderStatus">
-            <End Role="OrderStatu" EntitySet="OrderStatus" />
-            <End Role="OrderDetail" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderDetails_Product" Association="TradersMarketplacedbModel.FK_OrderDetails_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="OrderDetail" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_User" Association="TradersMarketplacedbModel.FK_Product_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="MenuRole" Association="TradersMarketplacedbModel.MenuRole">
-            <End Role="Menu" EntitySet="Menus" />
-            <End Role="Role" EntitySet="Roles" />
-          </AssociationSet>
-          <AssociationSet Name="UserCommission" Association="TradersMarketplacedbModel.UserCommission">
-            <End Role="Commission" EntitySet="Commissions" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="UserRole" Association="TradersMarketplacedbModel.UserRole">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="Username" />
             <PropertyRef Name="ProductID" />
           </Key>
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="TradersMarketplacedbModel.FK_Cart_Product" FromRole="Cart" ToRole="Product" />
-          <NavigationProperty Name="User" Relationship="TradersMarketplacedbModel.FK_Cart_User" FromRole="Cart" ToRole="User" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Cart_Product" FromRole="Cart" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Cart_User" FromRole="Cart" ToRole="User" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -573,44 +499,44 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ImageLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ParentID" Type="Int32" />
-          <NavigationProperty Name="Categories1" Relationship="TradersMarketplacedbModel.FK_Categories_Categories" FromRole="Category" ToRole="Category1" />
-          <NavigationProperty Name="Category1" Relationship="TradersMarketplacedbModel.FK_Categories_Categories" FromRole="Category1" ToRole="Category" />
-          <NavigationProperty Name="Products" Relationship="TradersMarketplacedbModel.FK_Product_Categories" FromRole="Category" ToRole="Product" />
-          <NavigationProperty Name="SubCategories" Relationship="TradersMarketplacedbModel.FK_SubCategories_Categories" FromRole="Category" ToRole="SubCategory" />
+          <NavigationProperty Name="Categories1" Relationship="Self.FK_Categories_Categories" FromRole="Categories" ToRole="Categories1" />
+          <NavigationProperty Name="Category1" Relationship="Self.FK_Categories_Categories" FromRole="Categories1" ToRole="Categories" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Categories" FromRole="Categories" ToRole="Product" />
+          <NavigationProperty Name="SubCategories" Relationship="Self.FK_SubCategories_Categories" FromRole="Categories" ToRole="SubCategories" />
         </EntityType>
         <EntityType Name="Commission">
           <Key>
             <PropertyRef Name="CommissionID" />
           </Key>
           <Property Name="CommissionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TypeOFCommission" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <NavigationProperty Name="Users" Relationship="TradersMarketplacedbModel.UserCommission" FromRole="Commission" ToRole="User" />
+          <Property Name="TypeOFCommission" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.UserCommission" FromRole="Commission" ToRole="User" />
         </EntityType>
         <EntityType Name="CreditCard">
           <Key>
             <PropertyRef Name="CardNumber" />
           </Key>
-          <Property Name="CardType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CardNumber" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="CardOwner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CVV" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="User" Relationship="TradersMarketplacedbModel.FK_CreditCards_User" FromRole="CreditCard" ToRole="User" />
-          <NavigationProperty Name="Orders" Relationship="TradersMarketplacedbModel.FK_Orders_CreditCards" FromRole="CreditCard" ToRole="Order" />
+          <Property Name="CardType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CardNumber" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CardOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CVV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_CreditCards_User" FromRole="CreditCards" ToRole="User" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_CreditCards" FromRole="CreditCards" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
             <PropertyRef Name="MenuID" />
           </Key>
           <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="URL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ParentID" Type="Int32" />
           <Property Name="Position" Type="Int32" />
-          <NavigationProperty Name="Menu1" Relationship="TradersMarketplacedbModel.FK_Menu_Menu" FromRole="Menu" ToRole="Menu1" />
-          <NavigationProperty Name="Menu2" Relationship="TradersMarketplacedbModel.FK_Menu_Menu" FromRole="Menu1" ToRole="Menu" />
-          <NavigationProperty Name="Roles" Relationship="TradersMarketplacedbModel.MenuRole" FromRole="Menu" ToRole="Role" />
+          <NavigationProperty Name="Menu1" Relationship="Self.FK_Menu_Menu" FromRole="Menu" ToRole="Menu1" />
+          <NavigationProperty Name="Menu2" Relationship="Self.FK_Menu_Menu" FromRole="Menu1" ToRole="Menu" />
+          <NavigationProperty Name="Roles" Relationship="Self.MenuRole" FromRole="Menu" ToRole="Roles" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -621,9 +547,9 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="OrderStatusID" Type="Int32" />
-          <NavigationProperty Name="Order" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Orders" FromRole="OrderDetail" ToRole="Order" />
-          <NavigationProperty Name="OrderStatu" Relationship="TradersMarketplacedbModel.FK_OrderDetails_OrderStatus" FromRole="OrderDetail" ToRole="OrderStatu" />
-          <NavigationProperty Name="Product" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Product" FromRole="OrderDetail" ToRole="Product" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
+          <NavigationProperty Name="OrderStatu" Relationship="Self.FK_OrderDetails_OrderStatus" FromRole="OrderDetails" ToRole="OrderStatus" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_Product" FromRole="OrderDetails" ToRole="Product" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -633,59 +559,59 @@
           <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CardUsed" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="CreditCard" Relationship="TradersMarketplacedbModel.FK_Orders_CreditCards" FromRole="Order" ToRole="CreditCard" />
-          <NavigationProperty Name="OrderDetails" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Orders" FromRole="Order" ToRole="OrderDetail" />
+          <NavigationProperty Name="CreditCard" Relationship="Self.FK_Orders_CreditCards" FromRole="Orders" ToRole="CreditCards" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
         </EntityType>
         <EntityType Name="OrderStatu">
           <Key>
             <PropertyRef Name="OrderStatusID" />
           </Key>
           <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="OrderDetails" Relationship="TradersMarketplacedbModel.FK_OrderDetails_OrderStatus" FromRole="OrderStatu" ToRole="OrderDetail" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_OrderStatus" FromRole="OrderStatus" ToRole="OrderDetails" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductID" />
           </Key>
           <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <Property Name="ImageLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageLink" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Stock" Type="Int32" Nullable="false" />
           <Property Name="isActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Carts" Relationship="TradersMarketplacedbModel.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
-          <NavigationProperty Name="Category" Relationship="TradersMarketplacedbModel.FK_Product_Categories" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="OrderDetails" Relationship="TradersMarketplacedbModel.FK_OrderDetails_Product" FromRole="Product" ToRole="OrderDetail" />
-          <NavigationProperty Name="User" Relationship="TradersMarketplacedbModel.FK_Product_User" FromRole="Product" ToRole="User" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Product_Categories" FromRole="Product" ToRole="Categories" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Product" FromRole="Product" ToRole="OrderDetails" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Product_User" FromRole="Product" ToRole="User" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="RoleID" />
           </Key>
           <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Menus" Relationship="TradersMarketplacedbModel.MenuRole" FromRole="Role" ToRole="Menu" />
-          <NavigationProperty Name="Users" Relationship="TradersMarketplacedbModel.UserRole" FromRole="Role" ToRole="User" />
+          <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Menus" Relationship="Self.MenuRole" FromRole="Roles" ToRole="Menu" />
+          <NavigationProperty Name="Users" Relationship="Self.UserRole" FromRole="Roles" ToRole="User" />
         </EntityType>
         <EntityType Name="SubCategory">
           <Key>
             <PropertyRef Name="SubCategoryID" />
           </Key>
           <Property Name="SubCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ParentCategoryID" Type="Int32" Nullable="false" />
           <Property Name="ImageLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Category" Relationship="TradersMarketplacedbModel.FK_SubCategories_Categories" FromRole="SubCategory" ToRole="Category" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_SubCategories_Categories" FromRole="SubCategories" ToRole="Categories" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -695,28 +621,28 @@
           <Key>
             <PropertyRef Name="Username" />
           </Key>
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ContactNo" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Residence" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Town" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PostCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Residence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Town" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="HandlesDeliveres" Type="Boolean" />
           <Property Name="AccountNumber" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Carts" Relationship="TradersMarketplacedbModel.FK_Cart_User" FromRole="User" ToRole="Cart" />
-          <NavigationProperty Name="CreditCards" Relationship="TradersMarketplacedbModel.FK_CreditCards_User" FromRole="User" ToRole="CreditCard" />
-          <NavigationProperty Name="Products" Relationship="TradersMarketplacedbModel.FK_Product_User" FromRole="User" ToRole="Product" />
-          <NavigationProperty Name="Commissions" Relationship="TradersMarketplacedbModel.UserCommission" FromRole="User" ToRole="Commission" />
-          <NavigationProperty Name="Roles" Relationship="TradersMarketplacedbModel.UserRole" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_User" FromRole="User" ToRole="Cart" />
+          <NavigationProperty Name="CreditCards" Relationship="Self.FK_CreditCards_User" FromRole="User" ToRole="CreditCards" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_User" FromRole="User" ToRole="Product" />
+          <NavigationProperty Name="Commissions" Relationship="Self.UserCommission" FromRole="User" ToRole="Commission" />
+          <NavigationProperty Name="Roles" Relationship="Self.UserRole" FromRole="User" ToRole="Roles" />
         </EntityType>
         <Association Name="FK_Cart_Product">
-          <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="TradersMarketplacedbModel.Cart" Role="Cart" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductID" />
@@ -727,10 +653,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cart_User">
-          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1">
+          <End Role="User" Type="Self.User" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="TradersMarketplacedbModel.Cart" Role="Cart" Multiplicity="*" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Username" />
@@ -741,22 +667,22 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Categories_Categories">
-          <End Type="TradersMarketplacedbModel.Category" Role="Category" Multiplicity="0..1" />
-          <End Type="TradersMarketplacedbModel.Category" Role="Category1" Multiplicity="*" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Categories1" Type="Self.Category" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Category">
+            <Principal Role="Categories">
               <PropertyRef Name="CategoryID" />
             </Principal>
-            <Dependent Role="Category1">
+            <Dependent Role="Categories1">
               <PropertyRef Name="ParentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Categories">
-          <End Type="TradersMarketplacedbModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="*" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Category">
+            <Principal Role="Categories">
               <PropertyRef Name="CategoryID" />
             </Principal>
             <Dependent Role="Product">
@@ -765,46 +691,46 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubCategories_Categories">
-          <End Type="TradersMarketplacedbModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="TradersMarketplacedbModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="SubCategories" Type="Self.SubCategory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Category">
+            <Principal Role="Categories">
               <PropertyRef Name="CategoryID" />
             </Principal>
-            <Dependent Role="SubCategory">
+            <Dependent Role="SubCategories">
               <PropertyRef Name="ParentCategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CreditCards_User">
-          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1">
+          <End Role="User" Type="Self.User" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="TradersMarketplacedbModel.CreditCard" Role="CreditCard" Multiplicity="*" />
+          <End Role="CreditCards" Type="Self.CreditCard" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Username" />
             </Principal>
-            <Dependent Role="CreditCard">
+            <Dependent Role="CreditCards">
               <PropertyRef Name="Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_CreditCards">
-          <End Type="TradersMarketplacedbModel.CreditCard" Role="CreditCard" Multiplicity="0..1" />
-          <End Type="TradersMarketplacedbModel.Order" Role="Order" Multiplicity="*" />
+          <End Role="CreditCards" Type="Self.CreditCard" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CreditCard">
+            <Principal Role="CreditCards">
               <PropertyRef Name="CardNumber" />
             </Principal>
-            <Dependent Role="Order">
+            <Dependent Role="Orders">
               <PropertyRef Name="CardUsed" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Menu_Menu">
-          <End Type="TradersMarketplacedbModel.Menu" Role="Menu" Multiplicity="0..1" />
-          <End Type="TradersMarketplacedbModel.Menu" Role="Menu1" Multiplicity="*" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Menu">
               <PropertyRef Name="MenuID" />
@@ -815,46 +741,46 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetails_Orders">
-          <End Type="TradersMarketplacedbModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="TradersMarketplacedbModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Order">
+            <Principal Role="Orders">
               <PropertyRef Name="OrderID" />
             </Principal>
-            <Dependent Role="OrderDetail">
+            <Dependent Role="OrderDetails">
               <PropertyRef Name="OrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetails_OrderStatus">
-          <End Type="TradersMarketplacedbModel.OrderStatu" Role="OrderStatu" Multiplicity="0..1" />
-          <End Type="TradersMarketplacedbModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <End Role="OrderStatus" Type="Self.OrderStatu" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="OrderStatu">
+            <Principal Role="OrderStatus">
               <PropertyRef Name="OrderStatusID" />
             </Principal>
-            <Dependent Role="OrderDetail">
+            <Dependent Role="OrderDetails">
               <PropertyRef Name="OrderStatusID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetails_Product">
-          <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="TradersMarketplacedbModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductID" />
             </Principal>
-            <Dependent Role="OrderDetail">
+            <Dependent Role="OrderDetails">
               <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_User">
-          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="1">
+          <End Role="User" Type="Self.User" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="TradersMarketplacedbModel.Product" Role="Product" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Username" />
@@ -865,18 +791,93 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="MenuRole">
-          <End Type="TradersMarketplacedbModel.Menu" Role="Menu" Multiplicity="*" />
-          <End Type="TradersMarketplacedbModel.Role" Role="Role" Multiplicity="*" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
         </Association>
         <Association Name="UserCommission">
-          <End Type="TradersMarketplacedbModel.Commission" Role="Commission" Multiplicity="*" />
-          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="*" />
+          <End Role="Commission" Type="Self.Commission" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
         </Association>
         <Association Name="UserRole">
-          <End Type="TradersMarketplacedbModel.Role" Role="Role" Multiplicity="*" />
-          <End Type="TradersMarketplacedbModel.User" Role="User" Multiplicity="*" />
+          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
         </Association>
-        </Schema>
+        <EntityContainer Name="TradersMarketplacedbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Commissions" EntityType="Self.Commission" />
+          <EntitySet Name="CreditCards" EntityType="Self.CreditCard" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatu" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="SubCategories" EntityType="Self.SubCategory" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Cart_Product" Association="Self.FK_Cart_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_User" Association="Self.FK_Cart_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Categories" Association="Self.FK_Categories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Categories1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Categories" Association="Self.FK_Product_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategories_Categories" Association="Self.FK_SubCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="SubCategories" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditCards_User" Association="Self.FK_CreditCards_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CreditCards" EntitySet="CreditCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_CreditCards" Association="Self.FK_Orders_CreditCards">
+            <End Role="CreditCards" EntitySet="CreditCards" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Menu" Association="Self.FK_Menu_Menu">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Menu1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Orders" Association="Self.FK_OrderDetails_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_OrderStatus" Association="Self.FK_OrderDetails_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Product" Association="Self.FK_OrderDetails_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_User" Association="Self.FK_Product_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="MenuRole" Association="Self.MenuRole">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="UserCommission" Association="Self.UserCommission">
+            <End Role="Commission" EntitySet="Commissions" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserRole" Association="Self.UserRole">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -885,166 +886,166 @@
           <EntitySetMapping Name="Carts">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Cart">
               <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Category">
               <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Commissions">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Commission">
               <MappingFragment StoreEntitySet="Commission">
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="TypeOFCommission" ColumnName="TypeOFCommission" />
                 <ScalarProperty Name="CommissionID" ColumnName="CommissionID" />
+                <ScalarProperty Name="TypeOFCommission" ColumnName="TypeOFCommission" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CreditCards">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.CreditCard">
               <MappingFragment StoreEntitySet="CreditCards">
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="CVV" ColumnName="CVV" />
-                <ScalarProperty Name="CardOwner" ColumnName="CardOwner" />
-                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
                 <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CardOwner" ColumnName="CardOwner" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Menus">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Menu">
               <MappingFragment StoreEntitySet="Menu">
-                <ScalarProperty Name="Position" ColumnName="Position" />
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="URL" ColumnName="URL" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetails">
-                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Order">
               <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="CardUsed" ColumnName="CardUsed" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CardUsed" ColumnName="CardUsed" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderStatus">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.OrderStatu">
               <MappingFragment StoreEntitySet="OrderStatus">
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.Role">
               <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="Role1" ColumnName="Role" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SubCategories">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.SubCategory">
               <MappingFragment StoreEntitySet="SubCategories">
-                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
-                <ScalarProperty Name="ParentCategoryID" ColumnName="ParentCategoryID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentCategoryID" ColumnName="ParentCategoryID" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="TradersMarketplacedbModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
-                <ScalarProperty Name="HandlesDeliveres" ColumnName="HandlesDeliveres" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
-                <ScalarProperty Name="Town" ColumnName="Town" />
-                <ScalarProperty Name="Street" ColumnName="Street" />
-                <ScalarProperty Name="Residence" ColumnName="Residence" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Residence" ColumnName="Residence" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="HandlesDeliveres" ColumnName="HandlesDeliveres" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="MenuRole" TypeName="TradersMarketplacedbModel.MenuRole" StoreEntitySet="MenuRole">
-            <EndProperty Name="Role">
-              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-            </EndProperty>
             <EndProperty Name="Menu">
               <ScalarProperty Name="MenuID" ColumnName="MenuID" />
             </EndProperty>
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="UserCommission" TypeName="TradersMarketplacedbModel.UserCommission" StoreEntitySet="UserCommission">
-            <EndProperty Name="User">
-              <ScalarProperty Name="Username" ColumnName="Username" />
-            </EndProperty>
             <EndProperty Name="Commission">
               <ScalarProperty Name="CommissionID" ColumnName="CommissionID" />
             </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="UserRole" TypeName="TradersMarketplacedbModel.UserRole" StoreEntitySet="UserRole">
             <EndProperty Name="User">
               <ScalarProperty Name="Username" ColumnName="Username" />
             </EndProperty>
-            <EndProperty Name="Role">
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserRole" TypeName="TradersMarketplacedbModel.UserRole" StoreEntitySet="UserRole">
+            <EndProperty Name="Roles">
               <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Username" ColumnName="Username" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

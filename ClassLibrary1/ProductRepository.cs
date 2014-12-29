@@ -5,6 +5,7 @@ using System.Text;
 using Commonlayer;
 using Commonlayer.Views;
 using System.Data.Entity.Infrastructure;
+using DataAccessLayer.Observer;
 
 namespace DataAccessLayer
 {
@@ -34,6 +35,16 @@ namespace DataAccessLayer
         
         }
 
+        public Product LastProduct()
+        {
+            var list = (from p in Entity.Products
+                    select new Product{}).Distinct();
+
+            var myprod = list.OrderBy(item => item.ProductID).Last();
+            return myprod;
+                //list.OrderBy(item => item.Created).Last();
+
+        }
 
         public IQueryable<CategoryView> getCategories()
         {
@@ -141,6 +152,14 @@ namespace DataAccessLayer
                      ).SingleOrDefault();
         }
 
+        public string GetProductImageLi(int ProdID)
+        {
+            return (from p in Entity.Products
+                    where p.ProductID == ProdID
+                    select p.ImageLink
+                     ).SingleOrDefault();
+        }
+
         public IQueryable<ProductView> GetProductsAccordingToSubCategory(System.Nullable<int> id)
         {
             var list = (from p in Entity.Products
@@ -186,6 +205,13 @@ namespace DataAccessLayer
             Product ps = GetProduct(productid);
             ps.Stock += stock;
             Entity.SaveChanges();
+            int currentstock = GetStock(productid);
+            User u = new UserRepository().GetUser(ps.Username);
+                Subject subject = new Subject();
+                ObserverC observer1 = new ObserverC(ps.Name, u.Email);
+                subject.Subscribe(observer1);
+                subject.CurrentS = currentstock;
+                subject.Stock = currentstock;
         }
         
 

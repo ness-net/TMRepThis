@@ -4,35 +4,35 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6876a33c28c34fd8b073c48e9f1daee7" Name="Diagram1">
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.Cart" Width="1.5" PointX="5.25" PointY="5" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.Category" Width="1.5" PointX="6" PointY="0.75" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.Commission" Width="1.5" PointX="0.75" PointY="5.125" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.CreditCard" Width="1.5" PointX="5.25" PointY="11.875" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.Menu" Width="1.5" PointX="1.5" PointY="9.75" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.OrderDetail" Width="1.5" PointX="10.5" PointY="8" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.Order" Width="1.5" PointX="7.5" PointY="12" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.OrderStatu" Width="1.5" PointX="8.25" PointY="9.375" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.Product" Width="1.5" PointX="8.25" PointY="4.25" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.Role" Width="1.5" PointX="0.75" PointY="2.125" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.SubCategory" Width="1.5" PointX="8.25" PointY="1" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.User" Width="1.5" PointX="3" PointY="3.75" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_Cart_Product" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_Cart_User" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_Categories_Categories" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_Product_Categories" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_SubCategories_Categories" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_CreditCards_User" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_Orders_CreditCards" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_Menu_Menu" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_OrderDetails_Orders" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_OrderDetails_OrderStatus" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_OrderDetails_Product" />
-        <AssociationConnector Association="TradersMarketplacedbModel.FK_Product_User" />
-        <AssociationConnector Association="TradersMarketplacedbModel.MenuRole" />
-        <AssociationConnector Association="TradersMarketplacedbModel.UserCommission" />
-        <AssociationConnector Association="TradersMarketplacedbModel.UserRole" />
+      <Diagram DiagramId="2d7a1b4402d3402cbcccfb8a8af74885" Name="Diagram1">
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Cart" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Category" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Commission" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.CreditCard" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Menu" Width="1.5" PointX="1.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.OrderDetail" Width="1.5" PointX="9.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Order" Width="1.5" PointX="7.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.OrderStatu" Width="1.5" PointX="7.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Product" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Role" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.SubCategory" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.sysdiagram" Width="1.5" PointX="2.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.User" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_Cart_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_Cart_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_Categories_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_Product_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_SubCategories_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_CreditCards_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_Orders_CreditCards" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_Menu_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_OrderDetails_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_OrderDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_Product_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.MenuRole" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.UserCommission" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.UserRole" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

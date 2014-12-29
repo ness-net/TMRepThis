@@ -98,6 +98,12 @@
   <wsdl:message name="IProdService_GetProductsList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsListResponse" />
   </wsdl:message>
+  <wsdl:message name="IProdService_GetProductImageLi_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductImageLi" />
+  </wsdl:message>
+  <wsdl:message name="IProdService_GetProductImageLi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductImageLiResponse" />
+  </wsdl:message>
   <wsdl:message name="IProdService_AddProduct_InputMessage">
     <wsdl:part name="parameters" element="tns:AddProduct" />
   </wsdl:message>
@@ -206,6 +212,10 @@
     <wsdl:operation name="GetProductsList">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProductsList" message="tns:IProdService_GetProductsList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetProductsListResponse" message="tns:IProdService_GetProductsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductImageLi">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProductImageLi" message="tns:IProdService_GetProductImageLi_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetProductImageLiResponse" message="tns:IProdService_GetProductImageLi_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddProduct">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/AddProduct" message="tns:IProdService_AddProduct_InputMessage" />
@@ -370,6 +380,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductsList">
       <soap:operation soapAction="http://tempuri.org/IProdService/GetProductsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductImageLi">
+      <soap:operation soapAction="http://tempuri.org/IProdService/GetProductImageLi" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

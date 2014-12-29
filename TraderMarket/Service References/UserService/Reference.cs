@@ -51,6 +51,12 @@ namespace TraderMarket.UserService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllUsers", ReplyAction="http://tempuri.org/IUserService/GetAllUsersResponse")]
         System.Threading.Tasks.Task<Commonlayer.User[]> GetAllUsersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserPassword", ReplyAction="http://tempuri.org/IUserService/GetUserPasswordResponse")]
+        string GetUserPassword(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserPassword", ReplyAction="http://tempuri.org/IUserService/GetUserPasswordResponse")]
+        System.Threading.Tasks.Task<string> GetUserPasswordAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetCreditCards", ReplyAction="http://tempuri.org/IUserService/GetCreditCardsResponse")]
         Commonlayer.Views.CreditCardView[] GetCreditCards(string username);
         
@@ -149,6 +155,14 @@ namespace TraderMarket.UserService {
         
         public System.Threading.Tasks.Task<Commonlayer.User[]> GetAllUsersAsync() {
             return base.Channel.GetAllUsersAsync();
+        }
+        
+        public string GetUserPassword(string username) {
+            return base.Channel.GetUserPassword(username);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetUserPasswordAsync(string username) {
+            return base.Channel.GetUserPasswordAsync(username);
         }
         
         public Commonlayer.Views.CreditCardView[] GetCreditCards(string username) {

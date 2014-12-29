@@ -48,6 +48,9 @@
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -72,6 +75,7 @@
     <Content Include="MenuService.svc" />
     <Content Include="OrderService.svc" />
     <Content Include="ProdService.svc" />
+    <Content Include="RoleService1.svc" />
     <Content Include="UserService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -79,6 +83,7 @@
     <Compile Include="IMenuService.cs" />
     <Compile Include="IOrderService.cs" />
     <Compile Include="IProdService.cs" />
+    <Compile Include="IRoleService1.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="MenuService.svc.cs">
       <DependentUpon>MenuService.svc</DependentUpon>
@@ -90,6 +95,9 @@
       <DependentUpon>ProdService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleService1.svc.cs">
+      <DependentUpon>RoleService1.svc</DependentUpon>
+    </Compile>
     <Compile Include="UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
     </Compile>

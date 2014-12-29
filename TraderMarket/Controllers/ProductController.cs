@@ -12,6 +12,7 @@ namespace TraderMarket.Controllers
     {
         //
         // GET: /Product/
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Index(System.Nullable<int> id)
         {
           
@@ -33,6 +34,7 @@ namespace TraderMarket.Controllers
             
         }
 
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Details(int id)
         {
             ProductView e = new ProdService.ProdServiceClient().GetProductV(id);
@@ -76,12 +78,15 @@ namespace TraderMarket.Controllers
         }
 
 
+        [Authorize(Roles = "Seller, Admin")]
         public ActionResult SellerIndex()
         {
                 List<ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSeller(User.Identity.Name).ToList();
                 return View("SellerIndex", list);
         }
 
+
+        [Authorize(Roles = "Seller, Admin")]
         public ActionResult Modify(int id)
         {
             ProductView e = new ProdService.ProdServiceClient().GetProductV(id);
@@ -99,6 +104,8 @@ namespace TraderMarket.Controllers
             return View("Modify", model);
         }
 
+
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Delete(int id)
         {
             new ProdService.ProdServiceClient().DeleteProduct(id);
@@ -106,6 +113,8 @@ namespace TraderMarket.Controllers
             return View("SellerIndex", list);
         }
 
+
+        [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Activate(int id)
         {
             new ProdService.ProdServiceClient().MarkActive(id);

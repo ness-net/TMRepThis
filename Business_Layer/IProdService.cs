@@ -18,7 +18,6 @@ namespace Business_Layer
         IQueryable<ProductView> GetProducts();
 
 
-
         [OperationContract]
         Product GetProduct(int id);
 
@@ -63,6 +62,9 @@ namespace Business_Layer
 
         [OperationContract]
         IEnumerable<ProductView> GetProductsList();
+
+        [OperationContract]
+        string GetProductImageLi(int ProdID);
 
         [OperationContract]
         void AddProduct(string name, string desc, int catid, string imageLink, decimal price, int stock);

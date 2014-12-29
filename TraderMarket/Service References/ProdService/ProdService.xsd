@@ -204,6 +204,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetProductImageLi">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProdID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductImageLiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProductImageLiResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddProduct">
     <xs:complexType>
       <xs:sequence>

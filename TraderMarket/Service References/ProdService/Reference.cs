@@ -105,6 +105,12 @@ namespace TraderMarket.ProdService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsList", ReplyAction="http://tempuri.org/IProdService/GetProductsListResponse")]
         System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsListAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductImageLi", ReplyAction="http://tempuri.org/IProdService/GetProductImageLiResponse")]
+        string GetProductImageLi(int ProdID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductImageLi", ReplyAction="http://tempuri.org/IProdService/GetProductImageLiResponse")]
+        System.Threading.Tasks.Task<string> GetProductImageLiAsync(int ProdID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProduct", ReplyAction="http://tempuri.org/IProdService/AddProductResponse")]
         void AddProduct(string name, string desc, int catid, string imageLink, decimal price, int stock);
         
@@ -299,6 +305,14 @@ namespace TraderMarket.ProdService {
         
         public System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsListAsync() {
             return base.Channel.GetProductsListAsync();
+        }
+        
+        public string GetProductImageLi(int ProdID) {
+            return base.Channel.GetProductImageLi(ProdID);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetProductImageLiAsync(int ProdID) {
+            return base.Channel.GetProductImageLiAsync(ProdID);
         }
         
         public void AddProduct(string name, string desc, int catid, string imageLink, decimal price, int stock) {

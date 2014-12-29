@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Commonlayer.Role>
+﻿@model IEnumerable<Commonlayer.Views.RolesView>
 
 @{
     ViewBag.Title = "Index";
@@ -6,23 +6,39 @@
 }
 
 <h2>Index</h2>
+@using (
+    Html.BeginForm("Index", "Roles"))
+{
+    <input id="SearchBox" type="text" name="query" />
+    <input id="submit" type="submit" value="Submit" />
+}
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
             Roles
         </th>
         <th></th>
+        <th></th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Role1)
+            @Html.DisplayFor(modelItem => item.ID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RoleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RoleID }) 
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            
         </td>
     </tr>
 }

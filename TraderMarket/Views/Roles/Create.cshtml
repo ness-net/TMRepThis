@@ -12,12 +12,12 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Role</h4>
+        <h4>Add a new Role</h4>
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Role1, new { @class = "control-label col-md-2" })
+            Role Name
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Role1)
                 @Html.ValidationMessageFor(model => model.Role1)

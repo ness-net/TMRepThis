@@ -15,19 +15,28 @@ namespace TraderMarket.Controllers
         private TradersMarketplacedbEntities db = new TradersMarketplacedbEntities();
 
         // GET: /RoleController1/
-        public ActionResult Index()
+        [Authorize(Roles = "Admin")]
+        public ActionResult Index(string query)
         {
-            return View(db.Roles.ToList());
+            if (query == null)
+            {
+                return View(new RoleService.RoleService1Client().GetAllRolesV());
+            }
+            else
+            {
+                return View(new RoleService.RoleService1Client().GetMatchingRoles(query));
+            }
         }
 
         // GET: /RoleController1/Details/5
-        public ActionResult Details(int? id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Roles.Find(id);
+            Commonlayer.Views.RolesView role = new RoleService.RoleService1Client().GetRoleV(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -36,6 +45,7 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /RoleController1/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -50,8 +60,9 @@ namespace TraderMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Roles.Add(role);
-                db.SaveChanges();
+                new RoleService.RoleService1Client().AddRole(role.Role1);
+                //db.Roles.Add(role);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -59,6 +70,7 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /RoleController1/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,14 +94,16 @@ namespace TraderMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(role).State = EntityState.Modified;
-                db.SaveChanges();
+                new RoleService.RoleService1Client().UpdateRole(role.RoleID, role.Role1);
+                //db.Entry(role).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(role);
         }
 
         // GET: /RoleController1/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,9 +123,10 @@ namespace TraderMarket.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Role role = db.Roles.Find(id);
-            db.Roles.Remove(role);
-            db.SaveChanges();
+            //Role role = db.Roles.Find(id);
+            new RoleService.RoleService1Client().DeleteRole(id);
+            //db.Roles.Remove(role);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 

@@ -15,6 +15,7 @@ namespace TraderMarket.Controllers
         private TradersMarketplacedbEntities db = new TradersMarketplacedbEntities();
 
         // GET: /OrderD/
+        [Authorize(Roles = "Seller, Admin")]
         public ActionResult Index()
         {
             var orderdetails = db.OrderDetails.Include(o => o.Order).Include(o => o.OrderStatu).Include(o => o.Product).Where(o => o.Product.Username == User.Identity.Name);
@@ -22,6 +23,7 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /OrderD/Details/5
+        [Authorize(Roles = "Seller, Admin")]
         public ActionResult Details(int? orderid, int? prodid)
         {
             if ((orderid == null) && (prodid == null))
@@ -36,9 +38,10 @@ namespace TraderMarket.Controllers
             return View(orderdetail);
         }
 
-     
+
 
         // GET: /OrderD/Edit/5
+        [Authorize(Roles = "Seller, Admin")]
         public ActionResult Edit(int? orderid, int? prodid)
         {
             if ((orderid == null) || (prodid == null))

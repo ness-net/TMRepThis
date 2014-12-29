@@ -57,6 +57,8 @@ namespace Business_Layer
         //}
 
 
+
+
         public void AddUser(string username, string password, string email, string name,
                            string surname, string postcode, string town, long contactno, string residence, string street,
                             string countrid, bool handlesdeliver, long accountnumber, string commission)
@@ -82,7 +84,7 @@ namespace Business_Layer
                         u.Town=town;
                         u.Country = countrid;
                         u.Street = street; 
-                        u.ContactNo = contactno; 
+                        u.ContactNo = contactno.ToString(); 
                         u.HandlesDeliveres = handlesdeliver; 
                         u.AccountNumber = accountnumber;
 
@@ -194,7 +196,10 @@ namespace Business_Layer
             return new UserRepository().GetCreditCards(username);
         }
 
-
+        public string GetUserPassword(string username)
+        {
+            return new UserRepository().GetUserPassword(username);
+        }
 
         public IQueryable<RolesView> GetUserRolesV(string username)
         {

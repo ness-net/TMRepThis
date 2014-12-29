@@ -15,12 +15,14 @@ namespace TraderMarket.Controllers
         private TradersMarketplacedbEntities db = new TradersMarketplacedbEntities();
 
         // GET: /Users/
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
 
         // GET: /Users/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -35,8 +37,9 @@ namespace TraderMarket.Controllers
             return View(user);
         }
 
-        
+
         // GET: /Users/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -60,6 +63,7 @@ namespace TraderMarket.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.Password = new UserService.UserServiceClient().GetUserPassword(user.Username);
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -68,6 +72,7 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /Users/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id)
         {
             if (id == null)

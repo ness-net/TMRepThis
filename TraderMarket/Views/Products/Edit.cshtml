@@ -7,7 +7,7 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -42,12 +42,14 @@
             </div>
         </div>
 
+        
+
         <br />
         <div class="form-group">
-            @Html.LabelFor(model => model.ImageLink, new { @class = "control-label col-md-2" })
+            Image (Do not choose an image if you do not wish to change it)
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ImageLink)
-                @Html.ValidationMessageFor(model => model.ImageLink)
+                <img src="@Model.ImageLink" width="100" height="100" alt="image" style="border:3px" />
+                <input type="file" name="file" id="file" />
             </div>
         </div>
 

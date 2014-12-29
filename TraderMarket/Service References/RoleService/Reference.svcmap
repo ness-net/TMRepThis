@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d96a61d2-6d79-455e-bd49-4119c534a5ba" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54100/RoleService1.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RoleService13.xsd" MetadataType="Schema" ID="fed3645d-e8f4-4dee-aa5e-94e446deda20" SourceId="1" SourceUrl="http://localhost:54100/RoleService1.svc?xsd=xsd3" />
+    <MetadataFile FileName="RoleService1.xsd" MetadataType="Schema" ID="76f8d66a-875b-4568-aa69-a85fdac61167" SourceId="1" SourceUrl="http://localhost:54100/RoleService1.svc?xsd=xsd0" />
+    <MetadataFile FileName="RoleService1.disco" MetadataType="Disco" ID="4bd407d9-61e1-407d-884f-8c9209186fa5" SourceId="1" SourceUrl="http://localhost:54100/RoleService1.svc?disco" />
+    <MetadataFile FileName="RoleService12.xsd" MetadataType="Schema" ID="4c9c181c-6409-4030-aaad-2803158590b0" SourceId="1" SourceUrl="http://localhost:54100/RoleService1.svc?xsd=xsd2" />
+    <MetadataFile FileName="RoleService11.xsd" MetadataType="Schema" ID="bae4c58d-047b-45d8-a31a-12943980e342" SourceId="1" SourceUrl="http://localhost:54100/RoleService1.svc?xsd=xsd1" />
+    <MetadataFile FileName="RoleService1.wsdl" MetadataType="Wsdl" ID="b245fe34-a393-4eab-97de-f514687023a4" SourceId="1" SourceUrl="http://localhost:54100/RoleService1.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

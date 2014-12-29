@@ -35,6 +35,16 @@ namespace DataAccessLayer
             return Entity.Users.SingleOrDefault(u => u.Username == username);
         }
 
+        public string GetUserPassword(string username)
+        {
+            var list = (from u in Entity.Users
+                        where u.Username == username
+                        select u
+                    ).FirstOrDefault();
+
+            return list.Password;
+        }
+
         public void AllocateUser(User user, Commission comm)
         {
             
