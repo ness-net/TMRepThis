@@ -20,7 +20,6 @@ namespace DataAccessLayer
         {
             user.Roles.Add(role);
             Entity.SaveChanges();
-
         }
 
         public IEnumerable<Role> GetAllRoles()
