@@ -54,8 +54,8 @@ namespace DataAccessLayer
 
         public void UpdateRole(Role RToUpdate)
         {
-            if (RToUpdate.Role1 != null)
-            {
+            //if (RToUpdate.Role1 != null)
+            //{
                 bool validinput = Regex.IsMatch(RToUpdate.Role1, @"^[a-zA-Z]+$");
                 if (validinput)
                 {
@@ -76,13 +76,13 @@ namespace DataAccessLayer
 
                     }
                 }
-            }
+            //}
         }
 
         public void AddRole(Role newRole)
         {
-            //if (newRole.Role1 != null)
-            //{
+            if (newRole.Role1 != null)
+            {
             //    bool validinput = Regex.IsMatch(newRole.Role1, @"^[a-zA-Z]+$");
             //    if (validinput)
             //    {
@@ -102,8 +102,8 @@ namespace DataAccessLayer
                     {
 
                     }
-            //    }
-            //}
+                //}
+            }
         }
 
         public Role GetRole(int role)
