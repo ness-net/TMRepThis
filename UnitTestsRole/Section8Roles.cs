@@ -8,7 +8,7 @@ using Business_Layer;
 namespace UnitTestsRole
 {
     [TestClass]
-    public class UnitTest1
+    public class Section8Roles
     {
         private TransactionScope TransactionS;
         //private RoleRepository roleRep;
@@ -39,7 +39,6 @@ namespace UnitTestsRole
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CreateRole_Unsuccessful()
         {
             string roleN = null;
@@ -48,15 +47,14 @@ namespace UnitTestsRole
         }
 
         [TestMethod]
-        public void CreateRole_ValidNameNumbers()
+        public void CreateRole_Numbers()
         {
             string roleN = "1232";
             roleService.AddRole(roleN);
-            Assert.IsNotNull(roleService.GetRoles(roleN));
+            Assert.IsNull(roleService.GetRoles(roleN));
         }
 
         [TestMethod]
-        [ExpectedException(typeof(System.Data.Entity.Infrastructure.DbUpdateException))]
         public void DeleteRole_ImpRole()
         {
             roleService.DeleteRole(4);
@@ -64,7 +62,6 @@ namespace UnitTestsRole
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void DeleteRole_InvalidRole()
         {
             roleService.DeleteRole(6);
@@ -99,19 +96,18 @@ namespace UnitTestsRole
         [TestMethod]
         public void UpdateRole_Successful()
         {
-            roleService.UpdateRole(1036, "TestR2");
-            Assert.IsNotNull(roleService.GetRoles("TestR2"));
+            roleService.UpdateRole(1036, "TestRo");
+            Assert.IsNotNull(roleService.GetRoles("TestRo"));
         }
 
         [TestMethod]
         public void UpdateRole_MainRole()
         {
-            roleService.UpdateRole(1, "Guest2");
-            Assert.IsNotNull(roleService.GetRoles("Guest2"));
+            roleService.UpdateRole(1, "Guestt");
+            Assert.IsNotNull(roleService.GetRoles("Guestt"));
         }
 
         [TestMethod]
-        [ExpectedException(typeof(System.Data.Entity.Validation.DbEntityValidationException))]
         public void UpdateRole_Unsuccessfull()
         {
             roleService.UpdateRole(1, null);
@@ -122,7 +118,7 @@ namespace UnitTestsRole
         public void UpdateRole_NumberRole()
         {
             roleService.UpdateRole(1, "123");
-            Assert.IsNotNull(roleService.GetRoles("123"));
+            Assert.IsNull(roleService.GetRoles("123"));
         }
 
         [TestMethod]

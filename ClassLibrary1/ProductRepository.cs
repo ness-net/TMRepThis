@@ -29,7 +29,7 @@ namespace DataAccessLayer
                             Stock= p.Stock,
                             isActive = p.isActive
                         }
-                    ).Distinct();
+                    ).Distinct().Take(10);
 
            return list.AsQueryable();
         

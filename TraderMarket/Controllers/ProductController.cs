@@ -12,7 +12,7 @@ namespace TraderMarket.Controllers
     {
         //
         // GET: /Product/
-        [Authorize(Roles = "Buyer, Admin")]
+        [Authorize(Roles = "Buyer, Admin, Guest")]
         public ActionResult Index(System.Nullable<int> id)
         {
           

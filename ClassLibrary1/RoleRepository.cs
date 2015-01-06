@@ -54,22 +54,38 @@ namespace DataAccessLayer
 
         public void UpdateRole(Role RToUpdate)
         {
-            Role originalRole = GetRole(RToUpdate.RoleID);
-            Entity.Roles.Attach(originalRole);
-            ((IObjectContextAdapter)Entity).ObjectContext.ApplyCurrentValues("Roles", RToUpdate);
-            Entity.SaveChanges();
+            try
+            {
+                Role originalRole = GetRole(RToUpdate.RoleID);
+                Entity.Roles.Attach(originalRole);
+                ((IObjectContextAdapter)Entity).ObjectContext.ApplyCurrentValues("Roles", RToUpdate);
+                Entity.SaveChanges();
+            } catch (NullReferenceException Exception){
+
+                throw new NullReferenceException();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void AddRole(Role newRole)
         {
-            
-            if(newRole.Role1 != null)
+            try
             {
-                Entity.Roles.Add(newRole);
-                Entity.SaveChanges();
-            } else
+                if (newRole.Role1 != null)
+                {
+                    Entity.Roles.Add(newRole);
+                    Entity.SaveChanges();
+                }
+                else
+                {
+
+                }
+            } catch (Exception ex)
             {
-                throw new ArgumentNullException();
+
             }
         }
 
@@ -120,9 +136,16 @@ namespace DataAccessLayer
 
         public void DeleteRole(int id)
         {
-            Role role = GetRole(id);
-            Entity.Roles.Remove(role);
-            Entity.SaveChanges();
+            try
+            {
+                Role role = GetRole(id);
+                Entity.Roles.Remove(role);
+                Entity.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
        
 
