@@ -8,6 +8,7 @@ using System.Data.Entity;
 using System.Data.Objects;
 using Commonlayer.Views;
 using System.Data.Entity.Infrastructure;
+using System.Text.RegularExpressions;
 
 
 namespace DataAccessLayer
@@ -53,39 +54,56 @@ namespace DataAccessLayer
 
         public void UpdateRole(Role RToUpdate)
         {
-            try
+            if (RToUpdate.Role1 != null)
             {
-                Role originalRole = GetRole(RToUpdate.RoleID);
-                Entity.Roles.Attach(originalRole);
-                ((IObjectContextAdapter)Entity).ObjectContext.ApplyCurrentValues("Roles", RToUpdate);
-                Entity.SaveChanges();
-            } catch (NullReferenceException Exception){
+                bool validinput = Regex.IsMatch(RToUpdate.Role1, @"^[a-zA-Z]+$");
+                if (validinput)
+                {
+                    try
+                    {
+                        Role originalRole = GetRole(RToUpdate.RoleID);
+                        Entity.Roles.Attach(originalRole);
+                        ((IObjectContextAdapter)Entity).ObjectContext.ApplyCurrentValues("Roles", RToUpdate);
+                        Entity.SaveChanges();
+                    }
+                    catch (NullReferenceException Exception)
+                    {
 
-                throw new NullReferenceException();
-            }
-            catch (Exception ex)
-            {
+                        throw new NullReferenceException();
+                    }
+                    catch (Exception ex)
+                    {
 
+                    }
+                }
             }
         }
 
         public void AddRole(Role newRole)
         {
-            try
-            {
-                if (newRole.Role1 != null)
-                {
-                    Entity.Roles.Add(newRole);
-                    Entity.SaveChanges();
-                }
-                else
-                {
+            //if (newRole.Role1 != null)
+            //{
+            //    bool validinput = Regex.IsMatch(newRole.Role1, @"^[a-zA-Z]+$");
+            //    if (validinput)
+            //    {
+                    try
+                    {
+                        if (newRole.Role1 != null)
+                        {
+                            Entity.Roles.Add(newRole);
+                            Entity.SaveChanges();
+                        }
+                        else
+                        {
 
-                }
-            } catch (Exception ex)
-            {
+                        }
+                    }
+                    catch (Exception ex)
+                    {
 
-            }
+                    }
+            //    }
+            //}
         }
 
         public Role GetRole(int role)
