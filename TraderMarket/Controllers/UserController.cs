@@ -7,6 +7,10 @@ using System.Web.Security;
 using Commonlayer;
 using TraderMarket.Models;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using DotNetOpenAuth.Messaging;
+using DotNetOpenAuth.OpenId.RelyingParty;
+using DotNetOpenAuth.AspNet;
 
 namespace TraderMarket.Controllers
 {
@@ -24,7 +28,37 @@ namespace TraderMarket.Controllers
         /// <returns>ActionResult</returns>
         public ActionResult Login()
         {
-            return View();
+
+            //var openid = new OpenIdRelyingParty();
+            //IAuthenticationResponse response = openid.GetResponse();
+
+            //if (response != null)
+            //{
+            //    switch (response.Status)
+            //    {
+            //        case AuthenticationStatus.Authenticated:
+            //            FormsAuthentication.RedirectFromLoginPage(
+            //                response.ClaimedIdentifier, false);
+            //            break;
+            //        case AuthenticationStatus.Canceled:
+            //            ModelState.AddModelError("loginIdentifier",
+            //                "Login was cancelled at the provider");
+            //            break;
+            //        case AuthenticationStatus.Failed:
+            //            ModelState.AddModelError("loginIdentifier",
+            //                "Login failed using the provided OpenID identifier");
+            //            break;
+            //    }
+            //}           
+
+            if (User.Identity.Name == null || User.Identity.Name == "")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         /// <summary>
@@ -35,17 +69,15 @@ namespace TraderMarket.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel data)
         {
-            //if user exists, display name in the loginPartial and change url to logoff
             try
             {
-                if (new UserService.UserServiceClient().isAuthenticationValid(data.username, data.password))
+                if (new UserService.UserServiceClient().isAuthenticationValid(data.email, data.password))
                 {
-                    //Display username in the header (_loginPartialView)
                     ViewBag.LoginError = "";
-                    FormsAuthentication.RedirectFromLoginPage(data.username, true);
+                    FormsAuthentication.RedirectFromLoginPage(data.email, true);
                     return RedirectToAction("Index", "Home");
                 }
-                else //if user does not exist
+                else
                 {
                     ViewBag.LoginError = "Could not log in, please make sure that your login details are correct";
                     return View();
@@ -74,8 +106,15 @@ namespace TraderMarket.Controllers
         /// <returns>ActionResult</returns>
         public ActionResult Register()
         {
-            ViewBag.Message = "Enter your details";
-            return View();
+            if (User.Identity.Name == null || User.Identity.Name == "")
+            {
+                ViewBag.Message = "Enter your details";
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         /// <summary>
@@ -83,74 +122,45 @@ namespace TraderMarket.Controllers
         /// </summary>
         /// <param name="data">Data in the registration form</param>
         /// <returns>ActionResult</returns>
+        [Recaptcha.RecaptchaControlMvc.CaptchaValidator]
         [HttpPost]
-        public ActionResult Register(RegisterModel data)
+        public ActionResult Register(RegisterModel data, bool captchaValid)
         {
-            if (ModelState.IsValid) { 
-            if ((new UserService.UserServiceClient().DoesUsernameExist(data.username)) == true)
+            if (!captchaValid)
             {
-                ViewBag.Message = "Username already exists";
+                ModelState.AddModelError("captcha", "You did not type the verification word correctly. Please try again.");
                 return View();
             }
-            else if ((new UserService.UserServiceClient().DoesEmailExist(data.email)) == true)
+            else if (ModelState.IsValid)
             {
-                ViewBag.Message = "Email already exists";
-                return View();
-            }
-            else
-            {
-                if (data.iban != null)
+                Regex regex = new Regex(@"^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$");
+                if ((new UserService.UserServiceClient().DoesUsernameExist(data.username)) == true)
                 {
-                    string comm;
-                    if ((data.commissionp == "Percentage") && (data.commissionff == null))
-                    {
-                        comm = "Percentage";
-                    }
-                    else if ((data.commissionp == null) && (data.commissionff == "FixedFee"))
-                    {
-                        comm = "FixedFee";
-                    }
-                    else
-                    {
-                       comm = "both";
-                    }
-                    
-                    if (data.handlesdel == "Yes")
-                    {
-                        new UserService.UserServiceClient().AddUser(data.username, data.password, data.email, data.name, data.surname, data.postcode, data.town, Convert.ToInt32(data.contactno), data.residence, data.street, data.country, true, Convert.ToInt64(data.iban),comm);
-                        ViewBag.Message = "";
-                        return RedirectToAction("Login", "User");
-                    }
-                    else
-                    {                       
-                        
-                            new UserService.UserServiceClient().AddUser(data.username, data.password, data.email, data.name, data.surname, data.postcode, data.town, Convert.ToInt32(data.contactno), data.residence, data.street, data.country, false, Convert.ToInt64(data.iban), comm);
-                            ViewBag.Message = "";
-                            return RedirectToAction("Login", "User");
-                    }
-                   
+                    ViewBag.Message = "Username already exists";
+                    return View();
+                }
+                else if ((new UserService.UserServiceClient().DoesEmailExist(data.email)) == true)
+                {
+                    ViewBag.Message = "Email already exists";
+                    return View();
+                }
+                else if (regex.IsMatch(data.password) == false)
+                {
+                    ViewBag.Message = "Password must be at least 4 characters, no more than 8 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit.";
+                    return View();
                 }
                 else
                 {
-                    new UserService.UserServiceClient().AddUser(data.username, data.password, data.email, data.name, data.surname, data.postcode, data.town, Convert.ToInt32(data.contactno), data.residence, data.street, data.country, false, 0, "no");
-                    new UserService.UserServiceClient().AddCreditCard(data.username, data.cardtype, data.cvv, data.cardowner, data.cardnumber);
-                    ViewBag.Message = "";
+                    new UserService.UserServiceClient().AddUser(data.username, data.password, data.email, data.name, data.surname, Convert.ToInt64(data.contactno), data.buyer, data.seller);
                     return RedirectToAction("Login", "User");
-                    
+
                 }
+
+               
             }
-            }
-            else
-            {
-                return View();
-            }   
-                
-            
+            return View();
         }
-
-        
-
-
 
     }
 }
+

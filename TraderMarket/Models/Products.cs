@@ -15,8 +15,7 @@ namespace TraderMarket.Models
         public string CategoryID { get; set; }
         public string ImageLink { get; set; }
         public decimal Price { get; set; }
-        public decimal Username { get; set; }
-        public decimal Stock { get; set; }
+        public string Email { get; set; }
     }
 
     public class ProductsDBContext : TradersMarketplacedbEntities

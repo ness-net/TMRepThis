@@ -10,7 +10,7 @@ namespace Commonlayer.Views
     {
         public int OrderID { get; set; }
         public string Date { get; set; }
-        public string Username { get; set; }
+        public string Email { get; set; }
         public System.Nullable<int> OrderStatus { get; set; }
         public string UsernameSeller { get; set; }
     }

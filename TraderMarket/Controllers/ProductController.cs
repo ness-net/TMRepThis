@@ -34,30 +34,40 @@ namespace TraderMarket.Controllers
             
         }
 
-        [Authorize(Roles = "Buyer, Admin")]
+        
         public ActionResult Details(int id)
         {
             ProductView e = new ProdService.ProdServiceClient().GetProductV(id);
-            //if (new ProductService.ProductsServiceClient().CheckIfPurchased(User.Identity.Name, id) != 0)
-            //{
-            //    ViewBag.ProductPurchased = "Yes";
-            //}
-            //else
-            //{
-            //    ViewBag.ProductPurchased = "No";
-            //}
-                       
+            RolesView[] r = new UserService.UserServiceClient().GetUserRolesV(User.Identity.Name);
+            if (r.Count() == 2)
+            {
+                ViewBag.ThisRole = "both";
+            }
+            else
+            {
+                foreach(RolesView role in r)
+                {
+                    if(role.ID == 3)
+                    {
+                        ViewBag.ThisRole = "buyer";
+                    }
+                    else
+                    {
+                        ViewBag.ThisRole = "Seller";
+                    }
+                }
+            }
             return View("Details", e);
         }
 
         [HttpPost]
-        public ActionResult AddToCart(int userid, string quantity)
+        public ActionResult AddToCart(int userid)
         {
             if (User.Identity.IsAuthenticated)
             {
                 try
                 {
-                    new ProdService.ProdServiceClient().AddProducttoCart(User.Identity.Name.ToString(), userid, Convert.ToInt16(quantity));
+                    new ProdService.ProdServiceClient().AddProducttoCart(User.Identity.Name.ToString(), userid);
                     ViewBag.Message = ("Success");
                     return RedirectToAction("Index", "Home");
                 }
@@ -70,10 +80,8 @@ namespace TraderMarket.Controllers
             }
             else
             {
-                ViewBag.Message = ("Log");
+                throw new Exception();
                 return RedirectToAction("Index", "Home");
-
-
             }
         }
 
@@ -98,8 +106,7 @@ namespace TraderMarket.Controllers
                 name = e.Name,
                 description = e.Description,
                 ImageLink = e.ImageLink,
-                price = e.Price,
-                stock = e.Stock
+                price = e.Price
             };
             return View("Modify", model);
         }

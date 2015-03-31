@@ -21,7 +21,7 @@ namespace DataAccessLayer.Observer
             set
             {
                // Just to make sure that if there is an increase in inventory then only we are notifying 
-                 // the observers.
+               // the observers.
                 if (3 > CurrentS)
                 {
                     Notify();

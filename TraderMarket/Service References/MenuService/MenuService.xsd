@@ -8,6 +8,7 @@
   <xs:element name="ArrayOfMenusView" nillable="true" type="tns:ArrayOfMenusView" />
   <xs:complexType name="MenusView">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Position" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
     </xs:sequence>

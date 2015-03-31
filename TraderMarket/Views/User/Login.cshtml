@@ -17,11 +17,11 @@
     <fieldset>
         <legend>Authenticate</legend>
         <div class="editor-label">
-            @Html.LabelFor(Model => Model.username)
+            @Html.LabelFor(Model => Model.email)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.username)
-            @Html.ValidationMessageFor(model => model.username)
+            @Html.EditorFor(model => model.email)
+            @Html.ValidationMessageFor(model => model.email)
         </div>
 
         <div class="editor-label">
@@ -35,8 +35,8 @@
         <p>
             <input type="submit" value="Authenticate" />
         </p>
-
-
+        
+        <img src="~/Content/sign-in-with-google.png" />
         <h6>@ViewBag.LoginError</h6>
     </fieldset>
 }

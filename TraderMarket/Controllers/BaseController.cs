@@ -18,7 +18,6 @@ namespace TraderMarket.Controllers
             else
             {
                 ViewBag.Menus = new MenuService.MenuServiceClient().GetMainMenuV(1);
-             //ViewBag.Menus = new MenuService.MenuServiceClient().GetMainMenu(1);
             }
 
             base.OnActionExecuting(filterContext);

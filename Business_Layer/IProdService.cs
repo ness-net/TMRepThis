@@ -18,6 +18,7 @@ namespace Business_Layer
         IQueryable<ProductView> GetProducts();
 
 
+
         [OperationContract]
         Product GetProduct(int id);
 
@@ -29,36 +30,24 @@ namespace Business_Layer
         IQueryable<CategoryView> GetCategories();
         
 
-        [OperationContract]
-        void ControlStock(int productid, int stock);
+       
 
         [OperationContract]
-        void AddProducttoCart(string username, int productId, int qty);
+        void AddProducttoCart(string email, int productId);
 
         [OperationContract]
-        IQueryable<ShoppingCartView> GetProductsinShoppingCart(string Username);
+        IQueryable<ShoppingCartView> GetProductsinShoppingCart(string email);
 
+       
         [OperationContract]
-        void UpdateCart(string username, int productId, int newQty);
-
-        [OperationContract]
-        void DecrementCart(string username, int productId);
-
-        [OperationContract]
-        void DeleteShoppingCartEntry(string username, int productid);
+        void DeleteShoppingCartEntry(string email, int productid);
 
         [OperationContract]
         ProductView GetProductV(int id);
 
         [OperationContract]
         int GetProductID(string name);
-
-
-        [OperationContract]
-        bool CheckStock(int productid, int stock);
-
-        [OperationContract]
-        int GetStock(int productID);
+           
 
         [OperationContract]
         IEnumerable<ProductView> GetProductsList();
@@ -67,16 +56,16 @@ namespace Business_Layer
         string GetProductImageLi(int ProdID);
 
         [OperationContract]
-        void AddProduct(string name, string desc, int catid, string imageLink, decimal price, int stock);
+        void AddProduct(string name, string desc, int catid, string imageLink, decimal price);
         
         [OperationContract]
         void DeleteProduct(int productID);
         
         [OperationContract]
-        void UpdateProduct(int prodid, string name, string desc, int catid, string imageLink, decimal price, int stock);
+        void UpdateProduct(int prodid, string name, string desc, int catid, string imageLink, decimal price);
         
         [OperationContract]
-        IQueryable<ProductView> GetProductsAccordingToSeller(string username);
+        IQueryable<ProductView> GetProductsAccordingToSeller(string email);
 
         [OperationContract]
         void MarkActive(int productid);

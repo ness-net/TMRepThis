@@ -18,7 +18,7 @@ namespace TraderMarket.Controllers
         [Authorize(Roles = "Seller, Admin")]
         public ActionResult Index()
         {
-            var orderdetails = db.OrderDetails.Include(o => o.Order).Include(o => o.OrderStatu).Include(o => o.Product).Where(o => o.Product.Username == User.Identity.Name);
+            var orderdetails = db.OrderDetails.Include(o => o.Order).Include(o => o.OrderStatu).Include(o => o.Product).Where(o => o.Product.Email == User.Identity.Name);
             return View(orderdetails.ToList());
         }
 

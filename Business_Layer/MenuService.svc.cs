@@ -19,9 +19,9 @@ namespace Business_Layer
         /// </summary>
         /// <param name="username">Passes the username as to check the role and what a user can see in the menu</param>
         /// <returns>Returns MenuItems that a user can see, depending on his role</returns>        
-        public IQueryable<MenusView> GetMainMenus1(string username)
+        public IQueryable<MenusView> GetMainMenus1(string email)
         {
-            return new MenuRepository().GetMainMenus(username);
+            return new MenuRepository().GetMainMenus(email);
         }
 
         /// <summary>
@@ -45,9 +45,9 @@ namespace Business_Layer
         /// <param name="username">Gives username to get the roleID and returns menuItems according to this</param>
         /// <param name="parentID">Passes the parentID as to match all the SubMenus to their Main Menu Items according to the database</param>
         /// <returns>Returns a list of MenuItems</returns>
-        public IQueryable<Menu> GetSubMenus1(string username, int parentID)
+        public IQueryable<Menu> GetSubMenus1(string email, int parentID)
         {
-            return new MenuRepository().GetSubMenus(username, parentID);
+            return new MenuRepository().GetSubMenus(email, parentID);
         }
 
         /// <summary>

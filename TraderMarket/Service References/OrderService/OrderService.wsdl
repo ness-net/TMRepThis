@@ -25,6 +25,18 @@
   <wsdl:message name="IOrderService_LastOrder_OutputMessage">
     <wsdl:part name="parameters" element="tns:LastOrderResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrderedProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderedProduct" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrderedProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderedProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetProductsOfUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsOfUser" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetProductsOfUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsOfUserResponse" />
+  </wsdl:message>
   <wsdl:message name="IOrderService_GetOrder_InputMessage">
     <wsdl:part name="parameters" element="tns:GetOrder" />
   </wsdl:message>
@@ -49,6 +61,14 @@
     <wsdl:operation name="LastOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/LastOrder" message="tns:IOrderService_LastOrder_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/LastOrderResponse" message="tns:IOrderService_LastOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderedProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrderedProduct" message="tns:IOrderService_GetOrderedProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetOrderedProductResponse" message="tns:IOrderService_GetOrderedProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsOfUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetProductsOfUser" message="tns:IOrderService_GetProductsOfUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetProductsOfUserResponse" message="tns:IOrderService_GetProductsOfUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrder" message="tns:IOrderService_GetOrder_InputMessage" />
@@ -81,6 +101,24 @@
     </wsdl:operation>
     <wsdl:operation name="LastOrder">
       <soap:operation soapAction="http://tempuri.org/IOrderService/LastOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderedProduct">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetOrderedProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsOfUser">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetProductsOfUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

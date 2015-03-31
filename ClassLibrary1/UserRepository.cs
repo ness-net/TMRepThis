@@ -7,6 +7,7 @@ using Commonlayer;
 using System.Data.Entity;
 using System.Data.Objects;
 using Commonlayer.Views;
+using System.Data.Entity.Infrastructure;
 
 namespace DataAccessLayer
 {
@@ -30,30 +31,50 @@ namespace DataAccessLayer
             Entity.SaveChanges();
         }
 
-        public User GetUser(string username)
+        public User GetUser(string email)
         {
-            return Entity.Users.SingleOrDefault(u => u.Username == username);
+            //return Entity.Users.SingleOrDefault(u => u.Username == username);
+            return Entity.Users.AsNoTracking().SingleOrDefault(u => u.Email == email);
         }
 
-        public string GetUserPassword(string username)
+        public string GetPrivateKey(string email)
         {
-            var list = (from u in Entity.Users
-                        where u.Username == username
-                        select u
-                    ).FirstOrDefault();
-
-            return list.Password;
+            User u = Entity.Users.SingleOrDefault(e => e.Email == email);
+            return u.PrivateKey;
         }
 
-        public void AllocateUser(User user, Commission comm)
+        //public UsersView GetUserByUsername(string username)
+        //{
+        //    User u = Entity.Users.SingleOrDefault(e => e.Username == username);
+        //    UsersView usv = new UsersView
+        //    return u;
+        //}
+
+        public string GetPublicKey(string email)
         {
+            User u = Entity.Users.SingleOrDefault(e => e.Email == email);
+            return u.PublicKey;
+        }
+
+        //public string GetUserPassword(string email)
+        //{
+        //    var list = (from u in Entity.Users
+        //                where u.Username == username
+        //                select u
+        //            ).FirstOrDefault();
+
+        //    return list.Password;
+        //}
+
+        //public void AllocateUser(User user, Commission comm)
+        //{
             
-           // comm.Users.
-            comm.Users.Add(user);
-            //user.Commissions.Add(comm);
-            Entity.SaveChanges();
+        //   // comm.Users.
+        //    comm.Users.Add(user);
+        //    //user.Commissions.Add(comm);
+        //    Entity.SaveChanges();
 
-        }
+        //}
 
         public bool DoesUsernameExist(string username)
         {
@@ -85,14 +106,30 @@ namespace DataAccessLayer
             }
         }
 
-        public bool IsAuthenticationValid(string username, string password)
+        public void UpdateUser(User usertoUpdate)
         {
-            User u = GetUser(username.ToLower());
+            try
+            {
+                Entity.Entry(usertoUpdate).State = EntityState.Modified;
+                Entity.SaveChanges();
+                //User originalUser = GetUser(usertoUpdate.Email);
+                //Entity.Users.Attach(usertoUpdate);
+                //((IObjectContextAdapter)Entity).ObjectContext.ApplyCurrentValues("Users", originalUser);
+                //Entity.SaveChanges();
+            } catch(Exception ex)
+            {
+                string meth = ex.Message;
+            }
+        }
+
+        public bool IsAuthenticationValid(string email, string password)
+        {
+            User u = GetUser(email.ToLower());
             if (u != null)
             {
                 if (password != "Invalid")
                 {
-                    if ((u.Username.ToLower() == username.ToLower()) && (u.Password == password))
+                    if ((u.Email.ToLower() == email.ToLower()) && (u.Password == password))
                     {
                         return true;
                     }
@@ -114,31 +151,31 @@ namespace DataAccessLayer
 
 
 
-        public IQueryable<CommissionType> GetCommissions()
-        {
-            var list = (from c in Entity.Commissions
-                        orderby c.CommissionID
-                        select new CommissionType
-                        {
-                            Title = c.TypeOFCommission,
-                            fee = c.Amount
-                        }
-                    ).Distinct();
+        //public IQueryable<CommissionType> GetCommissions()
+        //{
+        //    var list = (from c in Entity.Commissions
+        //                orderby c.CommissionID
+        //                select new CommissionType
+        //                {
+        //                    Title = c.TypeOFCommission,
+        //                    fee = c.Amount
+        //                }
+        //            ).Distinct();
 
-            return list.AsQueryable();
-        }
+        //    return list.AsQueryable();
+        //}
 
-        public IQueryable<CreditCardView> GetCreditCards(string username)
+        public IQueryable<CreditCardView> GetCreditCards(string email)
         {
             var list = (from c in Entity.CreditCards
-                        where c.Username == username
+                        where c.Email == email
                         select new CreditCardView
                         {
                             CardOwner = c.CardOwner,
                             CardT = c.CardType,
                             CVV = c.CVV,
                             Number = c.CardNumber,
-                            username = c.Username
+                            email = c.Email
                         }
                     ).Distinct();
 

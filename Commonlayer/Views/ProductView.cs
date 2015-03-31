@@ -14,8 +14,7 @@ namespace Commonlayer.Views
         public int CategoryID { get; set; }
         public string ImageLink { get; set; }
         public decimal Price { get; set; }
-        public string Username { get; set; }
-        public int Stock { get; set;  }
+        public string Email { get; set; }
         public bool isActive { get; set; }
         public string SubC { get; set; }
     }

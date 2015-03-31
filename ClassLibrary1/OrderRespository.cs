@@ -22,6 +22,76 @@ namespace DataAccessLayer
             Entity.SaveChanges();
         }
 
+        public IQueryable<OrderedProducts> GetProductsOfUser(string email)
+        {
+            var list = (from p in Entity.Products
+                        join od in Entity.OrderDetails
+                        on p.ProductID equals od.ProductID
+                        join o in Entity.Orders
+                        on od.OrderID equals o.OrderID
+                        where(o.Email == email)
+                        select new OrderedProducts
+                        {
+                            ProductID = p.ProductID,
+                            Name = p.Name,
+                            OrderedDate = o.Date,
+                            Description = p.Description
+                        }
+                    ).Distinct();
+
+            return list.AsQueryable();
+
+        }
+
+        public OrderedProducts GetOrderedProduct(string email, int productid)
+        {
+            return (from p in Entity.Products
+                        join od in Entity.OrderDetails
+                        on p.ProductID equals od.ProductID
+                        join o in Entity.Orders
+                        on od.OrderID equals o.OrderID
+                        where (o.Email == email) && (p.ProductID == productid)
+                        select new OrderedProducts
+                        {
+                            ProductID = p.ProductID,
+                            Name = p.Name,
+                            OrderedDate = o.Date,
+                            Description = p.Description,
+                            NotSigned = p.SoftwareBytesS,
+                            Signed = p.SoftwareBytesSigned
+                        }
+                    ).SingleOrDefault();
+
+
+        }
+
+        //public bool userBought(int ProductID, string email)
+        //{
+        //    var list = (from p in Entity.Products
+        //                join od in Entity.OrderDetails
+        //                on p.ProductID equals od.ProductID
+        //                join o in Entity.Orders
+        //                on od.OrderID equals o.OrderID
+        //                where (o.Email == email) && (p.ProductID == ProductID)
+        //                select new OrderedProducts
+        //                {
+        //                    ProductID = p.ProductID,
+        //                    Name = p.Name,
+        //                    OrderedDate = o.Date,
+        //                    Description = p.Description
+        //                }
+        //            ).Distinct();
+
+        //    if(list.Count() == null)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
+
         public void AddOrderDetails(OrderDetail newOrderDetail)
         {
             Entity.OrderDetails.Add(newOrderDetail);
@@ -36,7 +106,7 @@ namespace DataAccessLayer
                         {
                             OrderID = o.OrderID,
                             Date = o.Date,
-                            Username = o.Username
+                            Email = o.Email
                         }).First();
 
         }
@@ -49,17 +119,17 @@ namespace DataAccessLayer
                     {
                         OrderID = o.OrderID,
                         Date = o.Date,
-                        Username = o.Username
+                        Email = o.Email
                     }).First();
         }
 
-        public int GetOrderID(int productID, string username)
+        public int GetOrderID(int productID, string email)
         {
             return (
                 from o in Entity.Orders
                 join od in Entity.OrderDetails
                 on o.OrderID equals od.OrderID
-                where od.ProductID == productID && o.Username == username
+                where od.ProductID == productID && o.Email == email
                 select o.OrderID).SingleOrDefault();
         }
     }

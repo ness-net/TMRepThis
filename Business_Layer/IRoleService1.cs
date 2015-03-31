@@ -40,5 +40,12 @@ namespace Business_Layer
 
         [OperationContract]
         RolesView GetRoleV(int roleid);
+
+        [OperationContract]
+        IQueryable<RolesView> GetUserRolesV(string email);
+
+        [OperationContract]
+        void AllocateRole(User user, Role role);
+
     }
 }

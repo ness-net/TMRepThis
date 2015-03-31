@@ -16,16 +16,16 @@ namespace TraderMarket.UserService {
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/isAuthenticationValid", ReplyAction="http://tempuri.org/IUserService/isAuthenticationValidResponse")]
-        bool isAuthenticationValid(string username, string password);
+        bool isAuthenticationValid(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/isAuthenticationValid", ReplyAction="http://tempuri.org/IUserService/isAuthenticationValidResponse")]
-        System.Threading.Tasks.Task<bool> isAuthenticationValidAsync(string username, string password);
+        System.Threading.Tasks.Task<bool> isAuthenticationValidAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
-        void AddUser(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber, string commission);
+        void AddUser(string username, string password, string email, string name, string surname, long contactno, bool buyer, bool seller);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUser", ReplyAction="http://tempuri.org/IUserService/AddUserResponse")]
-        System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber, string commission);
+        System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, long contactno, bool buyer, bool seller);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DoesUsernameExist", ReplyAction="http://tempuri.org/IUserService/DoesUsernameExistResponse")]
         bool DoesUsernameExist(string username);
@@ -40,10 +40,10 @@ namespace TraderMarket.UserService {
         System.Threading.Tasks.Task<bool> DoesEmailExistAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
-        Commonlayer.User GetUser(string username);
+        Commonlayer.User GetUser(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
-        System.Threading.Tasks.Task<Commonlayer.User> GetUserAsync(string username);
+        System.Threading.Tasks.Task<Commonlayer.User> GetUserAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllUsers", ReplyAction="http://tempuri.org/IUserService/GetAllUsersResponse")]
         Commonlayer.User[] GetAllUsers();
@@ -51,35 +51,47 @@ namespace TraderMarket.UserService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllUsers", ReplyAction="http://tempuri.org/IUserService/GetAllUsersResponse")]
         System.Threading.Tasks.Task<Commonlayer.User[]> GetAllUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserPassword", ReplyAction="http://tempuri.org/IUserService/GetUserPasswordResponse")]
-        string GetUserPassword(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        void UpdateUser(string username, string email, string name, string surname, long contactno, bool buyer, bool seller);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserPassword", ReplyAction="http://tempuri.org/IUserService/GetUserPasswordResponse")]
-        System.Threading.Tasks.Task<string> GetUserPasswordAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        System.Threading.Tasks.Task UpdateUserAsync(string username, string email, string name, string surname, long contactno, bool buyer, bool seller);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetPublicKey", ReplyAction="http://tempuri.org/IUserService/GetPublicKeyResponse")]
+        string GetPublicKey(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetPublicKey", ReplyAction="http://tempuri.org/IUserService/GetPublicKeyResponse")]
+        System.Threading.Tasks.Task<string> GetPublicKeyAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetCreditCards", ReplyAction="http://tempuri.org/IUserService/GetCreditCardsResponse")]
-        Commonlayer.Views.CreditCardView[] GetCreditCards(string username);
+        Commonlayer.Views.CreditCardView[] GetCreditCards(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetCreditCards", ReplyAction="http://tempuri.org/IUserService/GetCreditCardsResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.CreditCardView[]> GetCreditCardsAsync(string username);
+        System.Threading.Tasks.Task<Commonlayer.Views.CreditCardView[]> GetCreditCardsAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRoles", ReplyAction="http://tempuri.org/IUserService/GetUserRolesResponse")]
-        Commonlayer.Role[] GetUserRoles(string username);
+        Commonlayer.Role[] GetUserRoles(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRoles", ReplyAction="http://tempuri.org/IUserService/GetUserRolesResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Role[]> GetUserRolesAsync(string username);
+        System.Threading.Tasks.Task<Commonlayer.Role[]> GetUserRolesAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRolesV", ReplyAction="http://tempuri.org/IUserService/GetUserRolesVResponse")]
-        Commonlayer.Views.RolesView[] GetUserRolesV(string username);
+        Commonlayer.Views.RolesView[] GetUserRolesV(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserRolesV", ReplyAction="http://tempuri.org/IUserService/GetUserRolesVResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string username);
+        System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddCreditCard", ReplyAction="http://tempuri.org/IUserService/AddCreditCardResponse")]
-        void AddCreditCard(string username, string creditcardt, string cvv, string holder, decimal number);
+        void AddCreditCard(string email, string creditcardt, string cvv, string holder, decimal number);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddCreditCard", ReplyAction="http://tempuri.org/IUserService/AddCreditCardResponse")]
-        System.Threading.Tasks.Task AddCreditCardAsync(string username, string creditcardt, string cvv, string holder, decimal number);
+        System.Threading.Tasks.Task AddCreditCardAsync(string email, string creditcardt, string cvv, string holder, decimal number);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetPrivateKey", ReplyAction="http://tempuri.org/IUserService/GetPrivateKeyResponse")]
+        string GetPrivateKey(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetPrivateKey", ReplyAction="http://tempuri.org/IUserService/GetPrivateKeyResponse")]
+        System.Threading.Tasks.Task<string> GetPrivateKeyAsync(string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -109,20 +121,20 @@ namespace TraderMarket.UserService {
                 base(binding, remoteAddress) {
         }
         
-        public bool isAuthenticationValid(string username, string password) {
-            return base.Channel.isAuthenticationValid(username, password);
+        public bool isAuthenticationValid(string email, string password) {
+            return base.Channel.isAuthenticationValid(email, password);
         }
         
-        public System.Threading.Tasks.Task<bool> isAuthenticationValidAsync(string username, string password) {
-            return base.Channel.isAuthenticationValidAsync(username, password);
+        public System.Threading.Tasks.Task<bool> isAuthenticationValidAsync(string email, string password) {
+            return base.Channel.isAuthenticationValidAsync(email, password);
         }
         
-        public void AddUser(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber, string commission) {
-            base.Channel.AddUser(username, password, email, name, surname, postcode, town, contactno, residence, street, countrid, handlesdeliver, accountnumber, commission);
+        public void AddUser(string username, string password, string email, string name, string surname, long contactno, bool buyer, bool seller) {
+            base.Channel.AddUser(username, password, email, name, surname, contactno, buyer, seller);
         }
         
-        public System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, string postcode, string town, long contactno, string residence, string street, string countrid, bool handlesdeliver, long accountnumber, string commission) {
-            return base.Channel.AddUserAsync(username, password, email, name, surname, postcode, town, contactno, residence, street, countrid, handlesdeliver, accountnumber, commission);
+        public System.Threading.Tasks.Task AddUserAsync(string username, string password, string email, string name, string surname, long contactno, bool buyer, bool seller) {
+            return base.Channel.AddUserAsync(username, password, email, name, surname, contactno, buyer, seller);
         }
         
         public bool DoesUsernameExist(string username) {
@@ -141,12 +153,12 @@ namespace TraderMarket.UserService {
             return base.Channel.DoesEmailExistAsync(email);
         }
         
-        public Commonlayer.User GetUser(string username) {
-            return base.Channel.GetUser(username);
+        public Commonlayer.User GetUser(string email) {
+            return base.Channel.GetUser(email);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.User> GetUserAsync(string username) {
-            return base.Channel.GetUserAsync(username);
+        public System.Threading.Tasks.Task<Commonlayer.User> GetUserAsync(string email) {
+            return base.Channel.GetUserAsync(email);
         }
         
         public Commonlayer.User[] GetAllUsers() {
@@ -157,44 +169,60 @@ namespace TraderMarket.UserService {
             return base.Channel.GetAllUsersAsync();
         }
         
-        public string GetUserPassword(string username) {
-            return base.Channel.GetUserPassword(username);
+        public void UpdateUser(string username, string email, string name, string surname, long contactno, bool buyer, bool seller) {
+            base.Channel.UpdateUser(username, email, name, surname, contactno, buyer, seller);
         }
         
-        public System.Threading.Tasks.Task<string> GetUserPasswordAsync(string username) {
-            return base.Channel.GetUserPasswordAsync(username);
+        public System.Threading.Tasks.Task UpdateUserAsync(string username, string email, string name, string surname, long contactno, bool buyer, bool seller) {
+            return base.Channel.UpdateUserAsync(username, email, name, surname, contactno, buyer, seller);
         }
         
-        public Commonlayer.Views.CreditCardView[] GetCreditCards(string username) {
-            return base.Channel.GetCreditCards(username);
+        public string GetPublicKey(string email) {
+            return base.Channel.GetPublicKey(email);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.CreditCardView[]> GetCreditCardsAsync(string username) {
-            return base.Channel.GetCreditCardsAsync(username);
+        public System.Threading.Tasks.Task<string> GetPublicKeyAsync(string email) {
+            return base.Channel.GetPublicKeyAsync(email);
         }
         
-        public Commonlayer.Role[] GetUserRoles(string username) {
-            return base.Channel.GetUserRoles(username);
+        public Commonlayer.Views.CreditCardView[] GetCreditCards(string email) {
+            return base.Channel.GetCreditCards(email);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Role[]> GetUserRolesAsync(string username) {
-            return base.Channel.GetUserRolesAsync(username);
+        public System.Threading.Tasks.Task<Commonlayer.Views.CreditCardView[]> GetCreditCardsAsync(string email) {
+            return base.Channel.GetCreditCardsAsync(email);
         }
         
-        public Commonlayer.Views.RolesView[] GetUserRolesV(string username) {
-            return base.Channel.GetUserRolesV(username);
+        public Commonlayer.Role[] GetUserRoles(string email) {
+            return base.Channel.GetUserRoles(email);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string username) {
-            return base.Channel.GetUserRolesVAsync(username);
+        public System.Threading.Tasks.Task<Commonlayer.Role[]> GetUserRolesAsync(string email) {
+            return base.Channel.GetUserRolesAsync(email);
         }
         
-        public void AddCreditCard(string username, string creditcardt, string cvv, string holder, decimal number) {
-            base.Channel.AddCreditCard(username, creditcardt, cvv, holder, number);
+        public Commonlayer.Views.RolesView[] GetUserRolesV(string email) {
+            return base.Channel.GetUserRolesV(email);
         }
         
-        public System.Threading.Tasks.Task AddCreditCardAsync(string username, string creditcardt, string cvv, string holder, decimal number) {
-            return base.Channel.AddCreditCardAsync(username, creditcardt, cvv, holder, number);
+        public System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string email) {
+            return base.Channel.GetUserRolesVAsync(email);
+        }
+        
+        public void AddCreditCard(string email, string creditcardt, string cvv, string holder, decimal number) {
+            base.Channel.AddCreditCard(email, creditcardt, cvv, holder, number);
+        }
+        
+        public System.Threading.Tasks.Task AddCreditCardAsync(string email, string creditcardt, string cvv, string holder, decimal number) {
+            return base.Channel.AddCreditCardAsync(email, creditcardt, cvv, holder, number);
+        }
+        
+        public string GetPrivateKey(string email) {
+            return base.Channel.GetPrivateKey(email);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetPrivateKeyAsync(string email) {
+            return base.Channel.GetPrivateKeyAsync(email);
         }
     }
 }

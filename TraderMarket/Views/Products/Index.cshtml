@@ -8,7 +8,8 @@
 <h2>Your Products</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Add Product", "Create")*@
+    @Html.ActionLink("Sell a Software Product", "CreateSoft")
 </p>
 <table class="table">
     <tr>
@@ -24,9 +25,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Stock)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.isActive)
         </th>
@@ -50,9 +51,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Stock)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.isActive)
         </td>

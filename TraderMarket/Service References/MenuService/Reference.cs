@@ -16,10 +16,10 @@ namespace TraderMarket.MenuService {
     public interface IMenuService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenus1", ReplyAction="http://tempuri.org/IMenuService/GetMainMenus1Response")]
-        Commonlayer.Views.MenusView[] GetMainMenus1(string username);
+        Commonlayer.Views.MenusView[] GetMainMenus1(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenus1", ReplyAction="http://tempuri.org/IMenuService/GetMainMenus1Response")]
-        System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenus1Async(string username);
+        System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenus1Async(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenu", ReplyAction="http://tempuri.org/IMenuService/GetMainMenuResponse")]
         Commonlayer.Menu[] GetMainMenu(int roleID);
@@ -28,10 +28,10 @@ namespace TraderMarket.MenuService {
         System.Threading.Tasks.Task<Commonlayer.Menu[]> GetMainMenuAsync(int roleID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetSubMenus1", ReplyAction="http://tempuri.org/IMenuService/GetSubMenus1Response")]
-        Commonlayer.Menu[] GetSubMenus1(string username, int parentID);
+        Commonlayer.Menu[] GetSubMenus1(string email, int parentID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetSubMenus1", ReplyAction="http://tempuri.org/IMenuService/GetSubMenus1Response")]
-        System.Threading.Tasks.Task<Commonlayer.Menu[]> GetSubMenus1Async(string username, int parentID);
+        System.Threading.Tasks.Task<Commonlayer.Menu[]> GetSubMenus1Async(string email, int parentID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetSubMenus2", ReplyAction="http://tempuri.org/IMenuService/GetSubMenus2Response")]
         Commonlayer.Menu[] GetSubMenus2(int roleID, int parentID);
@@ -73,12 +73,12 @@ namespace TraderMarket.MenuService {
                 base(binding, remoteAddress) {
         }
         
-        public Commonlayer.Views.MenusView[] GetMainMenus1(string username) {
-            return base.Channel.GetMainMenus1(username);
+        public Commonlayer.Views.MenusView[] GetMainMenus1(string email) {
+            return base.Channel.GetMainMenus1(email);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenus1Async(string username) {
-            return base.Channel.GetMainMenus1Async(username);
+        public System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenus1Async(string email) {
+            return base.Channel.GetMainMenus1Async(email);
         }
         
         public Commonlayer.Menu[] GetMainMenu(int roleID) {
@@ -89,12 +89,12 @@ namespace TraderMarket.MenuService {
             return base.Channel.GetMainMenuAsync(roleID);
         }
         
-        public Commonlayer.Menu[] GetSubMenus1(string username, int parentID) {
-            return base.Channel.GetSubMenus1(username, parentID);
+        public Commonlayer.Menu[] GetSubMenus1(string email, int parentID) {
+            return base.Channel.GetSubMenus1(email, parentID);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Menu[]> GetSubMenus1Async(string username, int parentID) {
-            return base.Channel.GetSubMenus1Async(username, parentID);
+        public System.Threading.Tasks.Task<Commonlayer.Menu[]> GetSubMenus1Async(string email, int parentID) {
+            return base.Channel.GetSubMenus1Async(email, parentID);
         }
         
         public Commonlayer.Menu[] GetSubMenus2(int roleID, int parentID) {

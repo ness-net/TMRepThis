@@ -39,41 +39,23 @@ namespace TraderMarket.ProdService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetCategories", ReplyAction="http://tempuri.org/IProdService/GetCategoriesResponse")]
         System.Threading.Tasks.Task<Commonlayer.Views.CategoryView[]> GetCategoriesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/ControlStock", ReplyAction="http://tempuri.org/IProdService/ControlStockResponse")]
-        void ControlStock(int productid, int stock);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/ControlStock", ReplyAction="http://tempuri.org/IProdService/ControlStockResponse")]
-        System.Threading.Tasks.Task ControlStockAsync(int productid, int stock);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProducttoCart", ReplyAction="http://tempuri.org/IProdService/AddProducttoCartResponse")]
+        void AddProducttoCart(string email, int productId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProducttoCart", ReplyAction="http://tempuri.org/IProdService/AddProducttoCartResponse")]
-        void AddProducttoCart(string username, int productId, int qty);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProducttoCart", ReplyAction="http://tempuri.org/IProdService/AddProducttoCartResponse")]
-        System.Threading.Tasks.Task AddProducttoCartAsync(string username, int productId, int qty);
+        System.Threading.Tasks.Task AddProducttoCartAsync(string email, int productId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsinShoppingCart", ReplyAction="http://tempuri.org/IProdService/GetProductsinShoppingCartResponse")]
-        Commonlayer.Views.ShoppingCartView[] GetProductsinShoppingCart(string Username);
+        Commonlayer.Views.ShoppingCartView[] GetProductsinShoppingCart(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsinShoppingCart", ReplyAction="http://tempuri.org/IProdService/GetProductsinShoppingCartResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.ShoppingCartView[]> GetProductsinShoppingCartAsync(string Username);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/UpdateCart", ReplyAction="http://tempuri.org/IProdService/UpdateCartResponse")]
-        void UpdateCart(string username, int productId, int newQty);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/UpdateCart", ReplyAction="http://tempuri.org/IProdService/UpdateCartResponse")]
-        System.Threading.Tasks.Task UpdateCartAsync(string username, int productId, int newQty);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DecrementCart", ReplyAction="http://tempuri.org/IProdService/DecrementCartResponse")]
-        void DecrementCart(string username, int productId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DecrementCart", ReplyAction="http://tempuri.org/IProdService/DecrementCartResponse")]
-        System.Threading.Tasks.Task DecrementCartAsync(string username, int productId);
+        System.Threading.Tasks.Task<Commonlayer.Views.ShoppingCartView[]> GetProductsinShoppingCartAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DeleteShoppingCartEntry", ReplyAction="http://tempuri.org/IProdService/DeleteShoppingCartEntryResponse")]
-        void DeleteShoppingCartEntry(string username, int productid);
+        void DeleteShoppingCartEntry(string email, int productid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DeleteShoppingCartEntry", ReplyAction="http://tempuri.org/IProdService/DeleteShoppingCartEntryResponse")]
-        System.Threading.Tasks.Task DeleteShoppingCartEntryAsync(string username, int productid);
+        System.Threading.Tasks.Task DeleteShoppingCartEntryAsync(string email, int productid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductV", ReplyAction="http://tempuri.org/IProdService/GetProductVResponse")]
         Commonlayer.Views.ProductView GetProductV(int id);
@@ -86,18 +68,6 @@ namespace TraderMarket.ProdService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductID", ReplyAction="http://tempuri.org/IProdService/GetProductIDResponse")]
         System.Threading.Tasks.Task<int> GetProductIDAsync(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/CheckStock", ReplyAction="http://tempuri.org/IProdService/CheckStockResponse")]
-        bool CheckStock(int productid, int stock);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/CheckStock", ReplyAction="http://tempuri.org/IProdService/CheckStockResponse")]
-        System.Threading.Tasks.Task<bool> CheckStockAsync(int productid, int stock);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetStock", ReplyAction="http://tempuri.org/IProdService/GetStockResponse")]
-        int GetStock(int productID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetStock", ReplyAction="http://tempuri.org/IProdService/GetStockResponse")]
-        System.Threading.Tasks.Task<int> GetStockAsync(int productID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsList", ReplyAction="http://tempuri.org/IProdService/GetProductsListResponse")]
         Commonlayer.Views.ProductView[] GetProductsList();
@@ -112,10 +82,10 @@ namespace TraderMarket.ProdService {
         System.Threading.Tasks.Task<string> GetProductImageLiAsync(int ProdID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProduct", ReplyAction="http://tempuri.org/IProdService/AddProductResponse")]
-        void AddProduct(string name, string desc, int catid, string imageLink, decimal price, int stock);
+        void AddProduct(string name, string desc, int catid, string imageLink, decimal price);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/AddProduct", ReplyAction="http://tempuri.org/IProdService/AddProductResponse")]
-        System.Threading.Tasks.Task AddProductAsync(string name, string desc, int catid, string imageLink, decimal price, int stock);
+        System.Threading.Tasks.Task AddProductAsync(string name, string desc, int catid, string imageLink, decimal price);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/DeleteProduct", ReplyAction="http://tempuri.org/IProdService/DeleteProductResponse")]
         void DeleteProduct(int productID);
@@ -124,16 +94,16 @@ namespace TraderMarket.ProdService {
         System.Threading.Tasks.Task DeleteProductAsync(int productID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/UpdateProduct", ReplyAction="http://tempuri.org/IProdService/UpdateProductResponse")]
-        void UpdateProduct(int prodid, string name, string desc, int catid, string imageLink, decimal price, int stock);
+        void UpdateProduct(int prodid, string name, string desc, int catid, string imageLink, decimal price);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/UpdateProduct", ReplyAction="http://tempuri.org/IProdService/UpdateProductResponse")]
-        System.Threading.Tasks.Task UpdateProductAsync(int prodid, string name, string desc, int catid, string imageLink, decimal price, int stock);
+        System.Threading.Tasks.Task UpdateProductAsync(int prodid, string name, string desc, int catid, string imageLink, decimal price);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsAccordingToSeller", ReplyAction="http://tempuri.org/IProdService/GetProductsAccordingToSellerResponse")]
-        Commonlayer.Views.ProductView[] GetProductsAccordingToSeller(string username);
+        Commonlayer.Views.ProductView[] GetProductsAccordingToSeller(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/GetProductsAccordingToSeller", ReplyAction="http://tempuri.org/IProdService/GetProductsAccordingToSellerResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsAccordingToSellerAsync(string username);
+        System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsAccordingToSellerAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProdService/MarkActive", ReplyAction="http://tempuri.org/IProdService/MarkActiveResponse")]
         void MarkActive(int productid);
@@ -219,52 +189,28 @@ namespace TraderMarket.ProdService {
             return base.Channel.GetCategoriesAsync();
         }
         
-        public void ControlStock(int productid, int stock) {
-            base.Channel.ControlStock(productid, stock);
+        public void AddProducttoCart(string email, int productId) {
+            base.Channel.AddProducttoCart(email, productId);
         }
         
-        public System.Threading.Tasks.Task ControlStockAsync(int productid, int stock) {
-            return base.Channel.ControlStockAsync(productid, stock);
+        public System.Threading.Tasks.Task AddProducttoCartAsync(string email, int productId) {
+            return base.Channel.AddProducttoCartAsync(email, productId);
         }
         
-        public void AddProducttoCart(string username, int productId, int qty) {
-            base.Channel.AddProducttoCart(username, productId, qty);
+        public Commonlayer.Views.ShoppingCartView[] GetProductsinShoppingCart(string email) {
+            return base.Channel.GetProductsinShoppingCart(email);
         }
         
-        public System.Threading.Tasks.Task AddProducttoCartAsync(string username, int productId, int qty) {
-            return base.Channel.AddProducttoCartAsync(username, productId, qty);
+        public System.Threading.Tasks.Task<Commonlayer.Views.ShoppingCartView[]> GetProductsinShoppingCartAsync(string email) {
+            return base.Channel.GetProductsinShoppingCartAsync(email);
         }
         
-        public Commonlayer.Views.ShoppingCartView[] GetProductsinShoppingCart(string Username) {
-            return base.Channel.GetProductsinShoppingCart(Username);
+        public void DeleteShoppingCartEntry(string email, int productid) {
+            base.Channel.DeleteShoppingCartEntry(email, productid);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.ShoppingCartView[]> GetProductsinShoppingCartAsync(string Username) {
-            return base.Channel.GetProductsinShoppingCartAsync(Username);
-        }
-        
-        public void UpdateCart(string username, int productId, int newQty) {
-            base.Channel.UpdateCart(username, productId, newQty);
-        }
-        
-        public System.Threading.Tasks.Task UpdateCartAsync(string username, int productId, int newQty) {
-            return base.Channel.UpdateCartAsync(username, productId, newQty);
-        }
-        
-        public void DecrementCart(string username, int productId) {
-            base.Channel.DecrementCart(username, productId);
-        }
-        
-        public System.Threading.Tasks.Task DecrementCartAsync(string username, int productId) {
-            return base.Channel.DecrementCartAsync(username, productId);
-        }
-        
-        public void DeleteShoppingCartEntry(string username, int productid) {
-            base.Channel.DeleteShoppingCartEntry(username, productid);
-        }
-        
-        public System.Threading.Tasks.Task DeleteShoppingCartEntryAsync(string username, int productid) {
-            return base.Channel.DeleteShoppingCartEntryAsync(username, productid);
+        public System.Threading.Tasks.Task DeleteShoppingCartEntryAsync(string email, int productid) {
+            return base.Channel.DeleteShoppingCartEntryAsync(email, productid);
         }
         
         public Commonlayer.Views.ProductView GetProductV(int id) {
@@ -283,22 +229,6 @@ namespace TraderMarket.ProdService {
             return base.Channel.GetProductIDAsync(name);
         }
         
-        public bool CheckStock(int productid, int stock) {
-            return base.Channel.CheckStock(productid, stock);
-        }
-        
-        public System.Threading.Tasks.Task<bool> CheckStockAsync(int productid, int stock) {
-            return base.Channel.CheckStockAsync(productid, stock);
-        }
-        
-        public int GetStock(int productID) {
-            return base.Channel.GetStock(productID);
-        }
-        
-        public System.Threading.Tasks.Task<int> GetStockAsync(int productID) {
-            return base.Channel.GetStockAsync(productID);
-        }
-        
         public Commonlayer.Views.ProductView[] GetProductsList() {
             return base.Channel.GetProductsList();
         }
@@ -315,12 +245,12 @@ namespace TraderMarket.ProdService {
             return base.Channel.GetProductImageLiAsync(ProdID);
         }
         
-        public void AddProduct(string name, string desc, int catid, string imageLink, decimal price, int stock) {
-            base.Channel.AddProduct(name, desc, catid, imageLink, price, stock);
+        public void AddProduct(string name, string desc, int catid, string imageLink, decimal price) {
+            base.Channel.AddProduct(name, desc, catid, imageLink, price);
         }
         
-        public System.Threading.Tasks.Task AddProductAsync(string name, string desc, int catid, string imageLink, decimal price, int stock) {
-            return base.Channel.AddProductAsync(name, desc, catid, imageLink, price, stock);
+        public System.Threading.Tasks.Task AddProductAsync(string name, string desc, int catid, string imageLink, decimal price) {
+            return base.Channel.AddProductAsync(name, desc, catid, imageLink, price);
         }
         
         public void DeleteProduct(int productID) {
@@ -331,20 +261,20 @@ namespace TraderMarket.ProdService {
             return base.Channel.DeleteProductAsync(productID);
         }
         
-        public void UpdateProduct(int prodid, string name, string desc, int catid, string imageLink, decimal price, int stock) {
-            base.Channel.UpdateProduct(prodid, name, desc, catid, imageLink, price, stock);
+        public void UpdateProduct(int prodid, string name, string desc, int catid, string imageLink, decimal price) {
+            base.Channel.UpdateProduct(prodid, name, desc, catid, imageLink, price);
         }
         
-        public System.Threading.Tasks.Task UpdateProductAsync(int prodid, string name, string desc, int catid, string imageLink, decimal price, int stock) {
-            return base.Channel.UpdateProductAsync(prodid, name, desc, catid, imageLink, price, stock);
+        public System.Threading.Tasks.Task UpdateProductAsync(int prodid, string name, string desc, int catid, string imageLink, decimal price) {
+            return base.Channel.UpdateProductAsync(prodid, name, desc, catid, imageLink, price);
         }
         
-        public Commonlayer.Views.ProductView[] GetProductsAccordingToSeller(string username) {
-            return base.Channel.GetProductsAccordingToSeller(username);
+        public Commonlayer.Views.ProductView[] GetProductsAccordingToSeller(string email) {
+            return base.Channel.GetProductsAccordingToSeller(email);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsAccordingToSellerAsync(string username) {
-            return base.Channel.GetProductsAccordingToSellerAsync(username);
+        public System.Threading.Tasks.Task<Commonlayer.Views.ProductView[]> GetProductsAccordingToSellerAsync(string email) {
+            return base.Channel.GetProductsAccordingToSellerAsync(email);
         }
         
         public void MarkActive(int productid) {

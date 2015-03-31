@@ -13,18 +13,24 @@ namespace Business_Layer
     public interface IOrderService
     {
         [OperationContract]
-        void AddOrderDetails(int orderid, int productid, int quantity);
+        void AddOrderDetails(int orderid, int productid);
 
         [OperationContract]
-        void AddOrder(string username, decimal number);
+        void AddOrder(string email, decimal number);
 
         [OperationContract]
         OrderView LastOrder();
 
         [OperationContract]
+        OrderedProducts GetOrderedProduct(string email, int productid);
+
+        [OperationContract]
+        IQueryable<OrderedProducts> GetProductsOfUser(string email);
+
+        [OperationContract]
         OrderView GetOrder(int id);
 
         [OperationContract]
-        int GetOrderID(int productID, string username);
+        int GetOrderID(int productID, string email);
     }
 }

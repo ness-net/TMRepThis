@@ -61,8 +61,6 @@ namespace TraderMarket.Controllers
             if (ModelState.IsValid)
             {
                 new RoleService.RoleService1Client().AddRole(role.Role1);
-                //db.Roles.Add(role);
-                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -95,8 +93,6 @@ namespace TraderMarket.Controllers
             if (ModelState.IsValid)
             {
                 new RoleService.RoleService1Client().UpdateRole(role.RoleID, role.Role1);
-                //db.Entry(role).State = EntityState.Modified;
-                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(role);
@@ -123,10 +119,7 @@ namespace TraderMarket.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            //Role role = db.Roles.Find(id);
             new RoleService.RoleService1Client().DeleteRole(id);
-            //db.Roles.Remove(role);
-            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 

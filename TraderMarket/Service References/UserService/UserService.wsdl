@@ -44,11 +44,17 @@
   <wsdl:message name="IUserService_GetAllUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserService_GetUserPassword_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserPassword" />
+  <wsdl:message name="IUserService_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
   </wsdl:message>
-  <wsdl:message name="IUserService_GetUserPassword_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserPasswordResponse" />
+  <wsdl:message name="IUserService_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetPublicKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPublicKey" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetPublicKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPublicKeyResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetCreditCards_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCreditCards" />
@@ -73,6 +79,12 @@
   </wsdl:message>
   <wsdl:message name="IUserService_AddCreditCard_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetPrivateKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivateKey" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetPrivateKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivateKeyResponse" />
   </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="isAuthenticationValid">
@@ -99,9 +111,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetAllUsers" message="tns:IUserService_GetAllUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetAllUsersResponse" message="tns:IUserService_GetAllUsers_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetUserPassword">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserPassword" message="tns:IUserService_GetUserPassword_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserPasswordResponse" message="tns:IUserService_GetUserPassword_OutputMessage" />
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/UpdateUser" message="tns:IUserService_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/UpdateUserResponse" message="tns:IUserService_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicKey">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetPublicKey" message="tns:IUserService_GetPublicKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetPublicKeyResponse" message="tns:IUserService_GetPublicKey_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCreditCards">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetCreditCards" message="tns:IUserService_GetCreditCards_InputMessage" />
@@ -118,6 +134,10 @@
     <wsdl:operation name="AddCreditCard">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/AddCreditCard" message="tns:IUserService_AddCreditCard_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/AddCreditCardResponse" message="tns:IUserService_AddCreditCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivateKey">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetPrivateKey" message="tns:IUserService_GetPrivateKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetPrivateKeyResponse" message="tns:IUserService_GetPrivateKey_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -176,8 +196,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserPassword">
-      <soap:operation soapAction="http://tempuri.org/IUserService/GetUserPassword" style="document" />
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicKey">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetPublicKey" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -214,6 +243,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddCreditCard">
       <soap:operation soapAction="http://tempuri.org/IUserService/AddCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivateKey">
+      <soap:operation soapAction="http://tempuri.org/IUserService/GetPrivateKey" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

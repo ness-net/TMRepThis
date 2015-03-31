@@ -14,33 +14,39 @@ namespace Business_Layer
     public interface IUserService
     {
         [OperationContract]
-        bool isAuthenticationValid(string username, string password);
+        bool isAuthenticationValid(string email, string password);
         [OperationContract]
         void AddUser(string username, string password, string email, string name,
-                           string surname, string postcode, string town, long contactno, string residence, string street,
-                            string countrid, bool handlesdeliver, long accountnumber, string commission);
+                           string surname, long contactno, bool buyer, bool seller);
         [OperationContract]
         bool DoesUsernameExist(string username);
         [OperationContract]
         bool DoesEmailExist(string email);
         [OperationContract]
-        User GetUser(string username);
+        User GetUser(string email);
         [OperationContract]
         IEnumerable<User> GetAllUsers();
 
         [OperationContract]
-        string GetUserPassword(string username);
+        void UpdateUser(string username, string email, string name,
+                           string surname, long contactno, bool buyer, bool seller);
 
         [OperationContract]
-        IQueryable<CreditCardView> GetCreditCards(string username);
+        string GetPublicKey(string email);
+
+        [OperationContract]
+        IQueryable<CreditCardView> GetCreditCards(string email);
         
 
         [OperationContract]
-        IQueryable<Role> GetUserRoles(string username);
+        IQueryable<Role> GetUserRoles(string email);
         [OperationContract]
-        IQueryable<RolesView> GetUserRolesV(string username);
+        IQueryable<RolesView> GetUserRolesV(string email);
         [OperationContract]
-        void AddCreditCard(string username, string creditcardt, string cvv, string holder, decimal number);
+        void AddCreditCard(string email, string creditcardt, string cvv, string holder, decimal number);
+
+        [OperationContract]
+        string GetPrivateKey(string email);
         
     }
 }

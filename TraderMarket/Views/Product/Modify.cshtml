@@ -34,13 +34,13 @@
             @Html.EditorFor(model => model.price)
             @Html.ValidationMessageFor(model => model.price)
         </div>
-        <div class="editor-label">
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.stock)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.stock)
             @Html.ValidationMessageFor(model => model.stock)
-        </div>
+        </div>*@
         Current Image:<br />
         <img src="@Model.ImageLink" width="100" height="100" alt="image" style="border:3px" /><br/>
         <label for="file">Upload Image:</label>

@@ -20,7 +20,20 @@ namespace DataAccessLayer
         {
             user.Roles.Add(role);
             Entity.SaveChanges();
+        }
 
+        public void AllocateRoleV(string email, int roleid)
+        {
+            UserRepository ur = new UserRepository();
+            User user = ur.GetUser(email);
+            Role r = GetRole(roleid);
+            user.Roles.Add(r);
+            Entity.SaveChanges();
+        }
+
+        public void RemoveRole(User u, Role r)
+        {
+            u.Roles.Remove(r);
         }
 
         public IEnumerable<Role> GetAllRoles()
@@ -81,11 +94,11 @@ namespace DataAccessLayer
                 }
                 else
                 {
-
+                    //throw exception
                 }
             } catch (Exception ex)
             {
-
+                //throw exception
             }
         }
 
@@ -100,17 +113,17 @@ namespace DataAccessLayer
         }
         
 
-        public IQueryable<Role> GetUserRoles(string username)
+        public IQueryable<Role> GetUserRoles(string email)
         {
             UserRepository ur = new UserRepository();
-            User u = ur.GetUser(username);
+            User u = ur.GetUser(email);
             return u.Roles.AsQueryable();
         }
 
-        public IQueryable<RolesView> GetUserRolesV(string username)
+        public IQueryable<RolesView> GetUserRolesV(string email)
         {
             UserRepository ur = new UserRepository();
-            User u = ur.GetUser(username);
+            User u = ur.GetUser(email);
             List<RolesView> list = new List<RolesView>();
 
             foreach (Role r in u.Roles)

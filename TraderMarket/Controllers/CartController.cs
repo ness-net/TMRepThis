@@ -37,20 +37,20 @@ namespace TraderMarket.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Decrement(int productID)
-        {
-            try
-            {
-                new ProdService.ProdServiceClient().DecrementCart(User.Identity.Name.ToString(), productID);
-                return RedirectToAction("Index", "Cart");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ("Could not Delete");
-                return RedirectToAction("Index", "Cart");
-            }
-        }
+        //[HttpPost]
+        //public ActionResult Decrement(int productID)
+        //{
+        //    try
+        //    {
+        //        new ProdService.ProdServiceClient().DecrementCart(User.Identity.Name.ToString(), productID);
+        //        return RedirectToAction("Index", "Cart");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ViewBag.Message = ("Could not Delete");
+        //        return RedirectToAction("Index", "Cart");
+        //    }
+        //}
 
         [Authorize(Roles = "Buyer, Admin")]
         public ActionResult CheckOut()
@@ -81,21 +81,20 @@ namespace TraderMarket.Controllers
                 foreach (ShoppingCartView s in new ProdService.ProdServiceClient().GetProductsinShoppingCart(User.Identity.Name))
                 {
                     int productid = s.ProductID;
-                    int quantity = s.Quantity;
-                    bool checkS = new ProdService.ProdServiceClient().CheckStock(productid, quantity);
-                    if (checkS == true)
-                    {
-                        new ProdService.ProdServiceClient().ControlStock(productid, (0 - quantity));
-                        new OrderService.OrderServiceClient().AddOrderDetails(Convert.ToInt16(ViewBag.OrderID), productid, quantity);
+                    //bool checkS = new ProdService.ProdServiceClient().CheckStock(productid, quantity);
+                    //if (checkS == true)
+                    //{
+                        //new ProdService.ProdServiceClient().ControlStock(productid, (0 - quantity));
+                        new OrderService.OrderServiceClient().AddOrderDetails(Convert.ToInt16(ViewBag.OrderID), productid);
                         new ProdService.ProdServiceClient().DeleteShoppingCartEntry(username, productid);
-                    }
-                    else
-                    {
-                        int stk = new ProdService.ProdServiceClient().GetStock(productid);
-                        new ProdService.ProdServiceClient().ControlStock(productid, (0 - stk));
-                        new OrderService.OrderServiceClient().AddOrderDetails(Convert.ToInt16(ViewBag.OrderID), productid, stk);
-                        new ProdService.ProdServiceClient().DeleteShoppingCartEntry(username, productid);
-                    }
+                    //}
+                    //else
+                    //{
+                    //    int stk = new ProdService.ProdServiceClient().GetStock(productid);
+                    //    new ProdService.ProdServiceClient().ControlStock(productid, (0 - stk));
+                    //    new OrderService.OrderServiceClient().AddOrderDetails(Convert.ToInt16(ViewBag.OrderID), productid, stk);
+                    //    new ProdService.ProdServiceClient().DeleteShoppingCartEntry(username, productid);
+                    //}
                     
 
                 }

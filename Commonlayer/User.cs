@@ -18,6 +18,7 @@ namespace Commonlayer
         {
             this.Carts = new HashSet<Cart>();
             this.CreditCards = new HashSet<CreditCard>();
+            this.Orders = new HashSet<Order>();
             this.Products = new HashSet<Product>();
             this.Commissions = new HashSet<Commission>();
             this.Roles = new HashSet<Role>();
@@ -29,16 +30,12 @@ namespace Commonlayer
         public string Surname { get; set; }
         public string ContactNo { get; set; }
         public string Email { get; set; }
-        public string Residence { get; set; }
-        public string Street { get; set; }
-        public string Town { get; set; }
-        public string PostCode { get; set; }
-        public string Country { get; set; }
-        public Nullable<bool> HandlesDeliveres { get; set; }
-        public Nullable<decimal> AccountNumber { get; set; }
+        public string PublicKey { get; set; }
+        public string PrivateKey { get; set; }
     
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<CreditCard> CreditCards { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Commission> Commissions { get; set; }
         public virtual ICollection<Role> Roles { get; set; }

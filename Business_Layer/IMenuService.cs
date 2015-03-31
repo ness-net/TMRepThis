@@ -14,11 +14,11 @@ namespace Business_Layer
     public interface IMenuService
     {
         [OperationContract]
-        IQueryable<MenusView> GetMainMenus1(string username);
+        IQueryable<MenusView> GetMainMenus1(string email);
         [OperationContract]
         IQueryable<Menu> GetMainMenu(int roleID);
         [OperationContract]
-        IQueryable<Menu> GetSubMenus1(string username, int parentID);
+        IQueryable<Menu> GetSubMenus1(string email, int parentID);
         [OperationContract]
         IQueryable<Menu> GetSubMenus2(int roleID, int parentID);
         [OperationContract]

@@ -16,22 +16,34 @@ namespace TraderMarket.OrderService {
     public interface IOrderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddOrderDetails", ReplyAction="http://tempuri.org/IOrderService/AddOrderDetailsResponse")]
-        void AddOrderDetails(int orderid, int productid, int quantity);
+        void AddOrderDetails(int orderid, int productid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddOrderDetails", ReplyAction="http://tempuri.org/IOrderService/AddOrderDetailsResponse")]
-        System.Threading.Tasks.Task AddOrderDetailsAsync(int orderid, int productid, int quantity);
+        System.Threading.Tasks.Task AddOrderDetailsAsync(int orderid, int productid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddOrder", ReplyAction="http://tempuri.org/IOrderService/AddOrderResponse")]
-        void AddOrder(string username, decimal number);
+        void AddOrder(string email, decimal number);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddOrder", ReplyAction="http://tempuri.org/IOrderService/AddOrderResponse")]
-        System.Threading.Tasks.Task AddOrderAsync(string username, decimal number);
+        System.Threading.Tasks.Task AddOrderAsync(string email, decimal number);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/LastOrder", ReplyAction="http://tempuri.org/IOrderService/LastOrderResponse")]
         Commonlayer.Views.OrderView LastOrder();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/LastOrder", ReplyAction="http://tempuri.org/IOrderService/LastOrderResponse")]
         System.Threading.Tasks.Task<Commonlayer.Views.OrderView> LastOrderAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderedProduct", ReplyAction="http://tempuri.org/IOrderService/GetOrderedProductResponse")]
+        Commonlayer.Views.OrderedProducts GetOrderedProduct(string email, int productid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderedProduct", ReplyAction="http://tempuri.org/IOrderService/GetOrderedProductResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Views.OrderedProducts> GetOrderedProductAsync(string email, int productid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetProductsOfUser", ReplyAction="http://tempuri.org/IOrderService/GetProductsOfUserResponse")]
+        Commonlayer.Views.OrderedProducts[] GetProductsOfUser(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetProductsOfUser", ReplyAction="http://tempuri.org/IOrderService/GetProductsOfUserResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Views.OrderedProducts[]> GetProductsOfUserAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrder", ReplyAction="http://tempuri.org/IOrderService/GetOrderResponse")]
         Commonlayer.Views.OrderView GetOrder(int id);
@@ -40,10 +52,10 @@ namespace TraderMarket.OrderService {
         System.Threading.Tasks.Task<Commonlayer.Views.OrderView> GetOrderAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderID", ReplyAction="http://tempuri.org/IOrderService/GetOrderIDResponse")]
-        int GetOrderID(int productID, string username);
+        int GetOrderID(int productID, string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderID", ReplyAction="http://tempuri.org/IOrderService/GetOrderIDResponse")]
-        System.Threading.Tasks.Task<int> GetOrderIDAsync(int productID, string username);
+        System.Threading.Tasks.Task<int> GetOrderIDAsync(int productID, string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,20 +85,20 @@ namespace TraderMarket.OrderService {
                 base(binding, remoteAddress) {
         }
         
-        public void AddOrderDetails(int orderid, int productid, int quantity) {
-            base.Channel.AddOrderDetails(orderid, productid, quantity);
+        public void AddOrderDetails(int orderid, int productid) {
+            base.Channel.AddOrderDetails(orderid, productid);
         }
         
-        public System.Threading.Tasks.Task AddOrderDetailsAsync(int orderid, int productid, int quantity) {
-            return base.Channel.AddOrderDetailsAsync(orderid, productid, quantity);
+        public System.Threading.Tasks.Task AddOrderDetailsAsync(int orderid, int productid) {
+            return base.Channel.AddOrderDetailsAsync(orderid, productid);
         }
         
-        public void AddOrder(string username, decimal number) {
-            base.Channel.AddOrder(username, number);
+        public void AddOrder(string email, decimal number) {
+            base.Channel.AddOrder(email, number);
         }
         
-        public System.Threading.Tasks.Task AddOrderAsync(string username, decimal number) {
-            return base.Channel.AddOrderAsync(username, number);
+        public System.Threading.Tasks.Task AddOrderAsync(string email, decimal number) {
+            return base.Channel.AddOrderAsync(email, number);
         }
         
         public Commonlayer.Views.OrderView LastOrder() {
@@ -97,6 +109,22 @@ namespace TraderMarket.OrderService {
             return base.Channel.LastOrderAsync();
         }
         
+        public Commonlayer.Views.OrderedProducts GetOrderedProduct(string email, int productid) {
+            return base.Channel.GetOrderedProduct(email, productid);
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.Views.OrderedProducts> GetOrderedProductAsync(string email, int productid) {
+            return base.Channel.GetOrderedProductAsync(email, productid);
+        }
+        
+        public Commonlayer.Views.OrderedProducts[] GetProductsOfUser(string email) {
+            return base.Channel.GetProductsOfUser(email);
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.Views.OrderedProducts[]> GetProductsOfUserAsync(string email) {
+            return base.Channel.GetProductsOfUserAsync(email);
+        }
+        
         public Commonlayer.Views.OrderView GetOrder(int id) {
             return base.Channel.GetOrder(id);
         }
@@ -105,12 +133,12 @@ namespace TraderMarket.OrderService {
             return base.Channel.GetOrderAsync(id);
         }
         
-        public int GetOrderID(int productID, string username) {
-            return base.Channel.GetOrderID(productID, username);
+        public int GetOrderID(int productID, string email) {
+            return base.Channel.GetOrderID(productID, email);
         }
         
-        public System.Threading.Tasks.Task<int> GetOrderIDAsync(int productID, string username) {
-            return base.Channel.GetOrderIDAsync(productID, username);
+        public System.Threading.Tasks.Task<int> GetOrderIDAsync(int productID, string email) {
+            return base.Channel.GetOrderIDAsync(productID, email);
         }
     }
 }

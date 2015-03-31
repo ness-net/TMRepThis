@@ -12,8 +12,8 @@ namespace TraderMarket.Models
     public class LoginModel
     {
         [Required]
-        [Display(Name = "Username")]
-        public string username { get; set; }
+        [Display(Name = "Email")]
+        public string email { get; set; }
 
         [Required]
         [Display(Name = "Password")]

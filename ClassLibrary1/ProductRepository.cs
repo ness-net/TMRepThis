@@ -25,8 +25,7 @@ namespace DataAccessLayer
                             CategoryID = p.CategoryID,
                             ImageLink = p.ImageLink,
                             Price = p.Price,
-                            Username = p.Username,
-                            Stock= p.Stock,
+                            Email = p.Email,
                             isActive = p.isActive
                         }
                     ).Distinct().Take(10);
@@ -42,7 +41,6 @@ namespace DataAccessLayer
 
             var myprod = list.OrderBy(item => item.ProductID).Last();
             return myprod;
-                //list.OrderBy(item => item.Created).Last();
 
         }
 
@@ -106,7 +104,7 @@ namespace DataAccessLayer
         public IEnumerable<ProductView> GetProductsList()
         {
             return (from p in Entity.Products
-                    where (p.Stock > 0) && (p.isActive == true)
+                    where (p.isActive == true)
                     select new ProductView
                     {
                         ProductID = p.ProductID,
@@ -115,8 +113,7 @@ namespace DataAccessLayer
                         CategoryID = p.CategoryID,
                         ImageLink = p.ImageLink,
                         Price = p.Price,
-                        Username = p.Username,
-                        Stock = p.Stock,
+                        Email = p.Email,
                         isActive = p.isActive
                     }).ToList();
         }
@@ -133,8 +130,7 @@ namespace DataAccessLayer
                         CategoryID = p.CategoryID,
                         ImageLink = p.ImageLink,
                         Price = p.Price,
-                        Username = p.Username,
-                        Stock = p.Stock,
+                        Email = p.Email,
                         isActive = p.isActive
                     }).FirstOrDefault();
         }
@@ -163,7 +159,7 @@ namespace DataAccessLayer
         public IQueryable<ProductView> GetProductsAccordingToSubCategory(System.Nullable<int> id)
         {
             var list = (from p in Entity.Products
-                        where (p.CategoryID == id) && (p.Stock > 0) && (p.isActive == true)
+                        where (p.CategoryID == id) && (p.isActive == true)
                         select new ProductView
                        {
                            ProductID = p.ProductID,
@@ -172,18 +168,17 @@ namespace DataAccessLayer
                            CategoryID = p.CategoryID,
                            ImageLink = p.ImageLink,
                            Price = p.Price,
-                           Username = p.Username,
-                           Stock = p.Stock,
+                           Email = p.Email,
                            isActive = p.isActive
                        });
 
             return list.AsQueryable();
         }
 
-        public IQueryable<ProductView> GetProductsAccordingToSeller(string username)
+        public IQueryable<ProductView> GetProductsAccordingToSeller(string email)
         {
             var list = (from p in Entity.Products
-                        where p.Username == username
+                        where p.Email == email
                         select new ProductView
                         {
                             ProductID = p.ProductID,
@@ -192,55 +187,54 @@ namespace DataAccessLayer
                             CategoryID = p.CategoryID,
                             ImageLink = p.ImageLink,
                             Price = p.Price,
-                            Username = p.Username,
-                            Stock = p.Stock,
+                            Email = p.Email,
                             isActive = p.isActive
                         });
 
             return list.AsQueryable();
         }
 
-        public void ControlStock(int productid, int stock)
-        {
-            Product ps = GetProduct(productid);
-            ps.Stock += stock;
-            Entity.SaveChanges();
-            int currentstock = GetStock(productid);
-            User u = new UserRepository().GetUser(ps.Username);
-                Subject subject = new Subject();
-                ObserverC observer1 = new ObserverC(ps.Name, u.Email);
-                subject.Subscribe(observer1);
-                subject.CurrentS = currentstock;
-                subject.Stock = currentstock;
-        }
+        //public void ControlStock(int productid, int stock)
+        //{
+        //    Product ps = GetProduct(productid);
+        //    ps.Stock += stock;
+        //    Entity.SaveChanges();
+        //    int currentstock = GetStock(productid);
+        //    User u = new UserRepository().GetUser(ps.Username);
+        //        Subject subject = new Subject();
+        //        ObserverC observer1 = new ObserverC(ps.Name, u.Email);
+        //        subject.Subscribe(observer1);
+        //        subject.CurrentS = currentstock;
+        //        subject.Stock = currentstock;
+        //}
         
 
 
-        public bool CheckStock(int productid, int stock)
-        {
-            Product c = GetProduct(productid);
+        //public bool CheckStock(int productid, int stock)
+        //{
+        //    Product c = GetProduct(productid);
 
-            if ((c.Stock - stock) <= 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+        //    if ((c.Stock - stock) <= 0)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
 
-        }
+        //}
 
-        public int GetStock(int productID)
-        {
-            var thisc =  (from p in Entity.Products
-                    where p.ProductID == productID
-                    select p.Stock
-                    ).SingleOrDefault();
+        //public int GetStock(int productID)
+        //{
+        //    var thisc =  (from p in Entity.Products
+        //            where p.ProductID == productID
+        //            select p.Stock
+        //            ).SingleOrDefault();
 
-            return Convert.ToInt16(thisc);
+        //    return Convert.ToInt16(thisc);
 
-        }
+        //}
 
         public void AddToCart(Cart cart)
         {
@@ -248,37 +242,36 @@ namespace DataAccessLayer
             Entity.SaveChanges();
         }
 
-        public Cart GetShoppingCart(string username, int productId)
+        public Cart GetShoppingCart(string email, int productId)
         {
-            return Entity.Carts.SingleOrDefault(x => x.Username == username && x.ProductID == productId);
+            return Entity.Carts.SingleOrDefault(x => x.Email == email && x.ProductID == productId);
         }
 
-        public void UpdateCart(string username, int productId, int newQty)
-        {
-            Cart sc = GetShoppingCart(username, productId);
-            sc.Quantity += newQty;
-            Entity.SaveChanges();
-        }
+        //public void UpdateCart(string email, int productId, int newQty)
+        //{
+        //    Cart sc = GetShoppingCart(email, productId);
+        //    sc.Quantity += newQty;
+        //    Entity.SaveChanges();
+        //}
 
-        public void DecrementCart(string username, int productId)
-        {
-            Cart sc = GetShoppingCart(username, productId);
-            sc.Quantity = sc.Quantity - 1;
-            Entity.SaveChanges();
-        }
+        //public void DecrementCart(string email, int productId)
+        //{
+        //    Cart sc = GetShoppingCart(email, productId);
+        //    sc.Quantity = sc.Quantity - 1;
+        //    Entity.SaveChanges();
+        //}
 
-        public IQueryable<ShoppingCartView> GetProductsinShoppingCart(string Username)
+        public IQueryable<ShoppingCartView> GetProductsinShoppingCart(string email)
         {
             return (from sc in Entity.Carts
                     join p in Entity.Products
                     on sc.ProductID equals p.ProductID
-                    where sc.Username == Username
+                    where sc.Email == email
                     select new ShoppingCartView
                     {
                         ProductID = p.ProductID,
                         Name = p.Name,
                         Price = p.Price,
-                        Quantity = sc.Quantity,
                         ImageLink = p.ImageLink
                     }
                     );
@@ -290,12 +283,12 @@ namespace DataAccessLayer
             Entity.SaveChanges();
         }
 
-        public int GetNoOfItemsInShoppingCartEntry(string username, int productid)
-        {
-            if (Entity.Carts.Where(s => s.Username == username && s.ProductID == productid).Count() == 0)
-                return 0;
-            else return Entity.Carts.Where(s => s.Username == username && s.ProductID == productid).Sum(x => x.Quantity);
-        }
+        //public int GetNoOfItemsInShoppingCartEntry(string username, int productid)
+        //{
+        //    if (Entity.Carts.Where(s => s.Username == username && s.ProductID == productid).Count() == 0)
+        //        return 0;
+        //    else return Entity.Carts.Where(s => s.Username == username && s.ProductID == productid).Sum(x => x.Quantity);
+        //}
 
         public void AddProduct(Product newProduct)
         {
@@ -323,8 +316,6 @@ namespace DataAccessLayer
             updatedp.isActive = false;
             }
             Entity.Entry(thisp).CurrentValues.SetValues(thisp);
-            //Entity.Products.Attach(thisp);
-            //((IObjectContextAdapter)Entity).ObjectContext.ApplyCurrentValues("Products", thisp);
             Entity.SaveChanges();
         }
 

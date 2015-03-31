@@ -12,6 +12,6 @@ namespace Commonlayer.Views
         public decimal Number { get; set; }
         public string CardOwner { get; set; }
         public string CVV { get; set; }
-        public string username { get; set; }
+        public string email { get; set; }
     }
 }

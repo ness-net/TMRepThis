@@ -17,7 +17,7 @@
                <br />    <br />              
                 @item.Name    <br />
                 Retail Price: @item.Price<br />
-                Seller: @item.Username <br />
+                Seller: @item.Email <br />
                 @if (item.isActive == true) {                     
                   @Html.ActionLink("Mark Inactive", "Delete", new { id = item.ProductID })
                 }

@@ -8,6 +8,7 @@ using Commonlayer;
 using DataAccessLayer;
 using System.Data.Entity;
 using Commonlayer.Views;
+using System.Security.Cryptography;
 
 namespace Business_Layer
 {
@@ -16,57 +17,18 @@ namespace Business_Layer
     public class UserService : IUserService
     {
 
-        public bool isAuthenticationValid(string username, string password)
+        public bool isAuthenticationValid(string email, string password)
         {
-            return new UserRepository().IsAuthenticationValid(username, password);
+            return new UserRepository().IsAuthenticationValid(email, HashPassword(password, "HMACSHA256"));
         }
-
-        //public void AllocateComm(string username, string comm)
-        //{
-        //    CommissionRepository cr = new CommissionRepository();
-        //    UserRepository ur = new UserRepository();
-        //    User u = GetUser(username);
-        //    Commission c = new Commission();
-        //    if (comm == "FixedFee")
-        //    {
-        //        c = cr.GetComm(3);
-        //    }
-        //    if (comm == "Percentage")
-        //    {
-        //        c = cr.GetComm(2);
-        //    }
-
-        //    try
-        //    {
-        //       cr.Entity.Database.Connection.Open();
-        //       cr.AllocateCommission(u, c);
-                
-        //        //ur.Transaction.Commit();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        //ur.Transaction.Rollback();
-        //        //rr.Transaction.Rollback();
-        //        throw new Exception("Error Occurred, please try later" + ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        cr.Entity.Database.Connection.Close();
-        //    }
-        //}
-
-
 
 
         public void AddUser(string username, string password, string email, string name,
-                           string surname, string postcode, string town, long contactno, string residence, string street,
-                            string countrid, bool handlesdeliver, long accountnumber, string commission)
+                           string surname, long contactno, bool buyer, bool seller)
         {
             UserRepository ur = new UserRepository();
             RoleRepository rr = new RoleRepository();
-            CommissionRepository cr = new CommissionRepository();
-            ur.Entity = rr.Entity = cr.Entity;
+            ur.Entity = rr.Entity;
 
 
             if (ur.DoesUsernameExist(username) == false)
@@ -75,54 +37,37 @@ namespace Business_Layer
                 {             
                         User u = new User();
                         u.Username = username;
-                        u.Password = password;
+                        u.Password = HashPassword(password, "HMACSHA256");
                         u.Name = name;
                         u.Surname = surname;
                         u.Email = email; 
-                        u.PostCode = postcode; 
-                        u.Residence = residence;
-                        u.Town=town;
-                        u.Country = countrid;
-                        u.Street = street; 
-                        u.ContactNo = contactno.ToString(); 
-                        u.HandlesDeliveres = handlesdeliver; 
-                        u.AccountNumber = accountnumber;
+                        u.ContactNo = contactno.ToString();
 
+                        RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+                        u.PrivateKey = rsa.ToXmlString(true);  // Private Key
+                        u.PublicKey = rsa.ToXmlString(false);  // Public Key                 
 
                         try
                         {
                             ur.Entity.Database.Connection.Open();
-                            //rr.Transaction = ur.Transaction = ur.Entity.Database.Connection.BeginTransaction();
                             ur.AddUser(u);
-                            if (u.AccountNumber == 0)
+                            if (buyer == false && seller == true)
+                            {
+                                rr.AllocateRole(u, rr.GetRole(3));
+                            }
+                            else if (buyer == true && seller == false)
                             {
                                 rr.AllocateRole(u, rr.GetRole(4));
                             }
-                            else {
+                            else if (buyer == true && seller == true)
+                            {
+                                rr.AllocateRole(u, rr.GetRole(4));
                                 rr.AllocateRole(u, rr.GetRole(3));
-                                }
+                            }                            
 
-                            if (commission == "Percentage")
-                            {
-                                cr.AllocateCommission(u, cr.GetComm(2));
-                            }
-                            else if (commission == "FixedFee")
-                            {
-                                cr.AllocateCommission(u, cr.GetComm(3));
-                            }
-                            else if (commission == "both")
-                            {
-                                cr.AllocateCommission(u, cr.GetComm(2));
-                                cr.AllocateCommission(u, cr.GetComm(3));
-                            }
-
-                            //ur.Transaction.Commit();
                         }
                         catch (Exception ex)
                         {                  
-          
-                            //ur.Transaction.Rollback();
-                            //rr.Transaction.Rollback();
                             throw new Exception("Error Occurred, please try later"+ex.Message);
                         }
                         finally
@@ -138,6 +83,16 @@ namespace Business_Layer
         public IEnumerable<User> GetAllUsers()
         {
             return new UserRepository().GetAllUsers();
+        }
+
+        public string GetPrivateKey(string email)
+        {
+            return new UserRepository().GetPrivateKey(email);
+        }
+
+        public string GetPublicKey(string email)
+        {
+            return new UserRepository().GetPublicKey(email);
         }
 
         /// <summary>
@@ -176,19 +131,82 @@ namespace Business_Layer
         /// </summary>
         /// <param name="username">Pass the username to match it with the user</param>
         /// <returns>Returns the single user that matches or null if noone matches</returns>
-        public User GetUser(string username)
+        public User GetUser(string email)
         {
-            return new UserRepository().GetUser(username);
+            return new UserRepository().GetUser(email);
         }
 
-        public Commission GetComm(int commid)
+        public void UpdateUser(string username, string email, string name,
+                           string surname, long contactno, bool buyer, bool seller)
         {
-            return new CommissionRepository().GetComm(commid);
+            try
+            {
+                User u = GetUser(email);
+                u.Username = username;
+                u.Name = name;
+                u.Surname = surname;
+                u.ContactNo = contactno.ToString();
+
+                UserRepository ur = new UserRepository();
+                RoleRepository rr = new RoleRepository();
+                ur.Entity = rr.Entity;
+                ur.UpdateUser(u);
+
+                
+                bool prevbuyer = false;
+                bool prevseller = false;
+                List<Commonlayer.Views.RolesView> roles = rr.GetUserRolesV(u.Email).ToList();
+                foreach (Commonlayer.Views.RolesView rol in roles)
+                {
+                    if (rol.ID == 3)
+                    {
+                        prevbuyer = true;
+                    }
+                    else if (rol.ID == 4)
+                    {
+                        prevseller = true;
+                    }
+                }
+
+
+                if (prevbuyer != buyer)
+                {
+                    if (buyer == true)
+                    {
+                        rr.AllocateRole(u, rr.GetRole(3));
+                    }
+                    else if (buyer == false)
+                    {
+                        rr.RemoveRole(u, rr.GetRole(3));
+                    }
+                }
+
+                if (prevseller != seller)
+                {
+                    if (seller == true)
+                    {
+                        rr.AllocateRole(u, rr.GetRole(4));
+                    }
+                    else if (seller == false)
+                    {
+                        rr.RemoveRole(u, rr.GetRole(4));
+                    }
+                }
+
+            }
+            catch(Exception x)
+            {
+                string ex = x.Message;
+                
+            }
         }
 
-        public IQueryable<Role> GetUserRoles(string username)
+
+       
+
+        public IQueryable<Role> GetUserRoles(string email)
         {
-            return new RoleRepository().GetUserRoles(username);
+            return new RoleRepository().GetUserRoles(email);
         }
 
         public IQueryable<Commonlayer.Views.CreditCardView> GetCreditCards(string username)
@@ -196,20 +214,20 @@ namespace Business_Layer
             return new UserRepository().GetCreditCards(username);
         }
 
-        public string GetUserPassword(string username)
+        //public string GetUserPassword(string username)
+        //{
+        //    return new UserRepository().GetUserPassword(username);
+        //}
+
+        public IQueryable<RolesView> GetUserRolesV(string email)
         {
-            return new UserRepository().GetUserPassword(username);
+            return new RoleRepository().GetUserRolesV(email);
         }
 
-        public IQueryable<RolesView> GetUserRolesV(string username)
-        {
-            return new RoleRepository().GetUserRolesV(username);
-        }
-
-        public IQueryable<CommissionType> GetCommissionTypes()
-        {
-            return new UserRepository().GetCommissions();
-        }
+        //public IQueryable<CommissionType> GetCommissionTypes()
+        //{
+        //    return new UserRepository().GetCommissions();
+        //}
 
         public void AddCreditCard(string username, string creditcardt, string cvv, string holder, decimal number)
         {
@@ -219,8 +237,7 @@ namespace Business_Layer
             c.CardNumber = number;
             c.CardOwner = holder;
             c.CardType = creditcardt;
-            c.Username = username;
-           // c.User
+            c.Email = username;
 
 
 
@@ -228,15 +245,9 @@ namespace Business_Layer
                     {
                         cr.Entity.Database.Connection.Open();
                         cr.AddCreditCard(c);     
-                        
-
-                        //ur.Transaction.Commit();
                     }
                     catch (Exception ex)
                     {
-
-                        //ur.Transaction.Rollback();
-                        //rr.Transaction.Rollback();
                         throw new Exception("Error Occurred, please try later" + ex.Message);
                     }
                     finally
@@ -245,5 +256,40 @@ namespace Business_Layer
                     }
                
         }
+
+        public string EncodeBase64(string data)
+        {
+            string s = data.Trim().Replace(" ", "+");
+            if (s.Length % 4 > 0)
+                s = s.PadRight(s.Length + 4 - s.Length % 4, '=');
+            return Encoding.UTF8.GetString(Convert.FromBase64String(s));
+        }
+
+        private string HashPassword(string password, string hashingAlgorithm = "HMACSHA256")
+        {
+            byte[] passwordBytes = Encoding.Unicode.GetBytes(password);
+            byte[] saltBytes = Convert.FromBase64String("AbAcAdAe");
+
+            var saltyPasswordBytes = new byte[saltBytes.Length + passwordBytes.Length];
+
+            Buffer.BlockCopy(saltBytes, 0, saltyPasswordBytes, 0, saltBytes.Length);
+            Buffer.BlockCopy(passwordBytes, 0, saltyPasswordBytes, saltBytes.Length, passwordBytes.Length);
+
+            switch (hashingAlgorithm)
+            {
+                case "HMACSHA256":
+                    return Convert.ToBase64String(new HMACSHA256(saltBytes).ComputeHash(saltyPasswordBytes));
+                default:
+                    // Supported types include: SHA1, MD5, SHA256, SHA384, SHA512
+                    HashAlgorithm algorithm = HashAlgorithm.Create(hashingAlgorithm);
+
+                    if (algorithm != null)
+                    {
+                        return Convert.ToBase64String(algorithm.ComputeHash(saltyPasswordBytes));
+                    }
+
+                    throw new CryptographicException("Unknown hash algorithm");
+            }
+        } 
     }
 }

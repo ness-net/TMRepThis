@@ -7,10 +7,9 @@
 
 <script type="text/javascript" >
     function cart(id) {
-        //alert(id + " " + $('input:text[name=quantity]').val());
         var param = {
-            userId: id,
-            quantity: $('input:text[name=quantity]').val()
+            userId: id
+            //quantity: $('input:text[name=quantity]').val()
         };
 
         $.ajax({
@@ -19,18 +18,11 @@
             datatype: "json",
             data: param,
             error: function (xmlHttpRequest, errorText, thrownError) {
-                    alert("Please input only numbers in the quantity");
+                    alert("Product cannot be added to cart.");
             },
             success: function (data) {
                 if (data != null) {
-                    @*var messages = '@ViewBag.Message'
-                    alert(messages.toString());*@
-                    //if (messages == "Log") {
-                    //    alert("Please log in first");
-                    //}
-                    //else {
                         alert("@Model.Name has been added to your cart!");
-                    //}
                 }
             }
         });
@@ -54,7 +46,7 @@
             <td class="style2">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp; -
-        <label id="txtlisted" runat="server">Seller : @Html.DisplayFor(model => model.Username)</label>
+        <label id="txtlisted" runat="server">Seller : @Html.DisplayFor(model => model.Email)</label>
     </td>
 </tr>
 <tr>
@@ -81,13 +73,13 @@
     <tr>
         <td class="style4"></td>
         <td>
-            Quantity (@Html.DisplayFor(model => model.Stock)
+            @*Quantity (@Html.DisplayFor(model => model.Stock)
             available):<br />
-            <input type="text" name="quantity" />
+            <input type="text" name="quantity" />*@
 
-
+            @if (ViewBag.ThisRole == "both" || ViewBag.ThisRole == "buyer") { 
             <button type="button" class="normalbutton" onclick="cart(@Model.ProductID)">Add to Cart!</button>
-
+            }
             <div id="divResults"></div>
         </td>
     </tr>

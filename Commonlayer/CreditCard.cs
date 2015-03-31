@@ -23,7 +23,7 @@ namespace Commonlayer
         public decimal CardNumber { get; set; }
         public string CardOwner { get; set; }
         public string CVV { get; set; }
-        public string Username { get; set; }
+        public string Email { get; set; }
     
         public virtual User User { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

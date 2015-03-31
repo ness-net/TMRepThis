@@ -28,7 +28,7 @@
         });
     }
 
-    function decrementfromcart(id) {
+    @*function decrementfromcart(id) {
         var param = { productID: id };
 
         $.ajax({
@@ -44,7 +44,7 @@
                 $('#divResults').html(result);
             }
         });
-    }
+    }*@
 </script>
 
 <p>
@@ -57,9 +57,6 @@
             </th>
             <th>
                 Name
-            </th>
-            <th>
-                Quantity
             </th>
             <th>
                 Price
@@ -77,15 +74,11 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
                     <button type="button" onclick="removecart(@item.ProductID)">Delete</button>
                     <br /> <br />
-                    <button type="button" onclick="decrementfromcart(@item.ProductID)">Decrement Product Quantity</button>
                 </td>
             </tr>
         }
@@ -94,7 +87,7 @@
 
     @foreach (var item in Model)
     {
-        totalprice += (Convert.ToDecimal(item.Price) * Convert.ToDecimal(item.Quantity));
+        totalprice += (Convert.ToDecimal(item.Price));
     }
 
     @{

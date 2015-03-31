@@ -14,18 +14,14 @@ namespace TraderMarket.Models
           public string Name { get; set; }        
           public string Surname { get; set; }        
           public long ContactNo { get; set; }        
-          public string Email { get; set; }        
-          public string Residence { get; set; }   
-          public string Street { get; set; }   
-          public string Town { get; set; }
-          public string PostCode { get; set; }
-          public string Country { get; set; }        
-          public string HandlesDeliveries { get; set; }
+          public string Email { get; set; }     
+          //public bool Buyer { get; set; }
+          //public bool Seller { get; set; }
         }
 
         public class UserDBContext : TradersMarketplacedbEntities
         {
-            public DbSet<User> User { get; set; }
+            public DbSet<User> User { get; set; }           
         } 
     
 }

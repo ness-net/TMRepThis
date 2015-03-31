@@ -68,6 +68,30 @@ namespace TraderMarket.RoleService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetRoleV", ReplyAction="http://tempuri.org/IRoleService1/GetRoleVResponse")]
         System.Threading.Tasks.Task<Commonlayer.Views.RolesView> GetRoleVAsync(int roleid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetUserRolesV", ReplyAction="http://tempuri.org/IRoleService1/GetUserRolesVResponse")]
+        Commonlayer.Views.RolesView[] GetUserRolesV(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetUserRolesV", ReplyAction="http://tempuri.org/IRoleService1/GetUserRolesVResponse")]
+        System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/AllocateRole", ReplyAction="http://tempuri.org/IRoleService1/AllocateRoleResponse")]
+        void AllocateRole(Commonlayer.User user, Commonlayer.Role role);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/AllocateRole", ReplyAction="http://tempuri.org/IRoleService1/AllocateRoleResponse")]
+        System.Threading.Tasks.Task AllocateRoleAsync(Commonlayer.User user, Commonlayer.Role role);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/AllocateRoleV", ReplyAction="http://tempuri.org/IRoleService1/AllocateRoleVResponse")]
+        void AllocateRoleV(string email, int roleid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/AllocateRoleV", ReplyAction="http://tempuri.org/IRoleService1/AllocateRoleVResponse")]
+        System.Threading.Tasks.Task AllocateRoleVAsync(string email, int roleid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/RemoveRole", ReplyAction="http://tempuri.org/IRoleService1/RemoveRoleResponse")]
+        void RemoveRole(string email, int roleid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/RemoveRole", ReplyAction="http://tempuri.org/IRoleService1/RemoveRoleResponse")]
+        System.Threading.Tasks.Task RemoveRoleAsync(string email, int roleid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -167,6 +191,38 @@ namespace TraderMarket.RoleService {
         
         public System.Threading.Tasks.Task<Commonlayer.Views.RolesView> GetRoleVAsync(int roleid) {
             return base.Channel.GetRoleVAsync(roleid);
+        }
+        
+        public Commonlayer.Views.RolesView[] GetUserRolesV(string email) {
+            return base.Channel.GetUserRolesV(email);
+        }
+        
+        public System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string email) {
+            return base.Channel.GetUserRolesVAsync(email);
+        }
+        
+        public void AllocateRole(Commonlayer.User user, Commonlayer.Role role) {
+            base.Channel.AllocateRole(user, role);
+        }
+        
+        public System.Threading.Tasks.Task AllocateRoleAsync(Commonlayer.User user, Commonlayer.Role role) {
+            return base.Channel.AllocateRoleAsync(user, role);
+        }
+        
+        public void AllocateRoleV(string email, int roleid) {
+            base.Channel.AllocateRoleV(email, roleid);
+        }
+        
+        public System.Threading.Tasks.Task AllocateRoleVAsync(string email, int roleid) {
+            return base.Channel.AllocateRoleVAsync(email, roleid);
+        }
+        
+        public void RemoveRole(string email, int roleid) {
+            base.Channel.RemoveRole(email, roleid);
+        }
+        
+        public System.Threading.Tasks.Task RemoveRoleAsync(string email, int roleid) {
+            return base.Channel.RemoveRoleAsync(email, roleid);
         }
     }
 }

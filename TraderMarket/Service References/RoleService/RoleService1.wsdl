@@ -62,6 +62,30 @@
   <wsdl:message name="IRoleService1_GetRoleV_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetRoleVResponse" />
   </wsdl:message>
+  <wsdl:message name="IRoleService1_GetUserRolesV_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRolesV" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService1_GetUserRolesV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRolesVResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService1_AllocateRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllocateRole" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService1_AllocateRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllocateRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService1_AllocateRoleV_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllocateRoleV" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService1_AllocateRoleV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllocateRoleVResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService1_RemoveRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveRole" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService1_RemoveRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveRoleResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRoleService1">
     <wsdl:operation name="AddRole">
       <wsdl:input wsaw:Action="http://tempuri.org/IRoleService1/AddRole" message="tns:IRoleService1_AddRole_InputMessage" />
@@ -98,6 +122,22 @@
     <wsdl:operation name="GetRoleV">
       <wsdl:input wsaw:Action="http://tempuri.org/IRoleService1/GetRoleV" message="tns:IRoleService1_GetRoleV_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRoleService1/GetRoleVResponse" message="tns:IRoleService1_GetRoleV_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRolesV">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService1/GetUserRolesV" message="tns:IRoleService1_GetUserRolesV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService1/GetUserRolesVResponse" message="tns:IRoleService1_GetUserRolesV_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AllocateRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService1/AllocateRole" message="tns:IRoleService1_AllocateRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService1/AllocateRoleResponse" message="tns:IRoleService1_AllocateRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AllocateRoleV">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService1/AllocateRoleV" message="tns:IRoleService1_AllocateRoleV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService1/AllocateRoleVResponse" message="tns:IRoleService1_AllocateRoleV_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService1/RemoveRole" message="tns:IRoleService1_RemoveRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService1/RemoveRoleResponse" message="tns:IRoleService1_RemoveRole_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRoleService1" type="tns:IRoleService1">
@@ -176,6 +216,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetRoleV">
       <soap:operation soapAction="http://tempuri.org/IRoleService1/GetRoleV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRolesV">
+      <soap:operation soapAction="http://tempuri.org/IRoleService1/GetUserRolesV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllocateRole">
+      <soap:operation soapAction="http://tempuri.org/IRoleService1/AllocateRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllocateRoleV">
+      <soap:operation soapAction="http://tempuri.org/IRoleService1/AllocateRoleV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRole">
+      <soap:operation soapAction="http://tempuri.org/IRoleService1/RemoveRole" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

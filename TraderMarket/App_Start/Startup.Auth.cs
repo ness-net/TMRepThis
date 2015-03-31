@@ -15,6 +15,7 @@ namespace TraderMarket
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login")
+
             });
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -31,6 +32,8 @@ namespace TraderMarket
             //app.UseFacebookAuthentication(
             //   appId: "",
             //   appSecret: "");
+
+            app.UseGoogleAuthentication(clientId: "495570776054-scdasf02jj4mdi69nc5rreg87s78a2j8.apps.googleusercontent.com", clientSecret: "1Q-LbxZ2KdnqUWe_jdImoPzT");
 
             //app.UseGoogleAuthentication();
         }

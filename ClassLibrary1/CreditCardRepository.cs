@@ -18,8 +18,7 @@ namespace DataAccessLayer
         {
             Entity.CreditCards.Add(myCreditCard);
             Entity.SaveChanges();
-        }
-        
+        }      
 
         
 

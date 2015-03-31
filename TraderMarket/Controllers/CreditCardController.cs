@@ -18,7 +18,7 @@ namespace TraderMarket.Controllers
         [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Index()
         {
-            var creditcards = db.CreditCards.Include(c => c.User).Where(u => u.Username == User.Identity.Name);
+            var creditcards = db.CreditCards.Include(c => c.User).Where(u => u.Email == User.Identity.Name);
             return View(creditcards.ToList());
         }
 
@@ -42,7 +42,7 @@ namespace TraderMarket.Controllers
         [Authorize(Roles = "Buyer, Admin")]
         public ActionResult Create()
         {
-            ViewBag.Username = new SelectList(db.Users, "Username", "Password");
+            ViewBag.Username = new SelectList(db.Users, "Email", "Password");
             return View();
         }
 
@@ -55,13 +55,13 @@ namespace TraderMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                creditcard.Username = User.Identity.Name.ToString();
+                creditcard.Email = User.Identity.Name.ToString();
                 db.CreditCards.Add(creditcard);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.Users, "Username", "Password", creditcard.Username);
+            ViewBag.Username = new SelectList(db.Users, "Email", "Password", creditcard.Email);
             return View(creditcard);
         }
 
@@ -78,7 +78,7 @@ namespace TraderMarket.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Username = new SelectList(db.Users, "Username", "Password", creditcard.Username);
+            ViewBag.Username = new SelectList(db.Users, "Email", "Password", creditcard.Email);
             return View(creditcard);
         }
 
@@ -87,7 +87,7 @@ namespace TraderMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="CardType,CardNumber,CardOwner,CVV,Username")] CreditCard creditcard)
+        public ActionResult Edit([Bind(Include="CardType,CardNumber,CardOwner,CVV,Email")] CreditCard creditcard)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace TraderMarket.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Username = new SelectList(db.Users, "Username", "Password", creditcard.Username);
+            ViewBag.Username = new SelectList(db.Users, "Email", "Password", creditcard.Email);
             return View(creditcard);
         }
 

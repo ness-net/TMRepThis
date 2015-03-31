@@ -26,9 +26,10 @@ namespace Commonlayer
         public int CategoryID { get; set; }
         public string ImageLink { get; set; }
         public decimal Price { get; set; }
-        public string Username { get; set; }
-        public int Stock { get; set; }
+        public string Email { get; set; }
         public bool isActive { get; set; }
+        public byte[] SoftwareBytesSigned { get; set; }
+        public byte[] SoftwareBytesS { get; set; }
     
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual Category Category { get; set; }

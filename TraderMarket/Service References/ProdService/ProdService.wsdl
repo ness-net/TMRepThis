@@ -32,12 +32,6 @@
   <wsdl:message name="IProdService_GetCategories_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
   </wsdl:message>
-  <wsdl:message name="IProdService_ControlStock_InputMessage">
-    <wsdl:part name="parameters" element="tns:ControlStock" />
-  </wsdl:message>
-  <wsdl:message name="IProdService_ControlStock_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ControlStockResponse" />
-  </wsdl:message>
   <wsdl:message name="IProdService_AddProducttoCart_InputMessage">
     <wsdl:part name="parameters" element="tns:AddProducttoCart" />
   </wsdl:message>
@@ -49,18 +43,6 @@
   </wsdl:message>
   <wsdl:message name="IProdService_GetProductsinShoppingCart_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsinShoppingCartResponse" />
-  </wsdl:message>
-  <wsdl:message name="IProdService_UpdateCart_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateCart" />
-  </wsdl:message>
-  <wsdl:message name="IProdService_UpdateCart_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateCartResponse" />
-  </wsdl:message>
-  <wsdl:message name="IProdService_DecrementCart_InputMessage">
-    <wsdl:part name="parameters" element="tns:DecrementCart" />
-  </wsdl:message>
-  <wsdl:message name="IProdService_DecrementCart_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DecrementCartResponse" />
   </wsdl:message>
   <wsdl:message name="IProdService_DeleteShoppingCartEntry_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteShoppingCartEntry" />
@@ -79,18 +61,6 @@
   </wsdl:message>
   <wsdl:message name="IProdService_GetProductID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductIDResponse" />
-  </wsdl:message>
-  <wsdl:message name="IProdService_CheckStock_InputMessage">
-    <wsdl:part name="parameters" element="tns:CheckStock" />
-  </wsdl:message>
-  <wsdl:message name="IProdService_CheckStock_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CheckStockResponse" />
-  </wsdl:message>
-  <wsdl:message name="IProdService_GetStock_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetStock" />
-  </wsdl:message>
-  <wsdl:message name="IProdService_GetStock_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetStockResponse" />
   </wsdl:message>
   <wsdl:message name="IProdService_GetProductsList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsList" />
@@ -169,10 +139,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetCategories" message="tns:IProdService_GetCategories_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetCategoriesResponse" message="tns:IProdService_GetCategories_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ControlStock">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/ControlStock" message="tns:IProdService_ControlStock_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/ControlStockResponse" message="tns:IProdService_ControlStock_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="AddProducttoCart">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/AddProducttoCart" message="tns:IProdService_AddProducttoCart_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProdService/AddProducttoCartResponse" message="tns:IProdService_AddProducttoCart_OutputMessage" />
@@ -180,14 +146,6 @@
     <wsdl:operation name="GetProductsinShoppingCart">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProductsinShoppingCart" message="tns:IProdService_GetProductsinShoppingCart_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetProductsinShoppingCartResponse" message="tns:IProdService_GetProductsinShoppingCart_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateCart">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/UpdateCart" message="tns:IProdService_UpdateCart_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/UpdateCartResponse" message="tns:IProdService_UpdateCart_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DecrementCart">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/DecrementCart" message="tns:IProdService_DecrementCart_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/DecrementCartResponse" message="tns:IProdService_DecrementCart_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteShoppingCartEntry">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/DeleteShoppingCartEntry" message="tns:IProdService_DeleteShoppingCartEntry_InputMessage" />
@@ -200,14 +158,6 @@
     <wsdl:operation name="GetProductID">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProductID" message="tns:IProdService_GetProductID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetProductIDResponse" message="tns:IProdService_GetProductID_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="CheckStock">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/CheckStock" message="tns:IProdService_CheckStock_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/CheckStockResponse" message="tns:IProdService_CheckStock_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetStock">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetStock" message="tns:IProdService_GetStock_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProdService/GetStockResponse" message="tns:IProdService_GetStock_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetProductsList">
       <wsdl:input wsaw:Action="http://tempuri.org/IProdService/GetProductsList" message="tns:IProdService_GetProductsList_InputMessage" />
@@ -288,15 +238,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ControlStock">
-      <soap:operation soapAction="http://tempuri.org/IProdService/ControlStock" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddProducttoCart">
       <soap:operation soapAction="http://tempuri.org/IProdService/AddProducttoCart" style="document" />
       <wsdl:input>
@@ -308,24 +249,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductsinShoppingCart">
       <soap:operation soapAction="http://tempuri.org/IProdService/GetProductsinShoppingCart" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateCart">
-      <soap:operation soapAction="http://tempuri.org/IProdService/UpdateCart" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DecrementCart">
-      <soap:operation soapAction="http://tempuri.org/IProdService/DecrementCart" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -353,24 +276,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductID">
       <soap:operation soapAction="http://tempuri.org/IProdService/GetProductID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CheckStock">
-      <soap:operation soapAction="http://tempuri.org/IProdService/CheckStock" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetStock">
-      <soap:operation soapAction="http://tempuri.org/IProdService/GetStock" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

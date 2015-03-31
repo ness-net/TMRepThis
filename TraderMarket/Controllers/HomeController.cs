@@ -7,6 +7,7 @@ using Commonlayer.Views;
 
 namespace TraderMarket.Controllers
 {
+    [RequireHttps]
     public class HomeController : BaseController
     {
         public ActionResult Index()

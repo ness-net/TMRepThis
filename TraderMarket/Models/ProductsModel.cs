@@ -37,9 +37,6 @@ namespace TraderMarket.Models
         [Display(Name = "Price")]
         public decimal price { get; set; }
 
-        [Required]
-        [Display(Name = "Stock")]
-        public decimal stock { get; set; }
 
 
 

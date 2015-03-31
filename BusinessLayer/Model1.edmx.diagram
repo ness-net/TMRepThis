@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f6c67c3244884529a2ead01b1ef79018" Name="Diagram1">
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Category" Width="1.5" PointX="5.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Colour" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Commission" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Country" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.CreditCard" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.OrderDetail" Width="1.5" PointX="2.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Order" Width="1.5" PointX="4.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.OrderStatu" Width="1.5" PointX="7.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Product" Width="1.5" PointX="8" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Role" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Size" Width="1.5" PointX="10.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.SubCategory" Width="1.5" PointX="8" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.sysdiagram" Width="1.5" PointX="4.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.User" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_Product_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_SubCategories_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_User_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.ProductColour" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.ProductSize" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.UserCard" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.UserCommission" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.UserRole" ManuallyRouted="false" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_OrderDetails_Orders" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_OrderDetails_Product" />
+        <AssociationConnector Association="TradersMarketplacedbModel.FK_Orders_OrderStatus" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

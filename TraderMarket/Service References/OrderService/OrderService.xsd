@@ -6,7 +6,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="orderid" type="xs:int" />
         <xs:element minOccurs="0" name="productid" type="xs:int" />
-        <xs:element minOccurs="0" name="quantity" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -18,7 +17,7 @@
   <xs:element name="AddOrder">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="number" type="xs:decimal" />
       </xs:sequence>
     </xs:complexType>
@@ -40,6 +39,35 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetOrderedProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="productid" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderedProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetOrderedProductResult" nillable="true" type="q2:OrderedProducts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductsOfUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductsOfUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductsOfUserResult" nillable="true" type="q3:ArrayOfOrderedProducts" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetOrder">
     <xs:complexType>
       <xs:sequence>
@@ -50,7 +78,7 @@
   <xs:element name="GetOrderResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetOrderResult" nillable="true" type="q2:OrderView" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetOrderResult" nillable="true" type="q4:OrderView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -58,7 +86,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="productID" type="xs:int" />
-        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
