@@ -6,6 +6,7 @@ using Commonlayer;
 using Commonlayer.Views;
 using System.Data.Entity.Infrastructure;
 using DataAccessLayer.Observer;
+using System.Data.Entity;
 
 namespace DataAccessLayer
 {
@@ -22,7 +23,7 @@ namespace DataAccessLayer
                             ProductID = p.ProductID,
                             Name = p.Name,
                             Description = p.Description,
-                            CategoryID = p.CategoryID,
+                            //CategoryID = p.CategoryID,
                             ImageLink = p.ImageLink,
                             Price = p.Price,
                             Email = p.Email,
@@ -49,10 +50,9 @@ namespace DataAccessLayer
             var list = (from p in Entity.Categories
                         select new CategoryView
                         {
-                           CategoryID = p.CategoryID,
-                           Name = p.Name,
-                           ImageLink = p.ImageLink,
-                           ParentID = p.ParentID
+                            CategoryID = p.CategoryID,
+                            Name = p.Name,
+                            ParentID = p.ParentID
                         }
                   ).Distinct();
 
@@ -66,13 +66,12 @@ namespace DataAccessLayer
                         {
                             CategoryID = p.SubCategoryID,
                             Name = p.Name,
-                            ImageLink = p.ImageLink,
                             ParentID = p.ParentCategoryID
                         }
                   ).Distinct();
 
             return
-                
+
                 list.AsQueryable();
         }
 
@@ -81,19 +80,17 @@ namespace DataAccessLayer
             return (from p in Entity.Products
                     join ps in Entity.Categories
                     on p.CategoryID equals ps.CategoryID
-                    where (p.ProductID == ProductID) && (ps.ParentID!=null)
+                    where (p.ProductID == ProductID) && (ps.ParentID != null)
                     select ps.Name).SingleOrDefault();
         }
 
         public IQueryable<CategoryView> getMainCategories()
         {
             var list = (from p in Entity.Categories
-                        where (p.SubCategories == null)
                         select new CategoryView
                         {
                             CategoryID = p.CategoryID,
-                            Name = p.Name,
-                            ImageLink = p.ImageLink
+                            Name = p.Name
                         }
                   ).Distinct();
 
@@ -247,12 +244,22 @@ namespace DataAccessLayer
             return Entity.Carts.SingleOrDefault(x => x.Email == email && x.ProductID == productId);
         }
 
-        //public void UpdateCart(string email, int productId, int newQty)
-        //{
-        //    Cart sc = GetShoppingCart(email, productId);
-        //    sc.Quantity += newQty;
-        //    Entity.SaveChanges();
-        //}
+        public void UpdateCart(string email, string paykey)
+        {
+            IQueryable<Cart> carts = GetCarts(email);
+            foreach (Cart sc in carts)
+            {
+                try
+                {
+                    TradersMarketplacedbEntities db = new TradersMarketplacedbEntities();
+                    db.Carts.Single(x => x.Email == email && x.ProductID == sc.ProductID).datepurchased = DateTime.Now;
+                    db.SaveChanges();
+                }catch(Exception x)
+                {
+                    string message = x.Message;
+                }
+            }
+        }
 
         //public void DecrementCart(string email, int productId)
         //{
@@ -260,6 +267,26 @@ namespace DataAccessLayer
         //    sc.Quantity = sc.Quantity - 1;
         //    Entity.SaveChanges();
         //}
+
+        public IQueryable<Cart> GetCarts(string email)
+        {
+            return (from sc in Entity.Carts
+                    where sc.Email == email
+                    select sc
+                    );
+        }
+
+        public IQueryable<CartView> GetSCarts(string email)
+        {
+            return (from sc in Entity.Carts
+                    where sc.Email == email
+                    select new CartView
+                        {
+                            email = email,
+                            prodi = sc.ProductID,
+                            datepurchased = sc.datepurchased
+                        });
+        }
 
         public IQueryable<ShoppingCartView> GetProductsinShoppingCart(string email)
         {
@@ -275,6 +302,17 @@ namespace DataAccessLayer
                         ImageLink = p.ImageLink
                     }
                     );
+        }
+
+        public decimal GetPriceOfCart(string email)
+        {
+            decimal price = 0;
+            IQueryable<ShoppingCartView> sc =GetProductsinShoppingCart(email);
+            foreach(ShoppingCartView s in sc)
+            {
+                price = price + s.Price;
+            }
+            return price;
         }
 
         public void DeleteShoppingCartEntry(Cart sc)

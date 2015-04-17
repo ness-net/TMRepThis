@@ -12,7 +12,7 @@ namespace TraderMarket.Controllers
     {
         public ActionResult Index()
         {
-            List<ProductView> list = new ProdService.ProdServiceClient().GetProducts().ToList();
+            List<TraderMarket.ProdService.ProductView> list = new ProdService.ProdServiceClient().GetProducts().ToList();
 
             return View("Index", list);
         }

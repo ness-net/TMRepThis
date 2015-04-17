@@ -60,10 +60,8 @@ namespace DataAccessLayer
                             NotSigned = p.SoftwareBytesS,
                             Signed = p.SoftwareBytesSigned
                         }
-                    ).SingleOrDefault();
+                    ).SingleOrDefault();        }
 
-
-        }
 
         //public bool userBought(int ProductID, string email)
         //{

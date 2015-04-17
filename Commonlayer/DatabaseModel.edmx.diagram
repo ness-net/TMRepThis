@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2d7a1b4402d3402cbcccfb8a8af74885" Name="Diagram1">
+      <Diagram DiagramId="6482f8e1843b477aba6efc51549efe60" Name="Diagram1">
         <EntityTypeShape EntityType="TradersMarketplacedbModel.Cart" Width="1.5" PointX="7.5" PointY="7" />
         <EntityTypeShape EntityType="TradersMarketplacedbModel.Category" Width="1.5" PointX="3" PointY="10.75" />
         <EntityTypeShape EntityType="TradersMarketplacedbModel.Commission" Width="1.5" PointX="0.75" PointY="7.125" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.CreditCard" Width="1.5" PointX="5.25" PointY="14" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.CreditCard" Width="1.5" PointX="5.25" PointY="14.25" />
         <EntityTypeShape EntityType="TradersMarketplacedbModel.Menu" Width="1.5" PointX="1.5" PointY="0.75" />
         <EntityTypeShape EntityType="TradersMarketplacedbModel.OrderDetail" Width="1.5" PointX="9.75" PointY="8.125" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.Order" Width="1.5" PointX="7.5" PointY="10.125" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.OrderStatu" Width="1.5" PointX="7.5" PointY="4.5" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.Order" Width="1.5" PointX="7.5" PointY="10.25" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.OrderStatu" Width="1.5" PointX="7.5" PointY="4.625" />
         <EntityTypeShape EntityType="TradersMarketplacedbModel.Product" Width="1.5" PointX="5.25" PointY="6.125" />
         <EntityTypeShape EntityType="TradersMarketplacedbModel.Role" Width="1.5" PointX="0.75" PointY="4.125" />
         <EntityTypeShape EntityType="TradersMarketplacedbModel.SubCategory" Width="1.5" PointX="5.25" PointY="11" />
-        <EntityTypeShape EntityType="TradersMarketplacedbModel.sysdiagram" Width="1.5" PointX="3.75" PointY="2.75" />
+        <EntityTypeShape EntityType="TradersMarketplacedbModel.sysdiagram" Width="1.5" PointX="3.75" PointY="2.625" />
         <EntityTypeShape EntityType="TradersMarketplacedbModel.User" Width="1.5" PointX="3" PointY="6.125" />
         <AssociationConnector Association="TradersMarketplacedbModel.FK_Cart_Product" />
         <AssociationConnector Association="TradersMarketplacedbModel.FK_Cart_User1" />

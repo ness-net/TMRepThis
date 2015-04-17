@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Commonlayer.Views.ProductView>
+﻿@model IEnumerable<TraderMarket.ProdService.ProductView>
 
 @{
     ViewBag.Title = "Index";
@@ -31,7 +31,7 @@
     <div id="left" style='width:20%;overflow:hidden;'>
         <div id="menubody">
             <ul id="menulist">
-                @foreach (Commonlayer.Views.CategoryView m in ViewBag.Categories)
+                @foreach (TraderMarket.ProdService.CategoryView m in ViewBag.Categories)
                 {
                     if (m.ParentID == null)
                     {

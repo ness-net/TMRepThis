@@ -165,22 +165,22 @@ namespace DataAccessLayer
         //    return list.AsQueryable();
         //}
 
-        public IQueryable<CreditCardView> GetCreditCards(string email)
-        {
-            var list = (from c in Entity.CreditCards
-                        where c.Email == email
-                        select new CreditCardView
-                        {
-                            CardOwner = c.CardOwner,
-                            CardT = c.CardType,
-                            CVV = c.CVV,
-                            Number = c.CardNumber,
-                            email = c.Email
-                        }
-                    ).Distinct();
+        //public IQueryable<CreditCardView> GetCreditCards(string email)
+        //{
+        //    var list = (from c in Entity.CreditCards
+        //                where c.Email == email
+        //                select new CreditCardView
+        //                {
+        //                    CardOwner = c.CardOwner,
+        //                    CardT = c.CardType,
+        //                    CVV = c.CVV,
+        //                    Number = c.CardNumber,
+        //                    email = c.Email
+        //                }
+        //            ).Distinct();
 
-            return list.AsQueryable();
-        }
+        //    return list.AsQueryable();
+        //}
 
 
 

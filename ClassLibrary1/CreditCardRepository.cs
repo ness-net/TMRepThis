@@ -14,17 +14,17 @@ namespace DataAccessLayer
     {
         public CreditCardRepository() : base() { }
 
-        public void AddCreditCard(CreditCard myCreditCard)
-        {
-            Entity.CreditCards.Add(myCreditCard);
-            Entity.SaveChanges();
-        }      
+        //public void AddCreditCard(CreditCard myCreditCard)
+        //{
+        //    Entity.CreditCards.Add(myCreditCard);
+        //    Entity.SaveChanges();
+        //}      
 
         
 
-        public CreditCard GetLCreditCard(decimal number)
-        {
-            return Entity.CreditCards.SingleOrDefault(c => c.CardNumber == number);
-        }
+        //public CreditCard GetLCreditCard(decimal number)
+        //{
+        //    return Entity.CreditCards.SingleOrDefault(c => c.CardNumber == number);
+        //}
     }
 }

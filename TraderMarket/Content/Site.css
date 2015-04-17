@@ -4,6 +4,11 @@ to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
 
+a.googleimage
+{
+    background: url(~/Content/sign-in-with-google.png) no-repeat top left;     
+     text-indent: -9999px; /* hides the link text */
+}
 
 a:link {
     color: #034af3;

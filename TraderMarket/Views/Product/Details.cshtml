@@ -1,4 +1,4 @@
-﻿@model Commonlayer.Views.ProductView
+﻿@model TraderMarket.ProdService.ProductView
 
 @{
     ViewBag.Title = "Details";
@@ -73,9 +73,7 @@
     <tr>
         <td class="style4"></td>
         <td>
-            @*Quantity (@Html.DisplayFor(model => model.Stock)
-            available):<br />
-            <input type="text" name="quantity" />*@
+            
 
             @if (ViewBag.ThisRole == "both" || ViewBag.ThisRole == "buyer") { 
             <button type="button" class="normalbutton" onclick="cart(@Model.ProductID)">Add to Cart!</button>

@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business_Layer", "Business_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commonlayer", "Commonlayer\Commonlayer.csproj", "{5C3A7BE7-7D1C-466D-B220-054BA841FF70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestsRole", "UnitTestsRole\UnitTestsRole.csproj", "{50A71EF7-8DE9-45D1-9F72-05C67D8C4FDB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{5C3A7BE7-7D1C-466D-B220-054BA841FF70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C3A7BE7-7D1C-466D-B220-054BA841FF70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C3A7BE7-7D1C-466D-B220-054BA841FF70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50A71EF7-8DE9-45D1-9F72-05C67D8C4FDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50A71EF7-8DE9-45D1-9F72-05C67D8C4FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50A71EF7-8DE9-45D1-9F72-05C67D8C4FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50A71EF7-8DE9-45D1-9F72-05C67D8C4FDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -36,7 +36,7 @@ namespace TraderMarket.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Commonlayer.Views.RolesView role = new RoleService.RoleService1Client().GetRoleV(id);
+            TraderMarket.RoleService.RolesView role = new RoleService.RoleService1Client().GetRoleV(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -60,6 +60,7 @@ namespace TraderMarket.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 new RoleService.RoleService1Client().AddRole(role.Role1);
                 return RedirectToAction("Index");
             }

@@ -29,7 +29,7 @@ namespace Business_Layer
             UserRepository ur = new UserRepository();
             RoleRepository rr = new RoleRepository();
             ur.Entity = rr.Entity;
-
+           
 
             if (ur.DoesUsernameExist(username) == false)
             {
@@ -209,10 +209,10 @@ namespace Business_Layer
             return new RoleRepository().GetUserRoles(email);
         }
 
-        public IQueryable<Commonlayer.Views.CreditCardView> GetCreditCards(string username)
-        {
-            return new UserRepository().GetCreditCards(username);
-        }
+        //public IQueryable<Commonlayer.Views.CreditCardView> GetCreditCards(string username)
+        //{
+        //    return new UserRepository().GetCreditCards(username);
+        //}
 
         //public string GetUserPassword(string username)
         //{
@@ -229,33 +229,33 @@ namespace Business_Layer
         //    return new UserRepository().GetCommissions();
         //}
 
-        public void AddCreditCard(string username, string creditcardt, string cvv, string holder, decimal number)
-        {
-            CreditCardRepository cr = new CreditCardRepository();
-            CreditCard c = new CreditCard();
-            c.CVV = cvv;
-            c.CardNumber = number;
-            c.CardOwner = holder;
-            c.CardType = creditcardt;
-            c.Email = username;
+        //public void AddCreditCard(string username, string creditcardt, string cvv, string holder, decimal number)
+        //{
+        //    CreditCardRepository cr = new CreditCardRepository();
+        //    CreditCard c = new CreditCard();
+        //    c.CVV = cvv;
+        //    c.CardNumber = number;
+        //    c.CardOwner = holder;
+        //    c.CardType = creditcardt;
+        //    c.Email = username;
 
 
 
-                    try
-                    {
-                        cr.Entity.Database.Connection.Open();
-                        cr.AddCreditCard(c);     
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception("Error Occurred, please try later" + ex.Message);
-                    }
-                    finally
-                    {
-                        cr.Entity.Database.Connection.Close();
-                    }
+        //            try
+        //            {
+        //                cr.Entity.Database.Connection.Open();
+        //                cr.AddCreditCard(c);     
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                throw new Exception("Error Occurred, please try later" + ex.Message);
+        //            }
+        //            finally
+        //            {
+        //                cr.Entity.Database.Connection.Close();
+        //            }
                
-        }
+        //}
 
         public string EncodeBase64(string data)
         {

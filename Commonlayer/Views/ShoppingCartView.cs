@@ -12,5 +12,6 @@ namespace Commonlayer.Views
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string ImageLink { get; set; }
+        public string paykey { get; set; }
     }
 }

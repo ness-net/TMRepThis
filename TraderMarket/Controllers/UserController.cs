@@ -8,9 +8,15 @@ using Commonlayer;
 using TraderMarket.Models;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using DotNetOpenAuth.Messaging;
-using DotNetOpenAuth.OpenId.RelyingParty;
-using DotNetOpenAuth.AspNet;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2.Mvc;
+using System.Threading.Tasks;
+using System.Threading;
+using Google.Apis.Services;
+using Google.Apis.Plus.v1;
+using Google.Apis.Util.Store;
+
 
 namespace TraderMarket.Controllers
 {
@@ -28,29 +34,6 @@ namespace TraderMarket.Controllers
         /// <returns>ActionResult</returns>
         public ActionResult Login()
         {
-
-            //var openid = new OpenIdRelyingParty();
-            //IAuthenticationResponse response = openid.GetResponse();
-
-            //if (response != null)
-            //{
-            //    switch (response.Status)
-            //    {
-            //        case AuthenticationStatus.Authenticated:
-            //            FormsAuthentication.RedirectFromLoginPage(
-            //                response.ClaimedIdentifier, false);
-            //            break;
-            //        case AuthenticationStatus.Canceled:
-            //            ModelState.AddModelError("loginIdentifier",
-            //                "Login was cancelled at the provider");
-            //            break;
-            //        case AuthenticationStatus.Failed:
-            //            ModelState.AddModelError("loginIdentifier",
-            //                "Login failed using the provided OpenID identifier");
-            //            break;
-            //    }
-            //}           
-
             if (User.Identity.Name == null || User.Identity.Name == "")
             {
                 return View();
@@ -61,6 +44,59 @@ namespace TraderMarket.Controllers
             }
         }
 
+        public ActionResult LoginWithGoogle(CancellationToken cancellationToken)
+        {
+            UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                                  new ClientSecrets
+                                  {
+                                      ClientId = "495570776054-334jadhgre54h0548rp40spl57flgb42.apps.googleusercontent.com",
+                                      ClientSecret = "OBVkdnAFcj2dPkk7FYwk4SBI"
+                                  },
+                                  new[] { "https://mail.google.com/ email" },
+                                  "Vanessa",
+                                  CancellationToken.None,
+                                 null
+                                  ).Result;
+
+            //var result = await new AuthorizationCodeMvcApp(this, new AuthRepository()).
+            //                                          AuthorizeAsync(cancellationToken);
+
+            if (credential != null)
+            {
+                var service = new PlusService(new BaseClientService.Initializer
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = "ASP.NET MVC Sample"
+                });
+
+                Google.Apis.Plus.v1.Data.Person me = service.People.Get("me").Execute();
+                Google.Apis.Plus.v1.Data.Person.EmailsData myAccountEmail = me.Emails.Where(a => a.Type == "account").FirstOrDefault();
+                try
+                {
+                    bool u = new UserService.UserServiceClient().DoesEmailExist(myAccountEmail.Value);
+                    if (u == true)
+                    {
+                        FormsAuthentication.RedirectFromLoginPage(myAccountEmail.Value, true);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return View("Login");
+                    }
+                }
+                catch
+                {
+                    return View("Login");
+                }
+            }
+            else
+            {
+                return View("Login");
+            }
+        }
+
+
+              
         /// <summary>
         /// Method that runs when the user logs in
         /// </summary>
@@ -69,6 +105,7 @@ namespace TraderMarket.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel data)
         {
+            
             try
             {
                 if (new UserService.UserServiceClient().isAuthenticationValid(data.email, data.password))

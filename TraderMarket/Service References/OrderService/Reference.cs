@@ -9,7 +9,243 @@
 //------------------------------------------------------------------------------
 
 namespace TraderMarket.OrderService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderView", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer.Views")]
+    [System.SerializableAttribute()]
+    public partial class OrderView : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> OrderStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameSellerField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DateField, value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderID {
+            get {
+                return this.OrderIDField;
+            }
+            set {
+                if ((this.OrderIDField.Equals(value) != true)) {
+                    this.OrderIDField = value;
+                    this.RaisePropertyChanged("OrderID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> OrderStatus {
+            get {
+                return this.OrderStatusField;
+            }
+            set {
+                if ((this.OrderStatusField.Equals(value) != true)) {
+                    this.OrderStatusField = value;
+                    this.RaisePropertyChanged("OrderStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UsernameSeller {
+            get {
+                return this.UsernameSellerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameSellerField, value) != true)) {
+                    this.UsernameSellerField = value;
+                    this.RaisePropertyChanged("UsernameSeller");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderedProducts", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer.Views")]
+    [System.SerializableAttribute()]
+    public partial class OrderedProducts : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] NotSignedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderedDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] SignedField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] NotSigned {
+            get {
+                return this.NotSignedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NotSignedField, value) != true)) {
+                    this.NotSignedField = value;
+                    this.RaisePropertyChanged("NotSigned");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderedDate {
+            get {
+                return this.OrderedDateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderedDateField, value) != true)) {
+                    this.OrderedDateField = value;
+                    this.RaisePropertyChanged("OrderedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((this.ProductIDField.Equals(value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Signed {
+            get {
+                return this.SignedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SignedField, value) != true)) {
+                    this.SignedField = value;
+                    this.RaisePropertyChanged("Signed");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OrderService.IOrderService")]
@@ -22,34 +258,34 @@ namespace TraderMarket.OrderService {
         System.Threading.Tasks.Task AddOrderDetailsAsync(int orderid, int productid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddOrder", ReplyAction="http://tempuri.org/IOrderService/AddOrderResponse")]
-        void AddOrder(string email, decimal number);
+        void AddOrder(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/AddOrder", ReplyAction="http://tempuri.org/IOrderService/AddOrderResponse")]
-        System.Threading.Tasks.Task AddOrderAsync(string email, decimal number);
+        System.Threading.Tasks.Task AddOrderAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/LastOrder", ReplyAction="http://tempuri.org/IOrderService/LastOrderResponse")]
-        Commonlayer.Views.OrderView LastOrder();
+        TraderMarket.OrderService.OrderView LastOrder();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/LastOrder", ReplyAction="http://tempuri.org/IOrderService/LastOrderResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.OrderView> LastOrderAsync();
+        System.Threading.Tasks.Task<TraderMarket.OrderService.OrderView> LastOrderAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderedProduct", ReplyAction="http://tempuri.org/IOrderService/GetOrderedProductResponse")]
-        Commonlayer.Views.OrderedProducts GetOrderedProduct(string email, int productid);
+        TraderMarket.OrderService.OrderedProducts GetOrderedProduct(string email, int productid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderedProduct", ReplyAction="http://tempuri.org/IOrderService/GetOrderedProductResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.OrderedProducts> GetOrderedProductAsync(string email, int productid);
+        System.Threading.Tasks.Task<TraderMarket.OrderService.OrderedProducts> GetOrderedProductAsync(string email, int productid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetProductsOfUser", ReplyAction="http://tempuri.org/IOrderService/GetProductsOfUserResponse")]
-        Commonlayer.Views.OrderedProducts[] GetProductsOfUser(string email);
+        TraderMarket.OrderService.OrderedProducts[] GetProductsOfUser(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetProductsOfUser", ReplyAction="http://tempuri.org/IOrderService/GetProductsOfUserResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.OrderedProducts[]> GetProductsOfUserAsync(string email);
+        System.Threading.Tasks.Task<TraderMarket.OrderService.OrderedProducts[]> GetProductsOfUserAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrder", ReplyAction="http://tempuri.org/IOrderService/GetOrderResponse")]
-        Commonlayer.Views.OrderView GetOrder(int id);
+        TraderMarket.OrderService.OrderView GetOrder(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrder", ReplyAction="http://tempuri.org/IOrderService/GetOrderResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.OrderView> GetOrderAsync(int id);
+        System.Threading.Tasks.Task<TraderMarket.OrderService.OrderView> GetOrderAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrderID", ReplyAction="http://tempuri.org/IOrderService/GetOrderIDResponse")]
         int GetOrderID(int productID, string email);
@@ -93,43 +329,43 @@ namespace TraderMarket.OrderService {
             return base.Channel.AddOrderDetailsAsync(orderid, productid);
         }
         
-        public void AddOrder(string email, decimal number) {
-            base.Channel.AddOrder(email, number);
+        public void AddOrder(string email) {
+            base.Channel.AddOrder(email);
         }
         
-        public System.Threading.Tasks.Task AddOrderAsync(string email, decimal number) {
-            return base.Channel.AddOrderAsync(email, number);
+        public System.Threading.Tasks.Task AddOrderAsync(string email) {
+            return base.Channel.AddOrderAsync(email);
         }
         
-        public Commonlayer.Views.OrderView LastOrder() {
+        public TraderMarket.OrderService.OrderView LastOrder() {
             return base.Channel.LastOrder();
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.OrderView> LastOrderAsync() {
+        public System.Threading.Tasks.Task<TraderMarket.OrderService.OrderView> LastOrderAsync() {
             return base.Channel.LastOrderAsync();
         }
         
-        public Commonlayer.Views.OrderedProducts GetOrderedProduct(string email, int productid) {
+        public TraderMarket.OrderService.OrderedProducts GetOrderedProduct(string email, int productid) {
             return base.Channel.GetOrderedProduct(email, productid);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.OrderedProducts> GetOrderedProductAsync(string email, int productid) {
+        public System.Threading.Tasks.Task<TraderMarket.OrderService.OrderedProducts> GetOrderedProductAsync(string email, int productid) {
             return base.Channel.GetOrderedProductAsync(email, productid);
         }
         
-        public Commonlayer.Views.OrderedProducts[] GetProductsOfUser(string email) {
+        public TraderMarket.OrderService.OrderedProducts[] GetProductsOfUser(string email) {
             return base.Channel.GetProductsOfUser(email);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.OrderedProducts[]> GetProductsOfUserAsync(string email) {
+        public System.Threading.Tasks.Task<TraderMarket.OrderService.OrderedProducts[]> GetProductsOfUserAsync(string email) {
             return base.Channel.GetProductsOfUserAsync(email);
         }
         
-        public Commonlayer.Views.OrderView GetOrder(int id) {
+        public TraderMarket.OrderService.OrderView GetOrder(int id) {
             return base.Channel.GetOrder(id);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.OrderView> GetOrderAsync(int id) {
+        public System.Threading.Tasks.Task<TraderMarket.OrderService.OrderView> GetOrderAsync(int id) {
             return base.Channel.GetOrderAsync(id);
         }
         

@@ -6,14 +6,17 @@
 }
 
 <h2>CheckOut</h2>
+<script src="~/Scripts/dg.js"></script>
+<script type="text/javascript">
 
+</script>
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Choose a Credit Card</legend>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Card)
+        <legend>Pay with Paypal</legend>
+        @*<div class="editor-label">
+            @Html.LabelFor(moldel => Model.Card)
         </div>
         <div class="editor-field">
             <select name="Card">
@@ -25,8 +28,10 @@
 
             </select>
             @Html.ValidationMessageFor(model => model.Card)
-        </div>
-        @Html.ActionLink("Add Credit Card", "Create", "CreditCard")
+        </div>*@
+        Total Price: €@ViewBag.Price
+        @*<a onclick="submitPayment(ViewBag.Price)" >Proceed to Paypal</a>*@
+        @*@Html.ActionLink("Proceed to Paypal", "Fund", "Cart")*@
 
         <p>
             <input type="submit" value="Purchase" />

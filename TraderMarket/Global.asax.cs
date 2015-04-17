@@ -44,8 +44,8 @@ namespace TraderMarket
         {
             if (Context.User != null)
             {
-                Role[] usersRole = new UserService.UserServiceClient().GetUserRoles(Context.User.Identity.Name);
-
+                TraderMarket.UserService.Role[] usersRole = new UserService.UserServiceClient().GetUserRoles(Context.User.Identity.Name);
+               
                 string[] roles = new string[usersRole.Count()];
 
                 for (int i = 0; i < roles.Length; i++)
@@ -62,7 +62,7 @@ namespace TraderMarket
         {
             if (Context.User != null)
             {
-                RolesView[] usersrole = new UserService.UserServiceClient().GetUserRolesV(Context.User.Identity.Name);
+                TraderMarket.UserService.RolesView[] usersrole = new UserService.UserServiceClient().GetUserRolesV(Context.User.Identity.Name);
               // Role[] usersRole = new UserService.UserServiceClient().GetUserRoles(Context.User.Identity.Name);
 
                 string[] roles = new string[usersrole.Count()];

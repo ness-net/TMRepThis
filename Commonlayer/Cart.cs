@@ -17,6 +17,7 @@ namespace Commonlayer
         public string Email { get; set; }
         public int ProductID { get; set; }
         public Nullable<int> Quantity { get; set; }
+        public Nullable<System.DateTime> datepurchased { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual User User { get; set; }

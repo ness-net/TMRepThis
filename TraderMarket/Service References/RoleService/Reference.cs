@@ -9,7 +9,1794 @@
 //------------------------------------------------------------------------------
 
 namespace TraderMarket.RoleService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Role", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Role : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Menu[] MenusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Role1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RoleIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.User[] UsersField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Menu[] Menus {
+            get {
+                return this.MenusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MenusField, value) != true)) {
+                    this.MenusField = value;
+                    this.RaisePropertyChanged("Menus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Role1 {
+            get {
+                return this.Role1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Role1Field, value) != true)) {
+                    this.Role1Field = value;
+                    this.RaisePropertyChanged("Role1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RoleID {
+            get {
+                return this.RoleIDField;
+            }
+            set {
+                if ((this.RoleIDField.Equals(value) != true)) {
+                    this.RoleIDField = value;
+                    this.RaisePropertyChanged("RoleID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.User[] Users {
+            get {
+                return this.UsersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsersField, value) != true)) {
+                    this.UsersField = value;
+                    this.RaisePropertyChanged("Users");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Menu", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Menu : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Menu[] Menu1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Menu Menu2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MenuIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ParentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PositionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Role[] RolesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string URLField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Menu[] Menu1 {
+            get {
+                return this.Menu1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Menu1Field, value) != true)) {
+                    this.Menu1Field = value;
+                    this.RaisePropertyChanged("Menu1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Menu Menu2 {
+            get {
+                return this.Menu2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Menu2Field, value) != true)) {
+                    this.Menu2Field = value;
+                    this.RaisePropertyChanged("Menu2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MenuID {
+            get {
+                return this.MenuIDField;
+            }
+            set {
+                if ((this.MenuIDField.Equals(value) != true)) {
+                    this.MenuIDField = value;
+                    this.RaisePropertyChanged("MenuID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ParentID {
+            get {
+                return this.ParentIDField;
+            }
+            set {
+                if ((this.ParentIDField.Equals(value) != true)) {
+                    this.ParentIDField = value;
+                    this.RaisePropertyChanged("ParentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Position {
+            get {
+                return this.PositionField;
+            }
+            set {
+                if ((this.PositionField.Equals(value) != true)) {
+                    this.PositionField = value;
+                    this.RaisePropertyChanged("Position");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Role[] Roles {
+            get {
+                return this.RolesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RolesField, value) != true)) {
+                    this.RolesField = value;
+                    this.RaisePropertyChanged("Roles");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string URL {
+            get {
+                return this.URLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.URLField, value) != true)) {
+                    this.URLField = value;
+                    this.RaisePropertyChanged("URL");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Cart[] CartsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Commission[] CommissionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContactNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.CreditCard[] CreditCardsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Order[] OrdersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PrivateKeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Product[] ProductsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PublicKeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Role[] RolesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SurnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Cart[] Carts {
+            get {
+                return this.CartsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CartsField, value) != true)) {
+                    this.CartsField = value;
+                    this.RaisePropertyChanged("Carts");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Commission[] Commissions {
+            get {
+                return this.CommissionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommissionsField, value) != true)) {
+                    this.CommissionsField = value;
+                    this.RaisePropertyChanged("Commissions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContactNo {
+            get {
+                return this.ContactNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContactNoField, value) != true)) {
+                    this.ContactNoField = value;
+                    this.RaisePropertyChanged("ContactNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.CreditCard[] CreditCards {
+            get {
+                return this.CreditCardsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreditCardsField, value) != true)) {
+                    this.CreditCardsField = value;
+                    this.RaisePropertyChanged("CreditCards");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Order[] Orders {
+            get {
+                return this.OrdersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrdersField, value) != true)) {
+                    this.OrdersField = value;
+                    this.RaisePropertyChanged("Orders");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PrivateKey {
+            get {
+                return this.PrivateKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrivateKeyField, value) != true)) {
+                    this.PrivateKeyField = value;
+                    this.RaisePropertyChanged("PrivateKey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Product[] Products {
+            get {
+                return this.ProductsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductsField, value) != true)) {
+                    this.ProductsField = value;
+                    this.RaisePropertyChanged("Products");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PublicKey {
+            get {
+                return this.PublicKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PublicKeyField, value) != true)) {
+                    this.PublicKeyField = value;
+                    this.RaisePropertyChanged("PublicKey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Role[] Roles {
+            get {
+                return this.RolesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RolesField, value) != true)) {
+                    this.RolesField = value;
+                    this.RaisePropertyChanged("Roles");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Surname {
+            get {
+                return this.SurnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SurnameField, value) != true)) {
+                    this.SurnameField = value;
+                    this.RaisePropertyChanged("Surname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Cart", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Cart : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Product ProductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> QuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.User UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Product Product {
+            get {
+                return this.ProductField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductField, value) != true)) {
+                    this.ProductField = value;
+                    this.RaisePropertyChanged("Product");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((this.ProductIDField.Equals(value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Commission", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Commission : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal AmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CommissionIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeOFCommissionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.User[] UsersField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Amount {
+            get {
+                return this.AmountField;
+            }
+            set {
+                if ((this.AmountField.Equals(value) != true)) {
+                    this.AmountField = value;
+                    this.RaisePropertyChanged("Amount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CommissionID {
+            get {
+                return this.CommissionIDField;
+            }
+            set {
+                if ((this.CommissionIDField.Equals(value) != true)) {
+                    this.CommissionIDField = value;
+                    this.RaisePropertyChanged("CommissionID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TypeOFCommission {
+            get {
+                return this.TypeOFCommissionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeOFCommissionField, value) != true)) {
+                    this.TypeOFCommissionField = value;
+                    this.RaisePropertyChanged("TypeOFCommission");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.User[] Users {
+            get {
+                return this.UsersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsersField, value) != true)) {
+                    this.UsersField = value;
+                    this.RaisePropertyChanged("Users");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CreditCard", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class CreditCard : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CVVField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CardNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardOwnerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Order[] OrdersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.User UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CVV {
+            get {
+                return this.CVVField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CVVField, value) != true)) {
+                    this.CVVField = value;
+                    this.RaisePropertyChanged("CVV");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal CardNumber {
+            get {
+                return this.CardNumberField;
+            }
+            set {
+                if ((this.CardNumberField.Equals(value) != true)) {
+                    this.CardNumberField = value;
+                    this.RaisePropertyChanged("CardNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardOwner {
+            get {
+                return this.CardOwnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardOwnerField, value) != true)) {
+                    this.CardOwnerField = value;
+                    this.RaisePropertyChanged("CardOwner");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardType {
+            get {
+                return this.CardTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardTypeField, value) != true)) {
+                    this.CardTypeField = value;
+                    this.RaisePropertyChanged("CardType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Order[] Orders {
+            get {
+                return this.OrdersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrdersField, value) != true)) {
+                    this.OrdersField = value;
+                    this.RaisePropertyChanged("Orders");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Order", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Order : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> CardUsedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.CreditCard CreditCardField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.OrderDetail[] OrderDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.User UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> CardUsed {
+            get {
+                return this.CardUsedField;
+            }
+            set {
+                if ((this.CardUsedField.Equals(value) != true)) {
+                    this.CardUsedField = value;
+                    this.RaisePropertyChanged("CardUsed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.CreditCard CreditCard {
+            get {
+                return this.CreditCardField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreditCardField, value) != true)) {
+                    this.CreditCardField = value;
+                    this.RaisePropertyChanged("CreditCard");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DateField, value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.OrderDetail[] OrderDetails {
+            get {
+                return this.OrderDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderDetailsField, value) != true)) {
+                    this.OrderDetailsField = value;
+                    this.RaisePropertyChanged("OrderDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderID {
+            get {
+                return this.OrderIDField;
+            }
+            set {
+                if ((this.OrderIDField.Equals(value) != true)) {
+                    this.OrderIDField = value;
+                    this.RaisePropertyChanged("OrderID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Cart[] CartsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Category CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CategoryIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageLinkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.OrderDetail[] OrderDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] SoftwareBytesSField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] SoftwareBytesSignedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.User UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool isActiveField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Cart[] Carts {
+            get {
+                return this.CartsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CartsField, value) != true)) {
+                    this.CartsField = value;
+                    this.RaisePropertyChanged("Carts");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Category Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CategoryID {
+            get {
+                return this.CategoryIDField;
+            }
+            set {
+                if ((this.CategoryIDField.Equals(value) != true)) {
+                    this.CategoryIDField = value;
+                    this.RaisePropertyChanged("CategoryID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageLink {
+            get {
+                return this.ImageLinkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageLinkField, value) != true)) {
+                    this.ImageLinkField = value;
+                    this.RaisePropertyChanged("ImageLink");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.OrderDetail[] OrderDetails {
+            get {
+                return this.OrderDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderDetailsField, value) != true)) {
+                    this.OrderDetailsField = value;
+                    this.RaisePropertyChanged("OrderDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((this.ProductIDField.Equals(value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] SoftwareBytesS {
+            get {
+                return this.SoftwareBytesSField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SoftwareBytesSField, value) != true)) {
+                    this.SoftwareBytesSField = value;
+                    this.RaisePropertyChanged("SoftwareBytesS");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] SoftwareBytesSigned {
+            get {
+                return this.SoftwareBytesSignedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SoftwareBytesSignedField, value) != true)) {
+                    this.SoftwareBytesSignedField = value;
+                    this.RaisePropertyChanged("SoftwareBytesSigned");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool isActive {
+            get {
+                return this.isActiveField;
+            }
+            set {
+                if ((this.isActiveField.Equals(value) != true)) {
+                    this.isActiveField = value;
+                    this.RaisePropertyChanged("isActive");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Category[] Categories1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Category Category1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CategoryIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageLinkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ParentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Product[] ProductsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.SubCategory[] SubCategoriesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Category[] Categories1 {
+            get {
+                return this.Categories1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Categories1Field, value) != true)) {
+                    this.Categories1Field = value;
+                    this.RaisePropertyChanged("Categories1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Category Category1 {
+            get {
+                return this.Category1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Category1Field, value) != true)) {
+                    this.Category1Field = value;
+                    this.RaisePropertyChanged("Category1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CategoryID {
+            get {
+                return this.CategoryIDField;
+            }
+            set {
+                if ((this.CategoryIDField.Equals(value) != true)) {
+                    this.CategoryIDField = value;
+                    this.RaisePropertyChanged("CategoryID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageLink {
+            get {
+                return this.ImageLinkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageLinkField, value) != true)) {
+                    this.ImageLinkField = value;
+                    this.RaisePropertyChanged("ImageLink");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ParentID {
+            get {
+                return this.ParentIDField;
+            }
+            set {
+                if ((this.ParentIDField.Equals(value) != true)) {
+                    this.ParentIDField = value;
+                    this.RaisePropertyChanged("ParentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Product[] Products {
+            get {
+                return this.ProductsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductsField, value) != true)) {
+                    this.ProductsField = value;
+                    this.RaisePropertyChanged("Products");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.SubCategory[] SubCategories {
+            get {
+                return this.SubCategoriesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubCategoriesField, value) != true)) {
+                    this.SubCategoriesField = value;
+                    this.RaisePropertyChanged("SubCategories");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderDetail", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class OrderDetail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Order OrderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.OrderStatu OrderStatuField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> OrderStatusIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Product ProductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> QuantityField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Order Order {
+            get {
+                return this.OrderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderField, value) != true)) {
+                    this.OrderField = value;
+                    this.RaisePropertyChanged("Order");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderID {
+            get {
+                return this.OrderIDField;
+            }
+            set {
+                if ((this.OrderIDField.Equals(value) != true)) {
+                    this.OrderIDField = value;
+                    this.RaisePropertyChanged("OrderID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.OrderStatu OrderStatu {
+            get {
+                return this.OrderStatuField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderStatuField, value) != true)) {
+                    this.OrderStatuField = value;
+                    this.RaisePropertyChanged("OrderStatu");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> OrderStatusID {
+            get {
+                return this.OrderStatusIDField;
+            }
+            set {
+                if ((this.OrderStatusIDField.Equals(value) != true)) {
+                    this.OrderStatusIDField = value;
+                    this.RaisePropertyChanged("OrderStatusID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Product Product {
+            get {
+                return this.ProductField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductField, value) != true)) {
+                    this.ProductField = value;
+                    this.RaisePropertyChanged("Product");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((this.ProductIDField.Equals(value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SubCategory", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class SubCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.Category CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageLinkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ParentCategoryIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SubCategoryIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.Category Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageLink {
+            get {
+                return this.ImageLinkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageLinkField, value) != true)) {
+                    this.ImageLinkField = value;
+                    this.RaisePropertyChanged("ImageLink");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ParentCategoryID {
+            get {
+                return this.ParentCategoryIDField;
+            }
+            set {
+                if ((this.ParentCategoryIDField.Equals(value) != true)) {
+                    this.ParentCategoryIDField = value;
+                    this.RaisePropertyChanged("ParentCategoryID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SubCategoryID {
+            get {
+                return this.SubCategoryIDField;
+            }
+            set {
+                if ((this.SubCategoryIDField.Equals(value) != true)) {
+                    this.SubCategoryIDField = value;
+                    this.RaisePropertyChanged("SubCategoryID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStatu", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class OrderStatu : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.RoleService.OrderDetail[] OrderDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderStatusIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.RoleService.OrderDetail[] OrderDetails {
+            get {
+                return this.OrderDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderDetailsField, value) != true)) {
+                    this.OrderDetailsField = value;
+                    this.RaisePropertyChanged("OrderDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderStatusID {
+            get {
+                return this.OrderStatusIDField;
+            }
+            set {
+                if ((this.OrderStatusIDField.Equals(value) != true)) {
+                    this.OrderStatusIDField = value;
+                    this.RaisePropertyChanged("OrderStatusID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RolesView", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer.Views")]
+    [System.SerializableAttribute()]
+    public partial class RolesView : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RoleService.IRoleService1")]
@@ -22,10 +1809,10 @@ namespace TraderMarket.RoleService {
         System.Threading.Tasks.Task AddRoleAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetRoles", ReplyAction="http://tempuri.org/IRoleService1/GetRolesResponse")]
-        Commonlayer.Role GetRoles(string roleN);
+        TraderMarket.RoleService.Role GetRoles(string roleN);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetRoles", ReplyAction="http://tempuri.org/IRoleService1/GetRolesResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Role> GetRolesAsync(string roleN);
+        System.Threading.Tasks.Task<TraderMarket.RoleService.Role> GetRolesAsync(string roleN);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/DeleteRole", ReplyAction="http://tempuri.org/IRoleService1/DeleteRoleResponse")]
         void DeleteRole(int id);
@@ -34,22 +1821,22 @@ namespace TraderMarket.RoleService {
         System.Threading.Tasks.Task DeleteRoleAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetMatchingRoles", ReplyAction="http://tempuri.org/IRoleService1/GetMatchingRolesResponse")]
-        Commonlayer.Views.RolesView[] GetMatchingRoles(string roles);
+        TraderMarket.RoleService.RolesView[] GetMatchingRoles(string roles);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetMatchingRoles", ReplyAction="http://tempuri.org/IRoleService1/GetMatchingRolesResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetMatchingRolesAsync(string roles);
+        System.Threading.Tasks.Task<TraderMarket.RoleService.RolesView[]> GetMatchingRolesAsync(string roles);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetRole", ReplyAction="http://tempuri.org/IRoleService1/GetRoleResponse")]
-        Commonlayer.Role GetRole(int roleID);
+        TraderMarket.RoleService.Role GetRole(int roleID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetRole", ReplyAction="http://tempuri.org/IRoleService1/GetRoleResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Role> GetRoleAsync(int roleID);
+        System.Threading.Tasks.Task<TraderMarket.RoleService.Role> GetRoleAsync(int roleID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetAllRoles", ReplyAction="http://tempuri.org/IRoleService1/GetAllRolesResponse")]
-        Commonlayer.Role[] GetAllRoles();
+        TraderMarket.RoleService.Role[] GetAllRoles();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetAllRoles", ReplyAction="http://tempuri.org/IRoleService1/GetAllRolesResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Role[]> GetAllRolesAsync();
+        System.Threading.Tasks.Task<TraderMarket.RoleService.Role[]> GetAllRolesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/UpdateRole", ReplyAction="http://tempuri.org/IRoleService1/UpdateRoleResponse")]
         void UpdateRole(int roleid, string name);
@@ -58,40 +1845,28 @@ namespace TraderMarket.RoleService {
         System.Threading.Tasks.Task UpdateRoleAsync(int roleid, string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetAllRolesV", ReplyAction="http://tempuri.org/IRoleService1/GetAllRolesVResponse")]
-        Commonlayer.Views.RolesView[] GetAllRolesV();
+        TraderMarket.RoleService.RolesView[] GetAllRolesV();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetAllRolesV", ReplyAction="http://tempuri.org/IRoleService1/GetAllRolesVResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetAllRolesVAsync();
+        System.Threading.Tasks.Task<TraderMarket.RoleService.RolesView[]> GetAllRolesVAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetRoleV", ReplyAction="http://tempuri.org/IRoleService1/GetRoleVResponse")]
-        Commonlayer.Views.RolesView GetRoleV(int roleid);
+        TraderMarket.RoleService.RolesView GetRoleV(int roleid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetRoleV", ReplyAction="http://tempuri.org/IRoleService1/GetRoleVResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.RolesView> GetRoleVAsync(int roleid);
+        System.Threading.Tasks.Task<TraderMarket.RoleService.RolesView> GetRoleVAsync(int roleid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetUserRolesV", ReplyAction="http://tempuri.org/IRoleService1/GetUserRolesVResponse")]
-        Commonlayer.Views.RolesView[] GetUserRolesV(string email);
+        TraderMarket.RoleService.RolesView[] GetUserRolesV(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/GetUserRolesV", ReplyAction="http://tempuri.org/IRoleService1/GetUserRolesVResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string email);
+        System.Threading.Tasks.Task<TraderMarket.RoleService.RolesView[]> GetUserRolesVAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/AllocateRole", ReplyAction="http://tempuri.org/IRoleService1/AllocateRoleResponse")]
-        void AllocateRole(Commonlayer.User user, Commonlayer.Role role);
+        void AllocateRole(TraderMarket.RoleService.User user, TraderMarket.RoleService.Role role);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/AllocateRole", ReplyAction="http://tempuri.org/IRoleService1/AllocateRoleResponse")]
-        System.Threading.Tasks.Task AllocateRoleAsync(Commonlayer.User user, Commonlayer.Role role);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/AllocateRoleV", ReplyAction="http://tempuri.org/IRoleService1/AllocateRoleVResponse")]
-        void AllocateRoleV(string email, int roleid);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/AllocateRoleV", ReplyAction="http://tempuri.org/IRoleService1/AllocateRoleVResponse")]
-        System.Threading.Tasks.Task AllocateRoleVAsync(string email, int roleid);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/RemoveRole", ReplyAction="http://tempuri.org/IRoleService1/RemoveRoleResponse")]
-        void RemoveRole(string email, int roleid);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService1/RemoveRole", ReplyAction="http://tempuri.org/IRoleService1/RemoveRoleResponse")]
-        System.Threading.Tasks.Task RemoveRoleAsync(string email, int roleid);
+        System.Threading.Tasks.Task AllocateRoleAsync(TraderMarket.RoleService.User user, TraderMarket.RoleService.Role role);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -129,11 +1904,11 @@ namespace TraderMarket.RoleService {
             return base.Channel.AddRoleAsync(name);
         }
         
-        public Commonlayer.Role GetRoles(string roleN) {
+        public TraderMarket.RoleService.Role GetRoles(string roleN) {
             return base.Channel.GetRoles(roleN);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Role> GetRolesAsync(string roleN) {
+        public System.Threading.Tasks.Task<TraderMarket.RoleService.Role> GetRolesAsync(string roleN) {
             return base.Channel.GetRolesAsync(roleN);
         }
         
@@ -145,27 +1920,27 @@ namespace TraderMarket.RoleService {
             return base.Channel.DeleteRoleAsync(id);
         }
         
-        public Commonlayer.Views.RolesView[] GetMatchingRoles(string roles) {
+        public TraderMarket.RoleService.RolesView[] GetMatchingRoles(string roles) {
             return base.Channel.GetMatchingRoles(roles);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetMatchingRolesAsync(string roles) {
+        public System.Threading.Tasks.Task<TraderMarket.RoleService.RolesView[]> GetMatchingRolesAsync(string roles) {
             return base.Channel.GetMatchingRolesAsync(roles);
         }
         
-        public Commonlayer.Role GetRole(int roleID) {
+        public TraderMarket.RoleService.Role GetRole(int roleID) {
             return base.Channel.GetRole(roleID);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Role> GetRoleAsync(int roleID) {
+        public System.Threading.Tasks.Task<TraderMarket.RoleService.Role> GetRoleAsync(int roleID) {
             return base.Channel.GetRoleAsync(roleID);
         }
         
-        public Commonlayer.Role[] GetAllRoles() {
+        public TraderMarket.RoleService.Role[] GetAllRoles() {
             return base.Channel.GetAllRoles();
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Role[]> GetAllRolesAsync() {
+        public System.Threading.Tasks.Task<TraderMarket.RoleService.Role[]> GetAllRolesAsync() {
             return base.Channel.GetAllRolesAsync();
         }
         
@@ -177,52 +1952,36 @@ namespace TraderMarket.RoleService {
             return base.Channel.UpdateRoleAsync(roleid, name);
         }
         
-        public Commonlayer.Views.RolesView[] GetAllRolesV() {
+        public TraderMarket.RoleService.RolesView[] GetAllRolesV() {
             return base.Channel.GetAllRolesV();
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetAllRolesVAsync() {
+        public System.Threading.Tasks.Task<TraderMarket.RoleService.RolesView[]> GetAllRolesVAsync() {
             return base.Channel.GetAllRolesVAsync();
         }
         
-        public Commonlayer.Views.RolesView GetRoleV(int roleid) {
+        public TraderMarket.RoleService.RolesView GetRoleV(int roleid) {
             return base.Channel.GetRoleV(roleid);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.RolesView> GetRoleVAsync(int roleid) {
+        public System.Threading.Tasks.Task<TraderMarket.RoleService.RolesView> GetRoleVAsync(int roleid) {
             return base.Channel.GetRoleVAsync(roleid);
         }
         
-        public Commonlayer.Views.RolesView[] GetUserRolesV(string email) {
+        public TraderMarket.RoleService.RolesView[] GetUserRolesV(string email) {
             return base.Channel.GetUserRolesV(email);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.RolesView[]> GetUserRolesVAsync(string email) {
+        public System.Threading.Tasks.Task<TraderMarket.RoleService.RolesView[]> GetUserRolesVAsync(string email) {
             return base.Channel.GetUserRolesVAsync(email);
         }
         
-        public void AllocateRole(Commonlayer.User user, Commonlayer.Role role) {
+        public void AllocateRole(TraderMarket.RoleService.User user, TraderMarket.RoleService.Role role) {
             base.Channel.AllocateRole(user, role);
         }
         
-        public System.Threading.Tasks.Task AllocateRoleAsync(Commonlayer.User user, Commonlayer.Role role) {
+        public System.Threading.Tasks.Task AllocateRoleAsync(TraderMarket.RoleService.User user, TraderMarket.RoleService.Role role) {
             return base.Channel.AllocateRoleAsync(user, role);
-        }
-        
-        public void AllocateRoleV(string email, int roleid) {
-            base.Channel.AllocateRoleV(email, roleid);
-        }
-        
-        public System.Threading.Tasks.Task AllocateRoleVAsync(string email, int roleid) {
-            return base.Channel.AllocateRoleVAsync(email, roleid);
-        }
-        
-        public void RemoveRole(string email, int roleid) {
-            base.Channel.RemoveRole(email, roleid);
-        }
-        
-        public System.Threading.Tasks.Task RemoveRoleAsync(string email, int roleid) {
-            return base.Channel.RemoveRoleAsync(email, roleid);
         }
     }
 }

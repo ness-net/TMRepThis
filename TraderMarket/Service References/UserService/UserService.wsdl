@@ -56,12 +56,6 @@
   <wsdl:message name="IUserService_GetPublicKey_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPublicKeyResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserService_GetCreditCards_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCreditCards" />
-  </wsdl:message>
-  <wsdl:message name="IUserService_GetCreditCards_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCreditCardsResponse" />
-  </wsdl:message>
   <wsdl:message name="IUserService_GetUserRoles_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserRoles" />
   </wsdl:message>
@@ -73,12 +67,6 @@
   </wsdl:message>
   <wsdl:message name="IUserService_GetUserRolesV_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserRolesVResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserService_AddCreditCard_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddCreditCard" />
-  </wsdl:message>
-  <wsdl:message name="IUserService_AddCreditCard_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddCreditCardResponse" />
   </wsdl:message>
   <wsdl:message name="IUserService_GetPrivateKey_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPrivateKey" />
@@ -119,10 +107,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetPublicKey" message="tns:IUserService_GetPublicKey_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetPublicKeyResponse" message="tns:IUserService_GetPublicKey_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetCreditCards">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetCreditCards" message="tns:IUserService_GetCreditCards_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetCreditCardsResponse" message="tns:IUserService_GetCreditCards_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetUserRoles">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserRoles" message="tns:IUserService_GetUserRoles_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserRolesResponse" message="tns:IUserService_GetUserRoles_OutputMessage" />
@@ -130,10 +114,6 @@
     <wsdl:operation name="GetUserRolesV">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserRolesV" message="tns:IUserService_GetUserRolesV_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/GetUserRolesVResponse" message="tns:IUserService_GetUserRolesV_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddCreditCard">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/AddCreditCard" message="tns:IUserService_AddCreditCard_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/AddCreditCardResponse" message="tns:IUserService_AddCreditCard_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPrivateKey">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetPrivateKey" message="tns:IUserService_GetPrivateKey_InputMessage" />
@@ -214,15 +194,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCreditCards">
-      <soap:operation soapAction="http://tempuri.org/IUserService/GetCreditCards" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetUserRoles">
       <soap:operation soapAction="http://tempuri.org/IUserService/GetUserRoles" style="document" />
       <wsdl:input>
@@ -234,15 +205,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserRolesV">
       <soap:operation soapAction="http://tempuri.org/IUserService/GetUserRolesV" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddCreditCard">
-      <soap:operation soapAction="http://tempuri.org/IUserService/AddCreditCard" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

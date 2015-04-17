@@ -34,16 +34,16 @@ namespace Business_Layer
         [OperationContract]
         string GetPublicKey(string email);
 
-        [OperationContract]
-        IQueryable<CreditCardView> GetCreditCards(string email);
+        //[OperationContract]
+        //IQueryable<CreditCardView> GetCreditCards(string email);
         
 
         [OperationContract]
         IQueryable<Role> GetUserRoles(string email);
         [OperationContract]
         IQueryable<RolesView> GetUserRolesV(string email);
-        [OperationContract]
-        void AddCreditCard(string email, string creditcardt, string cvv, string holder, decimal number);
+        //[OperationContract]
+        //void AddCreditCard(string email, string creditcardt, string cvv, string holder, decimal number);
 
         [OperationContract]
         string GetPrivateKey(string email);

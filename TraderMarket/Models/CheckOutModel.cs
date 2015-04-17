@@ -12,8 +12,8 @@ namespace TraderMarket.Models
     public class CheckOutModel
     {
 
-        [Required]
-        [Display(Name = "Card")]
-        public string Card { get; set; }
+        //[Required]
+        //[Display(Name = "Card")]
+        //public string Card { get; set; }
     }
 }

@@ -9,41 +9,1844 @@
 //------------------------------------------------------------------------------
 
 namespace TraderMarket.MenuService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MenusView", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer.Views")]
+    [System.SerializableAttribute()]
+    public partial class MenusView : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PositionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string URLField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Position {
+            get {
+                return this.PositionField;
+            }
+            set {
+                if ((this.PositionField.Equals(value) != true)) {
+                    this.PositionField = value;
+                    this.RaisePropertyChanged("Position");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string URL {
+            get {
+                return this.URLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.URLField, value) != true)) {
+                    this.URLField = value;
+                    this.RaisePropertyChanged("URL");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Menu", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Menu : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Menu[] Menu1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Menu Menu2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MenuIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ParentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PositionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Role[] RolesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string URLField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Menu[] Menu1 {
+            get {
+                return this.Menu1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Menu1Field, value) != true)) {
+                    this.Menu1Field = value;
+                    this.RaisePropertyChanged("Menu1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Menu Menu2 {
+            get {
+                return this.Menu2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Menu2Field, value) != true)) {
+                    this.Menu2Field = value;
+                    this.RaisePropertyChanged("Menu2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MenuID {
+            get {
+                return this.MenuIDField;
+            }
+            set {
+                if ((this.MenuIDField.Equals(value) != true)) {
+                    this.MenuIDField = value;
+                    this.RaisePropertyChanged("MenuID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ParentID {
+            get {
+                return this.ParentIDField;
+            }
+            set {
+                if ((this.ParentIDField.Equals(value) != true)) {
+                    this.ParentIDField = value;
+                    this.RaisePropertyChanged("ParentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Position {
+            get {
+                return this.PositionField;
+            }
+            set {
+                if ((this.PositionField.Equals(value) != true)) {
+                    this.PositionField = value;
+                    this.RaisePropertyChanged("Position");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Role[] Roles {
+            get {
+                return this.RolesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RolesField, value) != true)) {
+                    this.RolesField = value;
+                    this.RaisePropertyChanged("Roles");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string URL {
+            get {
+                return this.URLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.URLField, value) != true)) {
+                    this.URLField = value;
+                    this.RaisePropertyChanged("URL");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Role", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Role : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Menu[] MenusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Role1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RoleIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.User[] UsersField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Menu[] Menus {
+            get {
+                return this.MenusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MenusField, value) != true)) {
+                    this.MenusField = value;
+                    this.RaisePropertyChanged("Menus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Role1 {
+            get {
+                return this.Role1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Role1Field, value) != true)) {
+                    this.Role1Field = value;
+                    this.RaisePropertyChanged("Role1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RoleID {
+            get {
+                return this.RoleIDField;
+            }
+            set {
+                if ((this.RoleIDField.Equals(value) != true)) {
+                    this.RoleIDField = value;
+                    this.RaisePropertyChanged("RoleID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.User[] Users {
+            get {
+                return this.UsersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsersField, value) != true)) {
+                    this.UsersField = value;
+                    this.RaisePropertyChanged("Users");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Cart[] CartsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Commission[] CommissionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContactNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.CreditCard[] CreditCardsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Order[] OrdersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PrivateKeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Product[] ProductsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PublicKeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Role[] RolesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SurnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Cart[] Carts {
+            get {
+                return this.CartsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CartsField, value) != true)) {
+                    this.CartsField = value;
+                    this.RaisePropertyChanged("Carts");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Commission[] Commissions {
+            get {
+                return this.CommissionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommissionsField, value) != true)) {
+                    this.CommissionsField = value;
+                    this.RaisePropertyChanged("Commissions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContactNo {
+            get {
+                return this.ContactNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContactNoField, value) != true)) {
+                    this.ContactNoField = value;
+                    this.RaisePropertyChanged("ContactNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.CreditCard[] CreditCards {
+            get {
+                return this.CreditCardsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreditCardsField, value) != true)) {
+                    this.CreditCardsField = value;
+                    this.RaisePropertyChanged("CreditCards");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Order[] Orders {
+            get {
+                return this.OrdersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrdersField, value) != true)) {
+                    this.OrdersField = value;
+                    this.RaisePropertyChanged("Orders");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PrivateKey {
+            get {
+                return this.PrivateKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrivateKeyField, value) != true)) {
+                    this.PrivateKeyField = value;
+                    this.RaisePropertyChanged("PrivateKey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Product[] Products {
+            get {
+                return this.ProductsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductsField, value) != true)) {
+                    this.ProductsField = value;
+                    this.RaisePropertyChanged("Products");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PublicKey {
+            get {
+                return this.PublicKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PublicKeyField, value) != true)) {
+                    this.PublicKeyField = value;
+                    this.RaisePropertyChanged("PublicKey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Role[] Roles {
+            get {
+                return this.RolesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RolesField, value) != true)) {
+                    this.RolesField = value;
+                    this.RaisePropertyChanged("Roles");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Surname {
+            get {
+                return this.SurnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SurnameField, value) != true)) {
+                    this.SurnameField = value;
+                    this.RaisePropertyChanged("Surname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Cart", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Cart : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Product ProductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> QuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.User UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Product Product {
+            get {
+                return this.ProductField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductField, value) != true)) {
+                    this.ProductField = value;
+                    this.RaisePropertyChanged("Product");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((this.ProductIDField.Equals(value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Commission", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Commission : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal AmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CommissionIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeOFCommissionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.User[] UsersField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Amount {
+            get {
+                return this.AmountField;
+            }
+            set {
+                if ((this.AmountField.Equals(value) != true)) {
+                    this.AmountField = value;
+                    this.RaisePropertyChanged("Amount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CommissionID {
+            get {
+                return this.CommissionIDField;
+            }
+            set {
+                if ((this.CommissionIDField.Equals(value) != true)) {
+                    this.CommissionIDField = value;
+                    this.RaisePropertyChanged("CommissionID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TypeOFCommission {
+            get {
+                return this.TypeOFCommissionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeOFCommissionField, value) != true)) {
+                    this.TypeOFCommissionField = value;
+                    this.RaisePropertyChanged("TypeOFCommission");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.User[] Users {
+            get {
+                return this.UsersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsersField, value) != true)) {
+                    this.UsersField = value;
+                    this.RaisePropertyChanged("Users");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CreditCard", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class CreditCard : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CVVField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal CardNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardOwnerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Order[] OrdersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.User UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CVV {
+            get {
+                return this.CVVField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CVVField, value) != true)) {
+                    this.CVVField = value;
+                    this.RaisePropertyChanged("CVV");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal CardNumber {
+            get {
+                return this.CardNumberField;
+            }
+            set {
+                if ((this.CardNumberField.Equals(value) != true)) {
+                    this.CardNumberField = value;
+                    this.RaisePropertyChanged("CardNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardOwner {
+            get {
+                return this.CardOwnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardOwnerField, value) != true)) {
+                    this.CardOwnerField = value;
+                    this.RaisePropertyChanged("CardOwner");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardType {
+            get {
+                return this.CardTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardTypeField, value) != true)) {
+                    this.CardTypeField = value;
+                    this.RaisePropertyChanged("CardType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Order[] Orders {
+            get {
+                return this.OrdersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrdersField, value) != true)) {
+                    this.OrdersField = value;
+                    this.RaisePropertyChanged("Orders");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Order", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Order : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> CardUsedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.CreditCard CreditCardField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.OrderDetail[] OrderDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.User UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> CardUsed {
+            get {
+                return this.CardUsedField;
+            }
+            set {
+                if ((this.CardUsedField.Equals(value) != true)) {
+                    this.CardUsedField = value;
+                    this.RaisePropertyChanged("CardUsed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.CreditCard CreditCard {
+            get {
+                return this.CreditCardField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreditCardField, value) != true)) {
+                    this.CreditCardField = value;
+                    this.RaisePropertyChanged("CreditCard");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Date {
+            get {
+                return this.DateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DateField, value) != true)) {
+                    this.DateField = value;
+                    this.RaisePropertyChanged("Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.OrderDetail[] OrderDetails {
+            get {
+                return this.OrderDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderDetailsField, value) != true)) {
+                    this.OrderDetailsField = value;
+                    this.RaisePropertyChanged("OrderDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderID {
+            get {
+                return this.OrderIDField;
+            }
+            set {
+                if ((this.OrderIDField.Equals(value) != true)) {
+                    this.OrderIDField = value;
+                    this.RaisePropertyChanged("OrderID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Cart[] CartsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Category CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CategoryIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageLinkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.OrderDetail[] OrderDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] SoftwareBytesSField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] SoftwareBytesSignedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.User UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool isActiveField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Cart[] Carts {
+            get {
+                return this.CartsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CartsField, value) != true)) {
+                    this.CartsField = value;
+                    this.RaisePropertyChanged("Carts");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Category Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CategoryID {
+            get {
+                return this.CategoryIDField;
+            }
+            set {
+                if ((this.CategoryIDField.Equals(value) != true)) {
+                    this.CategoryIDField = value;
+                    this.RaisePropertyChanged("CategoryID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageLink {
+            get {
+                return this.ImageLinkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageLinkField, value) != true)) {
+                    this.ImageLinkField = value;
+                    this.RaisePropertyChanged("ImageLink");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.OrderDetail[] OrderDetails {
+            get {
+                return this.OrderDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderDetailsField, value) != true)) {
+                    this.OrderDetailsField = value;
+                    this.RaisePropertyChanged("OrderDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((this.ProductIDField.Equals(value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] SoftwareBytesS {
+            get {
+                return this.SoftwareBytesSField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SoftwareBytesSField, value) != true)) {
+                    this.SoftwareBytesSField = value;
+                    this.RaisePropertyChanged("SoftwareBytesS");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] SoftwareBytesSigned {
+            get {
+                return this.SoftwareBytesSignedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SoftwareBytesSignedField, value) != true)) {
+                    this.SoftwareBytesSignedField = value;
+                    this.RaisePropertyChanged("SoftwareBytesSigned");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool isActive {
+            get {
+                return this.isActiveField;
+            }
+            set {
+                if ((this.isActiveField.Equals(value) != true)) {
+                    this.isActiveField = value;
+                    this.RaisePropertyChanged("isActive");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Category[] Categories1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Category Category1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CategoryIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageLinkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ParentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Product[] ProductsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.SubCategory[] SubCategoriesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Category[] Categories1 {
+            get {
+                return this.Categories1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Categories1Field, value) != true)) {
+                    this.Categories1Field = value;
+                    this.RaisePropertyChanged("Categories1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Category Category1 {
+            get {
+                return this.Category1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Category1Field, value) != true)) {
+                    this.Category1Field = value;
+                    this.RaisePropertyChanged("Category1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CategoryID {
+            get {
+                return this.CategoryIDField;
+            }
+            set {
+                if ((this.CategoryIDField.Equals(value) != true)) {
+                    this.CategoryIDField = value;
+                    this.RaisePropertyChanged("CategoryID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageLink {
+            get {
+                return this.ImageLinkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageLinkField, value) != true)) {
+                    this.ImageLinkField = value;
+                    this.RaisePropertyChanged("ImageLink");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ParentID {
+            get {
+                return this.ParentIDField;
+            }
+            set {
+                if ((this.ParentIDField.Equals(value) != true)) {
+                    this.ParentIDField = value;
+                    this.RaisePropertyChanged("ParentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Product[] Products {
+            get {
+                return this.ProductsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductsField, value) != true)) {
+                    this.ProductsField = value;
+                    this.RaisePropertyChanged("Products");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.SubCategory[] SubCategories {
+            get {
+                return this.SubCategoriesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubCategoriesField, value) != true)) {
+                    this.SubCategoriesField = value;
+                    this.RaisePropertyChanged("SubCategories");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderDetail", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class OrderDetail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Order OrderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.OrderStatu OrderStatuField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> OrderStatusIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Product ProductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> QuantityField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Order Order {
+            get {
+                return this.OrderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderField, value) != true)) {
+                    this.OrderField = value;
+                    this.RaisePropertyChanged("Order");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderID {
+            get {
+                return this.OrderIDField;
+            }
+            set {
+                if ((this.OrderIDField.Equals(value) != true)) {
+                    this.OrderIDField = value;
+                    this.RaisePropertyChanged("OrderID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.OrderStatu OrderStatu {
+            get {
+                return this.OrderStatuField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderStatuField, value) != true)) {
+                    this.OrderStatuField = value;
+                    this.RaisePropertyChanged("OrderStatu");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> OrderStatusID {
+            get {
+                return this.OrderStatusIDField;
+            }
+            set {
+                if ((this.OrderStatusIDField.Equals(value) != true)) {
+                    this.OrderStatusIDField = value;
+                    this.RaisePropertyChanged("OrderStatusID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Product Product {
+            get {
+                return this.ProductField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductField, value) != true)) {
+                    this.ProductField = value;
+                    this.RaisePropertyChanged("Product");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((this.ProductIDField.Equals(value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SubCategory", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class SubCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.Category CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageLinkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ParentCategoryIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SubCategoryIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.Category Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageLink {
+            get {
+                return this.ImageLinkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageLinkField, value) != true)) {
+                    this.ImageLinkField = value;
+                    this.RaisePropertyChanged("ImageLink");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ParentCategoryID {
+            get {
+                return this.ParentCategoryIDField;
+            }
+            set {
+                if ((this.ParentCategoryIDField.Equals(value) != true)) {
+                    this.ParentCategoryIDField = value;
+                    this.RaisePropertyChanged("ParentCategoryID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SubCategoryID {
+            get {
+                return this.SubCategoryIDField;
+            }
+            set {
+                if ((this.SubCategoryIDField.Equals(value) != true)) {
+                    this.SubCategoryIDField = value;
+                    this.RaisePropertyChanged("SubCategoryID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStatu", Namespace="http://schemas.datacontract.org/2004/07/Commonlayer")]
+    [System.SerializableAttribute()]
+    public partial class OrderStatu : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TraderMarket.MenuService.OrderDetail[] OrderDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderStatusIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TraderMarket.MenuService.OrderDetail[] OrderDetails {
+            get {
+                return this.OrderDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderDetailsField, value) != true)) {
+                    this.OrderDetailsField = value;
+                    this.RaisePropertyChanged("OrderDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderStatusID {
+            get {
+                return this.OrderStatusIDField;
+            }
+            set {
+                if ((this.OrderStatusIDField.Equals(value) != true)) {
+                    this.OrderStatusIDField = value;
+                    this.RaisePropertyChanged("OrderStatusID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MenuService.IMenuService")]
     public interface IMenuService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenus1", ReplyAction="http://tempuri.org/IMenuService/GetMainMenus1Response")]
-        Commonlayer.Views.MenusView[] GetMainMenus1(string email);
+        TraderMarket.MenuService.MenusView[] GetMainMenus1(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenus1", ReplyAction="http://tempuri.org/IMenuService/GetMainMenus1Response")]
-        System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenus1Async(string email);
+        System.Threading.Tasks.Task<TraderMarket.MenuService.MenusView[]> GetMainMenus1Async(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenu", ReplyAction="http://tempuri.org/IMenuService/GetMainMenuResponse")]
-        Commonlayer.Menu[] GetMainMenu(int roleID);
+        TraderMarket.MenuService.Menu[] GetMainMenu(int roleID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenu", ReplyAction="http://tempuri.org/IMenuService/GetMainMenuResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Menu[]> GetMainMenuAsync(int roleID);
+        System.Threading.Tasks.Task<TraderMarket.MenuService.Menu[]> GetMainMenuAsync(int roleID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetSubMenus1", ReplyAction="http://tempuri.org/IMenuService/GetSubMenus1Response")]
-        Commonlayer.Menu[] GetSubMenus1(string email, int parentID);
+        TraderMarket.MenuService.Menu[] GetSubMenus1(string email, int parentID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetSubMenus1", ReplyAction="http://tempuri.org/IMenuService/GetSubMenus1Response")]
-        System.Threading.Tasks.Task<Commonlayer.Menu[]> GetSubMenus1Async(string email, int parentID);
+        System.Threading.Tasks.Task<TraderMarket.MenuService.Menu[]> GetSubMenus1Async(string email, int parentID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetSubMenus2", ReplyAction="http://tempuri.org/IMenuService/GetSubMenus2Response")]
-        Commonlayer.Menu[] GetSubMenus2(int roleID, int parentID);
+        TraderMarket.MenuService.Menu[] GetSubMenus2(int roleID, int parentID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetSubMenus2", ReplyAction="http://tempuri.org/IMenuService/GetSubMenus2Response")]
-        System.Threading.Tasks.Task<Commonlayer.Menu[]> GetSubMenus2Async(int roleID, int parentID);
+        System.Threading.Tasks.Task<TraderMarket.MenuService.Menu[]> GetSubMenus2Async(int roleID, int parentID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenuV", ReplyAction="http://tempuri.org/IMenuService/GetMainMenuVResponse")]
-        Commonlayer.Views.MenusView[] GetMainMenuV(int roleID);
+        TraderMarket.MenuService.MenusView[] GetMainMenuV(int roleID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/GetMainMenuV", ReplyAction="http://tempuri.org/IMenuService/GetMainMenuVResponse")]
-        System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenuVAsync(int roleID);
+        System.Threading.Tasks.Task<TraderMarket.MenuService.MenusView[]> GetMainMenuVAsync(int roleID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,43 +1876,43 @@ namespace TraderMarket.MenuService {
                 base(binding, remoteAddress) {
         }
         
-        public Commonlayer.Views.MenusView[] GetMainMenus1(string email) {
+        public TraderMarket.MenuService.MenusView[] GetMainMenus1(string email) {
             return base.Channel.GetMainMenus1(email);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenus1Async(string email) {
+        public System.Threading.Tasks.Task<TraderMarket.MenuService.MenusView[]> GetMainMenus1Async(string email) {
             return base.Channel.GetMainMenus1Async(email);
         }
         
-        public Commonlayer.Menu[] GetMainMenu(int roleID) {
+        public TraderMarket.MenuService.Menu[] GetMainMenu(int roleID) {
             return base.Channel.GetMainMenu(roleID);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Menu[]> GetMainMenuAsync(int roleID) {
+        public System.Threading.Tasks.Task<TraderMarket.MenuService.Menu[]> GetMainMenuAsync(int roleID) {
             return base.Channel.GetMainMenuAsync(roleID);
         }
         
-        public Commonlayer.Menu[] GetSubMenus1(string email, int parentID) {
+        public TraderMarket.MenuService.Menu[] GetSubMenus1(string email, int parentID) {
             return base.Channel.GetSubMenus1(email, parentID);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Menu[]> GetSubMenus1Async(string email, int parentID) {
+        public System.Threading.Tasks.Task<TraderMarket.MenuService.Menu[]> GetSubMenus1Async(string email, int parentID) {
             return base.Channel.GetSubMenus1Async(email, parentID);
         }
         
-        public Commonlayer.Menu[] GetSubMenus2(int roleID, int parentID) {
+        public TraderMarket.MenuService.Menu[] GetSubMenus2(int roleID, int parentID) {
             return base.Channel.GetSubMenus2(roleID, parentID);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Menu[]> GetSubMenus2Async(int roleID, int parentID) {
+        public System.Threading.Tasks.Task<TraderMarket.MenuService.Menu[]> GetSubMenus2Async(int roleID, int parentID) {
             return base.Channel.GetSubMenus2Async(roleID, parentID);
         }
         
-        public Commonlayer.Views.MenusView[] GetMainMenuV(int roleID) {
+        public TraderMarket.MenuService.MenusView[] GetMainMenuV(int roleID) {
             return base.Channel.GetMainMenuV(roleID);
         }
         
-        public System.Threading.Tasks.Task<Commonlayer.Views.MenusView[]> GetMainMenuVAsync(int roleID) {
+        public System.Threading.Tasks.Task<TraderMarket.MenuService.MenusView[]> GetMainMenuVAsync(int roleID) {
             return base.Channel.GetMainMenuVAsync(roleID);
         }
     }

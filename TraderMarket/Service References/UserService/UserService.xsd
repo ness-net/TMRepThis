@@ -122,20 +122,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCreditCards">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetCreditCardsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetCreditCardsResult" nillable="true" type="q3:ArrayOfCreditCardView" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetUserRoles">
     <xs:complexType>
       <xs:sequence>
@@ -146,7 +132,7 @@
   <xs:element name="GetUserRolesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetUserRolesResult" nillable="true" type="q4:ArrayOfRole" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetUserRolesResult" nillable="true" type="q3:ArrayOfRole" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -160,24 +146,8 @@
   <xs:element name="GetUserRolesVResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetUserRolesVResult" nillable="true" type="q5:ArrayOfRolesView" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetUserRolesVResult" nillable="true" type="q4:ArrayOfRolesView" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddCreditCard">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="creditcardt" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="cvv" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="holder" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="number" type="xs:decimal" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddCreditCardResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetPrivateKey">

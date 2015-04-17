@@ -14,6 +14,33 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateCart">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="paykey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCartResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSCarts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSCartsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetSCartsResult" nillable="true" type="q2:ArrayOfCartView" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetProduct">
     <xs:complexType>
       <xs:sequence>
@@ -24,7 +51,7 @@
   <xs:element name="GetProductResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetProductResult" nillable="true" type="q2:Product" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Commonlayer" minOccurs="0" name="GetProductResult" nillable="true" type="q3:Product" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,7 +65,7 @@
   <xs:element name="GetProductsAccordingToSubCategoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductsAccordingToSubCategoryResult" nillable="true" type="q3:ArrayOfProductView" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductsAccordingToSubCategoryResult" nillable="true" type="q4:ArrayOfProductView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -50,7 +77,7 @@
   <xs:element name="GetCategoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q4:ArrayOfCategoryView" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q5:ArrayOfCategoryView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -77,7 +104,21 @@
   <xs:element name="GetProductsinShoppingCartResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductsinShoppingCartResult" nillable="true" type="q5:ArrayOfShoppingCartView" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductsinShoppingCartResult" nillable="true" type="q6:ArrayOfShoppingCartView" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPriceOfCart">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPriceOfCartResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPriceOfCartResult" type="xs:decimal" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -104,7 +145,7 @@
   <xs:element name="GetProductVResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductVResult" nillable="true" type="q6:ProductView" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductVResult" nillable="true" type="q7:ProductView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -130,7 +171,7 @@
   <xs:element name="GetProductsListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductsListResult" nillable="true" type="q7:ArrayOfProductView" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductsListResult" nillable="true" type="q8:ArrayOfProductView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -203,7 +244,7 @@
   <xs:element name="GetProductsAccordingToSellerResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductsAccordingToSellerResult" nillable="true" type="q8:ArrayOfProductView" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="GetProductsAccordingToSellerResult" nillable="true" type="q9:ArrayOfProductView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -227,7 +268,7 @@
   <xs:element name="getSubCategoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="getSubCategoriesResult" nillable="true" type="q9:ArrayOfCategoryView" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="getSubCategoriesResult" nillable="true" type="q10:ArrayOfCategoryView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -239,7 +280,7 @@
   <xs:element name="getMainCategoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="getMainCategoriesResult" nillable="true" type="q10:ArrayOfCategoryView" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Commonlayer.Views" minOccurs="0" name="getMainCategoriesResult" nillable="true" type="q11:ArrayOfCategoryView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -19,7 +19,7 @@ namespace TraderMarket.Models
           //public bool Seller { get; set; }
         }
 
-        public class UserDBContext : TradersMarketplacedbEntities
+    public class UserDBContext : TradersMarketplacedbEntities
         {
             public DbSet<User> User { get; set; }           
         } 

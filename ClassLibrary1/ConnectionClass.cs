@@ -18,7 +18,6 @@ namespace DataAccessLayer
         public ConnectionClass()
         {
             Entity = new TradersMarketplacedbEntities();
-          
         }
     }
 }

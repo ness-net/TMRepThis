@@ -17,11 +17,16 @@ namespace Business_Layer
         [OperationContract]
         IQueryable<ProductView> GetProducts();
 
+        [OperationContract]
+        void UpdateCart(string email, string paykey);
 
+        [OperationContract]
+        IQueryable<CartView> GetSCarts(string email);
 
         [OperationContract]
         Product GetProduct(int id);
 
+        
 
         [OperationContract]
         IQueryable<ProductView> GetProductsAccordingToSubCategory(System.Nullable<int> CatID);
@@ -38,6 +43,8 @@ namespace Business_Layer
         [OperationContract]
         IQueryable<ShoppingCartView> GetProductsinShoppingCart(string email);
 
+        [OperationContract]
+        decimal GetPriceOfCart(string email);
        
         [OperationContract]
         void DeleteShoppingCartEntry(string email, int productid);

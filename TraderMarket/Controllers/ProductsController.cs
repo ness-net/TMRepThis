@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using Commonlayer;
 using System.IO;
 using System.Security.Cryptography;
+using System.Text;
+using PayPal.AdaptivePayments.Model;
 
 namespace TraderMarket.Controllers
 {
@@ -17,7 +19,7 @@ namespace TraderMarket.Controllers
         private TradersMarketplacedbEntities db = new TradersMarketplacedbEntities();
 
         // GET: /Products/
-        [Authorize(Roles = "Seller, Admin")]
+        [AuthorizeSeller]
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.Category).Include(p => p.User).Where(u => u.Email == User.Identity.Name);
@@ -27,7 +29,7 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /Products/Details/5
-        [Authorize(Roles = "Seller, Admin")]
+        [AuthorizeSeller]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -42,9 +44,9 @@ namespace TraderMarket.Controllers
             return View(product);
         }
 
-        
 
-        [Authorize(Roles = "Seller, Admin")]
+
+       [AuthorizeSeller]
         public ActionResult CreateSoft()
         {
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
@@ -56,6 +58,7 @@ namespace TraderMarket.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeSeller]
         public ActionResult CreateSoft([Bind(Include = "ProductID,Name,Description,CategoryID,Price,isActive")] Product product, HttpPostedFileBase file, HttpPostedFileBase filesoft)
         {
             //Validations First of Images
@@ -141,7 +144,7 @@ namespace TraderMarket.Controllers
 
             if (ModelState.IsValid)
             {
-                product.SoftwareBytesS = data;
+                product.SoftwareBytesS = Encrypt(data, "AbhhcJ");
                 product.SoftwareBytesSigned = SignedData;
                 product.ImageLink = (("../../Content/") + filename).ToString();
                 product.Email = User.Identity.Name;
@@ -158,6 +161,37 @@ namespace TraderMarket.Controllers
             ViewBag.Username = new SelectList(db.Users, "Email", "Password", product.Email);
             return View(product);
         }
+        private static readonly byte[] SALT = new byte[] { 0x26, 0xdc, 0xff, 0x00, 0xad, 0xed, 0x7a, 0xee, 0xc5, 0xfe, 0x07, 0xaf, 0x4d, 0x08, 0x22, 0x3c };
+
+        public static byte[] Encrypt(byte[] plain, string password)
+        {
+            MemoryStream memoryStream;
+            CryptoStream cryptoStream;
+            Rijndael rijndael = Rijndael.Create();
+            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(password, SALT);
+            rijndael.Key = pdb.GetBytes(32);
+            rijndael.IV = pdb.GetBytes(16);
+            memoryStream = new MemoryStream();
+            cryptoStream = new CryptoStream(memoryStream, rijndael.CreateEncryptor(), CryptoStreamMode.Write);
+            cryptoStream.Write(plain, 0, plain.Length);
+            cryptoStream.Close();
+            return memoryStream.ToArray();
+        }
+
+        public static byte[] Decrypt(byte[] cipher, string password)
+        {
+            MemoryStream memoryStream;
+            CryptoStream cryptoStream;
+            Rijndael rijndael = Rijndael.Create();
+            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(password, SALT);
+            rijndael.Key = pdb.GetBytes(32);
+            rijndael.IV = pdb.GetBytes(16);
+            memoryStream = new MemoryStream();
+            cryptoStream = new CryptoStream(memoryStream, rijndael.CreateDecryptor(), CryptoStreamMode.Write);
+            cryptoStream.Write(cipher, 0, cipher.Length);
+            cryptoStream.Close();
+            return memoryStream.ToArray();
+        }
 
         //public Product CreateTestStub(Product product)
         //{
@@ -168,7 +202,7 @@ namespace TraderMarket.Controllers
         //}
 
         // GET: /Products/Edit/5
-        [Authorize(Roles = "Seller, Admin")]
+        [AuthorizeSeller]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -199,6 +233,7 @@ namespace TraderMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthorizeSeller]
         public ActionResult Edit([Bind(Include="ProductID,Name,Description,CategoryID,Price,Email,isActive")] Product product, HttpPostedFileBase file)
         {
             string prevImageLink = new ProdService.ProdServiceClient().GetProductImageLi(product.ProductID);
@@ -254,7 +289,7 @@ namespace TraderMarket.Controllers
         }
 
         // GET: /Products/Delete/5
-        [Authorize(Roles = "Seller, Admin")]
+        [AuthorizeSeller]
         public ActionResult Delete(int id)
         {
             new ProdService.ProdServiceClient().DeleteProduct(id);

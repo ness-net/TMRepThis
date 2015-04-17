@@ -12,11 +12,12 @@
   <xs:element name="OrderView" nillable="true" type="tns:OrderView" />
   <xs:complexType name="OrderedProducts">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Array" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NotSigned" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="OrderedDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+      <xs:element minOccurs="0" name="Signed" nillable="true" type="xs:base64Binary" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="OrderedProducts" nillable="true" type="tns:OrderedProducts" />

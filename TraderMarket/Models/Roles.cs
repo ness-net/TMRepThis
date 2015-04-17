@@ -13,7 +13,7 @@ namespace TraderMarket.Models
             public string Name { get; set; }
         }
 
-        public class RolesDBContext : TradersMarketplacedbEntities
+    public class RolesDBContext : TradersMarketplacedbEntities
         {
             public DbSet<Role> Role { get; set; }
         } 

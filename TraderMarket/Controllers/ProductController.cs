@@ -12,7 +12,8 @@ namespace TraderMarket.Controllers
     {
         //
         // GET: /Product/
-        [Authorize(Roles = "Buyer, Admin, Guest")]
+        //[Authorize(Roles = "Buyer, Admin, Guest")]
+        [AuthorizeBuyer]
         public ActionResult Index(System.Nullable<int> id)
         {
           
@@ -22,30 +23,30 @@ namespace TraderMarket.Controllers
 
             if (id == null)
             {
-                List<ProductView> list = new ProdService.ProdServiceClient().GetProducts().ToList();
+                List<TraderMarket.ProdService.ProductView> list = new ProdService.ProdServiceClient().GetProducts().ToList();
 
                 return View("Index", list);
             }
             else
             {
-                List<ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSubCategory(id).ToList();
+                List<TraderMarket.ProdService.ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSubCategory(id).ToList();
                 return View(list);
             }
             
         }
 
-        
+        [AuthorizeBuyer]
         public ActionResult Details(int id)
         {
-            ProductView e = new ProdService.ProdServiceClient().GetProductV(id);
-            RolesView[] r = new UserService.UserServiceClient().GetUserRolesV(User.Identity.Name);
-            if (r.Count() == 2)
+            TraderMarket.ProdService.ProductView e = new ProdService.ProdServiceClient().GetProductV(id);
+            TraderMarket.UserService.RolesView[] r = new UserService.UserServiceClient().GetUserRolesV(User.Identity.Name);
+            if (r.Count() >= 2)
             {
                 ViewBag.ThisRole = "both";
             }
             else
             {
-                foreach(RolesView role in r)
+                foreach (TraderMarket.UserService.RolesView role in r)
                 {
                     if(role.ID == 3)
                     {
@@ -61,6 +62,7 @@ namespace TraderMarket.Controllers
         }
 
         [HttpPost]
+        [AuthorizeBuyer]
         public ActionResult AddToCart(int userid)
         {
             if (User.Identity.IsAuthenticated)
@@ -86,18 +88,18 @@ namespace TraderMarket.Controllers
         }
 
 
-        [Authorize(Roles = "Seller, Admin")]
+        [AuthorizeSeller]
         public ActionResult SellerIndex()
         {
-                List<ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSeller(User.Identity.Name).ToList();
+            List<TraderMarket.ProdService.ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSeller(User.Identity.Name).ToList();
                 return View("SellerIndex", list);
         }
 
 
-        [Authorize(Roles = "Seller, Admin")]
+        [AuthorizeSeller]
         public ActionResult Modify(int id)
         {
-            ProductView e = new ProdService.ProdServiceClient().GetProductV(id);
+            TraderMarket.ProdService.ProductView e = new ProdService.ProdServiceClient().GetProductV(id);
             ViewBag.Product = e;
             ViewBag.SubC = new ProdService.ProdServiceClient().getSubCategories();
             ViewBag.SubCString = new ProdService.ProdServiceClient().getSubCategoryofProduct(e.ProductID);
@@ -112,20 +114,20 @@ namespace TraderMarket.Controllers
         }
 
 
-        [Authorize(Roles = "Buyer, Admin")]
+        [AuthorizeSeller]
         public ActionResult Delete(int id)
         {
             new ProdService.ProdServiceClient().DeleteProduct(id);
-            List<ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSeller(User.Identity.Name).ToList();
+            List<TraderMarket.ProdService.ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSeller(User.Identity.Name).ToList();
             return View("SellerIndex", list);
         }
 
 
-        [Authorize(Roles = "Buyer, Admin")]
+        [AuthorizeSeller]
         public ActionResult Activate(int id)
         {
             new ProdService.ProdServiceClient().MarkActive(id);
-            List<ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSeller(User.Identity.Name).ToList();
+            List<TraderMarket.ProdService.ProductView> list = new ProdService.ProdServiceClient().GetProductsAccordingToSeller(User.Identity.Name).ToList();
             return View("SellerIndex", list);
         }
 	}

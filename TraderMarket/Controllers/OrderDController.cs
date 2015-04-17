@@ -15,15 +15,15 @@ namespace TraderMarket.Controllers
         private TradersMarketplacedbEntities db = new TradersMarketplacedbEntities();
 
         // GET: /OrderD/
-        [Authorize(Roles = "Seller, Admin")]
+        [AuthorizeSeller]
         public ActionResult Index()
         {
-            var orderdetails = db.OrderDetails.Include(o => o.Order).Include(o => o.OrderStatu).Include(o => o.Product).Where(o => o.Product.Email == User.Identity.Name);
+            var orderdetails = db.OrderDetails.Include(o => o.Order).Include(o => o.Product).Where(o => o.Product.Email == User.Identity.Name);
             return View(orderdetails.ToList());
         }
 
         // GET: /OrderD/Details/5
-        [Authorize(Roles = "Seller, Admin")]
+        [AuthorizeSeller]
         public ActionResult Details(int? orderid, int? prodid)
         {
             if ((orderid == null) && (prodid == null))
@@ -41,7 +41,7 @@ namespace TraderMarket.Controllers
 
 
         // GET: /OrderD/Edit/5
-        [Authorize(Roles = "Seller, Admin")]
+        [AuthorizeSeller]
         public ActionResult Edit(int? orderid, int? prodid)
         {
             if ((orderid == null) || (prodid == null))
@@ -54,7 +54,7 @@ namespace TraderMarket.Controllers
                 return HttpNotFound();
             }
             ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "Date", orderdetail.OrderID);
-            ViewBag.OrderStatusID = new SelectList(db.OrderStatus, "OrderStatusID", "Status", orderdetail.OrderStatusID);
+            //ViewBag.OrderStatusID = new SelectList(db.OrderStatus, "OrderStatusID", "Status");
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "Name", orderdetail.ProductID);
             return View(orderdetail);
         }
@@ -63,8 +63,9 @@ namespace TraderMarket.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [AuthorizeSeller]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="OrderID,ProductID,Quantity,OrderStatusID")] OrderDetail orderdetail)
+        public ActionResult Edit([Bind(Include="OrderID,ProductID,Quantity")] OrderDetail orderdetail)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +75,7 @@ namespace TraderMarket.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.OrderID = new SelectList(db.Orders, "OrderID", "Date", orderdetail.OrderID);
-            ViewBag.OrderStatusID = new SelectList(db.OrderStatus, "OrderStatusID", "Status", orderdetail.OrderStatusID);
+            //ViewBag.OrderStatusID = new SelectList(db.OrderStatus, "OrderStatusID", "Status", orderdetail.OrderStatusID);
             ViewBag.ProductID = new SelectList(db.Products, "ProductID", "Name", orderdetail.ProductID);
             return View(orderdetail);
         }

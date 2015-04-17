@@ -16,7 +16,7 @@ namespace Business_Layer
         void AddOrderDetails(int orderid, int productid);
 
         [OperationContract]
-        void AddOrder(string email, decimal number);
+        void AddOrder(string email);
 
         [OperationContract]
         OrderView LastOrder();

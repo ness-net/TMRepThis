@@ -3,10 +3,18 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 
+[assembly: OwinStartup(typeof(TraderMarket.Startup))]
+
 namespace TraderMarket
 {
     public partial class Startup
     {
+
+        public void Configuration(IAppBuilder app)
+        {
+            ConfigureAuth(app);
+        }
+
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -30,10 +38,10 @@ namespace TraderMarket
             //   consumerSecret: "");
 
             //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            //   appId: "948584648509360",
+            //   appSecret: "b58a6b8c1efe80bce0b1ce46e0fbcff1");
 
-            app.UseGoogleAuthentication(clientId: "495570776054-scdasf02jj4mdi69nc5rreg87s78a2j8.apps.googleusercontent.com", clientSecret: "1Q-LbxZ2KdnqUWe_jdImoPzT");
+            //app.UseGoogleAuthentication(clientId: "495570776054-scdasf02jj4mdi69nc5rreg87s78a2j8.apps.googleusercontent.com", clientSecret: "1Q-LbxZ2KdnqUWe_jdImoPzT");
 
             //app.UseGoogleAuthentication();
         }
